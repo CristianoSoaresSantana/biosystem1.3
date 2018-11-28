@@ -19,7 +19,7 @@ class CreateMaterialsTable extends Migration
             $table->string('descricao', 100);
             $table->float('valor_compra');
             $table->float('valor_revenda');
-            $table->string('status', 50);
+            
 
             // relacionamentos
             $table->unsignedInteger('tipo_material_id');
@@ -45,7 +45,7 @@ class CreateMaterialsTable extends Migration
             $table->char('curvaABC');
             $table->float('comissao');
             $table->float('valor_venda');
-
+            $table->string('status', 50)->default('ativo');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -57,7 +57,7 @@ class CreateMaterialsTable extends Migration
 
             $table->string('material_sku', 20)->unique();
             $table->foreign('material_sku')->references('sku')->on('materials')->onDelete('cascade');
-
+            $table->string('status', 50)->default('ativo');
             $table->timestamps();
             $table->softDeletes();
         });

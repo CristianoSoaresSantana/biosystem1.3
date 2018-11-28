@@ -27,7 +27,8 @@ class CreateUsuariosTable extends Migration
             $table->string('email', 100)->unique();
             $table->string('senha');
             $table->string('celular', 15)->unique();
-            $table->string('permissao', 15);
+            $table->string('status', 15)->default('ativo');
+            $table->string('permissao', 15)->default('app.user');
             $table->text('endereco', 190);
             $table->timestamps();
             $table->softDeletes();
