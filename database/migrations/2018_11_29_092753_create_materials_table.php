@@ -70,6 +70,10 @@ class CreateMaterialsTable extends Migration
      */
     public function down()
     {
+        // Esse metodo serve para remover relacionamentos entre tabelas!
+		Schema::table('nomeDaTabela', function(Blueprint $table){
+
+		});
         Schema::dropIfExists('materials');
         Schema::dropIfExists('fornecedors_materials');
         Schema::dropIfExists('filial_materials');

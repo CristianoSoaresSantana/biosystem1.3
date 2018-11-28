@@ -30,6 +30,10 @@ class CreateFornecedorsTable extends Migration
      */
     public function down()
     {
+    // Esse metodo serve para remover relacionamentos entre tabelas!
+    Schema::table('nomeDaTabela', function(Blueprint $table){
+
+    });
         Schema::dropIfExists('fornecedores');
     }
 }
