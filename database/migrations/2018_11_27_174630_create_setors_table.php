@@ -29,7 +29,7 @@ class CreateSetorsTable extends Migration
     public function down()
     {
     // Esse metodo serve para remover relacionamentos entre tabelas!
-    Schema::table('nomeDaTabela', function(Blueprint $table){
+    Schema::table('setors', function(Blueprint $table){
 
     });
         Schema::dropIfExists('setors');

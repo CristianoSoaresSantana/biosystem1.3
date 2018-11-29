@@ -16,7 +16,7 @@ class CreateFornecedorsTable extends Migration
         //fornecedores
         Schema::create('fornecedors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('razao_social', 100)->unique();
+            $table->string('razao_social', 100);
             $table->string('cnpj', 20)->unique();
             $table->timestamps();
             $table->softDeletes();
@@ -31,7 +31,7 @@ class CreateFornecedorsTable extends Migration
     public function down()
     {
     // Esse metodo serve para remover relacionamentos entre tabelas!
-    Schema::table('nomeDaTabela', function(Blueprint $table){
+    Schema::table('fornecedors', function(Blueprint $table){
 
     });
         Schema::dropIfExists('fornecedores');

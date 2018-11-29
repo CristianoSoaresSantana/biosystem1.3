@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoMaterialsTable extends Migration
+class CreateFormaPagtosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTipoMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_materials', function (Blueprint $table) {
+        Schema::create('forma_pagtos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo_mater', 50);
+            $table->string('forma_pagto');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,10 +27,6 @@ class CreateTipoMaterialsTable extends Migration
      */
     public function down()
     {
-        // Esse metodo serve para remover relacionamentos entre tabelas!
-		Schema::table('tipo_materials', function(Blueprint $table){
-
-		});
-        Schema::dropIfExists('tipo_materials');
+        Schema::dropIfExists('forma_pagto');
     }
 }

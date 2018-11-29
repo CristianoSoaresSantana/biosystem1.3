@@ -15,7 +15,7 @@ class CreateFormaFarmaceuticasTable extends Migration
     {
         Schema::create('forma_farmaceuticas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricao', 50);
+            $table->string('forma_farm', 50);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,7 +29,7 @@ class CreateFormaFarmaceuticasTable extends Migration
     public function down()
     {
         // Esse metodo serve para remover relacionamentos entre tabelas!
-		Schema::table('nomeDaTabela', function(Blueprint $table){
+		Schema::table('forma_farmaceuticas', function(Blueprint $table){
 
 		});
         Schema::dropIfExists('forma_farmaceutica');
