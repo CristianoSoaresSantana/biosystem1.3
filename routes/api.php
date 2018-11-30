@@ -9,3 +9,5 @@ use Illuminate\Http\Request;
 // $this->delete('filials/{id}', 'Api\FilialController@delete');
 
 $this->apiResource('filials', 'Api\FilialController');
+
+$this->apiResource('materials', 'Api\MaterialController');

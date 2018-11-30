@@ -19,6 +19,7 @@ class CreateMaterialsTable extends Migration
             $table->unsignedInteger('forma_farmaceutica_id');
             $table->string('cod_barra', 40)->unique();
             $table->text('descricao');
+            $table->string('image')->nullable();
             $table->float('valor_compra');
             $table->float('valor_revenda');
             $table->string('status')->default('ativo');
@@ -32,7 +33,7 @@ class CreateMaterialsTable extends Migration
         Schema::create('filial_materials', function (Blueprint $table) {
 
             $table->unsignedInteger('filial_id');
-            $table->string('material_sku');
+            $table->string('material_sku', 20);
             $table->integer('quantidade');
             $table->integer('min');
             $table->integer('max');
@@ -50,7 +51,7 @@ class CreateMaterialsTable extends Migration
         Schema::create('fornecedor_materials', function (Blueprint $table) {
             // relacionamentos
             $table->unsignedInteger('fornecedor_id');
-            $table->string('material_sku', 20)->unique();
+            $table->string('material_sku', 20);
             $table->timestamps();
             $table->softDeletes();
             
