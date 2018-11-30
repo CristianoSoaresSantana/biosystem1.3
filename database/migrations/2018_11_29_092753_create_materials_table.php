@@ -32,14 +32,13 @@ class CreateMaterialsTable extends Migration
         Schema::create('filial_materials', function (Blueprint $table) {
 
             $table->unsignedInteger('filial_id');
-            $table->string('material_sku', 20)->unique();
+            $table->string('material_sku');
             $table->integer('quantidade');
             $table->integer('min');
             $table->integer('max');
             $table->char('curvaABC');
             $table->float('comissao');
             $table->float('valor_venda');
-            $table->float('valor_revenda');
             $table->string('status', 50)->default('ativo');
             $table->timestamps();
             $table->softDeletes();

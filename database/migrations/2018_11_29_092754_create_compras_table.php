@@ -14,7 +14,7 @@ class CreateComprasTable extends Migration
     public function up()
     {
         Schema::create('compras', function (Blueprint $table) {
-            $table->string('num_doc', 20)->unique();
+            $table->string('num_doc', 20)->primary();
             $table->unsignedInteger('filial_id');
             $table->unsignedInteger('tipo_mov_id');
             $table->unsignedInteger('fornecedor_id');
@@ -28,11 +28,11 @@ class CreateComprasTable extends Migration
         });
 
         Schema::create('compra_materials', function (Blueprint $table) {
-            $table->string('compra_num_doc', 20)->unique();
-            $table->string('material_sku', 20)->unique();
+            $table->string('lote', 20)->unique();
+            $table->string('compra_num_doc', 20);
+            $table->string('material_sku', 20);
             $table->integer('quantidade');
             $table->float('valor_unitario');
-            $table->string('lote');
             $table->date('data_fabricacao');
             $table->date('data_vencimento');            
             $table->timestamps();

@@ -40,9 +40,9 @@ class CreateVendasTable extends Migration
 
         Schema::create('material_vendas', function (Blueprint $table) {
             $table->unsignedInteger('venda_id');
-            $table->string('material_sku', 20)->unique();
+            $table->string('material_sku', 20);
             $table->integer('quantidade');
-            $table->string('lote');
+            $table->string('lote', 20)->unique();
             $table->float('valor_unitario');
             $table->float('valor_com_desconto');
             $table->float('desconto');
