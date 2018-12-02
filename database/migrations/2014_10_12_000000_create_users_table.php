@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoMaterialsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateTipoMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_materials', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo_mater', 50);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,10 +31,6 @@ class CreateTipoMaterialsTable extends Migration
      */
     public function down()
     {
-        // Esse metodo serve para remover relacionamentos entre tabelas!
-		Schema::table('tipo_materials', function(Blueprint $table){
-
-		});
-        Schema::dropIfExists('tipo_materials');
+        Schema::dropIfExists('users');
     }
 }

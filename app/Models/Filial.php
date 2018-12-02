@@ -3,9 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Filial extends Model
 {
+    use Notifiable;
+    use SoftDeletes;
+    public $timestamps = true;
+
+    protected $dates = ['deleted_at'];
     protected $table = 'filials';
     protected $fillable = ['razao_social', 'cnpj'];
 
@@ -24,4 +31,9 @@ class Filial extends Model
             return $this->where('razao_social', 'LIKE', "%{$razao_social}%")->get();
         }
     }
+
+    /**
+     * relacionamento N:M, pois uma filial vende muitos
+     * materiais e um material é vendo por varias filias.
+     */
 }

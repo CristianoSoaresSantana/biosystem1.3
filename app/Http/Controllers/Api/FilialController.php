@@ -10,6 +10,7 @@ use App\Models\Filial;
 class FilialController extends Controller
 {
     private $filial;
+
     // metodo para usar a instancia do modelo em todos os metodos.
     public function __construct(Filial $filial)
     {
@@ -33,6 +34,23 @@ class FilialController extends Controller
         return response()->json($filial, 201);
     }
 
+    public function show($id)
+    {
+        // recupero o registro
+        $filial =  $this->filial->find($id);
+
+        if(!$filial)
+        {
+            // retornar uma mensagem se não encontrar o arquivo.
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            // retorno o registro editado.
+            return response()->json($filial, 200);
+        }
+    }
+    
     // editar informação na tabela.
     public function update(StoreUpdateFilialFormRequest $request, $id)
     {
@@ -71,20 +89,4 @@ class FilialController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        // recupero o registro
-        $filial =  $this->filial->find($id);
-
-        if(!$filial)
-        {
-            // retornar uma mensagem se não encontrar o arquivo.
-            return response()->json(['error' => 'Not Found'], 404);
-        }
-        else
-        {
-            // retorno o registro editado.
-            return response()->json($filial, 200);
-        }
-    }
 }

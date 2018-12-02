@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Material extends Model
 {
     use SoftDeletes;
-
+    use Notifiable;
+    
     protected $primaryKey = 'sku';
     protected $table = 'materials';
     protected $dates = ['deleted_at'];
@@ -67,5 +69,19 @@ class Material extends Model
                     })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
         
+    }
+
+    /**
+     * relacionamento 1:M, pois uma forma é caracteristica de muitos
+     * materiais e um material só pode ter uma forma.
+     */
+    public function tipo_material()
+    {
+        return $this->belongsTo(Tipo_material::class);
+    }
+
+    public function forma_farmaceutica()
+    {
+        return $this->belongsTo(Forma_farmaceutica::class);
     }
 }

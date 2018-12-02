@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Material;
 use App\Http\Requests\StoreUpdateMaterialFormRequest;
-use Illuminate\Support\Facadas\Storege;
+use Illuminate\Support\Facades\Storage;
 
 class MaterialController extends Controller
 {
     private $material;
     private $itensPage;
+    private $pathUpload = 'materials';
 
     public function __construct(Material $material)
     {
@@ -51,7 +52,7 @@ class MaterialController extends Controller
             // aqui eu atribuo o nome da imgem ao $data array de dados informados pelo usuario.
             $data['image'] = $nameFile;
             
-            $upload = $request->file('image')->storeAs('materials', $nameFile);
+            $upload = $request->file('image')->storeAs($this->pathUpload, $nameFile);
             
             if(!$upload)
             {
@@ -81,7 +82,6 @@ class MaterialController extends Controller
         }
         return response()->json($material, 200);
     }
-    //ESTOU COM PROBLEMA NO VIDEO 27
     /**
      * Update the specified resource in storage.
      * primeiro verifica se existe o material a ser editado!
@@ -94,21 +94,22 @@ class MaterialController extends Controller
     public function update(StoreUpdateMaterialFormRequest $request, $id)
     {
         $material = $this->material->find($id);
-
         if(!$material)
         {
             return response()->json(['error' => 'Not Found'], 404);
         }
+        
         // inicio upload da imagens
         $data = $request->all();
+
         if ($request->hasFile('image') && $request->file('image')->isValid())
         {
             // deletar a imagem e fazer upload outra vez, assim a imagem sempre vai ter o nome do materail.
             if($material->image)
             {
-                if(Storage::exists("materials/{$material->image}"))
+                if(Storage::exists("{$this->pathUpload}/{$material->image}"))
                 {
-                    Storage::delete("materials/{$material->image}");
+                    Storage::delete("{$this->pathUpload}/{$material->image}");
                 }
             }
             // aqui eu pego o sku para definir o nome da imagem
@@ -120,7 +121,7 @@ class MaterialController extends Controller
             // aqui eu atribuo o nome da imgem ao $data array de dados informados pelo usuario.
             $data['image'] = $nameFile;
             
-            $upload = $request->file('image')->storeAs('materials', $nameFile);
+            $upload = $request->file('image')->storeAs($this->pathUpload, $nameFile);
             
             if(!$upload)
             {
@@ -129,7 +130,7 @@ class MaterialController extends Controller
         }
         // fim
         $material->update($data);
-
+        
         return response()->json($material, 200);
     }
 
@@ -146,6 +147,15 @@ class MaterialController extends Controller
         if(!$material)
         {
             return response()->json(['error' => 'Not Found'], 404);
+        }
+
+        // deletar a imagem e fazer upload outra vez, assim a imagem sempre vai ter o nome do materail.
+        if($material->image)
+        {
+            if(Storage::exists("{$this->pathUpload}/{$material->image}"))
+            {
+                Storage::delete("{$this->pathUpload}/{$material->image}");
+            }
         }
 
         $material->delete();
