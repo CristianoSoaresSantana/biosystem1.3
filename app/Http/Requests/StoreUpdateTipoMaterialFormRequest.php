@@ -24,7 +24,7 @@ class StoreUpdateTipoMaterialFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipo_mater'  => "required|unique:tipo_materials,tipo_mater,{$this->id},id",
+            'tipo_mater'  => "required|unique:tipo_materials,tipo_mater,{$this->segment(3)},id",
         ];
     }
 }

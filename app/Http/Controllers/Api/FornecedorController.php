@@ -4,42 +4,42 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUpdateFilialFormRequest;
-use App\Models\Filial;
+use App\Http\Requests\StoreUpdateFornecedorFormRequest;
+use App\Models\Fornecedor;
 
-class FilialController extends Controller
+class FornecedorController extends Controller
 {
-    private $filial;
+    private $fornecedor;
 
     // metodo para usar a instancia do modelo em todos os metodos.
-    public function __construct(Filial $filial)
+    public function __construct(Fornecedor $fornecedor)
     {
-        $this->filial = $filial;
+        $this->fornecedor = $fornecedor;
     }
 
     // traz no formato json todos os dados da tabela.
     public function index(Request $request)
     {
-        // aciona metodo da model filial.
-        $filials = $this->filial->getResults($request->razao_social);
+        // aciona metodo da model Fornecedor.
+        $fornecedors = $this->fornecedor->getResults($request->razao_social);
         // retorna no formato json.
-        return response()->json($filials,200);
+        return response()->json($fornecedors, 200);
     }
 
     // inseri informação na tabela.
-    public function store(StoreUpdateFilialFormRequest $request)
+    public function store(StoreUpdateFornecedorFormRequest $request)
     {
-        $filial =  $this->filial->create($request->all());
+        $fornecedor =  $this->fornecedor->create($request->all());
 
-        return response()->json($filial, 201);
+        return response()->json($fornecedor, 201);
     }
 
     public function show($id)
     {
         // recupero o registro
-        $filial =  $this->filial->find($id);
+        $fornecedor =  $this->fornecedor->find($id);
 
-        if(!$filial)
+        if(!$fornecedor)
         {
             // retornar uma mensagem se não encontrar o arquivo.
             return response()->json(['error' => 'Not Found'], 404);
@@ -47,17 +47,17 @@ class FilialController extends Controller
         else
         {
             // retorno o registro editado.
-            return response()->json($filial, 200);
+            return response()->json($fornecedor, 200);
         }
     }
     
     // editar informação na tabela.
-    public function update(StoreUpdateFilialFormRequest $request, $id)
+    public function update(StoreUpdateFornecedorFormRequest $request, $id)
     {
         // recupero o registro
-        $filial =  $this->filial->find($id);
+        $fornecedor =  $this->fornecedor->find($id);
 
-        if(!$filial)
+        if(!$fornecedor)
         {
             // retornar uma mensagem se não encontrar o arquivo.
             return response()->json(['error' => 'Not Found'], 404);
@@ -65,28 +65,27 @@ class FilialController extends Controller
         else
         {
             // seto os valores que o usuario forneceu.
-            $filial-> update($request->all());
+            $fornecedor->update($request->all());
             // retorno o registro editado.
-            return response()->json($filial, 200);
+            return response()->json($fornecedor, 200);
         }
     }
 
     public function destroy($id)
     {
         // recupero o registro
-        $filial =  $this->filial->find($id);
+        $fornecedor =  $this->fornecedor->find($id);
 
-        if(!$filial)
+        if(!$fornecedor)
         {
             // retornar uma mensagem se não encontrar o arquivo.
             return response()->json(['error' => 'Not Found'], 404);
         }
         else
         {
-            $filial-> delete();
+            $fornecedor->delete();
             // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
         }
     }
-
 }

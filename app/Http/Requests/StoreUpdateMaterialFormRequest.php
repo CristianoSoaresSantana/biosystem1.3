@@ -23,10 +23,9 @@ class StoreUpdateMaterialFormRequest extends FormRequest
      */
     public function rules()
     {
-        $sku = $this->segment(3);
         return [
-            'sku'                   => "required|unique:materials,sku,{$sku},sku",
-            'cod_barra'             => "required|unique:materials,cod_barra,{$sku},sku",
+            'sku'                   => "required|unique:materials,sku,{$this->segment(3)},sku",
+            'cod_barra'             => "required|unique:materials,cod_barra,{$this->segment(3)},sku",
             'descricao'             => 'required',
             'tipo_material_id'      => 'required|exists:tipo_materials,id',
             'forma_farmaceutica_id'  => 'required|exists:forma_farmaceuticas,id',
