@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdateTipoMaterialFormRequest extends FormRequest
+class StoreUpdateSetorFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreUpdateTipoMaterialFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipo_material'  => "required|unique:tipo_materials,tipo_material,{$this->segment(3)},id",
+            'setor'  => "required|unique:setors,setor,{$this->segment(3)},id",
         ];
     }
 }

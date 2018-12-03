@@ -88,5 +88,4 @@ class FilialController extends Controller
             return response()->json(['sucess' => true], 204);
         }
     }
-
 }

@@ -24,7 +24,7 @@ class StoreUpdateFormaFarmaceuticaFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'forma_farm'  => "required|unique:forma_farmaceuticas,forma_farm,{$this->segment(3)},id",
+            'forma_farmaceutica'  => "required|unique:forma_farmaceuticas,forma_farmaceutica,{$this->segment(3)},id",
         ];
     }
 }

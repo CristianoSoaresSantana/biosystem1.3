@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use App\Models\User;
 
 class Setor extends Model
 {
@@ -30,5 +31,14 @@ class Setor extends Model
         {
             return $this->where('setor', 'LIKE', "%{$setor}%")->get();
         }
+    }
+
+    /**
+     * relacionamento 1:M, pois uma forma é caracteristica de muitos
+     * materiais e um material só pode ter uma forma.
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 }
