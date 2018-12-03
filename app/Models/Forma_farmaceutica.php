@@ -16,22 +16,22 @@ class Forma_farmaceutica extends Model
 
     protected $dates = ['deleted_at'];
     protected $table = 'forma_farmaceuticas';
-    protected $fillable = ['forma_farm'];
+    protected $fillable = ['forma_farmaceutica'];
 
 
     /**
      * retorna dados da tabela, com ou sem paramentros.
      * if verifica se existe paramentro de busca.
      */
-    public function getResults($forma_farm = null)
+    public function getResults($forma_farmaceutica = null)
     {
-        if(!$forma_farm)
+        if(!$forma_farmaceutica)
         {
             return $this->get();
         }
         else
         {
-            return $this->where('forma_farm', 'LIKE', "%{$forma_farm}%")->get();
+            return $this->where('forma_farmaceutica', 'LIKE', "%{$forma_farmaceutica}%")->get();
         }
     }
 

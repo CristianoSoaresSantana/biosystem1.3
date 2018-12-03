@@ -16,6 +16,7 @@ $this->apiResource('tipo_materials', 'Api\TipoMaterialController');
 $this->apiResource('forma_farmaceuticas', 'Api\FormaFarmaceuticaController');
 $this->apiResource('fornecedors', 'Api\FornecedorController');
 $this->apiResource('users', 'Api\UserController');
+$this->apiResource('clientes', 'Api\ClienteController');
 
 //Rotas para relacionamentos entre tabelas.
 $this->get('tipo_materials/{id}/materials', 'Api\TipoMaterialController@materials');

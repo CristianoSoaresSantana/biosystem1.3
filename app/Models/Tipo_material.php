@@ -16,22 +16,22 @@ class Tipo_material extends Model
 
     protected $dates = ['deleted_at'];
     protected $table = 'tipo_materials';
-    protected $fillable = ['tipo_mater'];
+    protected $fillable = ['tipo_material'];
 
 
     /**
      * retorna dados da tabela, com ou sem paramentros.
      * if verifica se existe paramentro de busca.
      */
-    public function getResults($tipo_mater = null)
+    public function getResults($tipo_material = null)
     {
-        if(!$tipo_mater)
+        if(!$tipo_material)
         {
             return $this->get();
         }
         else
         {
-            return $this->where('tipo_mater', 'LIKE', "%{$tipo_mater}%")->get();
+            return $this->where('tipo_material', 'LIKE', "%{$tipo_material}%")->get();
         }
     }
 

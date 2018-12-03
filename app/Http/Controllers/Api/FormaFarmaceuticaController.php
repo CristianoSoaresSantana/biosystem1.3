@@ -21,7 +21,7 @@ class FormaFarmaceuticaController extends Controller
     public function index(Request $request)
     {
         // aciona metodo da model formaFarmaceutica.
-        $formaFarmaceutica = $this->formaFarmaceutica->getResults($request->tipo_mater);
+        $formaFarmaceutica = $this->formaFarmaceutica->getResults($request->forma_farmaceutica);
         // retorna no formato json.
         return response()->json($formaFarmaceutica, 200);
     }

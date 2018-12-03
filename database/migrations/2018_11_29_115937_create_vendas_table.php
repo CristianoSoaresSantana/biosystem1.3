@@ -18,7 +18,7 @@ class CreateVendasTable extends Migration
             $table->unsignedInteger('cliente_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('tipo_mov_id');
-            $table->float('valor_total');
+            $table->float('valor_total')->nullable();
             $table->string('status')->default('aberto');
             $table->timestamps();
             $table->softDeletes();
@@ -45,8 +45,8 @@ class CreateVendasTable extends Migration
             $table->string('lote', 20)->unique();
             $table->float('valor_unitario');
             $table->float('valor_com_desconto');
-            $table->float('desconto');
-            $table->string('justificativa_desconto');
+            $table->float('desconto')->default('0.0');;
+            $table->string('justificativa_desconto')->default('não houve descontos!');
             $table->timestamps();
             $table->softDeletes();
             
@@ -62,9 +62,8 @@ class CreateVendasTable extends Migration
      */
     public function down()
     {
-        // Esse metodo serve para remover relacionamentos entre tabelas!
-		Schema::table('nomeDaTabela', function(Blueprint $table){
-
+		Schema::table('vendas', function(Blueprint $table){
+            // Esse metodo serve para remover relacionamentos entre tabelas!
 		});
         Schema::dropIfExists('vendas');
     }

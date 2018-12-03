@@ -31,8 +31,8 @@ class StoreUpdateUserFormRequest extends FormRequest
             'filial_id' => 'required|exists:filials,id',
             'setor_id' => 'required|exists:setors,id',
             'data_nascimento' => 'required|date|date_format:Y-m-d',
-            'celular' => 'required|string|max:15',
-            'celular_recado' => 'required|string|max:15',
+            'celular' => "required|string|max:15|unique:users,celular,{$this->segment(3)},id",
+            'celular_recado' => "required|string|max:15|unique:users,celular_recado,{$this->segment(3)},id",
         ];
     }
 }

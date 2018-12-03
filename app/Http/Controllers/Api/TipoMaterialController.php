@@ -21,7 +21,7 @@ class TipoMaterialController extends Controller
     public function index(Request $request)
     {
         // aciona metodo da model tipoMaterial.
-        $tipoMaterial = $this->tipoMaterial->getResults($request->tipo_mater);
+        $tipoMaterial = $this->tipoMaterial->getResults($request->tipo_material);
         // retorna no formato json.
         return response()->json($tipoMaterial, 200);
     }
