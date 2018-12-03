@@ -14,6 +14,7 @@ $this->apiResource('setors', 'Api\SetorController');
 $this->apiResource('materials', 'Api\MaterialController');
 $this->apiResource('tipo_materials', 'Api\TipoMaterialController');
 $this->apiResource('tipo_movimentos', 'Api\TipoMovimentoController');
+$this->apiResource('forma_pagtos', 'Api\FormaPagtoController');
 $this->apiResource('forma_farmaceuticas', 'Api\FormaFarmaceuticaController');
 $this->apiResource('fornecedors', 'Api\FornecedorController');
 $this->apiResource('users', 'Api\UserController');
