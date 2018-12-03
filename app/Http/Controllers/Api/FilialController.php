@@ -10,6 +10,7 @@ use App\Models\Filial;
 class FilialController extends Controller
 {
     private $filial;
+    private $itensPage;
 
     // metodo para usar a instancia do modelo em todos os metodos.
     public function __construct(Filial $filial)
@@ -86,6 +87,29 @@ class FilialController extends Controller
             $filial-> delete();
             // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
+        }
+    }
+
+    public function users($id)
+    {
+        /**
+         * recupero o registro de filial e todos os registros de users vinculados ao tipo.
+         * atribuo a propriedade $filial->users á variavel $users.
+         */
+        $filial =  $this->filial->find($id);
+        
+        if(!$filial)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $users = $filial->users()->paginate($this->itensPage);
+
+            return response()->json([
+                'filial' => $filial,
+                'users'     => $users,
+            ]);
         }
     }
 }

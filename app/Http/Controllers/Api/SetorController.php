@@ -10,6 +10,7 @@ use App\Models\Setor;
 class SetorController extends Controller
 {
     private $setor;
+    private $itensPage;
 
     // metodo para usar a instancia do modelo em todos os metodos.
     public function __construct(Setor $setor)
@@ -103,7 +104,7 @@ class SetorController extends Controller
         }
         else
         {
-            $users = $setor->users()->get();
+            $users = $setor->users()->paginate($this->itensPage);
 
             return response()->json([
                 'setor' => $setor,
