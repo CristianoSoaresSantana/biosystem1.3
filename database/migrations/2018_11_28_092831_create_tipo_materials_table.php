@@ -15,7 +15,7 @@ class CreateTipoMaterialsTable extends Migration
     {
         Schema::create('tipo_materials', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo_mater', 50);
+            $table->string('tipo_material', 50);
             $table->timestamps();
             $table->softDeletes();
         });

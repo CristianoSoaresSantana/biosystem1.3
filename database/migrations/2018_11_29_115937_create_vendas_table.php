@@ -16,7 +16,7 @@ class CreateVendasTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('filial_id');
             $table->unsignedInteger('cliente_id');
-            $table->unsignedInteger('usuario_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('tipo_mov_id');
             $table->float('valor_total');
             $table->string('status')->default('aberto');
@@ -25,7 +25,7 @@ class CreateVendasTable extends Migration
 
             $table->foreign('filial_id')->references('id')->on('filials');
             $table->foreign('cliente_id')->references('id')->on('clientes');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('tipo_mov_id')->references('id')->on('tipo_movimentos')->onDelete('cascade');
         });
 

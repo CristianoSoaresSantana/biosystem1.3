@@ -15,7 +15,7 @@ class CreateFormaFarmaceuticasTable extends Migration
     {
         Schema::create('forma_farmaceuticas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('forma_farm', 50);
+            $table->string('forma_farmaceutica', 50);
             $table->timestamps();
             $table->softDeletes();
         });
