@@ -67,14 +67,14 @@ class MaterialController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Aqui eu trago um material com seus relacionamentos 1:N
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $material = $this->material->find($id);
+        $material = $this->material->with(['tipo_material', 'forma_farmaceutica'])->find($id);
 
         if(!$material)
         {

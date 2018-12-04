@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->user->find($id);
+        $user = $this->user->with(['setor', 'filial'])->find($id);
 
         if(!$user)
         {

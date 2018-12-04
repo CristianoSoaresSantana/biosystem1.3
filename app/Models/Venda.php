@@ -82,7 +82,7 @@ class Venda extends Model
 
     public function tipoMovimento()
     {
-        return $this->belongsTo(Tipo_movimento::class);
+        return $this->belongsTo(Tipo_movimento::class, 'tipo_mov_id');
     }
 
     /**

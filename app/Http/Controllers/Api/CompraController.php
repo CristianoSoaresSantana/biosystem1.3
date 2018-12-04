@@ -39,7 +39,7 @@ class CompraController extends Controller
     public function show($id)
     {
         // recupero o registro
-        $compra =  $this->compra->find($id);
+        $compra =  $this->compra->with(['filial', 'fornecedor', 'tipoMovimento'])->find($id);
 
         if(!$compra)
         {

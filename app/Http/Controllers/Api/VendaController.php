@@ -39,7 +39,7 @@ class VendaController extends Controller
     public function show($id)
     {
         // recupero o registro
-        $venda =  $this->venda->find($id);
+        $venda =  $this->venda->with(['filial', 'cliente', 'user', 'tipoMovimento'])->find($id);
 
         if(!$venda)
         {
