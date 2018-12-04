@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use App\Models\User;
+use App\Models\Compra;
 
 class Filial extends Model
 {
@@ -40,6 +41,11 @@ class Filial extends Model
     public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function compras()
+    {
+        return $this->hasMany(Compra::class);
     }
 
     /**

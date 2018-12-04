@@ -10,7 +10,8 @@ class Material extends Model
 {
     use SoftDeletes;
     use Notifiable;
-    
+    public $incrementing = false;
+    protected $keyType = string;
     protected $primaryKey = 'sku';
     protected $table = 'materials';
     protected $dates = ['deleted_at'];

@@ -112,4 +112,26 @@ class FilialController extends Controller
             ]);
         }
     }
+
+    public function compras($id)
+    {
+        /**
+         * recupero o registro de filial e todos os registros de users vinculados ao tipo.
+         * atribuo a propriedade $filial->users á variavel $users.
+         */
+        $filial =  $this->filial->find($id);
+        if(!$filial)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $compras = $filial->compras()->paginate($this->itensPage);
+            
+            return response()->json([
+                'filial' => $filial,
+                'compras'     => $compras,
+            ]);
+        }
+    }
 }

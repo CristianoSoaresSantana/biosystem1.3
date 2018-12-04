@@ -33,6 +33,14 @@ class Fornecedor extends Model
     }
 
     /**
+     * relacionamento 1:M
+     */
+    public function compras()
+    {
+        return $this->hasMany(Compra::class);
+    }
+
+    /**
      * relacionamento N:M, pois uma filial vende muitos
      * materiais e um material é vendo por varias filias.
      */

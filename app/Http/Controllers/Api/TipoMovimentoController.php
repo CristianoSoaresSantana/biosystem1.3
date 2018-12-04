@@ -92,28 +92,27 @@ class TipoMovimentoController extends Controller
         }
     }
 
-    // public function compras($id)
-    // {
-    //     /**
-    //      * recupero o registro de tipoMovimento e todos os registros de materials vinculados ao tipo.
-    //      * atribuo a propriedade $tipoMovimento->materials á variavel $materials.
-    //      */
-    //     $tipoMovimento =  $this->tipoMovimento->find($id);
-        
-    //     if(!$tipoMovimento)
-    //     {
-    //         return response()->json(['error' => 'Not Found'], 404);
-    //     }
-    //     else
-    //     {
-    //         $compras = $tipoMovimento->compras()->paginate($this->itensPage);
+    public function compras($id)
+    {
+        /**
+         * recupero o registro de tipoMovimento e todos os registros de materials vinculados ao tipo.
+         * atribuo a propriedade $tipoMovimento->materials á variavel $materials.
+         */
+        $tipoMovimento =  $this->tipoMovimento->find($id);
+        if(!$tipoMovimento)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $compras = $tipoMovimento->compras()->paginate();
 
-    //         return response()->json([
-    //             'tipo_movimentos' => $tipoMovimento,
-    //             'compras'     => $compras,
-    //         ]);
-    //     }
-    // }
+            return response()->json([
+                'tipo_movimentos' => $tipoMovimento,
+                'compras'     => $compras,
+            ]);
+        }
+    }
 
     // public function vendas($id)
     // {

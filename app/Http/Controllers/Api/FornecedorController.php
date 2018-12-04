@@ -88,4 +88,26 @@ class FornecedorController extends Controller
             return response()->json(['sucess' => true], 204);
         }
     }
+
+    public function compras($id)
+    {
+        /**
+         * recupero o registro de fornecedor e todos os registros de users vinculados ao tipo.
+         * atribuo a propriedade $fornecedor->compras á variavel $users.
+         */
+        $fornecedor =  $this->fornecedor->find($id);
+        if(!$fornecedor)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $compras = $fornecedor->compras()->paginate();
+            
+            return response()->json([
+                'fornecedor' => $fornecedor,
+                'compras'     => $compras,
+            ]);
+        }
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 // use App\Models\Venda;
-// use App\Models\Compra;
+use App\Models\Compra;
 
 class Tipo_movimento extends Model
 {
@@ -42,12 +42,12 @@ class Tipo_movimento extends Model
     //     return $this->hasMany(Vendas::class);
     // }
 
-    // /**
-    //  * relacionamento 1:M, pois uma tipo_movimentacao é caracteristica de muitos
-    //  * vendas e compras e um venda ou compra só pode ter um tipo_movimentacao.
-    //  */
-    // public function compras()
-    // {
-    //     return $this->hasMany(Compras::class);
-    // }
+    /**
+     * relacionamento 1:M, pois uma tipo_movimentacao é caracteristica de muitos
+     * vendas e compras e um venda ou compra só pode ter um tipo_movimentacao.
+     */
+    public function compras()
+    {
+        return $this->hasMany(Compra::class, 'tipo_mov_id');
+    }
 }
