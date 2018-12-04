@@ -162,4 +162,80 @@ class MaterialController extends Controller
 
         return response()->json(['success'], 204);
     }
+
+    // Com este metodo eu vejo informações do estoque por filial.
+    public function filial($sku)
+    {
+        $material = $this->material->find($sku);
+        if(!$material)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $filial = $material->filial()->paginate($this->itensPage);
+            
+            return response()->json([
+                'material'  => $material,
+                'filial'   => $filial,
+            ]);
+        }
+    }
+    
+    // Com este metodo eu encontro o fornecedor de um material.
+    public function fornecedor($sku)
+    {
+        $material = $this->material->find($sku);
+        if(!$material)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $fornecedor = $material->fornecedor()->paginate($this->itensPage);
+            
+            return response()->json([
+                'material'  => $material,
+                'fornecedor'   => $fornecedor,
+            ]);
+        }
+    }
+
+    // Este metodo eu vejo a frequencia de vendas de um material.
+    public function vendas($sku)
+    {
+        $material = $this->material->find($sku);
+        if(!$material)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $vendas = $material->vendas()->paginate($this->itensPage);
+            
+            return response()->json([
+                'material'     => $material,
+                'vendas'       => $vendas,
+            ]);
+        }
+    }
+
+    // Este metodo eu vejo a frequencia de compras de um material.
+    public function compras($sku)
+    {
+        $material = $this->material->find($sku);
+        if(!$material)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $compras = $material->compras()->paginate($this->itensPage);
+            
+            return response()->json([
+                'material'     => $material,
+                'compras'       => $compras,
+            ]);
+        }
+    }
 }

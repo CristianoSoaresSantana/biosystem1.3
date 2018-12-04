@@ -110,4 +110,24 @@ class FornecedorController extends Controller
             ]);
         }
     }
+
+    // relacão N:M
+    public function materials($id)
+    {
+        $fornecedor = $this->fornecedor->find($id);
+
+        if(!$fornecedor)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $materials = $fornecedor->materials()->paginate();
+            
+            return response()->json([
+                'fornecedor'   => $fornecedor,
+                'materials'  => $materials,
+            ]);
+        }
+    }
 }

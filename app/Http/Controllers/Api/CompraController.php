@@ -90,4 +90,25 @@ class CompraController extends Controller
             return response()->json(['sucess' => true], 204);
         }
     }
+
+    // Neste metodo eu listo os itens de uma compra
+    public function materials($id)
+    {
+        $compra = $this->compra->find($id);
+
+        if(!$compra)
+        {
+            // retornar uma mensagem se não encontrar o arquivo.
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $materials = $compra->materials()->paginate($this->itensPage);
+
+            return response()->json([
+                'compra'  => $compra,
+                'materials'   => $materials,
+            ]);
+        }
+    }
 }

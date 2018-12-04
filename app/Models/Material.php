@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Filial;
+use App\Models\Venda;
 
 class Material extends Model
 {
     use SoftDeletes;
     use Notifiable;
     public $incrementing = false;
-    protected $keyType = string;
+    protected $keyType = 'string';
     protected $primaryKey = 'sku';
     protected $table = 'materials';
     protected $dates = ['deleted_at'];
@@ -73,8 +75,8 @@ class Material extends Model
     }
 
     /**
-     * relacionamento 1:M, pois uma forma é caracteristica de muitos
-     * materiais e um material só pode ter uma forma.
+     ************************** relacionamento 1:M, pois uma forma é caracteristica de muitos *************************
+     ************************** materiais e um material só pode ter uma forma                 *************************
      */
     public function tipo_material()
     {
@@ -84,5 +86,33 @@ class Material extends Model
     public function forma_farmaceutica()
     {
         return $this->belongsTo(Forma_farmaceutica::class);
+    }
+
+
+    /**
+     ************************** relacionamento N:M, pois uma filial vende muitos  *************************
+     ************************** materiais e um material é vendo por varias filias *************************
+     */
+    public function filial()
+    {
+        return $this->belongsToMany(Filial::class, 'filial_materials')
+                    ->withPivot('quantidade', 'min', 'max', 'curvaABC', 'comissao', 'valor_venda', 'status');
+    }
+
+    public function fornecedor()
+    {
+        return $this->belongsToMany(Fornecedor::class, 'fornecedor_materials')->withPivot('created_at', 'updated_at');
+    }
+
+    public function vendas()
+    {
+        return $this->belongsToMany(Venda::class, 'material_vendas')
+                    ->withPivot('quantidade', 'lote', 'valor_unitario', 'valor_com_desconto', 'desconto', 'justificativa_desconto', 'created_at', 'updated_at');
+    }
+
+    public function compras()
+    {
+        return $this->belongsToMany(Compra::class, 'compra_materials')
+                    ->withPivot('quantidade', 'lote', 'valor_unitario', 'data_fabricacao', 'data_vencimento', 'created_at', 'updated_at');
     }
 }

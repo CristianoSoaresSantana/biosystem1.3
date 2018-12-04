@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Filial;
 use App\Models\Tipo_movimento;
 use App\Models\Cliente;
+use App\Models\Forma_pagto;
+use App\Models\Material;
 
 class Venda extends Model
 {
@@ -24,9 +26,9 @@ class Venda extends Model
 
 
     /**
-     * Neste metodo, eu busco os dados paginando, por parametro ou sem parametro!
-     * Se for informado um filter, este metodo faz uma busca hibrida,  senão ele
-     * verifica qual parametro veio.
+     **************** Neste metodo, eu busco os dados paginando, por parametro ou sem parametro! ****************
+     **************** Se for informado um filter, este metodo faz uma busca hibrida,  senão ele  ****************
+     **************** verifica qual parametro veio.                                              ****************
      */
     public function getResults($data, $itensPage)
     {
@@ -60,8 +62,8 @@ class Venda extends Model
     }
 
     /**
-     * relacionamento 1:M.
-     * Está classe tem um para muitos relacionamentos!
+     ****************************************** relacionamento 1:M  *************************************
+     ************************** Está classe tem um para muitos relacionamentos! *************************
      */
     public function filial()
     {
@@ -84,11 +86,17 @@ class Venda extends Model
     }
 
     /**
-     * relacionamento N:M, pois uma forma_pagamento é caracteristica de muitos
-     * vendas venda pode ter varias forma_pagamentos.
+     ************************* relacionamento N:M, pois uma forma_pagamento é caracteristica *************************
+     ************************* de muitos vendas venda pode ter varias forma_pagamentos       *************************
      */
     public function formaPagtos()
     {
-        return $this->belongsToMany(Tipo_movimento::class);
+        return $this->belongsToMany(Forma_pagto::class, 'forma_pagto_vendas')->withPivot('valor');
+    }
+
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'material_vendas')
+                    ->withPivot('quantidade', 'lote', 'valor_unitario', 'valor_com_desconto', 'desconto', 'justificativa_desconto', 'created_at', 'updated_at');
     }
 }

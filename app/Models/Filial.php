@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\User;
 use App\Models\Compra;
 use App\Models\Venda;
+use App\Models\Material;
 
 class Filial extends Model
 {
@@ -59,4 +60,9 @@ class Filial extends Model
      * relacionamento N:M, pois uma filial vende muitos
      * materiais e um material é vendo por varias filias.
      */
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'filial_materials')
+                    ->withPivot('quantidade', 'min', 'max', 'curvaABC', 'comissao', 'valor_venda', 'status');
+    }
 }

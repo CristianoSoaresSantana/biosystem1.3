@@ -92,27 +92,26 @@ class FormaPagtoController extends Controller
         }
     }
 
-    // public function vendas($id)
-    // {
-    //     /**
-    //      * recupero o registro de formaPagto e todos os registros de materials vinculados ao tipo.
-    //      * atribuo a propriedade $formaPagto->materials á variavel $materials.
-    //      */
-    //     $formaPagto =  $this->formaPagto->find($id);
+    public function vendas($id)
+    {
+        /**
+         * recupero o registro de formaPagto e todos os registros de materials vinculados ao tipo.
+         * atribuo a propriedade $formaPagto->materials á variavel $materials.
+         */
+        $formaPagto =  $this->formaPagto->find($id);
         
-    //     if(!$formaPagto)
-    //     {
-    //         return response()->json(['error' => 'Not Found'], 404);
-    //     }
-    //     else
-    //     {
-    //         $vendas = $formaPagto->vendas()->paginate($this->itensPage);
+        if(!$formaPagto)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $vendas = $formaPagto->vendas()->paginate();
 
-    //         return response()->json([
-    //             'tipo_movimentos' => $formaPagto,
-    //             'vendas'     => $vendas,
-    //         ]);
-    //     }
-    // }
-    
+            return response()->json([
+                'formaPagto' => $formaPagto,
+                'vendas'     => $vendas,
+            ]);
+        }
+    }
 }

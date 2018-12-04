@@ -13,7 +13,7 @@ class VendaController extends Controller
     private $itensPage;
 
     // metodo para usar a instancia do modelo em todos os metodos.
-    public function __construct(venda $venda)
+    public function __construct(Venda $venda)
     {
         $this->venda = $venda;
     }
@@ -88,6 +88,48 @@ class VendaController extends Controller
             $venda-> delete();
             // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
+        }
+    }
+
+    // Neste metodo eu listo a forma de pagto de uma venda.
+    public function formaPagtos($id)
+    {
+        $venda = $this->venda->find($id);
+
+        if(!$venda)
+        {
+            // retornar uma mensagem se não encontrar o arquivo.
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $formaPagtos = $venda->formaPagtos()->paginate($this->itensPage);
+            
+            return response()->json([
+                'venda'  => $venda,
+                'formaPagtos'   => $formaPagtos,
+            ]);
+        }
+    }
+
+    // Neste metodo eu listo os itens de uma venda
+    public function materials($id)
+    {
+        $venda = $this->venda->find($id);
+
+        if(!$venda)
+        {
+            // retornar uma mensagem se não encontrar o arquivo.
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $materials = $venda->materials()->paginate($this->itensPage);
+
+            return response()->json([
+                'venda'  => $venda,
+                'materials'   => $materials,
+            ]);
         }
     }
 }

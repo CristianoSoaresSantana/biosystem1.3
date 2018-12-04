@@ -44,4 +44,8 @@ class Fornecedor extends Model
      * relacionamento N:M, pois uma filial vende muitos
      * materiais e um material é vendo por varias filias.
      */
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'fornecedor_materials');
+    }
 }

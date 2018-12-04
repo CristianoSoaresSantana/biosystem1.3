@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Fornecedor;
 use App\Models\Filial;
 use App\Models\Tipo_movimento;
+use App\Models\Material;
 
 class Compra extends Model
 {
@@ -78,5 +79,15 @@ class Compra extends Model
     public function tipoMovimento()
     {
         return $this->belongsTo(Tipo_movimento::class);
+    }
+
+    /**
+     ************************** relacionamento N:M, pois uma compra vende muitos    *************************
+     ************************** materiais e um material pode esta em varias compras *************************
+     */
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'compra_materials')
+                    ->withPivot('quantidade', 'lote', 'valor_unitario', 'data_fabricacao', 'data_vencimento', 'created_at', 'updated_at');
     }
 }

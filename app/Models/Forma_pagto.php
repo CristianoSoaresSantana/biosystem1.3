@@ -38,6 +38,6 @@ class Forma_pagto extends Model
      */
     public function vendas()
     {
-        return $this->belongsToMany(Venda::class);
+        return $this->belongsToMany(Venda::class, 'forma_pagto_vendas')->withPivot('valor');
     }
 }

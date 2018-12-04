@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateFilialFormRequest;
 use App\Models\Filial;
+use App\Models\Material;
 
 class FilialController extends Controller
 {
@@ -88,7 +89,7 @@ class FilialController extends Controller
             return response()->json(['sucess' => true], 204);
         }
     }
-
+    // relacão 1:N
     public function users($id)
     {
         /**
@@ -106,12 +107,13 @@ class FilialController extends Controller
             $users = $filial->users()->paginate($this->itensPage);
 
             return response()->json([
-                'filial' => $filial,
+                'filial'    => $filial,
                 'users'     => $users,
             ]);
         }
     }
-
+    
+    // relacão 1:N
     public function compras($num_doc)
     {
         /**
@@ -128,12 +130,13 @@ class FilialController extends Controller
             $compras = $filial->compras()->paginate($this->itensPage);
             
             return response()->json([
-                'filial' => $filial,
+                'filial'      => $filial,
                 'compras'     => $compras,
             ]);
         }
     }
 
+    // relacão 1:N
     public function vendas($id)
     {
         /**
@@ -152,6 +155,26 @@ class FilialController extends Controller
             return response()->json([
                 'filial'   => $filial,
                 'compras'  => $vendas,
+            ]);
+        }
+    }
+
+    // relacão N:M
+    public function materials($id)
+    {
+        $filial = $this->filial->find($id);
+
+        if(!$filial)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $materials = $filial->materials()->paginate($this->itensPage);
+            
+            return response()->json([
+                'filial'   => $filial,
+                'materials'  => $materials,
             ]);
         }
     }
