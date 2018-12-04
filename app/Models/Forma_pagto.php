@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-// use App\Models\Venda;
+use App\Models\Venda;
 
 class Forma_pagto extends Model
 {
@@ -32,12 +32,12 @@ class Forma_pagto extends Model
         }
     }
 
-    // /**
-    //  * relacionamento 1:M, pois uma forma_pagamento é caracteristica de muitos
-    //  * vendas e compras e um venda ou compra só pode ter um forma_pagamento.
-    //  */
-    // public function vendas()
-    // {
-    //     return $this->hasMany(Vendas::class);
-    // }
+    /**
+     * relacionamento N:M, pois uma forma_pagamento é caracteristica de muitos
+     * vendas venda pode ter varias forma_pagamentos.
+     */
+    public function vendas()
+    {
+        return $this->belongsToMany(Venda::class);
+    }
 }

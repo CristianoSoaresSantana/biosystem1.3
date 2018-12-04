@@ -20,8 +20,8 @@ class CreateMaterialsTable extends Migration
             $table->string('cod_barra', 40)->unique();
             $table->text('descricao');
             $table->string('image')->nullable();
-            $table->float('valor_compra');
-            $table->float('valor_revenda');
+            $table->float('valor_compra', 10,2);
+            $table->float('valor_revenda', 10,2);
             $table->string('status')->default('ativo');
             $table->timestamps();
             $table->softDeletes();
@@ -39,7 +39,7 @@ class CreateMaterialsTable extends Migration
             $table->integer('max');
             $table->char('curvaABC');
             $table->float('comissao');
-            $table->float('valor_venda');
+            $table->float('valor_venda', 10,2);
             $table->string('status', 50)->default('ativo');
             $table->timestamps();
             $table->softDeletes();

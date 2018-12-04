@@ -18,7 +18,7 @@ class CreateVendasTable extends Migration
             $table->unsignedInteger('cliente_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('tipo_mov_id');
-            $table->float('valor_total')->nullable();
+            $table->float('valor_total', 10,2)->nullable();
             $table->string('status')->default('aberto');
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +32,7 @@ class CreateVendasTable extends Migration
         Schema::create('forma_pagto_vendas', function (Blueprint $table) {
             $table->unsignedInteger('venda_id');
             $table->unsignedInteger('forma_pagto_id');
+            $table->float('valor', 10,2);
             $table->timestamps();
             
             $table->foreign('venda_id')->references('id')->on('vendas')->onDelete('cascade');
@@ -43,8 +44,8 @@ class CreateVendasTable extends Migration
             $table->string('material_sku', 20);
             $table->integer('quantidade');
             $table->string('lote', 20)->unique();
-            $table->float('valor_unitario');
-            $table->float('valor_com_desconto');
+            $table->float('valor_unitario', 10,2);
+            $table->float('valor_com_desconto', 10,1);
             $table->float('desconto')->default('0.0');;
             $table->string('justificativa_desconto')->default('não houve descontos!');
             $table->timestamps();

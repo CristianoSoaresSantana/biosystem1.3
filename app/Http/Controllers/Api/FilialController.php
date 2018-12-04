@@ -31,7 +31,6 @@ class FilialController extends Controller
     public function store(StoreUpdateFilialFormRequest $request)
     {
         $filial =  $this->filial->create($request->all());
-
         return response()->json($filial, 201);
     }
 
@@ -113,7 +112,29 @@ class FilialController extends Controller
         }
     }
 
-    public function compras($id)
+    public function compras($num_doc)
+    {
+        /**
+         * recupero o registro de filial e todos os registros de users vinculados ao tipo.
+         * atribuo a propriedade $filial->users á variavel $users.
+         */
+        $filial =  $this->filial->find($num_doc);
+        if(!$filial)
+        {
+            return response()->json(['error' => 'Not Found'], 404);
+        }
+        else
+        {
+            $compras = $filial->compras()->paginate($this->itensPage);
+            
+            return response()->json([
+                'filial' => $filial,
+                'compras'     => $compras,
+            ]);
+        }
+    }
+
+    public function vendas($id)
     {
         /**
          * recupero o registro de filial e todos os registros de users vinculados ao tipo.
@@ -126,11 +147,11 @@ class FilialController extends Controller
         }
         else
         {
-            $compras = $filial->compras()->paginate($this->itensPage);
+            $vendas = $filial->vendas()->paginate($this->itensPage);
             
             return response()->json([
-                'filial' => $filial,
-                'compras'     => $compras,
+                'filial'   => $filial,
+                'compras'  => $vendas,
             ]);
         }
     }

@@ -18,7 +18,7 @@ class CreateComprasTable extends Migration
             $table->unsignedInteger('filial_id');
             $table->unsignedInteger('tipo_mov_id');
             $table->unsignedInteger('fornecedor_id');
-            $table->float('valor_nota');
+            $table->float('valor_nota', 10,2);
             $table->timestamps();
             $table->softDeletes();
             
@@ -32,7 +32,7 @@ class CreateComprasTable extends Migration
             $table->string('compra_num_doc', 20);
             $table->string('material_sku', 20);
             $table->integer('quantidade');
-            $table->float('valor_unitario');
+            $table->float('valor_unitario', 10,2);
             $table->date('data_fabricacao');
             $table->date('data_vencimento');            
             $table->timestamps();
