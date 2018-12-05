@@ -84,6 +84,23 @@
                     Laravel
                 </div>
 
+                <div>
+                    <button onclick="sendAjax()">Enviar</button>
+                    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                    <script>
+                        function sendAjax(){
+                            axios.get('http://biosystem13.local/api/compras')
+                            .then(response => {
+                                console.log(response)
+                            })
+                            .catch(error => {
+                                alert('Falhou....')
+                                console.log(error)
+                            })
+                        }
+                    </script>
+                </div>
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
