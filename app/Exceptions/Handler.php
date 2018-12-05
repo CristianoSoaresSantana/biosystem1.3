@@ -46,8 +46,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        $error404 = '\Symfony\Component\HttpKernel\Exception\NotFoundHttpException';
-        $error405 = '\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException';
+        $error401        = 'Tymon\JWTAuth\Exceptions\TokenInvalidException';
+        $error401Expired = 'Tymon\JWTAuth\Exceptions\TokenExpiredException';
+        $error404        = '\Symfony\Component\HttpKernel\Exception\NotFoundHttpException';
+        $error405        = '\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException';
 
         if($exception instanceof $error404)
         {
@@ -64,6 +66,17 @@ class Handler extends ExceptionHandler
                 return response()->json(['ERROR' => 'Metodo Nao Permitido'], $exception->getStatusCode());
             }
         }
+
+        if ($exception instanceof $error401Expired)
+        {
+            return response()->json(['ERROR' => 'Token Expirado!'], $exception->getStatusCode());
+        }
+
+        if ($exception instanceof $error401)
+        {
+            return response()->json(['ERROR' => 'Token Invalido!'], $exception->getStatusCode());
+        }
+
         return parent::render($request, $exception);
     }
 }
