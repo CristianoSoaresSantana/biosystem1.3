@@ -9,10 +9,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
+import FilialsComponet from '../components/admin/pages/filials/FilialsComponent'
 Vue.use(VueRouter)
 
 const routes = [
-
+    {path: '/filials', component: FilialsComponet, name: 'filials'}
 ]
 
 const router = new VueRouter({
