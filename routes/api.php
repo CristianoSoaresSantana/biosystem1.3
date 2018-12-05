@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 // $this->put('filials/{id}', 'Api\FilialController@update');
 // $this->delete('filials/{id}', 'Api\FilialController@delete');
 
+$this->post('auth', 'Auth\AuthApiController@authenticate');
+
 //Rotas para tebelas concretas.
 $this->apiResource('users', 'Api\UserController'); // CRUD
 $this->apiResource('clientes', 'Api\ClienteController'); // CRUD
