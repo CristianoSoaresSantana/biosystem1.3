@@ -8,7 +8,7 @@ import store from './vuex/store'
  * Declaração de componetes globais!!
  * 
  */
-Vue.component('app-component', require('./components/App') )
+Vue.component('admin-component', require('./components/admin/AdminComponent') )
 
 const app = new Vue({
     router,

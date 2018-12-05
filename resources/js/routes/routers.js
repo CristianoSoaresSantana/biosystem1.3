@@ -9,12 +9,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-
+import AdminComponent from '../components/admin/AdminComponent'
 import FilialsComponet from '../components/admin/pages/filials/FilialsComponent'
+import DashboardComponet from '../components/admin/pages/dashboard/DashboardComponent'
+
 Vue.use(VueRouter)
 
 const routes = [
-    {path: '/filials', component: FilialsComponet, name: 'filials'}
+    {
+        path: '/admin', 
+        component: AdminComponent,
+        children: [
+            {path: '', component: DashboardComponet, name: 'admin.dashboard'},
+            {path: 'filials', component: FilialsComponet, name: 'admin.filials'}
+        ]
+    },
 ]
 
 const router = new VueRouter({

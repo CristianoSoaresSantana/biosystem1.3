@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <router-view></router-view>
-    </div>
+    <div>Home Page do dashboard</div>
 </template>
 
 <script>

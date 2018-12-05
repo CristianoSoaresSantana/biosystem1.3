@@ -1,6 +1,6 @@
 <template>
     <div>
-        Component-Admin template Base!
+        <router-view></router-view>
     </div>
 </template>
 
