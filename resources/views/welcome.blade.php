@@ -8,6 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <!-- Pegando o token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Styles -->
         <style>
@@ -64,7 +66,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div id ="app" class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -80,27 +82,9 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
 
-                <div>
-                    <button onclick="sendAjax()">Enviar</button>
-                    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-                    <script>
-                        function sendAjax(){
-                            axios.get('http://biosystem13.local/api/compras')
-                            .then(response => {
-                                console.log(response)
-                            })
-                            .catch(error => {
-                                alert('Falhou....')
-                                console.log(error)
-                            })
-                        }
-                    </script>
-                </div>
-
+                <div class="title m-b-md">Laravel</div>
+                
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -111,5 +95,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>
