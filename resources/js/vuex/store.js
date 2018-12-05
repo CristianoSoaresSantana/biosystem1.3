@@ -14,7 +14,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     modules: {
         // Incluir e dá um aliais para o modulo.
-        filils: Filials
+        filials: Filials
     }
 })
 

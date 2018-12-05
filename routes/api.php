@@ -13,7 +13,7 @@ $this->get('user', 'Auth\AuthApiController@getAuthenticatedUser');
 
 $this->group([
     'namespace'  => 'Api',
-    'middleware' => 'auth:api'
+    // 'middleware' => 'auth:api'
 ], function (){
     
     //Rotas para tebelas concretas.
