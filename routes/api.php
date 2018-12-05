@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 // $this->delete('filials/{id}', 'Api\FilialController@delete');
 
 $this->post('auth', 'Auth\AuthApiController@authenticate');
+$this->get('user', 'Auth\AuthApiController@getAuthenticatedUser');
 
 //Rotas para tebelas concretas.
 $this->apiResource('users', 'Api\UserController'); // CRUD

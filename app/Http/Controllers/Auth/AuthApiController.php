@@ -24,8 +24,37 @@ class AuthApiController extends Controller
             // something went wrong whilst attempting to encode the token
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
+        // Recuperar user logado!
+        $user = auth()->user()->only('id', 'name', 'email');
 
         // all good so return the token
-        return response()->json(compact('token'));
+        return response()->json(compact('token', 'user'));
+    }
+
+    // Recuperando o usuário autenticado de um token
+    public function getAuthenticatedUser()
+    {
+        try {
+
+            if (! $user = JWTAuth::parseToken()->authenticate()->only('id', 'name', 'email')) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+
+        }
+        
+        // o token é válido e encontramos o usuário por meio da reivindicação secundária
+        return response()->json(compact('user'));
     }
 }
