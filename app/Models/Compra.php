@@ -78,7 +78,7 @@ class Compra extends Model
 
     public function tipoMovimento()
     {
-        return $this->belongsTo(Tipo_movimento::class, 'tipo_mov_id');
+        return $this->belongsTo(Tipo_movimento::class);
     }
 
     /**

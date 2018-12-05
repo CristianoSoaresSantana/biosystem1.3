@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
+     * Tratamento de Erros!
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
@@ -46,6 +46,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        $error404 = '\Symfony\Component\HttpKernel\Exception\NotFoundHttpException';
+        $error405 = '\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException';
+
+        if($exception instanceof $error404)
+        {
+            if($request->expectsJson())
+            {
+                return response()->json(['ERROR' => 'Rota Nao Encontrada'], $exception->getStatusCode());
+            }
+        }
+
+        if($exception instanceof $error405)
+        {
+            if($request->expectsJson())
+            {
+                return response()->json(['ERROR' => 'Metodo Nao Permitido'], $exception->getStatusCode());
+            }
+        }
         return parent::render($request, $exception);
     }
 }
