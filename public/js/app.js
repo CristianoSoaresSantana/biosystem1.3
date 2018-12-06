@@ -33221,7 +33221,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33280,15 +33280,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    computed: {
-        totalFilials: function totalFilials() {
-            return this.$store.state.filials.itens.data.length;
-        }
-    }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 /* 47 */
@@ -33298,35 +33291,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("ul", [
-        _c(
-          "li",
-          [
-            _c("router-link", { attrs: { to: { name: "admin.dashboard" } } }, [
-              _vm._v("Dashboard")
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          [
-            _c("router-link", { attrs: { to: { name: "admin.filials" } } }, [
-              _vm._v("Filiais - Total de Filiais " + _vm._s(_vm.totalFilials))
-            ])
-          ],
-          1
-        )
-      ]),
+  return _c("div", [
+    _c("ul", { staticClass: "nav bg-dark" }, [
+      _c(
+        "li",
+        { staticClass: "nav-item" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "nav-link",
+              attrs: { to: { name: "admin.dashboard" } }
+            },
+            [_vm._v("Dashboard")]
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+      _c(
+        "li",
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "nav-link",
+              attrs: { to: { name: "admin.filials" } }
+            },
+            [_vm._v("Filiais")]
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [_c("router-view")], 1)
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -33424,7 +33424,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33461,6 +33461,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -33472,6 +33474,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         filials: function filials() {
             return this.$store.state.filials.itens;
+        },
+        totalFilials: function totalFilials() {
+            return this.$store.state.filials.itens.data.length;
         }
     }
 });
@@ -33485,10 +33490,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("lista de filials - Template")]),
+    _c("h1", [
+      _vm._v("Lista das Filiais "),
+      _c("h3", [_vm._v("Total de filiais " + _vm._s(_vm.totalFilials))])
+    ]),
     _vm._v(" "),
     _c("div", [
-      _c("table", [
+      _c("table", { staticClass: "table table-dark" }, [
         _vm._m(0),
         _vm._v(" "),
         _c(
@@ -33501,7 +33509,9 @@ var render = function() {
                 domProps: { textContent: _vm._s(filial.razao_social) }
               }),
               _vm._v(" "),
-              _c("td", { domProps: { textContent: _vm._s(filial.cnpj) } })
+              _c("td", { domProps: { textContent: _vm._s(filial.cnpj) } }),
+              _vm._v(" "),
+              _c("td")
             ])
           })
         )
@@ -33520,7 +33530,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Razão Social")]),
         _vm._v(" "),
-        _c("th", [_vm._v("CNPJ")])
+        _c("th", [_vm._v("CNPJ")]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "100" } }, [_vm._v("Ações")])
       ])
     ])
   }

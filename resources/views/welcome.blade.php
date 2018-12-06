@@ -6,18 +6,21 @@
 
         <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <!-- Pegando o token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
     <body>
+
+        <!-- Conteudo -->
         <div id ="app"> 
+            <!-- Components -->
             <preloader-component></preloader-component>
             <router-view></router-view> 
         </div>
-        
 
+        <!-- JavaScript -->
         <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>
