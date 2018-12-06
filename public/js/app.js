@@ -35044,7 +35044,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35098,25 +35098,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+        // retorna um objeto com todas as filiais
         filials: function filials() {
             return this.$store.state.filials.itens;
         },
+
+        // retorna o numero total de registros do objeto filials.
         totalFilials: function totalFilials() {
             return this.$store.state.filials.itens.data.length;
         }
     },
     methods: {
+        //method que aciona uma action de filials.
         listarFiliais: function listarFiliais() {
             this.$store.dispatch('loadFilials');
         },
-        destroy: function destroy(id) {
+
+
+        //method que pergunta ao usuario se ele quer mesmo deletar o registro
+        confirmDestroy: function confirmDestroy(id) {
             var _this = this;
 
+            this.$snotify.error('Deseja realmente deletar este registro?', 'Deletar', {
+                timout: 10000,
+                showProgressBar: true,
+
+                buttons: [{ text: 'Não', closeOnClick: true }, { text: 'Sim', action: function action() {
+                        return _this.destroy(id);
+                    } }]
+            });
+        },
+
+
+        //method que aciona uma action de filials.js
+        destroy: function destroy(id) {
+            var _this2 = this;
+
             this.$store.dispatch('destroyFilial', id).then(function () {
-                _this.$snotify.success('Registro Deletado!', 'Sucesso');
-                _this.listarFiliais();
+                _this2.$snotify.success('Registro Deletado!', 'Sucesso');
+                _this2.listarFiliais();
             }).catch(function (errors) {
-                _this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
+                _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
             });
         }
     }
@@ -35188,7 +35210,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             $event.preventDefault()
-                            _vm.destroy(filial.id)
+                            _vm.confirmDestroy(filial.id)
                           }
                         }
                       },

@@ -21,7 +21,7 @@
                 <td v-text="filial.cnpj"></td>
                 <td>
                     <router-link :to="{name: 'admin.filials.update', params: {id: filial.id}}" class="btn btn-info btn-sm">Editar</router-link>
-                    <a href="#" class="btn btn-danger btn-sm" @click.prevent="destroy(filial.id)">Excluir</a>
+                    <a href="#" class="btn btn-danger btn-sm" @click.prevent="confirmDestroy(filial.id)">Excluir</a>
                 </td>
                 </tr>
             </tbody>
@@ -38,18 +38,35 @@ export default {
         this.listarFiliais()
     },
     computed: {
+        // retorna um objeto com todas as filiais
         filials () {
             return this.$store.state.filials.itens
         },
+        // retorna o numero total de registros do objeto filials.
         totalFilials () {
             return this.$store.state.filials.itens.data.length
         }
     },
     methods: {
+        //method que aciona uma action de filials.
         listarFiliais () {
             this.$store.dispatch('loadFilials')
         },
 
+        //method que pergunta ao usuario se ele quer mesmo deletar o registro
+        confirmDestroy(id){
+            this.$snotify.error('Deseja realmente deletar este registro?', 'Deletar', {
+                timout: 10000,
+                showProgressBar: true,
+                
+                buttons: [
+                    {text: 'Não', closeOnClick: true},
+                    {text: 'Sim', action: () => this.destroy(id)}
+                ]
+            })
+        },
+
+        //method que aciona uma action de filials.js
         destroy (id) {
             this.$store.dispatch('destroyFilial', id)
                 .then(() => {
