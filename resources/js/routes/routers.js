@@ -10,9 +10,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import AdminComponent from '../components/admin/AdminComponent'
+import DashboardComponent from '../components/admin/pages/dashboard/DashboardComponent'
 import FilialsComponent from '../components/admin/pages/filials/FilialsComponent'
 import CreateFilialComponent from '../components/admin/pages/filials/CreateFilialComponent'
-import DashboardComponent from '../components/admin/pages/dashboard/DashboardComponent'
 
 Vue.use(VueRouter)
 
@@ -23,7 +23,7 @@ const routes = [
         children: [
             {path: '', component: DashboardComponent, name: 'admin.dashboard'},
             {path: 'filials', component: FilialsComponent, name: 'admin.filials'},
-            {path: 'create', component: CreateFilialComponent, name: 'admin.filials.create'}
+            {path: 'filials/create', component: CreateFilialComponent, name: 'admin.filials.create'}
         ]
     },
 ]
