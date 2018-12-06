@@ -24,8 +24,9 @@ export default {
             type: Object|Array,
             default: () => {
                 return {
+                    id: '',
                     razao_social: '',
-                    cnpj: ''
+                    cnpj: '',
                 }
             }
         },

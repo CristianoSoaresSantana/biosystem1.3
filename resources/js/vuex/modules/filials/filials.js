@@ -72,9 +72,25 @@ export default {
                     .catch(errors => reject(errors))
                     .finally(() => context.commit('PRELOADER', false))
             })
+        },
+
+        /**
+         * Atualiza uma filial com uma chamada ajax.
+         * Utiliza api/filials no metodo store
+         * @param {*} context, propria referencia do VUEjs
+         * @param {*} params, recebe os dados submetidos!
+         */
+        updateFilial (context, params) {
+            context.commit('PRELOADER', true)
+            
+            return new Promise((resolve, reject) => {
+                axios.put(`/api/filials/${params.id}`, params)
+                    // retorna resposta caso request teve success ou error!
+                    .then(response => resolve(response))
+                    .catch(errors => reject(errors))
+                    .finally(() => context.commit('PRELOADER', false))
+            })
         }
-
-
     },
 
     getters: {
