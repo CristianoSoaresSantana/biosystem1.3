@@ -2,10 +2,12 @@
     <div>
         <form class="form" @submit.prevent="onSubmit">
             <div class="form-row align-items-center">
-                <div class="col-auto">
+                <div :class="['col-auto', {'has-error': errors.razao_social}]">
+                    <div v-if="errors.razao_social">{{ errors.razao_social[0] }}</div>
                     <input type="text" v-model="filial.razao_social" class="form-control" placeholder="Nome da Filial">
                 </div>
-                <div class="col-auto">
+                <div :class="['col-auto', {'has-error': errors.cnpj}]">
+                    <div v-if="errors.cnpj">{{ errors.cnpj[0] }}</div>
                     <input type="text" v-model="filial.cnpj" class="form-control" placeholder="CNPJ da Filial">
                 </div>
                 <div class="col-auto">
@@ -37,6 +39,13 @@ export default {
         }
     },
 
+    // propriedade do formFilialComponent
+    data () {
+        return {
+            errors: {}
+        }
+    },
+
     methods: {
         onSubmit () {
             // verificar se updating é true ou false
@@ -44,12 +53,16 @@ export default {
 
             this.$store.dispatch(action, this.filial)
                     .then(() => this.$router.push({name: 'admin.filials'}))
-                    .catch()
+                    .catch(errors => {
+                        console.log(errors.response.data.errors)
+                        this.errors = errors.response.data.errors
+                    })
         }
     },
 }
 </script>
 
 <style scoped>
-
+.has-error{ color: red }
+.has-error input{ border: 1px solid red }
 </style>

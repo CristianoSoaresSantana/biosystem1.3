@@ -35354,7 +35354,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-4daa730e]{ color: red\n}\n.has-error input[data-v-4daa730e]{ border: 1px solid red\n}\n", ""]);
 
 // exports
 
@@ -35365,6 +35365,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -35404,6 +35406,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
+    // propriedade do formFilialComponent
+    data: function data() {
+        return {
+            errors: {}
+        };
+    },
+
+
     methods: {
         onSubmit: function onSubmit() {
             var _this = this;
@@ -35413,7 +35423,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$store.dispatch(action, this.filial).then(function () {
                 return _this.$router.push({ name: 'admin.filials' });
-            }).catch();
+            }).catch(function (errors) {
+                console.log(errors.response.data.errors);
+                _this.errors = errors.response.data.errors;
+            });
         }
     }
 });
@@ -35440,31 +35453,43 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "form-row align-items-center" }, [
-          _c("div", { staticClass: "col-auto" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.filial.razao_social,
-                  expression: "filial.razao_social"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Nome da Filial" },
-              domProps: { value: _vm.filial.razao_social },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _c(
+            "div",
+            { class: ["col-auto", { "has-error": _vm.errors.razao_social }] },
+            [
+              _vm.errors.razao_social
+                ? _c("div", [_vm._v(_vm._s(_vm.errors.razao_social[0]))])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.filial.razao_social,
+                    expression: "filial.razao_social"
                   }
-                  _vm.$set(_vm.filial, "razao_social", $event.target.value)
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Nome da Filial" },
+                domProps: { value: _vm.filial.razao_social },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.filial, "razao_social", $event.target.value)
+                  }
                 }
-              }
-            })
-          ]),
+              })
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-auto" }, [
+          _c("div", { class: ["col-auto", { "has-error": _vm.errors.cnpj }] }, [
+            _vm.errors.cnpj
+              ? _c("div", [_vm._v(_vm._s(_vm.errors.cnpj[0]))])
+              : _vm._e(),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {
