@@ -90,7 +90,20 @@ export default {
                     .catch(errors => reject(errors))
                     .finally(() => context.commit('PRELOADER', false))
             })
-        }
+        },
+
+        destroyFilial (context, id) {
+            context.commit('PRELOADER', true)
+            
+            return new Promise((resolve, reject) => {
+                axios.delete(`/api/filials/${id}`)
+                    // retorna resposta caso request teve success ou error!
+                    .then(response => resolve(response))
+                    .catch(errors => reject(errors))
+                    // recurso comentado para o preloader ser chamado ao recarregar table.
+                    //.finally(() => context.commit('PRELOADER', false))
+            })
+        },
     },
 
     getters: {

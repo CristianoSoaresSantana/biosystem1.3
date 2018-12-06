@@ -11,7 +11,7 @@
                 <th>ID</th>
                 <th>Razão Social</th>
                 <th>CNPJ</th>
-                <th width="100">Ações</th>
+                <th width="150px">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +20,8 @@
                 <td v-text="filial.razao_social"></td>
                 <td v-text="filial.cnpj"></td>
                 <td>
-                    <router-link :to="{name: 'admin.filials.update', params: {id: filial.id}}" class="btn btn-warning btn-sm">Editar</router-link>
+                    <router-link :to="{name: 'admin.filials.update', params: {id: filial.id}}" class="btn btn-info btn-sm">Editar</router-link>
+                    <a href="#" class="btn btn-danger btn-sm" @click.prevent="destroy(filial.id)">Excluir</a>
                 </td>
                 </tr>
             </tbody>
@@ -34,7 +35,7 @@ import axios from 'axios'
 
 export default {
     created () {
-        this.$store.dispatch('loadFilials')
+        this.listarFiliais()
     },
     computed: {
         filials () {
@@ -42,6 +43,22 @@ export default {
         },
         totalFilials () {
             return this.$store.state.filials.itens.data.length
+        }
+    },
+    methods: {
+        listarFiliais () {
+            this.$store.dispatch('loadFilials')
+        },
+
+        destroy (id) {
+            this.$store.dispatch('destroyFilial', id)
+                .then(() => {
+                    this.$snotify.success('Registro Deletado!', 'Sucesso')
+                    this.listarFiliais()
+                })
+                .catch(errors => {
+                    this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
+                })
         }
     }
 }

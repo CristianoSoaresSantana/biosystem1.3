@@ -35044,7 +35044,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35088,12 +35088,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {
-        this.$store.dispatch('loadFilials');
+        this.listarFiliais();
     },
 
     computed: {
@@ -35102,6 +35103,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         totalFilials: function totalFilials() {
             return this.$store.state.filials.itens.data.length;
+        }
+    },
+    methods: {
+        listarFiliais: function listarFiliais() {
+            this.$store.dispatch('loadFilials');
+        },
+        destroy: function destroy(id) {
+            var _this = this;
+
+            this.$store.dispatch('destroyFilial', id).then(function () {
+                _this.$snotify.success('Registro Deletado!', 'Sucesso');
+                _this.listarFiliais();
+            }).catch(function (errors) {
+                _this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
+            });
         }
     }
 });
@@ -35153,7 +35169,7 @@ var render = function() {
                     _c(
                       "router-link",
                       {
-                        staticClass: "btn btn-warning btn-sm",
+                        staticClass: "btn btn-info btn-sm",
                         attrs: {
                           to: {
                             name: "admin.filials.update",
@@ -35162,6 +35178,21 @@ var render = function() {
                         }
                       },
                       [_vm._v("Editar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-danger btn-sm",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.destroy(filial.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Excluir")]
                     )
                   ],
                   1
@@ -35188,7 +35219,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("CNPJ")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "100" } }, [_vm._v("Ações")])
+        _c("th", { attrs: { width: "150px" } }, [_vm._v("Ações")])
       ])
     ])
   }
@@ -36845,6 +36876,21 @@ var index_esm = {
                 }).finally(function () {
                     return context.commit('PRELOADER', false);
                 });
+            });
+        },
+        destroyFilial: function destroyFilial(context, id) {
+            context.commit('PRELOADER', true);
+
+            return new Promise(function (resolve, reject) {
+                axios.delete("/api/filials/" + id)
+                // retorna resposta caso request teve success ou error!
+                .then(function (response) {
+                    return resolve(response);
+                }).catch(function (errors) {
+                    return reject(errors);
+                });
+                // recurso comentado para o preloader ser chamado ao recarregar table.
+                //.finally(() => context.commit('PRELOADER', false))
             });
         }
     },
