@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Adicionar nova filial</h1>
+        <h1>Adicionar filial</h1>
 
         <form class="form" @submit.prevent="submitForm">
             <div class="form-row align-items-center">

@@ -19,7 +19,7 @@ export default {
 
     actions: {
         /**
-         * Carregando lista de filiais atraves do api/filials.
+         * Carrega uma lista de filiais, atraves do api/filials.
          * Alterando estado do preloader.
          * @param {*} context 
          */
@@ -39,6 +39,24 @@ export default {
         },
 
         /**
+         * Carrega uma filial especifica, atraves do api/filials.
+         * Alterando estado do preloader.
+         * @param {*} context 
+         */
+        loadFilial (context, id) {
+
+            context.commit('PRELOADER', true)
+            return new Promise((resolve, reject) =>{
+                axios.get(`/api/filials/${id}`)
+                    // retorna resposta caso request teve success ou error!
+                    .then(response => resolve(response.data))
+                    .catch(errors => reject(errors))
+                    .finally(() => context.commit('PRELOADER', false))
+            })
+
+        },
+
+        /**
          * Cadastrar nova filial com uma chamada ajax.
          * Utiliza api/filials no metodo store
          * @param {*} context, propria referencia do VUEjs
@@ -55,6 +73,8 @@ export default {
                     .finally(() => context.commit('PRELOADER', false))
             })
         }
+
+
     },
 
     getters: {

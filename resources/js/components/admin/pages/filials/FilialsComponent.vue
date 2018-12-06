@@ -3,7 +3,7 @@
         <h1>Lista das Filiais <h3>Total de filiais {{totalFilials}}</h3></h1>
 
         <router-link :to="{name: 'admin.filials.create'}" class="btn btn-success">Cadastrar</router-link>
-        
+
         <div>
         <table class="table table-dark">
             <thead>
@@ -19,7 +19,9 @@
                 <th v-text="filial.id"></th>
                 <td v-text="filial.razao_social"></td>
                 <td v-text="filial.cnpj"></td>
-                <td></td>
+                <td>
+                    <router-link :to="{name: 'admin.filials.update', params: {id: filial.id}}" class="btn btn-warning btn-sm">Editar</router-link>
+                </td>
                 </tr>
             </tbody>
             </table>
