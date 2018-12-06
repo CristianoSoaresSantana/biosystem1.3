@@ -16,6 +16,9 @@ export default {
 
     actions: {
         loadFilials (context) {
+
+            context.commit('PRELOADER', true)
+
             axios.get('/api/filials')
                 .then(response => {
                     console.log(response)
@@ -25,6 +28,7 @@ export default {
                 .catch(errors => {
                     console.log(errors)
                 })
+                .finally(() => context.commit('PRELOADER', false))
         }
     },
 

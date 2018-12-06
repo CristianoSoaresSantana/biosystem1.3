@@ -16,16 +16,19 @@ export default {
 
 <style>
 .preloader{
-    background: #000;
+    background: rgb(45, 56, 58);
     position: absolute;
     z-index: 9999;
-    opacity: .3;
-    width: 100%;
-    height: 100%;
+    opacity: .2;
+    width: 80%;
+    height: 80%;
     margin: 0;
     text-align: center;
-    padding: 5% 0;
+    padding: 6% 9%;
 }
-.preloader img{}
+.preloader img{
+    max-width: 200px;
+    padding: 20% 20% 20% 20%;
+}
 </style>
 
