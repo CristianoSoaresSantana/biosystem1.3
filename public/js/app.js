@@ -35422,8 +35422,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var action = this.updating ? 'updateFilial' : 'storeFilial';
 
             this.$store.dispatch(action, this.filial).then(function () {
-                return _this.$router.push({ name: 'admin.filials' });
+                // notificação para usuario.
+                _this.$snotify.success('Cadastro realizado com sucesso!', 'Parabéns...');
+
+                //redirecionar para lista
+                _this.$router.push({ name: 'admin.filials' });
             }).catch(function (errors) {
+                // notificação para usuario.
+                _this.$snotify.error('Você Errou!', 'Atenção');
+
                 console.log(errors.response.data.errors);
                 _this.errors = errors.response.data.errors;
             });
@@ -35652,7 +35659,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35687,13 +35694,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // Chamo a actions loadFilial para fazer o update e retorno os dados para p param filial
     created: function created() {
-        var _this = this;
-
-        this.$store.dispatch('loadFilial', this.id).then(function (response) {
-            return _this.filial = response;
-        }).catch(function (errors) {
-            console.log(errors);
-        });
+        this.loadFilial();
     },
     data: function data() {
         return {
@@ -35701,6 +35702,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+
+    methods: {
+        // este metodo vai no modulo filials.js e executar o action loadFilial!
+        loadFilial: function loadFilial() {
+            var _this = this;
+
+            this.$store.dispatch('loadFilial', this.id).then(function (response) {
+                return _this.filial = response;
+            }).catch(function (errors) {
+                // Exibindo o error
+                _this.$snotify.error('Filial não encontrada', '404');
+
+                // redirecionando
+                _this.$router.push({ name: 'admin.filials' });
+            });
+        }
+    },
 
     // registrar o component
     components: {

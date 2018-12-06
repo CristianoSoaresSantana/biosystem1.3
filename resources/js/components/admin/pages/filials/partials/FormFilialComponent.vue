@@ -52,8 +52,17 @@ export default {
             const action = this.updating ? 'updateFilial' : 'storeFilial'
 
             this.$store.dispatch(action, this.filial)
-                    .then(() => this.$router.push({name: 'admin.filials'}))
+                    .then(() => {
+                        // notificação para usuario.
+                        this.$snotify.success('Cadastro realizado com sucesso!', 'Parabéns...')
+
+                        //redirecionar para lista
+                        this.$router.push({name: 'admin.filials'})
+                    })
                     .catch(errors => {
+                        // notificação para usuario.
+                        this.$snotify.error('Você Errou!', 'Atenção')
+
                         console.log(errors.response.data.errors)
                         this.errors = errors.response.data.errors
                     })

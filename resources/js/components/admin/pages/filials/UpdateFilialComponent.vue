@@ -20,16 +20,27 @@ export default {
 
     // Chamo a actions loadFilial para fazer o update e retorno os dados para p param filial
     created () {
-        this.$store.dispatch('loadFilial', this.id)
-                .then(response => this.filial = response)
-                .catch(errors => {
-                    console.log(errors)
-                })
+        this.loadFilial()
     },
 
     data () {
         return {
             filial: {}
+        }
+    },
+
+    methods: {
+        // este metodo vai no modulo filials.js e executar o action loadFilial!
+        loadFilial () {
+            this.$store.dispatch('loadFilial', this.id)
+                .then(response => this.filial = response)
+                .catch(errors => {
+                    // Exibindo o error
+                    this.$snotify.error('Filial não encontrada', '404')
+                    
+                    // redirecionando
+                    this.$router.push({name: 'admin.filials'})
+                })
         }
     },
 
