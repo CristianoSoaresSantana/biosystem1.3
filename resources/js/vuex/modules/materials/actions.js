@@ -13,5 +13,17 @@ export default {
             .then(response => context.commit('MUTATION_LOAD_MATERIALS', response.data))
             .catch(error => console.log(error))
             .finally(() => context.commit('PRELOADER', false))
+    }, 
+
+    storeMaterial (context, params) {
+        context.commit('PRELOADER', true)
+            
+        return new Promise((resolve, reject) =>{
+            axios.post(`${URL_BASE}${RESOURCE}`, params)
+                // retorna resposta caso request teve success ou error!
+                .then(response => resolve(response))
+                .catch(errors => reject(errors.response))
+                .finally(() => context.commit('PRELOADER', false))
+        })
     }
 }

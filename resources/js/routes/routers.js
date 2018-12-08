@@ -21,10 +21,10 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/admin', 
+        path: '/',
         component: AdminComponent,
         children: [
-            {path: '', component: DashboardComponent, name: 'admin.dashboard'},
+            {path: 'admin', component: DashboardComponent, name: 'admin.dashboard'},
             // rotas de filials
             {path: 'filials', component: FilialsComponent, name: 'admin.filials'},
             {path: 'filials/create', component: CreateFilialComponent, name: 'admin.filials.create'},

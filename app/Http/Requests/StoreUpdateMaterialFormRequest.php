@@ -28,7 +28,7 @@ class StoreUpdateMaterialFormRequest extends FormRequest
             'cod_barra'             => "required|unique:materials,cod_barra,{$this->segment(3)},sku",
             'descricao'             => 'required',
             'tipo_material_id'      => 'required|exists:tipo_materials,id',
-            'forma_farmaceutica_id'  => 'required|exists:forma_farmaceuticas,id',
+            'forma_farmaceutica_id' => 'required|exists:forma_farmaceuticas,id',
             'valor_compra'          => 'required',
             'valor_revenda'         => 'required',
             'image'                 => 'image',
