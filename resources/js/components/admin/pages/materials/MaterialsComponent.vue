@@ -1,7 +1,14 @@
 <template>
     <div>
         <h1>Lista de Materiais</h1>
-
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+            </div>
+            <div class="col">
+                <buscar @layoutBuscar="pageMaterialsBuscar"></buscar>
+            </div>
+        </div>
         <div>
             <table class="table table-dark">
                 <thead>
@@ -45,11 +52,17 @@
 
 <script>
 import PaginationComponent from '../../../layouts/PaginationComponent.vue'
+import BuscarComponent from '../../layouts/geralBuscarComponent'
 
 export default {
     
     created () {
         this.loadMaterials(1)
+    },
+    data () {
+        return {
+            input: '',
+        }
     },
 
     computed: {
@@ -59,7 +72,8 @@ export default {
 
         params () {
             return {
-                page: this.materials.current_page
+                page: this.materials.current_page,
+                filter: this.input,
             }
         }
     },
@@ -67,11 +81,17 @@ export default {
     methods: {
         loadMaterials (page) {
             this.$store.dispatch('actionLoadMaterials', {...this.params, page})
+        },
+        // nome desta var representa o path do component! ex page.materialsComponent
+        pageMaterialsBuscar (inputBuscar) {
+            this.input = inputBuscar,
+            this.loadMaterials(1)
         }
     },
 
     components: {
-        pagination: PaginationComponent
+        pagination: PaginationComponent,
+        buscar:     BuscarComponent,
     }
 }
 
