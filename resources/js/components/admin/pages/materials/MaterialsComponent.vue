@@ -36,6 +36,15 @@
                     </tr>
                 </tbody>
                 </table>
+                <!-- paginação -->
+            <ul v-if="materials.last_page > 1">
+                <li v-if="materials.current_page != 1">
+                    <a href="#" @click.prevent="loadMaterials(materials.current_page - 1)">anterior</a>
+                </li>
+                <li v-if="materials.current_page < materials.last_page">
+                    <a href="#" @click.prevent="loadMaterials(materials.current_page + 1)">proximo</a>
+                </li>
+            </ul>
         </div>
 
     </div>
@@ -45,23 +54,27 @@
 export default {
     
     created () {
-        this.loadMaterials()
+        this.loadMaterials(1)
     },
 
     computed: {
         materials () {
             return this.$store.state.materials.itens
+        },
+
+        params () {
+            return {
+                page: this.materials.current_page
+            }
         }
     },
 
     methods: {
-        loadMaterials () {
-            this.$store.dispatch('actionLoadMaterials')
+        loadMaterials (page) {
+            this.$store.dispatch('actionLoadMaterials', {...this.params, page})
         }
     }
 }
-
-
 
 </script>
 

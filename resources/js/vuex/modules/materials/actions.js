@@ -6,10 +6,10 @@ import { URL_BASE } from '../../../config/config'
 const RESOURCE = 'materials'
 
 export default {
-    actionLoadMaterials (context) {
+    actionLoadMaterials (context, params) {
         context.commit('PRELOADER', true)
 
-        axios.get(`${URL_BASE}${RESOURCE}`)
+        axios.get(`${URL_BASE}${RESOURCE}`, {params})
             .then(response => context.commit('MUTATION_LOAD_MATERIALS', response.data))
             .catch(error => console.log(error))
             .finally(() => context.commit('PRELOADER', false))
