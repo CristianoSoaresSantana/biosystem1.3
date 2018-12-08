@@ -11,7 +11,7 @@
                     <input type="text" v-model="filial.cnpj" class="form-control" placeholder="CNPJ da Filial">
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </form>

@@ -7,6 +7,9 @@
             <li>
                 <router-link :to="{name: 'admin.filials'}"  class="nav-link">Filiais</router-link>
             </li>
+            <li>
+                <router-link :to="{name: 'admin.materials'}"  class="nav-link">Materiais</router-link>
+            </li>
         </ul>
         <div class="container"> <router-view></router-view> </div>
     </div>

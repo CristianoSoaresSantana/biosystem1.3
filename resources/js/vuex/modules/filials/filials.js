@@ -20,14 +20,16 @@ export default {
     actions: {
         /**
          * Carrega uma lista de filiais, atraves do api/filials.
-         * Alterando estado do preloader.
-         * @param {*} context 
+         * Altera o estado do preloader.
+         * 
+         * @param {*} context
+         * @param {*} params, recebi uma variavel para filtar os registros.
          */
-        loadFilials (context) {
+        loadFilials (context, params) {
 
             context.commit('PRELOADER', true)
 
-            axios.get('/api/filials')
+            axios.get('/api/filials', {params})
                 .then(response => {
                     console.log(response)
                     context.commit('LOAD_FILIALS', response)

@@ -27,7 +27,7 @@ class MaterialController extends Controller
     public function index(Request $request)
     {
         $materials = $this->material->getResults($request->all(), $this->itensPage);
-
+        
         return response()->json($materials, 200);
     }
 

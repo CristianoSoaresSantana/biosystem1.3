@@ -20,15 +20,14 @@ export default {
     position: absolute;
     z-index: 9999;
     opacity: .2;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     margin: 0;
     text-align: center;
     padding: 6% 9%;
 }
 .preloader img{
-    max-width: 200px;
-    padding: 20% 20% 20% 20%;
+    max-width: 700px;
 }
 </style>
 
