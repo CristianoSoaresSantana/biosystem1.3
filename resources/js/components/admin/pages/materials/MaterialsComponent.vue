@@ -3,7 +3,10 @@
         <h1>Lista de Materiais</h1>
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <button type="submit" class="btn btn-success" @click.prevent="showVodal = true">Novo</button>
+                <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="600" :height="500">
+                    <formMaterial></formMaterial>
+                </vodal>
             </div>
             <div class="col">
                 <buscar @layoutBuscar="pageMaterialsBuscar"></buscar>
@@ -51,8 +54,11 @@
 </template>
 
 <script>
+import Vodal from 'vodal';
+
 import PaginationComponent from '../../../layouts/PaginationComponent.vue'
 import BuscarComponent from '../../layouts/geralBuscarComponent'
+import FormMaterialComponent from './partials/FormMaterialComponent'
 
 export default {
     
@@ -62,6 +68,7 @@ export default {
     data () {
         return {
             input: '',
+            showVodal: false,
         }
     },
 
@@ -86,12 +93,18 @@ export default {
         pageMaterialsBuscar (inputBuscar) {
             this.input = inputBuscar,
             this.loadMaterials(1)
+        },
+
+        hideVodal () {
+            this.showVodal = false
         }
     },
 
     components: {
         pagination: PaginationComponent,
         buscar:     BuscarComponent,
+        vodal:      Vodal,
+        formMaterial: FormMaterialComponent,
     }
 }
 

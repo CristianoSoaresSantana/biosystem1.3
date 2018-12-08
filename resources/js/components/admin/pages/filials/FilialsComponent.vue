@@ -3,7 +3,7 @@
         <h1>Lista das Filiais <h3>Total de filiais {{totalFilials}}</h3></h1>
         <div class="row">
             <div class="col">
-                <router-link :to="{name: 'admin.filials.create'}" class="btn btn-success">Cadastrar</router-link>
+                <router-link :to="{name: 'admin.filials.create'}" class="btn btn-success">Novo</router-link>
             </div>
             <div class="col">
                 <buscarComponent @buscarFilial="buscarForm"></buscarComponent>

@@ -1,20 +1,27 @@
 <template>
-    <div>
-        <form class="form" @submit.prevent="onSubmit">
-            <div class="form-row align-items-center">
-                <div :class="['col-auto', {'has-error': errors.razao_social}]">
-                    <div v-if="errors.razao_social">{{ errors.razao_social[0] }}</div>
-                    <input type="text" v-model="filial.razao_social" class="form-control" placeholder="Nome da Filial">
-                </div>
-                <div :class="['col-auto', {'has-error': errors.cnpj}]">
-                    <div v-if="errors.cnpj">{{ errors.cnpj[0] }}</div>
-                    <input type="text" v-model="filial.cnpj" class="form-control" placeholder="CNPJ da Filial">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Confirmar</button>
-                </div>
-            </div>
-        </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form_main">
+                    <h4 class="heading"><strong>Preencha</strong> as informações <span></span></h4>
+                    <form class="form" @submit.prevent="onSubmit">
+                        <div class="form-row align-items-center">
+                            <div :class="['col-auto', {'has-error': errors.razao_social}]">
+                                <div v-if="errors.razao_social">{{ errors.razao_social[0] }}</div>
+                                <input type="text" v-model="filial.razao_social" class="form-control" placeholder="Nome da Filial">
+                            </div>
+                            <div :class="['col-auto', {'has-error': errors.cnpj}]">
+                                <div v-if="errors.cnpj">{{ errors.cnpj[0] }}</div>
+                                <input type="text" v-model="filial.cnpj" class="form-control" placeholder="CNPJ da Filial">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Confirmar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>    
+            </div>        
+        </div>
     </div>
 </template>
 
