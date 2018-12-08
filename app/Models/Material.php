@@ -39,7 +39,7 @@ class Material extends Model
     public function getResults($data, $itensPage)
     {
         if (!isset($data['filter']) && !isset($data['cod_barra']) && !isset($data['sku']) && !isset($data['descricao'])) {
-            return $this->paginate($itensPage);
+            return $this->orderby('updated_at', 'DESC')->paginate($itensPage);
         }
         else
         {
@@ -69,7 +69,7 @@ class Material extends Model
                             $filter = $data['descricao'];
                             $query->where('descricao', 'LIKE', "%{$filter}%");
                         }
-                    })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
+                    })->orderby('updated_at', 'DESC')->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
         
     }

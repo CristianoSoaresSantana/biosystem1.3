@@ -31,6 +31,7 @@ class StoreUpdateMaterialFormRequest extends FormRequest
             'forma_farmaceutica_id' => 'required|exists:forma_farmaceuticas,id',
             'valor_compra'          => 'required',
             'valor_revenda'         => 'required',
+            'status'                => 'string',
             'image'                 => 'image',
         ];
     }

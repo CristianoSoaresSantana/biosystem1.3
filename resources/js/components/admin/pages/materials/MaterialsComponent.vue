@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col">
                 <button type="submit" class="btn btn-success" @click.prevent="showVodal = true">Novo</button>
-                <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="600" :height="500">
-                    <formMaterial></formMaterial>
+                <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
+                    <formMaterial @success="cadastroRealizado"></formMaterial>
                 </vodal>
             </div>
             <div class="col">
@@ -97,6 +97,11 @@ export default {
 
         hideVodal () {
             this.showVodal = false
+        },
+
+        cadastroRealizado () {
+            this.hideVodal(),
+            this.loadMaterials(1)
         }
     },
 

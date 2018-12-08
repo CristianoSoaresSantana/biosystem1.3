@@ -36136,7 +36136,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -36254,6 +36254,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         hideVodal: function hideVodal() {
             this.showVodal = false;
+        },
+        cadastroRealizado: function cadastroRealizado() {
+            this.hideVodal(), this.loadMaterials(1);
         }
     },
 
@@ -36826,6 +36829,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -36868,16 +36899,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.dispatch('storeMaterial', this.material).then(function () {
                 // notificação para usuario.
                 _this.$snotify.success('Cadastro realizado com sucesso!', 'Parabéns...');
-
-                //redirecionar para lista
-                _this.$router.push({ name: 'admin.materials' });
+                _this.resetForm();
+                _this.$emit('success');
             }).catch(function (errors) {
                 // notificação para usuario.
                 _this.$snotify.error('Você Errou!', 'Atenção');
 
-                console.log(error.response.data.errors);
-                _this.errors = error.response.data.errors;
+                console.log(errors.response.data.errors);
+                _this.errors = errors.response.data.errors;
             });
+        },
+        resetForm: function resetForm() {
+            this.errors = {};
+            this.material.sku = '';
+            this.material.cod_barra = '';
+            this.material.descricao = '';
+            this.material.forma_farmaceutica_id = '';
+            this.material.tipo_material_id = '';
+            this.material.status = '';
+            this.material.valor_compra = '';
+            this.material.valor_revenda = '';
         }
     }
 });
@@ -36911,7 +36952,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "form-group col-md-10",
+                  staticClass: "form-group col-md-12",
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
@@ -36920,325 +36961,382 @@ var render = function() {
                   }
                 },
                 [
-                  _c(
-                    "div",
-                    { class: ["col-auto", { "has-error": _vm.errors.sku }] },
-                    [
-                      _vm.errors.sku
-                        ? _c("div", [_vm._v(_vm._s(_vm.errors.sku[0]))])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.material.sku,
-                            expression: "material.sku"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "SKU" },
-                        domProps: { value: _vm.material.sku },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "form-group col-md-4" }, [
+                      _c(
+                        "div",
+                        {
+                          class: ["col-auto", { "has-error": _vm.errors.sku }]
+                        },
+                        [
+                          _vm.errors.sku
+                            ? _c("div", [_vm._v(_vm._s(_vm.errors.sku[0]))])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.sku,
+                                expression: "material.sku"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            attrs: { type: "text", placeholder: "SKU" },
+                            domProps: { value: _vm.material.sku },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.material,
+                                  "sku",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(_vm.material, "sku", $event.target.value)
-                          }
-                        }
-                      })
-                    ]
-                  ),
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-8" }, [
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "col-auto",
+                            { "has-error": _vm.errors.cod_barra }
+                          ]
+                        },
+                        [
+                          _vm.errors.cod_barra
+                            ? _c("div", [
+                                _vm._v(_vm._s(_vm.errors.cod_barra[0]))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.cod_barra,
+                                expression: "material.cod_barra"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            attrs: { type: "text", placeholder: "Cod Barra" },
+                            domProps: { value: _vm.material.cod_barra },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.material,
+                                  "cod_barra",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: ["col-auto", { "has-error": _vm.errors.cod_barra }]
-                    },
-                    [
-                      _vm.errors.cod_barra
-                        ? _c("div", [_vm._v(_vm._s(_vm.errors.cod_barra[0]))])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.material.cod_barra,
-                            expression: "material.cod_barra"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Cod Barra" },
-                        domProps: { value: _vm.material.cod_barra },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "form-group col-md-12" }, [
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "col-auto",
+                            { "has-error": _vm.errors.descricao }
+                          ]
+                        },
+                        [
+                          _vm.errors.descricao
+                            ? _c("div", [
+                                _vm._v(_vm._s(_vm.errors.descricao[0]))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.descricao,
+                                expression: "material.descricao"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            attrs: { type: "text", placeholder: "Descrição" },
+                            domProps: { value: _vm.material.descricao },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.material,
+                                  "descricao",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.material,
-                              "cod_barra",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
+                          })
+                        ]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: ["col-auto", { "has-error": _vm.errors.descricao }]
-                    },
-                    [
-                      _vm.errors.descricao
-                        ? _c("div", [_vm._v(_vm._s(_vm.errors.descricao[0]))])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.material.descricao,
-                            expression: "material.descricao"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Descrição" },
-                        domProps: { value: _vm.material.descricao },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "col-auto",
+                            { "has-error": _vm.errors.forma_farmaceutica_id }
+                          ]
+                        },
+                        [
+                          _vm.errors.forma_farmaceutica_id
+                            ? _c("div", [
+                                _vm._v(
+                                  _vm._s(_vm.errors.forma_farmaceutica_id[0])
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.forma_farmaceutica_id,
+                                expression: "material.forma_farmaceutica_id"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            attrs: { type: "text", placeholder: "Forma" },
+                            domProps: {
+                              value: _vm.material.forma_farmaceutica_id
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.material,
+                                  "forma_farmaceutica_id",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.material,
-                              "descricao",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "col-auto",
+                            { "has-error": _vm.errors.tipo_material_id }
+                          ]
+                        },
+                        [
+                          _vm.errors.tipo_material_id
+                            ? _c("div", [
+                                _vm._v(_vm._s(_vm.errors.tipo_material_id[0]))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.tipo_material_id,
+                                expression: "material.tipo_material_id"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            attrs: { type: "text", placeholder: "Tipo" },
+                            domProps: { value: _vm.material.tipo_material_id },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.material,
+                                  "tipo_material_id",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: [
-                        "col-auto",
-                        { "has-error": _vm.errors.forma_farmaceutica_id }
-                      ]
-                    },
-                    [
-                      _vm.errors.forma_farmaceutica_id
-                        ? _c("div", [
-                            _vm._v(_vm._s(_vm.errors.forma_farmaceutica_id[0]))
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.material.forma_farmaceutica_id,
-                            expression: "material.forma_farmaceutica_id"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Forma" },
-                        domProps: { value: _vm.material.forma_farmaceutica_id },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "col-auto",
+                            { "has-error": _vm.errors.status }
+                          ]
+                        },
+                        [
+                          _vm.errors.status
+                            ? _c("div", [_vm._v(_vm._s(_vm.errors.status[0]))])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.status,
+                                expression: "material.status"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            attrs: { type: "text", placeholder: "Status" },
+                            domProps: { value: _vm.material.status },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.material,
+                                  "status",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.material,
-                              "forma_farmaceutica_id",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "col-auto",
+                            { "has-error": _vm.errors.valor_compra }
+                          ]
+                        },
+                        [
+                          _vm.errors.valor_compra
+                            ? _c("div", [
+                                _vm._v(_vm._s(_vm.errors.valor_compra[0]))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.valor_compra,
+                                expression: "material.valor_compra"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Valor compra"
+                            },
+                            domProps: { value: _vm.material.valor_compra },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.material,
+                                  "valor_compra",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: [
-                        "col-auto",
-                        { "has-error": _vm.errors.tipo_material_id }
-                      ]
-                    },
-                    [
-                      _vm.errors.tipo_material_id
-                        ? _c("div", [
-                            _vm._v(_vm._s(_vm.errors.tipo_material_id[0]))
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.material.tipo_material_id,
-                            expression: "material.tipo_material_id"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Tipo" },
-                        domProps: { value: _vm.material.tipo_material_id },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                  _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "col-auto",
+                            { "has-error": _vm.errors.valor_revenda }
+                          ]
+                        },
+                        [
+                          _vm.errors.valor_revenda
+                            ? _c("div", [
+                                _vm._v(_vm._s(_vm.errors.valor_revenda[0]))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.valor_revenda,
+                                expression: "material.valor_revenda"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Valor revenda"
+                            },
+                            domProps: { value: _vm.material.valor_revenda },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.material,
+                                  "valor_revenda",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.material,
-                              "tipo_material_id",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { class: ["col-auto", { "has-error": _vm.errors.status }] },
-                    [
-                      _vm.errors.status
-                        ? _c("div", [_vm._v(_vm._s(_vm.errors.status[0]))])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.material.status,
-                            expression: "material.status"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Status" },
-                        domProps: { value: _vm.material.status },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.material,
-                              "status",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: [
-                        "col-auto",
-                        { "has-error": _vm.errors.valor_compra }
-                      ]
-                    },
-                    [
-                      _vm.errors.valor_compra
-                        ? _c("div", [
-                            _vm._v(_vm._s(_vm.errors.valor_compra[0]))
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.material.valor_compra,
-                            expression: "material.valor_compra"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Valor compra" },
-                        domProps: { value: _vm.material.valor_compra },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.material,
-                              "valor_compra",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      class: [
-                        "col-auto",
-                        { "has-error": _vm.errors.valor_revenda }
-                      ]
-                    },
-                    [
-                      _vm.errors.valor_revenda
-                        ? _c("div", [
-                            _vm._v(_vm._s(_vm.errors.valor_revenda[0]))
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.material.valor_revenda,
-                            expression: "material.valor_revenda"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Valor revenda" },
-                        domProps: { value: _vm.material.valor_revenda },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.material,
-                              "valor_revenda",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  )
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ])
                 ]
-              ),
-              _vm._v(" "),
-              _vm._m(1)
+              )
             ]
           )
         ])
@@ -37252,8 +37350,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h4", { staticClass: "heading" }, [
-      _c("strong", [_vm._v("Preencha")]),
-      _vm._v(" as informações "),
+      _c("strong", [_vm._v("Cadastro de Materiais")]),
+      _vm._v(" "),
       _c("span")
     ])
   },
@@ -37261,7 +37359,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-10" }, [
+    return _c("div", { staticClass: "form-group col-md-6" }, [
       _c("div", { staticClass: "col-auto" }, [
         _c(
           "button",
@@ -37318,12 +37416,12 @@ var render = function() {
               attrs: {
                 show: _vm.showVodal,
                 animation: "zoon",
-                width: 600,
+                width: 620,
                 height: 500
               },
               on: { hide: _vm.hideVodal }
             },
-            [_c("formMaterial")],
+            [_c("formMaterial", { on: { success: _vm.cadastroRealizado } })],
             1
           )
         ],
@@ -41273,8 +41371,14 @@ if (typeof Object.create === 'function') {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_config__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_url__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_url___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_url__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_assert__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_assert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_assert__);
 
 // importar url_base da group da api
+
+
 
 
 // resource do crud
@@ -41286,8 +41390,8 @@ var RESOURCE = 'materials';
 
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('' + __WEBPACK_IMPORTED_MODULE_1__config_config__["a" /* URL_BASE */] + RESOURCE, { params: params }).then(function (response) {
             return context.commit('MUTATION_LOAD_MATERIALS', response.data);
-        }).catch(function (error) {
-            return console.log(error);
+        }).catch(function (errors) {
+            return console.log(errors);
         }).finally(function () {
             return context.commit('PRELOADER', false);
         });
@@ -41301,7 +41405,7 @@ var RESOURCE = 'materials';
             .then(function (response) {
                 return resolve(response);
             }).catch(function (errors) {
-                return reject(errors.response);
+                return reject(errors);
             }).finally(function () {
                 return context.commit('PRELOADER', false);
             });
