@@ -41,7 +41,10 @@
                                 <div class="form-group col-md-6">
                                     <div :class="['col-auto', {'has-error': errors.tipo_material_id}]">
                                         <div v-if="errors.tipo_material_id">{{ errors.tipo_material_id[0] }}</div>
-                                        <input type="text" v-model="material.tipo_material_id" class="form-control mb-2 mr-sm-2" placeholder="Tipo">
+                                        <select class="form-control" v-model="material.tipo_material_id">
+                                            <option value="">Selecione o tipo...</option>
+                                            <option v-for="filial in filials" :key="filial.id" :value="filial.id">{{ filial.razao_social }}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -114,6 +117,12 @@ export default {
     data () {
         return {
             errors: {}
+        }
+    },
+
+    computed: {
+        filials () {
+            return this.$store.state.filials.itens.data
         }
     },
 

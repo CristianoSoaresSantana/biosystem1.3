@@ -13732,6 +13732,8 @@ var app = new Vue({
   el: '#app'
 });
 
+__WEBPACK_IMPORTED_MODULE_2__vuex_store__["a" /* default */].dispatch('loadFilials');
+
 /***/ }),
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -36224,7 +36226,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -36282,7 +36284,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {
-        this.listarFiliais();
+        //Não preciso chamar este metodo! Pois chamei quando o app é startado em resources/js/app.js
+        //this.listarFiliais()
     },
     data: function data() {
         return {
@@ -38038,6 +38041,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -38072,6 +38078,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+
+    computed: {
+        filials: function filials() {
+            return this.$store.state.filials.itens.data;
+        }
+    },
 
     methods: {
         onSubmit: function onSubmit() {
@@ -38342,31 +38354,57 @@ var render = function() {
                               ])
                             : _vm._e(),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.material.tipo_material_id,
-                                expression: "material.tipo_material_id"
-                              }
-                            ],
-                            staticClass: "form-control mb-2 mr-sm-2",
-                            attrs: { type: "text", placeholder: "Tipo" },
-                            domProps: { value: _vm.material.tipo_material_id },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.material.tipo_material_id,
+                                  expression: "material.tipo_material_id"
                                 }
-                                _vm.$set(
-                                  _vm.material,
-                                  "tipo_material_id",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.material,
+                                    "tipo_material_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
                               }
-                            }
-                          })
+                            },
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Selecione o tipo...")
+                              ]),
+                              _vm._v(" "),
+                              _vm._l(_vm.filials, function(filial) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: filial.id,
+                                    domProps: { value: filial.id }
+                                  },
+                                  [_vm._v(_vm._s(filial.razao_social))]
+                                )
+                              })
+                            ],
+                            2
+                          )
                         ]
                       )
                     ])

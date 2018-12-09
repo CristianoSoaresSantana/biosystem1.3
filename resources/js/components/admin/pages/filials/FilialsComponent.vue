@@ -41,7 +41,8 @@ import buscarComponent from '../../layouts/buscarComponent'
 
 export default {
     created () {
-        this.listarFiliais()
+        //Não preciso chamar este metodo! Pois chamei quando o app é startado em resources/js/app.js
+        //this.listarFiliais()
     },
 
     data () {
