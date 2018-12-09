@@ -27,5 +27,30 @@ export default {
                 .catch(errors => reject(errors))
                 .finally(() => context.commit('PRELOADER', false))
         })
-    }
+    },
+
+    updateMaterial (context, params) {
+        context.commit('PRELOADER', true)
+        
+        return new Promise((resolve, reject) => {
+            axios.put(`${URL_BASE}${RESOURCE}/${params.sku}`, params)
+                // retorna resposta caso request teve success ou error!
+                .then(response => resolve(response))
+                .catch(errors => reject(errors))
+                .finally(() => context.commit('PRELOADER', false))
+        })
+    },
+
+    destroyMaterial (context, sku) {
+        context.commit('PRELOADER', true)
+        
+        return new Promise((resolve, reject) => {
+            axios.delete(`${URL_BASE}${RESOURCE}/${sku}`)
+                // retorna resposta caso request teve success ou error!
+                .then(response => resolve(response))
+                .catch(errors => reject(errors))
+                // recurso comentado para o preloader ser chamado ao recarregar table.
+                // .finally(() => context.commit('PRELOADER', false))
+        })
+    },
 }

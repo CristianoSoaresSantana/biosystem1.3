@@ -1,28 +1,100 @@
 <template>
     <div>
-        <ul class="nav bg-dark">
-            <li class="nav-item">
-                <router-link :to="{name: 'admin.dashboard'}" class="nav-link">Dashboard</router-link> 
-            </li>
-            <li>
-                <router-link :to="{name: 'admin.filials'}"  class="nav-link">Filiais</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'admin.materials'}"  class="nav-link">Materiais</router-link>
-            </li>
-        </ul>
-        <div class="container"> <router-view></router-view> </div>
+        <div class="menu">
+        <div class="logo">
+            <img src="./images/farmaforma.jpeg" alt="Biosystem" class="logo-painel">
+        </div>
+        <div class="list-menu">
+            <ul class="ul-menu">
+                <li>
+                    <router-link :to="{name: 'admin.dashboard'}" class="nav-link">Dashboard</router-link> 
+                </li>
+
+                <li>
+                    <router-link :to="{name: 'admin.filials'}"  class="nav-link">Filiais</router-link>
+                </li>
+
+                <li>
+                    <router-link :to="{name: 'admin.materials'}"  class="nav-link">Materiais</router-link>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="top-dasboard">
+                <div class="dropdown">
+                    <div class="dropdown-toggle" type="div" id="dropdownMenudiv" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <strong>Usuário</strong>
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenudiv">
+                        <a class="dropdown-item" href="#">Perfil</a>
+                        <a class="dropdown-item" href="#">Sair</a>
+                    </div>
+                </div>
+            </div>
+        <router-view></router-view>
+        </div>
     </div>
 </template>
 
 
 <script>
 export default {
-
+    
 }
 </script>
 
-<style>
+<style scoped>
 
+*{margin: 0px; padding: 0px; font-family: "Open Sans";}
+.menu{
+    background: #2e9133;
+    float: left;
+    padding: 0px;
+    width: 100px;;
+    text-align: center;
+    min-height: 100vh;
+}
+.logo{
+    float: center;
+}
+img.logo-painel{
+    max-width: 99px;
+    max-height: 99px;
+    margin-top: 39px;
+}
+.list-menu{
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+ul.ul-menu{
+    list-style: none;
+}
+ul.ul-menu li{
+    float: left;
+}
+ul.ul-menu li a{
+    font-size: 1.2em;
+    margin: 5px 0px;
+    float: left;
+    width: 100px;
+    color: #ffffff;
+}
+.container {
+    float: left;
+    background: #ffffff;
+    min-height: 100vh;
+    width: calc(100% - 90px);
+}
+.top-dasboard{
+    width: 100%;
+    float: left;
+    background: #2e9133;
+    padding: 8px;
+}
+.dropdown {
+    float: right;
+}
 </style>
 

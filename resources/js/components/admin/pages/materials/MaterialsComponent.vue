@@ -41,7 +41,7 @@
                         <td v-text="material.valor_revenda"></td>
                         <td>
                             <a href="#" class="btn btn-info btn-sm" >Editar</a>
-                            <a href="#" class="btn btn-danger btn-sm" >Excluir</a>
+                             <a href="#" class="btn btn-danger btn-sm" @click.prevent="confirmDestroy(material.sku)">Excluir</a>
                         </td>
                     </tr>
                 </tbody>
@@ -89,6 +89,7 @@ export default {
         loadMaterials (page) {
             this.$store.dispatch('actionLoadMaterials', {...this.params, page})
         },
+
         // nome desta var representa o path do component! ex page.materialsComponent
         pageMaterialsBuscar (inputBuscar) {
             this.input = inputBuscar,
@@ -102,7 +103,31 @@ export default {
         cadastroRealizado () {
             this.hideVodal(),
             this.loadMaterials(1)
-        }
+        },
+
+        //method que pergunta ao usuario se ele quer mesmo deletar o registro
+        confirmDestroy(sku){
+            this.$snotify.error('Deseja realmente deletar este registro?', 'Deletar', {
+                timout: 10000,
+                showProgressBar: true,
+                buttons: [
+                    {text: 'Não', closeOnClick: true},
+                    {text: 'Sim', clickToHide: true, action: () => this.destroy(sku)}
+                ]
+            })
+        },
+
+        //method que aciona uma action de filials.js
+        destroy (sku) {
+            this.$store.dispatch('destroyMaterial', sku)
+                .then(() => {
+                    this.$snotify.success('Registro Deletado!', 'Sucesso')
+                    this.loadMaterials()
+                })
+                .catch(errors => {
+                    this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
+                })
+        },
     },
 
     components: {
