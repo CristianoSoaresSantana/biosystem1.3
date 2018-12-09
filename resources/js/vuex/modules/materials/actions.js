@@ -15,7 +15,18 @@ export default {
             .then(response => context.commit('MUTATION_LOAD_MATERIALS', response.data))
             .catch(errors => console.log(errors))
             .finally(() => context.commit('PRELOADER', false))
-    }, 
+    },
+
+    actionLoadMaterial (context, sku) {
+        context.commit('PRELOADER', true)
+
+        return new Promise((resolve, reject) => {
+            axios.get(`${URL_BASE}${RESOURCE}/${sku}`)
+                .then(response => resolve(response.data))
+                .catch(errors => reject(errors))
+                .finally(context.commit('PRELOADER', false))
+        })
+    },
 
     storeMaterial (context, params) {
         context.commit('PRELOADER', true)

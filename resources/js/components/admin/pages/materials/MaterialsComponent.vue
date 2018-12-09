@@ -5,7 +5,11 @@
             <div class="col">
                 <button type="submit" class="btn btn-success" @click.prevent="showVodal = true">Novo</button>
                 <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
-                    <formMaterial @success="cadastroRealizado"></formMaterial>
+                    <formMaterial
+                    :material="propriedadeMaterial"
+                    :update="propriedadeupdate"
+                    @success="cadastroRealizado">
+                    </formMaterial>
                 </vodal>
             </div>
             <div class="col">
@@ -40,7 +44,7 @@
                         <td v-text="material.valor_compra"></td>
                         <td v-text="material.valor_revenda"></td>
                         <td>
-                            <a href="#" class="btn btn-info btn-sm" >Editar</a>
+                            <a href="#" class="btn btn-info btn-sm" @click.prevent="carregarMaterial(material.sku)">Editar</a>
                              <a href="#" class="btn btn-danger btn-sm" @click.prevent="confirmDestroy(material.sku)">Excluir</a>
                         </td>
                     </tr>
@@ -69,6 +73,18 @@ export default {
         return {
             input: '',
             showVodal: false,
+            propriedadeupdate: false,
+            propriedadeMaterial: {
+                sku: '',
+                cod_barra: '',
+                descricao: '',
+                forma_farmaceutica_id: '',
+                tipo_material_id: '',
+                status: '',
+                valor_compra: '',
+                valor_revenda: '',
+                // image: '',
+            }
         }
     },
 
@@ -88,6 +104,19 @@ export default {
     methods: {
         loadMaterials (page) {
             this.$store.dispatch('actionLoadMaterials', {...this.params, page})
+        },
+
+        // pegar um registro e preencher o formulario!
+        carregarMaterial(sku){
+            this.$store.dispatch('actionLoadMaterial', sku)
+                    .then(response => {
+                        this.propriedadeMaterial = response
+                        this.showVodal = true
+                        this.propriedadeupdate = true
+                    })
+                    .catch((errors) => {
+                        this.$snotify.errors('Registro não pode ser carregado!', 'Informativo')
+                    })
         },
 
         // nome desta var representa o path do component! ex page.materialsComponent

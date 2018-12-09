@@ -37292,7 +37292,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -37368,6 +37368,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -37382,7 +37386,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             input: '',
-            showVodal: false
+            showVodal: false,
+            propriedadeupdate: false,
+            propriedadeMaterial: {
+                sku: '',
+                cod_barra: '',
+                descricao: '',
+                forma_farmaceutica_id: '',
+                tipo_material_id: '',
+                status: '',
+                valor_compra: '',
+                valor_revenda: ''
+                // image: '',
+            }
         };
     },
 
@@ -37405,6 +37421,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
 
 
+        // pegar um registro e preencher o formulario!
+        carregarMaterial: function carregarMaterial(sku) {
+            var _this = this;
+
+            this.$store.dispatch('actionLoadMaterial', sku).then(function (response) {
+                _this.propriedadeMaterial = response;
+                _this.showVodal = true;
+                _this.propriedadeupdate = true;
+            }).catch(function (errors) {
+                _this.$snotify.errors('Registro não pode ser carregado!', 'Informativo');
+            });
+        },
+
+
         // nome desta var representa o path do component! ex page.materialsComponent
         pageMaterialsBuscar: function pageMaterialsBuscar(inputBuscar) {
             this.input = inputBuscar, this.loadMaterials(1);
@@ -37419,13 +37449,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
         //method que pergunta ao usuario se ele quer mesmo deletar o registro
         confirmDestroy: function confirmDestroy(sku) {
-            var _this = this;
+            var _this2 = this;
 
             this.$snotify.error('Deseja realmente deletar este registro?', 'Deletar', {
                 timout: 10000,
                 showProgressBar: true,
                 buttons: [{ text: 'Não', closeOnClick: true }, { text: 'Sim', clickToHide: true, action: function action() {
-                        return _this.destroy(sku);
+                        return _this2.destroy(sku);
                     } }]
             });
         },
@@ -37433,13 +37463,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
         //method que aciona uma action de filials.js
         destroy: function destroy(sku) {
-            var _this2 = this;
+            var _this3 = this;
 
             this.$store.dispatch('destroyMaterial', sku).then(function () {
-                _this2.$snotify.success('Registro Deletado!', 'Sucesso');
-                _this2.loadMaterials();
+                _this3.$snotify.success('Registro Deletado!', 'Sucesso');
+                _this3.loadMaterials();
             }).catch(function (errors) {
-                _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
+                _this3.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
             });
         }
     },
@@ -38336,77 +38366,6 @@ var render = function() {
                           })
                         ]
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group col-md-6" }, [
-                      _c(
-                        "div",
-                        {
-                          class: [
-                            "col-auto",
-                            { "has-error": _vm.errors.tipo_material_id }
-                          ]
-                        },
-                        [
-                          _vm.errors.tipo_material_id
-                            ? _c("div", [
-                                _vm._v(_vm._s(_vm.errors.tipo_material_id[0]))
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.material.tipo_material_id,
-                                  expression: "material.tipo_material_id"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.material,
-                                    "tipo_material_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c("option", { attrs: { value: "" } }, [
-                                _vm._v("Selecione o tipo...")
-                              ]),
-                              _vm._v(" "),
-                              _vm._l(_vm.filials, function(filial) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: filial.id,
-                                    domProps: { value: filial.id }
-                                  },
-                                  [_vm._v(_vm._s(filial.razao_social))]
-                                )
-                              })
-                            ],
-                            2
-                          )
-                        ]
-                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -38640,7 +38599,15 @@ var render = function() {
               },
               on: { hide: _vm.hideVodal }
             },
-            [_c("formMaterial", { on: { success: _vm.cadastroRealizado } })],
+            [
+              _c("formMaterial", {
+                attrs: {
+                  material: _vm.propriedadeMaterial,
+                  update: _vm.propriedadeupdate
+                },
+                on: { success: _vm.cadastroRealizado }
+              })
+            ],
             1
           )
         ],
@@ -38704,7 +38671,13 @@ var render = function() {
                     "a",
                     {
                       staticClass: "btn btn-info btn-sm",
-                      attrs: { href: "#" }
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.carregarMaterial(material.sku)
+                        }
+                      }
                     },
                     [_vm._v("Editar")]
                   ),
@@ -41386,6 +41359,17 @@ var RESOURCE = 'materials';
             return console.log(errors);
         }).finally(function () {
             return context.commit('PRELOADER', false);
+        });
+    },
+    actionLoadMaterial: function actionLoadMaterial(context, sku) {
+        context.commit('PRELOADER', true);
+
+        return new Promise(function (resolve, reject) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('' + __WEBPACK_IMPORTED_MODULE_1__config_config__["a" /* URL_BASE */] + RESOURCE + '/' + sku).then(function (response) {
+                return resolve(response.data);
+            }).catch(function (errors) {
+                return reject(errors);
+            }).finally(context.commit('PRELOADER', false));
         });
     },
     storeMaterial: function storeMaterial(context, params) {
