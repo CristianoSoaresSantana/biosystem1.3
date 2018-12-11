@@ -1,0 +1,38 @@
+CONFIG NECESSÁRIAS:
+
+para npm run watch:
+npm install ws@3.3.2 --save-dev --save-exact
+
+vscode
+sudo snap install --classic vscode
+
+apache
+systemctl restart apache2
+sudo a2enmod rewrite
+
+<VirtualHost *:80>
+    ServerName biosystem.local
+    ServerAlias www.biosystem.local
+    ServerAdmin lexcrt@biosystem.local
+    DocumentRoot /var/www/biosystem1.3/public
+
+    <Directory /var/www/biosystem1.3/public>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/example.com-error.log
+    CustomLog ${APACHE_LOG_DIR}/example.com-access.log combined
+</VirtualHost>
+
+
+dependencias
+sudo composer install
+sudo apt-get install libapache2-mod-php7.2
+composer global require laravel/installer
+sudo apt install npm
+
+OBSERVAÇÕES IMPORTANTES:
+
+O modulo materials está parado, para desenvolver as tipo e forma de material!
+Porque preciso desses modulos para implementar o ediatr de materials!

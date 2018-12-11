@@ -25,6 +25,10 @@
     "vue": "^2.5.17",
     "vue-router": "^3.0.2",
     "vue-snotify": "^3.2.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "ws": "3.3.2"
+  },
+  "dependencies": {
+    "vodal": "^2.3.3"
   }
 }

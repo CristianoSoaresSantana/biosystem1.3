@@ -1,10 +1,10 @@
 <template>
-    <div>Home Page do dashboard</div>
+    <div><h1>Home Page do dashboard</h1></div>
 </template>
 
 <script>
 export default {
-    
+
 }
 </script>
 

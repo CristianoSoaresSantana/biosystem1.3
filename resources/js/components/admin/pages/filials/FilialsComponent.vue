@@ -8,7 +8,7 @@
             <div class="col">
                 <buscarComponent @buscarFilial="buscarForm"></buscarComponent>
             </div>
-        </div>    
+        </div>
         <div>
             <table class="table table-dark">
                 <thead>
@@ -42,7 +42,7 @@ import buscarComponent from '../../layouts/buscarComponent'
 export default {
     created () {
         //Não preciso chamar este metodo! Pois chamei quando o app é startado em resources/js/app.js
-        //this.listarFiliais()
+        this.listarFiliais()
     },
 
     data () {
@@ -73,7 +73,7 @@ export default {
             this.$snotify.error('Deseja realmente deletar este registro?', 'Deletar', {
                 timout: 10000,
                 showProgressBar: true,
-                
+
                 buttons: [
                     {text: 'Não', closeOnClick: true},
                     {text: 'Sim', action: () => this.destroy(id)}

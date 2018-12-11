@@ -1,24 +1,28 @@
 <template>
     <div>
         <div class="menu">
-        <div class="logo">
-            <img src="./images/farmaforma.jpeg" alt="Biosystem" class="logo-painel">
-        </div>
-        <div class="list-menu">
-            <ul class="ul-menu">
-                <li>
-                    <router-link :to="{name: 'admin.dashboard'}" class="nav-link">Dashboard</router-link> 
-                </li>
-
-                <li>
-                    <router-link :to="{name: 'admin.filials'}"  class="nav-link">Filiais</router-link>
-                </li>
-
-                <li>
-                    <router-link :to="{name: 'admin.materials'}"  class="nav-link">Materiais</router-link>
-                </li>
-            </ul>
+            <div class="logo">
+                <img src="./images/farmaforma.jpeg" alt="Biosystem" class="logo-painel">
             </div>
+            <div class="list-menu">
+                <ul class="ul-menu">
+                    <li>
+                        <router-link :to="{name: 'admin.dashboard'}" class="nav-link">Dashboard</router-link>
+                    </li>
+
+                    <li>
+                        <router-link :to="{name: 'admin.filials'}"  class="nav-link">Filiais</router-link>
+                    </li>
+
+                    <li>
+                        <router-link :to="{name: 'admin.materials'}"  class="nav-link">Materiais</router-link>
+                    </li>
+
+                    <li>
+                        <router-link :to="{name: 'admin.tipo_materials'}"  class="nav-link">Tipo de Materiais</router-link>
+                    </li>
+                </ul>
+                </div>
         </div>
         <div class="container">
             <div class="top-dasboard">
@@ -40,7 +44,7 @@
 
 <script>
 export default {
-    
+
 }
 </script>
 
@@ -51,7 +55,7 @@ export default {
     background: #2e9133;
     float: left;
     padding: 0px;
-    width: 100px;;
+    width: 180px;;
     text-align: center;
     min-height: 100vh;
 }
@@ -59,8 +63,8 @@ export default {
     float: center;
 }
 img.logo-painel{
-    max-width: 99px;
-    max-height: 99px;
+    max-width: 179px;
+    max-height: 179px;
     margin-top: 39px;
 }
 .list-menu{
@@ -74,11 +78,11 @@ ul.ul-menu{
 ul.ul-menu li{
     float: left;
 }
-ul.ul-menu li a{
-    font-size: 1.2em;
-    margin: 5px 0px;
+ul.ul-menu li a {
+    font-size: 1.4em;
+    margin: 3px 7px;
     float: left;
-    width: 100px;
+    width: 152px;
     color: #ffffff;
 }
 .container {
