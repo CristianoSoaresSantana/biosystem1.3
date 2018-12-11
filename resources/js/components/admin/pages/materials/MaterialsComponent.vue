@@ -65,10 +65,11 @@ import BuscarComponent from '../../layouts/geralBuscarComponent'
 import FormMaterialComponent from './partials/FormMaterialComponent'
 
 export default {
-    
+
     created () {
         this.loadMaterials(1)
     },
+
     data () {
         return {
             input: '',
@@ -171,5 +172,5 @@ export default {
 
 
 <style scoped>
-    
+
 </style>

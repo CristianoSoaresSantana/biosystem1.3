@@ -5,8 +5,7 @@
                 <div class="form_main">
                     <h4 class="heading"><strong>Cadastro de Materiais</strong> <span></span></h4>
                     <form class="form" @submit.prevent="onSubmit">
-                        <div class="form-group col-md-12" @submit.prevent="onSubmit">
-
+                        <div class="form-group col-md-12">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <div :class="['col-auto', {'has-error': errors.sku}]">

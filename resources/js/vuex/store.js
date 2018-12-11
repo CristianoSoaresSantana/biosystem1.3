@@ -10,6 +10,7 @@ import Vuex from 'vuex'
 import Filials from './modules/filials/filials'
 import Preloader from './modules/preloader/preloader'
 import Materials from './modules/materials/materials'
+import TipoMaterials from './modules/tipo_materials/tipo_materials'
 
 
 Vue.use(Vuex)
@@ -19,7 +20,8 @@ const store = new Vuex.Store({
         // Incluir e dá um aliais para o modulo.
         filials: Filials,
         preloader: Preloader,
-        materials: Materials
+        materials: Materials,
+        tipo_materials: TipoMaterials,
     }
 })
 
