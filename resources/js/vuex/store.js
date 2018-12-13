@@ -11,7 +11,8 @@ import Filials from './modules/filials/filials'
 import Preloader from './modules/preloader/preloader'
 import Materials from './modules/materials/materials'
 import TipoMaterials from './modules/tipo_materials/tipo_materials'
-import FormaFarmaceutica from './modules/forma_farmaceuticas/forma_farmaceuticas'
+import FormaFarmaceuticas from './modules/forma_farmaceuticas/forma_farmaceuticas'
+import Branches from './modules/branches/branches'
 
 
 Vue.use(Vuex)
@@ -23,7 +24,8 @@ const store = new Vuex.Store({
         preloader: Preloader,
         materials: Materials,
         tipo_materials: TipoMaterials,
-        forma_farmaceuticas: FormaFarmaceutica,
+        forma_farmaceuticas: FormaFarmaceuticas,
+        branches: Branches,
     }
 })
 

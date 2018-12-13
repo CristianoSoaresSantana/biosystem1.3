@@ -11,11 +11,8 @@ import VueRouter from 'vue-router'
 
 import AdminComponent from '../components/admin/AdminComponent'
 import DashboardComponent from '../components/admin/pages/dashboard/DashboardComponent'
-// rotas de filials
-import FilialsComponent from '../components/admin/pages/filials/FilialsComponent'
-import CreateFilialComponent from '../components/admin/pages/filials/CreateFilialComponent'
-import UpdateFilialComponent from '../components/admin/pages/filials/UpdateFilialComponent'
 
+import BranchesComponent from '../components/admin/pages/branches/BranchesComponent'
 import MaterialsComponent from '../components/admin/pages/materials/MaterialsComponent'
 import TipoMaterialsComponent from '../components/admin/pages/tipo_materials/TipoMaterialsComponent'
 import FormaFarmaceuticasComponent from '../components/admin/pages/forma_farmaceuticas/FormaFarmaceuticasComponent'
@@ -28,12 +25,8 @@ const routes = [
         component: AdminComponent,
         children: [
             {path: 'admin', component: DashboardComponent, name: 'admin.dashboard'},
-            // rotas de filials
-            {path: 'filials', component: FilialsComponent, name: 'admin.filials'},
-            {path: 'filials/create', component: CreateFilialComponent, name: 'admin.filials.create'},
-            {path: 'filials/:id/update', component: UpdateFilialComponent, name: 'admin.filials.update', props:true},
-
             // rotas de materials
+            {path: 'branches', component: BranchesComponent, name: 'admin.branches'},
             {path: 'materials', component: MaterialsComponent, name: 'admin.materials'},
             {path: 'tipo_materials', component: TipoMaterialsComponent, name: 'admin.tipo_materials'},
             {path: 'forma_farmaceutica', component: FormaFarmaceuticasComponent, name: 'admin.forma_farmaceuticas'}

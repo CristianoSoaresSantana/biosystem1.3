@@ -11,7 +11,7 @@
                     </li>
 
                     <li>
-                        <router-link :to="{name: 'admin.filials'}"  class="nav-link">Filiais</router-link>
+                        <router-link :to="{name: 'admin.branches'}"  class="nav-link">Filiais</router-link>
                     </li>
 
                     <li>
