@@ -19,8 +19,8 @@
                             </div>
                         </div>
                     </form>
-                </div>    
-            </div>        
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -69,8 +69,6 @@ export default {
                     .catch(errors => {
                         // notificação para usuario.
                         this.$snotify.error('Você Errou!', 'Atenção')
-
-                        console.log(errors.response.data.errors)
                         this.errors = errors.response.data.errors
                     })
         }

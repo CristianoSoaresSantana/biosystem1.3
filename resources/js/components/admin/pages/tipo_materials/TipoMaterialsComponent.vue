@@ -3,10 +3,11 @@
         <h1>Lista Tipo de Materiais</h1>
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-success" @click.prevent="showVodal = true">Novo</button>
+                <button type="submit" class="btn btn-success" @click.prevent="criar()">Novo</button>
                 <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
                     <formTipo
                     :tipo_material="propriedadeTipoMaterial"
+                    :update="propriedadeupdate"
                     @success="cadastroRealizado"
                     ></formTipo>
                 </vodal>
@@ -26,8 +27,8 @@
                         <td v-text="tipo_material.id"></td>
                         <td v-text="tipo_material.tipo_material"></td>
                         <td>
-                            <a href="#" class="btn btn-info btn-sm">Editar</a>
-                            <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+                            <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(tipo_material.id)">Editar</a>
+                            <confirmDelete :resgistro="tipo_material.id" @destroy="destroy"/>
                         </td>
                     </tr>
                 </tbody>
@@ -39,6 +40,7 @@
 <script>
 import Vodal from 'vodal';
 import FormTipoMaterialComponent from './partials/FormTipoMaterialComponent'
+import confirmDelete from '../../layouts/confirmDeleteComponent'
 
 export default {
     created () {
@@ -51,6 +53,7 @@ export default {
             showVodal: false,
             propriedadeupdate: false,
             propriedadeTipoMaterial: {
+                id: '',
                 tipo_material: '',
             }
         }
@@ -67,24 +70,25 @@ export default {
             this.$store.dispatch('actionLoadTipoMaterials')
         },
 
-        // pegar um registro e preencher o formulario!
-        // carregarMaterial(sku){
-        //     this.$store.dispatch('actionLoadMaterial', sku)
-        //             .then(response => {
-        //                 this.propriedadeMaterial = response
-        //                 this.showVodal = true
-        //                 this.propriedadeupdate = true
-        //             })
-        //             .catch((errors) => {
-        //                 this.$snotify.errors('Registro não pode ser carregado!', 'Informativo')
-        //             })
-        // },
+        criar(){
+            this.showVodal = true
+            this.propriedadeupdate = false
+            this.reset()
+        },
 
-        // // nome desta var representa o path do component! ex page.materialsComponent
-        // pageMaterialsBuscar (inputBuscar) {
-        //     this.input = inputBuscar,
-        //     this.loadMaterials(1)
-        // },
+        // pegar um registro e preencher o formulario!
+        editar(id){
+            this.reset()
+            this.$store.dispatch('actionLoadTipoMaterial', id)
+                    .then(response => {
+                        this.propriedadeTipoMaterial = response
+                        this.showVodal = true
+                        this.propriedadeupdate = true
+                    })
+                    .catch((errors) => {
+                        this.$snotify.errors('Registro não pode ser carregado!', 'Informativo')
+                    })
+        },
 
         hideVodal () {
             this.showVodal = false
@@ -95,36 +99,30 @@ export default {
             this.loadTipoMaterials()
         },
 
-        // //method que pergunta ao usuario se ele quer mesmo deletar o registro
-        // confirmDestroy(sku){
-        //     this.$snotify.error('Deseja realmente deletar este registro?', 'Deletar', {
-        //         timout: 10000,
-        //         showProgressBar: true,
-        //         buttons: [
-        //             {text: 'Não', closeOnClick: true},
-        //             {text: 'Sim', clickToHide: true, action: () => this.destroy(sku)}
-        //         ]
-        //     })
-        // },
+        //method que aciona uma action de filials.js
+        destroy (id) {
+            this.$store.dispatch('destroyTipoMaterial', id)
+                .then(() => {
+                    this.$snotify.success('Registro Deletado!', 'Sucesso')
+                    this.loadTipoMaterials()
+                })
+                .catch(errors => {
+                    this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
+                })
+        },
 
-        // //method que aciona uma action de filials.js
-        // destroy (sku) {
-        //     this.$store.dispatch('destroyMaterial', sku)
-        //         .then(() => {
-        //             this.$snotify.success('Registro Deletado!', 'Sucesso')
-        //             this.loadMaterials()
-        //         })
-        //         .catch(errors => {
-        //             this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
-        //         })
-        // },
-
-
+        reset () {
+            this.propriedadeTipoMaterial = {
+                id: '',
+                tipo_material: '',
+            }
+        },
     },
 
     components: {
         vodal: Vodal,
         formTipo: FormTipoMaterialComponent,
+        confirmDelete
     },
 
 }

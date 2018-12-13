@@ -142,16 +142,15 @@ export default {
         },
 
         resetForm () {
-            this.errors = {}
-            this.material.sku = ''
-            this.material.cod_barra = ''
-            this.material.descricao = ''
-            this.material.forma_farmaceutica_id = ''
-            this.material.tipo_material_id = ''
-            this.material.status = ''
-            this.material.valor_compra = ''
+            this.errors = {},
+            this.material.sku = '',
+            this.material.cod_barra = '',
+            this.material.descricao = '',
+            this.material.forma_farmaceutica_id = '',
+            this.material.tipo_material_id = '',
+            this.material.status = '',
+            this.material.valor_compra = '',
             this.material.valor_revenda = ''
-
         }
     },
 }

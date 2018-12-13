@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <div class="form_main">
                     <h4 class="heading"><strong>Cadastro de Materiais</strong> <span></span></h4>
-                    <form class="form" @submit.prevent="onSubmit">
+                    <form class="form" @submit.prevent="onSubmit" @close="reset()">
                         <div class="form-group col-md-12">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -39,12 +39,7 @@ export default {
 
         tipo_material: {
             require: false,
-            type: Object,
-            default: () => {
-                return {
-                    tipo_material: '',
-                }
-            }
+            type: Object
         }
     },
 
@@ -57,25 +52,25 @@ export default {
     methods: {
         onSubmit () {
 
-            this.$store.dispatch('storeTipoMaterial', this.tipo_material)
+            let createOrUpdate = this.update ? 'updateTipoMaterial' : 'storeTipoMaterial'
+
+            this.$store.dispatch(createOrUpdate, this.tipo_material)
                 .then(() => {
                     // notificação para usuario.
-                    this.$snotify.success('Cadastro realizado com sucesso!', 'Parabéns...')
-                    this.resetForm()
+                    this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...')
+                    this.errors = {}
                     this.$emit('success')
                 })
                 .catch(errors => {
                     // notificação para usuario.
                     this.$snotify.error('Você Errou!', 'Atenção')
-
                     this.errors = errors.response.data.errors
                 })
         },
 
-        resetForm () {
-            this.errors = {}
-            this.tipo_material.tipo_material = ''
-        }
+        reset () {
+            Object.assign(this.$data, this.$options.data.call(this));
+        },
     },
 }
 </script>

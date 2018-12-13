@@ -17,16 +17,16 @@ export default {
             .finally(() => context.commit('PRELOADER', false))
     },
 
-    // actionLoadMaterial (context, sku) {
-    //     context.commit('PRELOADER', true)
+    actionLoadTipoMaterial (context, id) {
+        context.commit('PRELOADER', true)
 
-    //     return new Promise((resolve, reject) => {
-    //         axios.get(`${URL_BASE}${RESOURCE}/${sku}`)
-    //             .then(response => resolve(response.data))
-    //             .catch(errors => reject(errors))
-    //             .finally(context.commit('PRELOADER', false))
-    //     })
-    // },
+        return new Promise((resolve, reject) => {
+            axios.get(`${URL_BASE}${RESOURCE}/${id}`)
+                .then(response => resolve(response.data))
+                .catch(errors => reject(errors))
+                .finally(context.commit('PRELOADER', false))
+        })
+    },
 
     storeTipoMaterial (context, params) {
         context.commit('PRELOADER', true)
@@ -40,28 +40,28 @@ export default {
         })
     },
 
-    // updateMaterial (context, params) {
-    //     context.commit('PRELOADER', true)
+    updateTipoMaterial (context, params) {
+        context.commit('PRELOADER', true)
 
-    //     return new Promise((resolve, reject) => {
-    //         axios.put(`${URL_BASE}${RESOURCE}/${params.sku}`, params)
-    //             // retorna resposta caso request teve success ou error!
-    //             .then(response => resolve(response))
-    //             .catch(errors => reject(errors))
-    //             .finally(() => context.commit('PRELOADER', false))
-    //     })
-    // },
+        return new Promise((resolve, reject) => {
+            axios.put(`${URL_BASE}${RESOURCE}/${params.id}`, params)
+                // retorna resposta caso request teve success ou error!
+                .then(response => resolve(response))
+                .catch(errors => reject(errors))
+                .finally(() => context.commit('PRELOADER', false))
+        })
+    },
 
-    // destroyMaterial (context, sku) {
-    //     context.commit('PRELOADER', true)
+    destroyTipoMaterial (context, id) {
+        context.commit('PRELOADER', true)
 
-    //     return new Promise((resolve, reject) => {
-    //         axios.delete(`${URL_BASE}${RESOURCE}/${sku}`)
-    //             // retorna resposta caso request teve success ou error!
-    //             .then(response => resolve(response))
-    //             .catch(errors => reject(errors))
-    //             // recurso comentado para o preloader ser chamado ao recarregar table.
-    //             // .finally(() => context.commit('PRELOADER', false))
-    //     })
-    // },
+        return new Promise((resolve, reject) => {
+            axios.delete(`${URL_BASE}${RESOURCE}/${id}`)
+                // retorna resposta caso request teve success ou error!
+                .then(response => resolve(response))
+                .catch(errors => reject(errors))
+                // recurso comentado para o preloader ser chamado ao recarregar table.
+                .finally(() => context.commit('PRELOADER', false))
+        })
+    },
 }

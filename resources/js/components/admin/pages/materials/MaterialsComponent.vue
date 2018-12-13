@@ -45,7 +45,7 @@
                         <td v-text="material.valor_revenda"></td>
                         <td>
                             <a href="#" class="btn btn-info btn-sm" @click.prevent="carregarMaterial(material.sku)">Editar</a>
-                             <a href="#" class="btn btn-danger btn-sm" @click.prevent="confirmDestroy(material.sku)">Excluir</a>
+                            <confirmDelete :resgistro="material.sku" @destroy="destroy"/>
                         </td>
                     </tr>
                 </tbody>
@@ -63,6 +63,7 @@ import Vodal from 'vodal';
 import PaginationComponent from '../../../layouts/PaginationComponent.vue'
 import BuscarComponent from '../../layouts/geralBuscarComponent'
 import FormMaterialComponent from './partials/FormMaterialComponent'
+import confirmDelete from '../../layouts/confirmDeleteComponent'
 
 export default {
 
@@ -135,18 +136,6 @@ export default {
             this.loadMaterials(1)
         },
 
-        //method que pergunta ao usuario se ele quer mesmo deletar o registro
-        confirmDestroy(sku){
-            this.$snotify.error('Deseja realmente deletar este registro?', 'Deletar', {
-                timout: 10000,
-                showProgressBar: true,
-                buttons: [
-                    {text: 'Não', closeOnClick: true},
-                    {text: 'Sim', clickToHide: true, action: () => this.destroy(sku)}
-                ]
-            })
-        },
-
         //method que aciona uma action de filials.js
         destroy (sku) {
             this.$store.dispatch('destroyMaterial', sku)
@@ -165,6 +154,7 @@ export default {
         buscar:     BuscarComponent,
         vodal:      Vodal,
         formMaterial: FormMaterialComponent,
+        confirmDelete,
     }
 }
 
