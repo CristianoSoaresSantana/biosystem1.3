@@ -21,6 +21,10 @@
                     <li>
                         <router-link :to="{name: 'admin.tipo_materials'}"  class="nav-link">Tipo de Materiais</router-link>
                     </li>
+
+                    <li>
+                        <router-link :to="{name: 'admin.forma_farmaceuticas'}"  class="nav-link">Forma Farmaceutica</router-link>
+                    </li>
                 </ul>
                 </div>
         </div>
@@ -82,7 +86,7 @@ ul.ul-menu li a {
     font-size: 1.4em;
     margin: 3px 7px;
     float: left;
-    width: 152px;
+    width: 167px;
     color: #ffffff;
 }
 .container {

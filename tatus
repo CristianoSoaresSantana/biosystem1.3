@@ -1,0 +1,179 @@
+[33mcommit c49dd485e618e9f562d2f0d7781c21e843496533[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Thu Dec 13 09:33:58 2018 -0200
+
+    Form CRUD Vuejs tipo_materials terminado!
+
+[33mcommit a3072918d374df2adf86f8b0e148d0b76d435f55[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Tue Dec 11 19:29:44 2018 -0200
+
+    table e form tipo_materials feito!
+
+[33mcommit a6bdc0ccb64ad3f9d916282d0106c083c18e725c[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Tue Dec 11 12:14:20 2018 -0200
+
+    Ajustes importantes feitos!
+
+[33mcommit bb4f45331422f418da9cad1a943f1119a10bd152[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sun Dec 9 12:09:07 2018 -0200
+
+    13-Preparar edtição de Materials, Não terminado! Pois preciso implementar forma e tipo material
+
+[33mcommit 6b44f0cf1dca2660d14ab96121842b51e93b77ab[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sun Dec 9 09:37:01 2018 -0200
+
+    combobox no vodel
+
+[33mcommit 6379c1b325c7508ced6ba0945dfbed016a0120a2[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sun Dec 9 09:10:09 2018 -0200
+
+    layout dashboard terminado
+
+[33mcommit def29724b913a503fbe0fbdcf308b50240c390ef[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sat Dec 8 19:03:50 2018 -0200
+
+    Form Modal valadação
+
+[33mcommit e79b88dddcfef97b100e04120fcab63ba8e39d72[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sat Dec 8 17:03:47 2018 -0200
+
+    Modal de Cadastro de Produto Laravel com Vue Parte 2
+
+[33mcommit 24391c00618ce33f6583553d6e9c382c0d1cf38c[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sat Dec 8 14:02:05 2018 -0200
+
+    Modal de Cadastro de Produto Laravel com Vue
+
+[33mcommit b7a3cc3ba08480fe44f8cb411f30b2b1d41122bc[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sat Dec 8 12:57:50 2018 -0200
+
+    Instalar e Configurar o Vodal
+
+[33mcommit e562c6d42f819d18814ff9fe3df63fc9807c72fc[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sat Dec 8 12:33:27 2018 -0200
+
+    buscar Materials terminado
+
+[33mcommit de109160021b831b8f3e61bc39d9defe57ea9cff[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sat Dec 8 09:57:36 2018 -0200
+
+    PaginationComponent e aplicação no MaterialsComponent
+
+[33mcommit 3aac3e2e84e302574e6382c6659df65b4b541613[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sat Dec 8 09:42:55 2018 -0200
+
+    Paginação Simples materials
+
+[33mcommit 9696cde36e3b750af62ad3bb9f1a93b9a3fe4d15[m
+Author: CristianoSoaresSantana <lexcrt@gmail.com>
+Date:   Sat Dec 8 09:01:28 2018 -0200
+
+    preparar, carregar e listar Materials
+
+[33mcommit 54a9cafad9ce0a4fb28541b4ff526cae82c82897[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 17:19:04 2018 -0200
+
+    Confirmar Delete
+
+[33mcommit 01997edde6fd28d91c511ed301d0df841c165b1a[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 16:45:51 2018 -0200
+
+    Deletar Filial laravel Vue
+
+[33mcommit 517528cc30e6739d0b5727d2dcad6cb74ebb2484[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 16:20:18 2018 -0200
+
+    Exibir alerta com snotify
+
+[33mcommit b66ca8e877da918e970ced28cf3d6cc74ad322ec[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 15:47:53 2018 -0200
+
+    exibir erros de validação
+
+[33mcommit a50c7771056370e3100469d8e9de5b3fe8742300[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 15:20:25 2018 -0200
+
+    Instalar e conf vue-snotify
+
+[33mcommit 7377c7da5dba7a95f70b2c68607928dfa10082dd[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 14:55:46 2018 -0200
+
+    actions update de filials terminado
+
+[33mcommit efae69c9f9579a2f049070083e81d59aa460ac64[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 13:37:49 2018 -0200
+
+    Template Form para create e update filial
+
+[33mcommit e49b7e1f0b3f03bf38683e629d6e37966c8dd362[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 12:47:53 2018 -0200
+
+    component update filial terminado!
+
+[33mcommit c3eb6aeb78105850269ab4f91b3a8110e693550d[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 12:12:32 2018 -0200
+
+    Cadastrar Filial com Laravel e VUE
+
+[33mcommit 9d87a17a9928375abcc9009c5a9b6ca49a239ed1[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 10:28:13 2018 -0200
+
+    component de cadastro de filials
+
+[33mcommit 838790e2ff3081a96ac82fb07c003a282ad6504f[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 09:32:42 2018 -0200
+
+    Pre-organizar Layout Admin
+
+[33mcommit 44577d1020130994d8ac296d52b36d978c1486b1[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Thu Dec 6 09:00:48 2018 -0200
+
+    Usar o preloader
+
+[33mcommit 2b3dc1a195fd8c6ca769ae45a69de4c476c7a02c[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Wed Dec 5 17:59:21 2018 -0200
+
+    preloader terminado
+
+[33mcommit e5a6764981efa32e07f3776dd38673006b81a1ed[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Wed Dec 5 17:18:59 2018 -0200
+
+    Listar Filials com Vuex
+
+[33mcommit cd2ce89d45d4abc7e06fbdc66c4224f301253727[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Wed Dec 5 15:54:25 2018 -0200
+
+    Organizar Rotas Admin Categorias Laravel
+
+[33mcommit 9c940ab75112d6ed0054e6d0bd3194faa4779ea8[m
+Author: Cristiano Soares <lexcrt@gmail.com>
+Date:   Wed Dec 5 15:34:40 2018 -0200
+
+    Organizando Admin Laravel com Vue JS

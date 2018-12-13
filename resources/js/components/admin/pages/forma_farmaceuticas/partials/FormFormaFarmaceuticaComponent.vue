@@ -4,13 +4,13 @@
             <div class="col-lg-12">
                 <div class="form_main">
                     <h4 class="heading"><strong>{{ title }}</strong> <span></span></h4>
-                    <form class="form" @submit.prevent="onSubmit" @close="reset()">
+                    <form class="form" @submit.prevent="onSubmit">
                         <div class="form-group col-md-12">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <div :class="['col-auto', {'has-error': errors.tipo_material}]">
-                                        <div v-if="errors.tipo_material">{{ errors.tipo_material[0] }}</div>
-                                        <input type="text" v-model="tipo_material.tipo_material" class="form-control mb-2 mr-sm-2" placeholder="Tipo Material">
+                                    <div :class="['col-auto', {'has-error': errors.forma_farmaceutica}]">
+                                        <div v-if="errors.forma_farmaceutica">{{ errors.forma_farmaceutica[0] }}</div>
+                                        <input type="text" v-model="forma_farmaceutica.forma_farmaceutica" class="form-control mb-2 mr-sm-2" placeholder="Forma Farmacêutica">
                                     </div>
                                 </div>
 
@@ -37,7 +37,7 @@ export default {
             default: false,
         },
 
-        tipo_material: {
+        forma_farmaceutica: {
             require: false,
             type: Object
         },
@@ -46,6 +46,7 @@ export default {
             require: true,
             type: String,
         }
+
     },
 
     data () {
@@ -57,9 +58,9 @@ export default {
     methods: {
         onSubmit () {
 
-            let createOrUpdate = this.update ? 'updateTipoMaterial' : 'storeTipoMaterial'
+            let createOrUpdate = this.update ? 'updateFormaFarmaceutica' : 'storeFormaFarmaceutica'
 
-            this.$store.dispatch(createOrUpdate, this.tipo_material)
+            this.$store.dispatch(createOrUpdate, this.forma_farmaceutica)
                 .then(() => {
                     // notificação para usuario.
                     this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...')
@@ -71,10 +72,6 @@ export default {
                     this.$snotify.error('Você Errou!', 'Atenção')
                     this.errors = errors.response.data.errors
                 })
-        },
-
-        reset () {
-            Object.assign(this.$data, this.$options.data.call(this));
         },
     },
 }

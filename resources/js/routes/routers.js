@@ -18,7 +18,7 @@ import UpdateFilialComponent from '../components/admin/pages/filials/UpdateFilia
 
 import MaterialsComponent from '../components/admin/pages/materials/MaterialsComponent'
 import TipoMaterialsComponent from '../components/admin/pages/tipo_materials/TipoMaterialsComponent'
-
+import FormaFarmaceuticasComponent from '../components/admin/pages/forma_farmaceuticas/FormaFarmaceuticasComponent'
 
 Vue.use(VueRouter)
 
@@ -36,6 +36,7 @@ const routes = [
             // rotas de materials
             {path: 'materials', component: MaterialsComponent, name: 'admin.materials'},
             {path: 'tipo_materials', component: TipoMaterialsComponent, name: 'admin.tipo_materials'},
+            {path: 'forma_farmaceutica', component: FormaFarmaceuticasComponent, name: 'admin.forma_farmaceuticas'}
         ]
     },
 ]
