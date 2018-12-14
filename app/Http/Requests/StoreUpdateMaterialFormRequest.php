@@ -33,7 +33,7 @@ class StoreUpdateMaterialFormRequest extends FormRequest
             'valor_compra'          => 'required',
             'valor_revenda'         => 'required',
             'status'                => 'string',
-            'image'                 => 'image',
+            // 'image'                 => 'image',
         ];
     }
 }

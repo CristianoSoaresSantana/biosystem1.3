@@ -46,14 +46,12 @@ export default {
 
         fornecedor: {
             require: false,
-            type: Object,
-            default: () => {
-                return {
-                    id: '',
-                    razao_social: '',
-                    cnpj: ''
-                }
-            }
+            type: Object
+        },
+
+        title: {
+            require: true,
+            type: String,
         },
 
         errors: {
@@ -64,11 +62,6 @@ export default {
                     cnpj: ''
                 }
             }
-        },
-
-        title: {
-            require: true,
-            type: String,
         },
     },
 

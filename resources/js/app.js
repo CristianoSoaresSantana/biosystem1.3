@@ -20,3 +20,6 @@ const app = new Vue({
     store,
     el: '#app'
 });
+// carregando essas categorias no start do app!
+store.dispatch('actionLoadFormaFarmaceuticas')
+store.dispatch('actionLoadTipoMaterials')

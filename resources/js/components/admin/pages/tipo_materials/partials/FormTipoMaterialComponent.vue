@@ -39,13 +39,7 @@ export default {
 
         tipo_material: {
             require: false,
-            type: Object,
-            default: () => {
-                return {
-                    id: '',
-                    tipo_material: ''
-                }
-            }
+            type: Object
         },
 
         title: {

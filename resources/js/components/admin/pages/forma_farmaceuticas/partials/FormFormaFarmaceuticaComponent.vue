@@ -39,13 +39,7 @@ export default {
 
         forma_farmaceutica: {
             require: false,
-            type: Object,
-            default: () => {
-                return {
-                    id: '',
-                    forma_farmaceutica: ''
-                }
-            }
+            type: Object
         },
 
         errors: {

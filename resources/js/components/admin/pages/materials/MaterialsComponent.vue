@@ -3,11 +3,13 @@
         <h1>Lista de Materiais</h1>
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-success" @click.prevent="showVodal = true">Novo</button>
+                <button type="submit" class="btn btn-success" @click.prevent="criar">Novo</button>
                 <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
                     <formMaterial
+                    :title="titulo"
                     :material="propriedadeMaterial"
                     :errors="propriedade_errors"
+                    :statusInput="propriedade_statusInput"
                     :update="propriedadeupdate"
                     @success="cadastroRealizado">
                     </formMaterial>
@@ -45,7 +47,7 @@
                         <td v-text="material.valor_compra"></td>
                         <td v-text="material.valor_revenda"></td>
                         <td>
-                            <a href="#" class="btn btn-info btn-sm" @click.prevent="carregarMaterial(material.sku)">Editar</a>
+                            <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(material.sku)">Editar</a>
                             <confirmDelete :resgistro="material.sku" @destroy="destroy"/>
                         </td>
                     </tr>
@@ -79,6 +81,7 @@ export default {
             showVodal: false,
             propriedade_errors: {},
             propriedadeupdate: false,
+            propriedade_statusInput: false,
             propriedadeMaterial: {
                 sku: '',
                 cod_barra: '',
@@ -111,8 +114,18 @@ export default {
             this.$store.dispatch('actionLoadMaterials', {...this.params, page})
         },
 
+        criar () {
+            this.titulo = "Cadastrar Material",
+            this.reset (),
+            this.showVodal = true,
+            this.propriedadeupdate = false
+        },
+
         // pegar um registro e preencher o formulario!
-        carregarMaterial(sku){
+        editar(sku){
+            this.titulo = "Alterar Material",
+            this.propriedade_statusInput = true,
+            this.reset (),
             this.$store.dispatch('actionLoadMaterial', sku)
                     .then(response => {
                         this.propriedadeMaterial = response
@@ -151,6 +164,20 @@ export default {
                     this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
                 })
         },
+
+        reset () {
+            this.propriedadeMaterial = {
+                sku: '',
+                cod_barra: '',
+                descricao: '',
+                forma_farmaceutica_id: '',
+                tipo_material_id: '',
+                status: '',
+                valor_compra: '',
+                valor_revenda: '',
+                // image: '',
+            }
+        }
     },
 
     components: {

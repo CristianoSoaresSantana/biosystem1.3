@@ -46,25 +46,10 @@ export default {
 
         branche: {
             require: false,
-            type: Object,
-            default: () => {
-                return {
-                    id: '',
-                    razao_social: '',
-                    cnpj: ''
-                }
-            }
+            type: Object
         },
 
-        errors: {
-            default: () => {
-                return {
-                    id: '',
-                    razao_social: '',
-                    cnpj: ''
-                }
-            }
-        },
+        errors: {},
 
         title: {
             require: true,
