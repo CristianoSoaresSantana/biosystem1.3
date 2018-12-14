@@ -1,17 +1,17 @@
 <template>
     <div>
-        <h1>Lista Forma Farmacêutica</h1>
+        <h1>Lista de Fornecedores</h1>
         <div class="row">
             <div class="col">
                 <button type="submit" class="btn btn-success" @click.prevent="criar()">Novo</button>
-                    <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
-                    <formTipo
+                <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
+                    <formFornecedor
                     :title="titulo"
+                    :fornecedor="propriedadeFornecedor"
                     :errors="propriedade_errors"
-                    :forma_farmaceutica="propriedadeFormaFarmaceutica"
                     :update="propriedadeupdate"
                     @success="cadastroRealizado"
-                    ></formTipo>
+                    ></formFornecedor>
                 </vodal>
             </div>
         </div>
@@ -20,17 +20,19 @@
                 <thead>
                     <tr>
                     <th>ID</th>
-                    <th>Forma Farmacêutica</th>
+                    <th>Razão Social</th>
+                    <th>CNPJ</th>
                     <th width="150px">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="forma_farmaceutica in forma_farmaceuticas" :key="forma_farmaceutica.id">
-                        <td v-text="forma_farmaceutica.id"></td>
-                        <td v-text="forma_farmaceutica.forma_farmaceutica"></td>
+                    <tr v-for="fornecedor in fornecedors" :key="fornecedor.id">
+                        <td v-text="fornecedor.id"></td>
+                        <td v-text="fornecedor.razao_social"></td>
+                        <td v-text="fornecedor.cnpj"></td>
                         <td>
-                            <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(forma_farmaceutica.id)">Editar</a>
-                            <confirmDelete :resgistro="forma_farmaceutica.id" @destroy="destroy"/>
+                            <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(fornecedor.id)">Editar</a>
+                            <confirmDelete :resgistro="fornecedor.id" @destroy="destroy"/>
                         </td>
                     </tr>
                 </tbody>
@@ -40,51 +42,52 @@
 </template>
 
 <script>
-import Vodal from 'vodal';
-import FormFormaFarmaceuticaComponent from './partials/FormFormaFarmaceuticaComponent'
+import Vodal from 'vodal'
+import FormFornecedorComponent from './partials/FormFornecedorComponent'
 import confirmDelete from '../../layouts/confirmDeleteComponent'
 
 export default {
     created () {
-        this.loadFormaFarmaceuticas()
+        this.loadIndex()
     },
 
     data () {
         return {
             titulo: '',
-            propriedade_errors: {},
             showVodal: false,
             propriedadeupdate: false,
-            propriedadeFormaFarmaceutica: {
+            propriedade_errors: {},
+            propriedadeFornecedor: {
                 id: '',
-                forma_farmaceutica: '',
+                razao_social: '',
+                cnpj: '',
             },
         }
     },
 
     computed: {
-        forma_farmaceuticas () {
-            return this.$store.state.forma_farmaceuticas.itens
+        fornecedors () {
+            return this.$store.state.fornecedors.itens
         },
     },
 
     methods: {
-        loadFormaFarmaceuticas () {
-            this.$store.dispatch('actionLoadFormaFarmaceuticas')
+        loadIndex () {
+            this.$store.dispatch('actionLoadIndex')
         },
 
         criar(){
-            this.titulo = "Cadastrar Forma Farmacêutica"
+            this.titulo = "Cadastrar Fornecedor"
             this.showVodal = true
             this.propriedadeupdate = false
         },
 
         // pegar um registro e preencher o formulario!
         editar(id){
-            this.titulo = "Alterar Forma Farmacêutica"
-            this.$store.dispatch('actionLoadFormaFarmaceutica', id)
+            this.titulo = "Alterar Fornecedor"
+            this.$store.dispatch('actionLoadShow', id)
                     .then(response => {
-                        this.propriedadeFormaFarmaceutica = response
+                        this.propriedadeFornecedor = response
                         this.showVodal = true
                         this.propriedadeupdate = true
                     })
@@ -96,23 +99,25 @@ export default {
         hideVodal () {
             this.showVodal = false,
             this.propriedade_errors = {},
-            this.propriedadeFormaFarmaceutica = {
-                id: '',
-                forma_farmaceutica: '',
+            this.propriedadeFornecedor = {
+                id : '',
+                razao_social: '',
+                cnpj: ''
             }
+
         },
 
         cadastroRealizado () {
             this.hideVodal(),
-            this.loadFormaFarmaceuticas()
+            this.loadIndex()
         },
 
         //method que aciona uma action de filials.js
         destroy (id) {
-            this.$store.dispatch('destroyFormaFarmaceutica', id)
+            this.$store.dispatch('actionDestroy', id)
                 .then(() => {
                     this.$snotify.success('Registro Deletado!', 'Sucesso')
-                    this.loadFormaFarmaceuticas()
+                    this.loadIndex()
                 })
                 .catch(errors => {
                     this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
@@ -122,11 +127,11 @@ export default {
 
     components: {
         vodal: Vodal,
-        formTipo: FormFormaFarmaceuticaComponent,
+        formFornecedor: FormFornecedorComponent,
         confirmDelete
     },
-}
 
+}
 </script>
 
 <style scoped>

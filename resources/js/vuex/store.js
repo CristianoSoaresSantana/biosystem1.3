@@ -12,7 +12,7 @@ import Materials from './modules/materials/materials'
 import TipoMaterials from './modules/tipo_materials/tipo_materials'
 import FormaFarmaceuticas from './modules/forma_farmaceuticas/forma_farmaceuticas'
 import Branches from './modules/branches/branches'
-
+import Fornecedors from './modules/fornecedores/fornecedores'
 
 Vue.use(Vuex)
 
@@ -24,6 +24,7 @@ const store = new Vuex.Store({
         tipo_materials: TipoMaterials,
         forma_farmaceuticas: FormaFarmaceuticas,
         branches: Branches,
+        fornecedors: Fornecedors,
     }
 })
 

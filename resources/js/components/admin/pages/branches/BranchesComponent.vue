@@ -80,12 +80,10 @@ export default {
             this.titulo = "Cadastrar Filial"
             this.showVodal = true
             this.propriedadeupdate = false
-            this.reset()
         },
 
         // pegar um registro e preencher o formulario!
         editar(id){
-            this.reset()
             this.titulo = "Alterar Filial"
             this.$store.dispatch('actionLoadBranche', id)
                     .then(response => {
@@ -124,14 +122,7 @@ export default {
                 .catch(errors => {
                     this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
                 })
-        },
-
-        reset () {
-            this.propriedadeTipoMaterial = {
-                id: '',
-                tipo_material: '',
-            }
-        },
+        }
     },
 
     components: {

@@ -15,6 +15,10 @@
                     </li>
 
                     <li>
+                        <router-link :to="{name: 'admin.fornecedors'}"  class="nav-link">Fornecedores</router-link>
+                    </li>
+
+                    <li>
                         <router-link :to="{name: 'admin.materials'}"  class="nav-link">Materiais</router-link>
                     </li>
 
