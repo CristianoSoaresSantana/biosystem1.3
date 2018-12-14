@@ -56,14 +56,22 @@ export default {
             }
         },
 
-        errors: {},
+        errors: {
+            default: () => {
+                return {
+                    id: '',
+                    razao_social: '',
+                    cnpj: ''
+                }
+            }
+        },
 
         title: {
             require: true,
             type: String,
-        }
-
+        },
     },
+
 
     methods: {
         onSubmit () {

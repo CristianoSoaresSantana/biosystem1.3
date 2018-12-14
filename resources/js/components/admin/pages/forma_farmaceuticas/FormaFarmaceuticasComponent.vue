@@ -7,6 +7,7 @@
                     <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
                     <formTipo
                     :title="titulo"
+                    :errors="propriedade_errors"
                     :forma_farmaceutica="propriedadeFormaFarmaceutica"
                     :update="propriedadeupdate"
                     @success="cadastroRealizado"
@@ -50,14 +51,14 @@ export default {
 
     data () {
         return {
-            input: '',
+            titulo: '',
+            propriedade_errors: {},
             showVodal: false,
             propriedadeupdate: false,
             propriedadeFormaFarmaceutica: {
                 id: '',
                 forma_farmaceutica: '',
             },
-            titulo: ''
         }
     },
 
@@ -95,7 +96,8 @@ export default {
         },
 
         hideVodal () {
-            this.showVodal = false
+            this.showVodal = false,
+            this.propriedade_errors = {}
         },
 
         cadastroRealizado () {

@@ -39,7 +39,22 @@ export default {
 
         forma_farmaceutica: {
             require: false,
-            type: Object
+            type: Object,
+            default: () => {
+                return {
+                    id: '',
+                    forma_farmaceutica: ''
+                }
+            }
+        },
+
+        errors: {
+            default: () => {
+                return {
+                    id: '',
+                    forma_farmaceutica: ''
+                }
+            }
         },
 
         title: {
@@ -47,12 +62,6 @@ export default {
             type: String,
         }
 
-    },
-
-    data () {
-        return {
-            errors: {}
-        }
     },
 
     methods: {

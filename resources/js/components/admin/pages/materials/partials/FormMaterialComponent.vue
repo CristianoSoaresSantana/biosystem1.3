@@ -90,6 +90,7 @@ export default {
             type: Boolean,
             default: false,
         },
+        errors: {},
 
         material: {
             require: false,
@@ -106,13 +107,7 @@ export default {
                     valor_revenda: '',
                     // image: '',
                 }
-            }
-        }
-    },
-
-    data () {
-        return {
-            errors: {}
+            },
         }
     },
 

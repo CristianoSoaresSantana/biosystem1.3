@@ -7,6 +7,7 @@
                 <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
                     <formMaterial
                     :material="propriedadeMaterial"
+                    :errors="propriedade_errors"
                     :update="propriedadeupdate"
                     @success="cadastroRealizado">
                     </formMaterial>
@@ -74,7 +75,9 @@ export default {
     data () {
         return {
             input: '',
+            titulo: '',
             showVodal: false,
+            propriedade_errors: {},
             propriedadeupdate: false,
             propriedadeMaterial: {
                 sku: '',
@@ -128,7 +131,8 @@ export default {
         },
 
         hideVodal () {
-            this.showVodal = false
+            this.showVodal = false,
+            this.propriedade_errors = {}
         },
 
         cadastroRealizado () {

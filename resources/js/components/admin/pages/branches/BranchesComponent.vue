@@ -8,7 +8,7 @@
                     <formBranche
                     :title="titulo"
                     :branche="propriedadeBranche"
-                    :errors="errors"
+                    :errors="propriedade_errors"
                     :update="propriedadeupdate"
                     @success="cadastroRealizado"
                     ></formBranche>
@@ -53,15 +53,15 @@ export default {
 
     data () {
         return {
+            titulo: '',
             showVodal: false,
             propriedadeupdate: false,
+            propriedade_errors: {},
             propriedadeBranche: {
                 id: '',
                 razao_social: '',
                 cnpj: '',
             },
-            titulo: '',
-            errors: {}
         }
     },
 
@@ -100,7 +100,7 @@ export default {
 
         hideVodal () {
             this.showVodal = false,
-            this.errors = {},
+            this.propriedade_errors = {},
             this.propriedadeBranche = {
                 id : '',
                 razao_social: '',

@@ -7,7 +7,6 @@ import Vuex from 'vuex'
 
 
 //importar arquivos proprios deve ser uma linha depois das demais!
-import Filials from './modules/filials/filials'
 import Preloader from './modules/preloader/preloader'
 import Materials from './modules/materials/materials'
 import TipoMaterials from './modules/tipo_materials/tipo_materials'
@@ -19,8 +18,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     modules: {
-        // Incluir e dá um aliais para o modulo.
-        filials: Filials,
+        // Incluir e dá um aliais para o modulo.,
         preloader: Preloader,
         materials: Materials,
         tipo_materials: TipoMaterials,

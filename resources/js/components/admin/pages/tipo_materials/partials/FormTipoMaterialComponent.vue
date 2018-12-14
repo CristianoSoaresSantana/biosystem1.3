@@ -39,18 +39,27 @@ export default {
 
         tipo_material: {
             require: false,
-            type: Object
+            type: Object,
+            default: () => {
+                return {
+                    id: '',
+                    tipo_material: ''
+                }
+            }
         },
 
         title: {
             require: true,
             type: String,
-        }
-    },
+        },
 
-    data () {
-        return {
-            errors: {}
+        errors: {
+            default: () => {
+                return {
+                    id: '',
+                    tipo_material: ''
+                }
+            }
         }
     },
 
