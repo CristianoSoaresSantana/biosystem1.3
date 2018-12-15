@@ -1,60 +1,54 @@
 <template>
     <div>
-        <h1>Lista de Materiais</h1>
+        <h1>Lista de Clientes</h1>
         <div class="row">
             <div class="col">
                 <button type="submit" class="btn btn-success" @click.prevent="criar">Novo</button>
                 <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
-                    <formMaterial
+                    <formCliente
                     :title="titulo"
-                    :material="propriedadeMaterial"
+                    :cliente="propriedadeCliente"
                     :errors="propriedade_errors"
                     :statusInput="propriedade_statusInput"
                     :update="propriedadeupdate"
                     @success="cadastroRealizado">
-                    </formMaterial>
+                    </formCliente>
                 </vodal>
             </div>
             <div class="col">
-                <buscar @layoutBuscar="pageMaterialsBuscar"></buscar>
+                <buscar @layoutBuscar="pageBuscar"></buscar>
             </div>
         </div>
         <div>
             <table class="table table-dark">
                 <thead>
                     <tr>
-                    <th>Imagem</th>
-                    <th>SKU</th>
-                    <th>Cod. Barra</th>
-                    <th>Descrição</th>
-                    <th>Forma</th>
-                    <th>Tipo</th>
-                    <th>Status</th>
-                    <th>Valor Compra</th>
-                    <th>Valor Revenda</th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Celular</th>
+                    <th>Recados</th>
+                    <th>E-mail</th>
                     <th width="150px">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="material in materials.data" :key="material.sku">
-                        <td v-text="material.image"></td>
-                        <td v-text="material.sku"></td>
-                        <td v-text="material.cod_barra"></td>
-                        <td v-text="material.descricao"></td>
-                        <td v-text="material.forma_farmaceutica_id"></td>
-                        <td v-text="material.tipo_material_id"></td>
-                        <td v-text="material.status"></td>
-                        <td v-text="material.valor_compra"></td>
-                        <td v-text="material.valor_revenda"></td>
+                    <tr v-for="cliente in clientes.data" :key="cliente.id">
+                        <td v-text="cliente.id"></td>
+                        <td v-text="cliente.nome"></td>
+                        <td v-text="cliente.cpf"></td>
+                        <td v-text="cliente.celular"></td>
+                        <td v-text="cliente.celular_recado"></td>
+                        <td v-text="cliente.email"></td>
                         <td>
-                            <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(material.sku)">Editar</a>
-                            <confirmDelete :resgistro="material.sku" @destroy="destroy"/>
+                            <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(cliente.id)">Editar</a>
+                            <confirmDelete :resgistro="cliente.id" @destroy="destroy"/>
                         </td>
                     </tr>
                 </tbody>
                 </table>
                 <!-- paginação -->
-            <pagination :pagination="materials" :offset="6" @paginate="loadMaterials"></pagination>
+            <pagination :pagination="clientes" :offset="6" @paginate="loadIndex"></pagination>
         </div>
 
     </div>
@@ -65,13 +59,13 @@ import Vodal from 'vodal';
 
 import PaginationComponent from '../../../layouts/PaginationComponent.vue'
 import BuscarComponent from '../../layouts/geralBuscarComponent'
-import FormMaterialComponent from './partials/FormMaterialComponent'
+import FormClienteComponent from './partials/FormClienteComponent'
 import confirmDelete from '../../layouts/confirmDeleteComponent'
 
 export default {
 
     created () {
-        this.loadMaterials(1)
+        this.loadIndex(1)
     },
 
     data () {
@@ -82,51 +76,49 @@ export default {
             propriedade_errors: {},
             propriedadeupdate: false,
             propriedade_statusInput: false,
-            propriedadeMaterial: {
-                sku: '',
-                cod_barra: '',
-                descricao: '',
-                forma_farmaceutica_id: '',
-                tipo_material_id: '',
-                status: '',
-                valor_compra: '',
-                valor_revenda: '',
-                // image: '',
+            propriedadeCliente: {
+                id: '',
+                nome: '',
+                cpf: '',
+                celular: '',
+                celular_recado: '',
+                email: '',
+                endereco: ''
             }
         }
     },
 
     computed: {
-        materials () {
-            return this.$store.state.materials.itens
+        clientes () {
+            return this.$store.state.clientes.itens
         },
 
         params () {
             return {
-                page: this.materials.current_page,
+                page: this.clientes.current_page,
                 filter: this.input,
             }
         }
     },
 
     methods: {
-        loadMaterials (page) {
-            this.$store.dispatch('actionLoadMaterials', {...this.params, page})
+        loadIndex (page) {
+            this.$store.dispatch('clienteLoadIndex', {...this.params, page})
         },
 
         criar () {
-            this.titulo = "Cadastrar Material",
+            this.titulo = "Cadastrar Cliente",
             this.showVodal = true,
             this.propriedadeupdate = false
         },
 
         // pegar um registro e preencher o formulario!
-        editar(sku){
-            this.titulo = "Alterar Material",
+        editar(id){
+            this.titulo = "Alterar Cliente",
             this.propriedade_statusInput = true,
-            this.$store.dispatch('actionLoadMaterial', sku)
+            this.$store.dispatch('clienteLoadShow', id)
                     .then(response => {
-                        this.propriedadeMaterial = response
+                        this.propriedadeCliente = response
                         this.showVodal = true
                         this.propriedadeupdate = true
                     })
@@ -136,38 +128,36 @@ export default {
         },
 
         // nome desta var representa o path do component! ex page.materialsComponent
-        pageMaterialsBuscar (inputBuscar) {
+        pageBuscar (inputBuscar) {
             this.input = inputBuscar,
-            this.loadMaterials(1)
+            this.loadIndex(1)
         },
 
         hideVodal () {
             this.showVodal = false,
             this.propriedade_errors = {},
-            this.propriedadeMaterial = {
-                sku: '',
-                cod_barra: '',
-                descricao: '',
-                forma_farmaceutica_id: '',
-                tipo_material_id: '',
-                status: '',
-                valor_compra: '',
-                valor_revenda: '',
-                // image: '',
+            this.propriedadeCliente = {
+                id: '',
+                nome: '',
+                cpf: '',
+                celular: '',
+                recado: '',
+                email: '',
+                endereco: ''
             }
         },
 
         cadastroRealizado () {
             this.hideVodal(),
-            this.loadMaterials(1)
+            this.loadIndex(1)
         },
 
-        //method que aciona uma action de filials.js
-        destroy (sku) {
-            this.$store.dispatch('destroyMaterial', sku)
+        //method que aciona uma cliente de filials.js
+        destroy (id) {
+            this.$store.dispatch('clienteDestroy', id)
                 .then(() => {
                     this.$snotify.success('Registro Deletado!', 'Sucesso')
-                    this.loadMaterials()
+                    this.loadIndex()
                 })
                 .catch(errors => {
                     this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
@@ -179,7 +169,7 @@ export default {
         pagination: PaginationComponent,
         buscar:     BuscarComponent,
         vodal:      Vodal,
-        formMaterial: FormMaterialComponent,
+        formCliente: FormClienteComponent,
         confirmDelete,
     }
 }

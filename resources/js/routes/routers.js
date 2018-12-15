@@ -17,6 +17,7 @@ import FornecedorsComponent from '../components/admin/pages/fornecedors/Forneced
 import MaterialsComponent from '../components/admin/pages/materials/MaterialsComponent'
 import TipoMaterialsComponent from '../components/admin/pages/tipo_materials/TipoMaterialsComponent'
 import FormaFarmaceuticasComponent from '../components/admin/pages/forma_farmaceuticas/FormaFarmaceuticasComponent'
+import ClientesComponent from '../components/admin/pages/clientes/ClientesComponent'
 
 Vue.use(VueRouter)
 
@@ -26,9 +27,12 @@ const routes = [
         component: AdminComponent,
         children: [
             {path: 'admin', component: DashboardComponent, name: 'admin.dashboard'},
-            // rotas de materials
+
+            {path: 'clientes', component: ClientesComponent, name: 'admin.clientes'},
+
             {path: 'branches', component: BranchesComponent, name: 'admin.branches'},
             {path: 'fornecedors', component: FornecedorsComponent, name: 'admin.fornecedors'},
+
             {path: 'materials', component: MaterialsComponent, name: 'admin.materials'},
             {path: 'tipo_materials', component: TipoMaterialsComponent, name: 'admin.tipo_materials'},
             {path: 'forma_farmaceutica', component: FormaFarmaceuticasComponent, name: 'admin.forma_farmaceuticas'}

@@ -135,6 +135,7 @@ export default {
                 .catch(errors => {
                     // notificação para usuario.
                     this.$snotify.error('Você Errou!', 'Atenção')
+                    console.log(errors.response.data.errors)
                     this.errors = errors.response.data.errors
                 })
         }

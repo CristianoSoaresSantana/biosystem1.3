@@ -29,6 +29,7 @@ class StoreUpdateClienteFormRequest extends FormRequest
             'cpf'            => "required|string|max:15|unique:clientes,cpf,{$this->segment(3)},id",
             'celular'        => "required|string|max:15|unique:clientes,celular,{$this->segment(3)},id",
             'celular_recado' => "required|string|max:15|unique:clientes,celular_recado,{$this->segment(3)},id",
+            'endereço'       => "string",
         ];
     }
 }

@@ -35,7 +35,7 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateClienteFormRequest $request)
     {
         $clientes = $this->cliente->create($request->all());
 
@@ -59,7 +59,7 @@ class ClienteController extends Controller
         }
         return response()->json($cliente, 200);
     }
-    
+
     /**
      * Update the specified resource in storage.
      * primeiro verifica se existe o cliente a ser editado!
@@ -76,9 +76,9 @@ class ClienteController extends Controller
         {
             return response()->json(['error' => 'Not Found'], 404);
         }
-        
+
         $cliente->update($request->all());
-        
+
         return response()->json($cliente, 200);
     }
 

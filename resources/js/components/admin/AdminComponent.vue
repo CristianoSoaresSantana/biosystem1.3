@@ -36,6 +36,7 @@ export default {
         return {
             links: [
                 { name: 'admin.dashboard', title: 'Dashboard' },
+                { name: 'admin.clientes', title: 'Clientes' },
                 { name: 'admin.branches', title: 'Filiais' },
                 { name: 'admin.fornecedors', title: 'Fornecedores' },
                 { name: 'admin.materials', title: 'Materiais' },
