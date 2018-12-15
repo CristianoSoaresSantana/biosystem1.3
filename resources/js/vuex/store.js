@@ -14,6 +14,7 @@ import FormaFarmaceuticas from './modules/forma_farmaceuticas/forma_farmaceutica
 import Branches from './modules/branches/branches'
 import Fornecedors from './modules/fornecedores/fornecedores'
 import Clientes from './modules/clientes/clientes'
+import Usuarios from './modules/usuarios/usuarios'
 
 Vue.use(Vuex)
 
@@ -26,7 +27,8 @@ const store = new Vuex.Store({
         forma_farmaceuticas: FormaFarmaceuticas,
         branches: Branches,
         fornecedors: Fornecedors,
-        clientes: Clientes
+        clientes: Clientes,
+        usuarios: Usuarios
     }
 })
 

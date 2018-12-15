@@ -23,3 +23,4 @@ const app = new Vue({
 // carregando essas categorias no start do app!
 store.dispatch('actionLoadFormaFarmaceuticas')
 store.dispatch('actionLoadTipoMaterials')
+store.dispatch('actionLoadBranches')
