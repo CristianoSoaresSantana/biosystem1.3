@@ -36180,28 +36180,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            links: [{ name: 'admin.dashboard', title: 'Dashboard' }, { name: 'admin.branches', title: 'Filiais' }, { name: 'admin.fornecedors', title: 'Fornecedores' }, { name: 'admin.materials', title: 'Materiais' }, { name: 'admin.tipo_materials', title: 'Tipos de Material' }, { name: 'admin.forma_farmaceuticas', title: 'Forma Farmacêutica' }]
+        };
+    }
+});
 
 /***/ }),
 /* 53 */
@@ -36216,97 +36202,27 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "list-menu" }, [
-        _c("ul", { staticClass: "ul-menu" }, [
-          _c(
-            "li",
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "admin.dashboard" } }
-                },
-                [_vm._v("Dashboard")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "admin.branches" } }
-                },
-                [_vm._v("Filiais")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "admin.fornecedors" } }
-                },
-                [_vm._v("Fornecedores")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "admin.materials" } }
-                },
-                [_vm._v("Materiais")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "admin.tipo_materials" } }
-                },
-                [_vm._v("Tipo de Materiais")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "admin.forma_farmaceuticas" } }
-                },
-                [_vm._v("Forma Farmaceutica")]
-              )
-            ],
-            1
-          )
-        ])
+        _c(
+          "ul",
+          { staticClass: "ul-menu" },
+          _vm._l(_vm.links, function(link) {
+            return _c(
+              "li",
+              { key: link.name },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link",
+                    attrs: { to: { name: link.name } }
+                  },
+                  [_vm._v(_vm._s(link.title))]
+                )
+              ],
+              1
+            )
+          })
+        )
       ])
     ]),
     _vm._v(" "),
@@ -36915,7 +36831,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.dispatch(createOrUpdate, this.branche).then(function () {
                 // notificação para usuario.
                 _this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...');
-                _this.errors = {};
                 _this.$emit('success');
             }).catch(function (errors) {
                 // notificação para usuario.
@@ -37665,15 +37580,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String
         },
 
-        errors: {
-            default: function _default() {
-                return {
-                    id: '',
-                    razao_social: '',
-                    cnpj: ''
-                };
-            }
-        }
+        errors: {}
     },
 
     methods: {
@@ -37685,7 +37592,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.dispatch(createOrUpdate, this.fornecedor).then(function () {
                 // notificação para usuario.
                 _this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...');
-                _this.errors = {};
                 _this.$emit('success');
             }).catch(function (errors) {
                 // notificação para usuario.
@@ -38901,13 +38807,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.dispatch(createOrUpdate, this.material).then(function () {
                 // notificação para usuario.
                 _this.$snotify.success('Cadastro realizado com sucesso!', 'Parabéns...');
-                _this.errors = {};
                 _this.$emit('success');
             }).catch(function (errors) {
                 // notificação para usuario.
                 _this.$snotify.error('Você Errou!', 'Atenção');
-
-                console.log(errors.response.data.errors);
                 _this.errors = errors.response.data.errors;
             });
         }
@@ -39662,7 +39565,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -39757,7 +39660,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.titulo = "Cadastrar Tipo de Material";
             this.showVodal = true;
             this.propriedadeupdate = false;
-            this.reset();
         },
 
 
@@ -39765,7 +39667,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         editar: function editar(id) {
             var _this = this;
 
-            this.reset();
             this.titulo = "Alterar Tipo de Material";
             this.$store.dispatch('actionLoadTipoMaterial', id).then(function (response) {
                 _this.propriedadeTipoMaterial = response;
@@ -39776,7 +39677,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         hideVodal: function hideVodal() {
-            this.showVodal = false, this.propriedade_errors = {};
+            this.showVodal = false, this.propriedade_errors = {}, this.propriedadeTipoMaterial = {
+                id: '',
+                tipo_material: ''
+            };
         },
         cadastroRealizado: function cadastroRealizado() {
             this.hideVodal(), this.loadTipoMaterials();
@@ -39793,12 +39697,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (errors) {
                 _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
             });
-        },
-        reset: function reset() {
-            this.propriedadeTipoMaterial = {
-                id: '',
-                tipo_material: ''
-            };
         }
     },
 
@@ -39956,14 +39854,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String
         },
 
-        errors: {
-            default: function _default() {
-                return {
-                    id: '',
-                    tipo_material: ''
-                };
-            }
-        }
+        errors: {}
     },
 
     methods: {
@@ -39975,16 +39866,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.dispatch(createOrUpdate, this.tipo_material).then(function () {
                 // notificação para usuario.
                 _this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...');
-                _this.errors = {};
                 _this.$emit('success');
             }).catch(function (errors) {
                 // notificação para usuario.
                 _this.$snotify.error('Você Errou!', 'Atenção');
                 _this.errors = errors.response.data.errors;
             });
-        },
-        reset: function reset() {
-            Object.assign(this.$data, this.$options.data.call(this));
         }
     }
 });
@@ -40321,7 +40208,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40414,7 +40301,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         criar: function criar() {
             this.titulo = "Cadastrar Forma Farmacêutica";
-            this.reset();
             this.showVodal = true;
             this.propriedadeupdate = false;
         },
@@ -40425,7 +40311,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.titulo = "Alterar Forma Farmacêutica";
-            this.reset();
             this.$store.dispatch('actionLoadFormaFarmaceutica', id).then(function (response) {
                 _this.propriedadeFormaFarmaceutica = response;
                 _this.showVodal = true;
@@ -40435,7 +40320,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         hideVodal: function hideVodal() {
-            this.showVodal = false, this.propriedade_errors = {}, this.reset();
+            this.showVodal = false, this.propriedade_errors = {}, this.propriedadeFormaFarmaceutica = {
+                id: '',
+                forma_farmaceutica: ''
+            };
         },
         cadastroRealizado: function cadastroRealizado() {
             this.hideVodal(), this.loadFormaFarmaceuticas();
@@ -40452,12 +40340,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (errors) {
                 _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
             });
-        },
-        reset: function reset() {
-            this.propriedadeFormaFarmaceutica = {
-                id: '',
-                forma_farmaceutica: ''
-            };
         }
     },
 
@@ -40609,14 +40491,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Object
         },
 
-        errors: {
-            default: function _default() {
-                return {
-                    id: '',
-                    forma_farmaceutica: ''
-                };
-            }
-        },
+        errors: {},
 
         title: {
             require: true,
@@ -40634,7 +40509,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.dispatch(createOrUpdate, this.forma_farmaceutica).then(function () {
                 // notificação para usuario.
                 _this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...');
-                _this.errors = {};
                 _this.$emit('success');
             }).catch(function (errors) {
                 // notificação para usuario.

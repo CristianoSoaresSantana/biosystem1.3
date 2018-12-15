@@ -42,14 +42,7 @@ export default {
             type: Object
         },
 
-        errors: {
-            default: () => {
-                return {
-                    id: '',
-                    forma_farmaceutica: ''
-                }
-            }
-        },
+        errors: {},
 
         title: {
             require: true,
@@ -67,7 +60,6 @@ export default {
                 .then(() => {
                     // notificação para usuario.
                     this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...')
-                    this.errors = {}
                     this.$emit('success')
                 })
                 .catch(errors => {

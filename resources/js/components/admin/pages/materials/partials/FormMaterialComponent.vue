@@ -130,14 +130,11 @@ export default {
                 .then(() => {
                     // notificação para usuario.
                     this.$snotify.success('Cadastro realizado com sucesso!', 'Parabéns...')
-                    this.errors = {}
                     this.$emit('success')
                 })
                 .catch(errors => {
                     // notificação para usuario.
                     this.$snotify.error('Você Errou!', 'Atenção')
-
-                    console.log(errors.response.data.errors)
                     this.errors = errors.response.data.errors
                 })
         }

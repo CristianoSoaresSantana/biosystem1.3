@@ -6,31 +6,11 @@
             </div>
             <div class="list-menu">
                 <ul class="ul-menu">
-                    <li>
-                        <router-link :to="{name: 'admin.dashboard'}" class="nav-link">Dashboard</router-link>
-                    </li>
-
-                    <li>
-                        <router-link :to="{name: 'admin.branches'}"  class="nav-link">Filiais</router-link>
-                    </li>
-
-                    <li>
-                        <router-link :to="{name: 'admin.fornecedors'}"  class="nav-link">Fornecedores</router-link>
-                    </li>
-
-                    <li>
-                        <router-link :to="{name: 'admin.materials'}"  class="nav-link">Materiais</router-link>
-                    </li>
-
-                    <li>
-                        <router-link :to="{name: 'admin.tipo_materials'}"  class="nav-link">Tipo de Materiais</router-link>
-                    </li>
-
-                    <li>
-                        <router-link :to="{name: 'admin.forma_farmaceuticas'}"  class="nav-link">Forma Farmaceutica</router-link>
+                    <li v-for="link in links" :key="link.name">
+                        <router-link :to="{name: link.name}"  class="nav-link">{{link.title}}</router-link>
                     </li>
                 </ul>
-                </div>
+            </div>
         </div>
         <div class="container">
             <div class="top-dasboard">
@@ -52,8 +32,20 @@
 
 <script>
 export default {
-
+    data () {
+        return {
+            links: [
+                { name: 'admin.dashboard', title: 'Dashboard' },
+                { name: 'admin.branches', title: 'Filiais' },
+                { name: 'admin.fornecedors', title: 'Fornecedores' },
+                { name: 'admin.materials', title: 'Materiais' },
+                { name: 'admin.tipo_materials', title: 'Tipos de Material' },
+                { name: 'admin.forma_farmaceuticas', title: 'Forma Farmacêutica' }
+            ]
+        }
+    }
 }
+
 </script>
 
 <style scoped>

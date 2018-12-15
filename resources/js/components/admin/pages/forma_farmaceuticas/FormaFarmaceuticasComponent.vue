@@ -75,7 +75,6 @@ export default {
 
         criar(){
             this.titulo = "Cadastrar Forma Farmacêutica"
-            this.reset ()
             this.showVodal = true
             this.propriedadeupdate = false
         },
@@ -83,7 +82,6 @@ export default {
         // pegar um registro e preencher o formulario!
         editar(id){
             this.titulo = "Alterar Forma Farmacêutica"
-            this.reset ()
             this.$store.dispatch('actionLoadFormaFarmaceutica', id)
                     .then(response => {
                         this.propriedadeFormaFarmaceutica = response
@@ -98,7 +96,10 @@ export default {
         hideVodal () {
             this.showVodal = false,
             this.propriedade_errors = {},
-            this.reset ()
+            this.propriedadeFormaFarmaceutica = {
+                id: '',
+                forma_farmaceutica: '',
+            }
         },
 
         cadastroRealizado () {
@@ -117,13 +118,6 @@ export default {
                     this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
                 })
         },
-
-        reset () {
-            this.propriedadeFormaFarmaceutica = {
-                id: '',
-                forma_farmaceutica: '',
-            }
-        }
     },
 
     components: {

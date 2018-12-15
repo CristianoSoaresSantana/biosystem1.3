@@ -47,14 +47,7 @@ export default {
             type: String,
         },
 
-        errors: {
-            default: () => {
-                return {
-                    id: '',
-                    tipo_material: ''
-                }
-            }
-        }
+        errors: {}
     },
 
     methods: {
@@ -66,7 +59,6 @@ export default {
                 .then(() => {
                     // notificação para usuario.
                     this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...')
-                    this.errors = {}
                     this.$emit('success')
                 })
                 .catch(errors => {
@@ -74,11 +66,7 @@ export default {
                     this.$snotify.error('Você Errou!', 'Atenção')
                     this.errors = errors.response.data.errors
                 })
-        },
-
-        reset () {
-            Object.assign(this.$data, this.$options.data.call(this));
-        },
+        }
     },
 }
 </script>

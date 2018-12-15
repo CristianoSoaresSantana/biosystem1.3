@@ -77,12 +77,10 @@ export default {
             this.titulo = "Cadastrar Tipo de Material"
             this.showVodal = true
             this.propriedadeupdate = false
-            this.reset()
         },
 
         // pegar um registro e preencher o formulario!
         editar(id){
-            this.reset()
             this.titulo = "Alterar Tipo de Material"
             this.$store.dispatch('actionLoadTipoMaterial', id)
                     .then(response => {
@@ -97,7 +95,11 @@ export default {
 
         hideVodal () {
             this.showVodal = false,
-            this.propriedade_errors = {}
+            this.propriedade_errors = {},
+            this.propriedadeTipoMaterial = {
+                id: '',
+                tipo_material: '',
+            }
         },
 
         cadastroRealizado () {
@@ -115,14 +117,7 @@ export default {
                 .catch(errors => {
                     this.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso')
                 })
-        },
-
-        reset () {
-            this.propriedadeTipoMaterial = {
-                id: '',
-                tipo_material: '',
-            }
-        },
+        }
     },
 
     components: {

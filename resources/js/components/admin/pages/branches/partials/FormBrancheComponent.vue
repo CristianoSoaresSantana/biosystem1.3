@@ -67,7 +67,6 @@ export default {
                 .then(() => {
                     // notificação para usuario.
                     this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...')
-                    this.errors = {}
                     this.$emit('success')
                 })
                 .catch(errors => {
