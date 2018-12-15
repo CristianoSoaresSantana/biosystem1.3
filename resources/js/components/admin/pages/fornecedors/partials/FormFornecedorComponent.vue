@@ -61,7 +61,7 @@ export default {
     methods: {
         onSubmit () {
 
-            let createOrUpdate = this.update ? 'actionUpdate' : 'actionStore'
+            let createOrUpdate = this.update ? 'fornecedorUpdate' : 'fornecedorStore'
 
             this.$store.dispatch(createOrUpdate, this.fornecedor)
                 .then(() => {

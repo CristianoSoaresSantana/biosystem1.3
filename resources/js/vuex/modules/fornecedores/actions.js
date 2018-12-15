@@ -8,7 +8,7 @@ import { rejects } from "assert";
 const RESOURCE = 'fornecedors'
 
 export default {
-    actionLoadIndex (context) {
+    fornecedorLoadIndex (context) {
         context.commit('PRELOADER', true)
 
         axios.get(`${URL_BASE}${RESOURCE}`)
@@ -17,7 +17,7 @@ export default {
             .finally(() => context.commit('PRELOADER', false))
     },
 
-    actionLoadShow (context, id) {
+    fornecedorLoadShow (context, id) {
         context.commit('PRELOADER', true)
 
         return new Promise((resolve, reject) => {
@@ -28,7 +28,7 @@ export default {
         })
     },
 
-    actionStore (context, params) {
+    fornecedorStore (context, params) {
         context.commit('PRELOADER', true)
 
         return new Promise((resolve, reject) =>{
@@ -40,7 +40,7 @@ export default {
         })
     },
 
-    actionUpdate (context, params) {
+    fornecedorUpdate (context, params) {
         context.commit('PRELOADER', true)
 
         return new Promise((resolve, reject) => {
@@ -52,7 +52,7 @@ export default {
         })
     },
 
-    actionDestroy (context, id) {
+    fornecedorDestroy (context, id) {
         context.commit('PRELOADER', true)
 
         return new Promise((resolve, reject) => {

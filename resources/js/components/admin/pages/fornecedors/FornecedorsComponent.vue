@@ -73,7 +73,7 @@ export default {
 
     methods: {
         loadIndex () {
-            this.$store.dispatch('actionLoadIndex')
+            this.$store.dispatch('fornecedorLoadIndex')
         },
 
         criar(){
@@ -85,7 +85,7 @@ export default {
         // pegar um registro e preencher o formulario!
         editar(id){
             this.titulo = "Alterar Fornecedor"
-            this.$store.dispatch('actionLoadShow', id)
+            this.$store.dispatch('fornecedorLoadShow', id)
                     .then(response => {
                         this.propriedadeFornecedor = response
                         this.showVodal = true
@@ -112,9 +112,9 @@ export default {
             this.loadIndex()
         },
 
-        //method que aciona uma action de filials.js
+        //method que aciona uma fornecedor de filials.js
         destroy (id) {
-            this.$store.dispatch('actionDestroy', id)
+            this.$store.dispatch('fornecedorDestroy', id)
                 .then(() => {
                     this.$snotify.success('Registro Deletado!', 'Sucesso')
                     this.loadIndex()

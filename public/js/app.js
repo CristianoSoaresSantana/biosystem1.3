@@ -37373,7 +37373,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         loadIndex: function loadIndex() {
-            this.$store.dispatch('actionLoadIndex');
+            this.$store.dispatch('fornecedorLoadIndex');
         },
         criar: function criar() {
             this.titulo = "Cadastrar Fornecedor";
@@ -37387,7 +37387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.titulo = "Alterar Fornecedor";
-            this.$store.dispatch('actionLoadShow', id).then(function (response) {
+            this.$store.dispatch('fornecedorLoadShow', id).then(function (response) {
                 _this.propriedadeFornecedor = response;
                 _this.showVodal = true;
                 _this.propriedadeupdate = true;
@@ -37407,11 +37407,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
 
-        //method que aciona uma action de filials.js
+        //method que aciona uma fornecedor de filials.js
         destroy: function destroy(id) {
             var _this2 = this;
 
-            this.$store.dispatch('actionDestroy', id).then(function () {
+            this.$store.dispatch('fornecedorDestroy', id).then(function () {
                 _this2.$snotify.success('Registro Deletado!', 'Sucesso');
                 _this2.loadIndex();
             }).catch(function (errors) {
@@ -37588,7 +37588,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onSubmit: function onSubmit() {
             var _this = this;
 
-            var createOrUpdate = this.update ? 'actionUpdate' : 'actionStore';
+            var createOrUpdate = this.update ? 'fornecedorUpdate' : 'fornecedorStore';
 
             this.$store.dispatch(createOrUpdate, this.fornecedor).then(function () {
                 // notificação para usuario.
@@ -43816,7 +43816,7 @@ var RESOURCE = 'filials';
 var RESOURCE = 'fornecedors';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    actionLoadIndex: function actionLoadIndex(context) {
+    fornecedorLoadIndex: function fornecedorLoadIndex(context) {
         context.commit('PRELOADER', true);
 
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('' + __WEBPACK_IMPORTED_MODULE_1__config_config__["a" /* URL_BASE */] + RESOURCE).then(function (response) {
@@ -43827,7 +43827,7 @@ var RESOURCE = 'fornecedors';
             return context.commit('PRELOADER', false);
         });
     },
-    actionLoadShow: function actionLoadShow(context, id) {
+    fornecedorLoadShow: function fornecedorLoadShow(context, id) {
         context.commit('PRELOADER', true);
 
         return new Promise(function (resolve, reject) {
@@ -43838,7 +43838,7 @@ var RESOURCE = 'fornecedors';
             }).finally(context.commit('PRELOADER', false));
         });
     },
-    actionStore: function actionStore(context, params) {
+    fornecedorStore: function fornecedorStore(context, params) {
         context.commit('PRELOADER', true);
 
         return new Promise(function (resolve, reject) {
@@ -43853,7 +43853,7 @@ var RESOURCE = 'fornecedors';
             });
         });
     },
-    actionUpdate: function actionUpdate(context, params) {
+    fornecedorUpdate: function fornecedorUpdate(context, params) {
         context.commit('PRELOADER', true);
 
         return new Promise(function (resolve, reject) {
@@ -43868,7 +43868,7 @@ var RESOURCE = 'fornecedors';
             });
         });
     },
-    actionDestroy: function actionDestroy(context, id) {
+    fornecedorDestroy: function fornecedorDestroy(context, id) {
         context.commit('PRELOADER', true);
 
         return new Promise(function (resolve, reject) {
