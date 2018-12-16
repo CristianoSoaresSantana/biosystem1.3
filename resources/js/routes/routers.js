@@ -20,6 +20,7 @@ import FormaFarmaceuticasComponent from '../components/admin/pages/forma_farmace
 import ClientesComponent from '../components/admin/pages/clientes/ClientesComponent'
 import UsuariosComponent from '../components/admin/pages/usuarios/UsuariosComponent'
 import SetorsComponent from '../components/admin/pages/setors/SetorsComponent'
+import FormaPagtosComponent from '../components/admin/pages/forma_pagtos/FormaPagtosComponent'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,7 @@ const routes = [
 
             {path: 'setors', component: SetorsComponent, name: 'admin.setors'},
             {path: 'tipo_materials', component: TipoMaterialsComponent, name: 'admin.tipo_materials'},
+            {path: 'forma_pagtos', component: FormaPagtosComponent, name: 'admin.forma_pagtos'},
             {path: 'forma_farmaceutica', component: FormaFarmaceuticasComponent, name: 'admin.forma_farmaceuticas'}
         ]
     },

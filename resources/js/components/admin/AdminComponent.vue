@@ -36,12 +36,16 @@ export default {
         return {
             links: [
                 { name: 'admin.dashboard', title: 'Dashboard' },
+
                 { name: 'admin.usuarios', title: 'Usuários' },
                 { name: 'admin.clientes', title: 'Clientes' },
                 { name: 'admin.branches', title: 'Filiais' },
                 { name: 'admin.fornecedors', title: 'Fornecedores' },
+
                 { name: 'admin.materials', title: 'Materiais' },
+
                 { name: 'admin.setors', title: 'Setores' },
+                { name: 'admin.forma_pagtos', title: 'Forma Pagamento' },
                 { name: 'admin.tipo_materials', title: 'Tipos de Material' },
                 { name: 'admin.forma_farmaceuticas', title: 'Forma Farmacêutica' }
             ]

@@ -16,6 +16,7 @@ import Fornecedors from './modules/fornecedores/fornecedores'
 import Clientes from './modules/clientes/clientes'
 import Usuarios from './modules/usuarios/usuarios'
 import Setors from './modules/setors/setors'
+import FormaPagtos from './modules/forma_pagtos/forma_pagtos'
 
 Vue.use(Vuex)
 
@@ -30,7 +31,8 @@ const store = new Vuex.Store({
         fornecedors:         Fornecedors,
         clientes:            Clientes,
         usuarios:            Usuarios,
-        setors:              Setors
+        setors:              Setors,
+        forma_pagtos:        FormaPagtos
     }
 })
 
