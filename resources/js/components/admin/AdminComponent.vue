@@ -41,6 +41,7 @@ export default {
                 { name: 'admin.branches', title: 'Filiais' },
                 { name: 'admin.fornecedors', title: 'Fornecedores' },
                 { name: 'admin.materials', title: 'Materiais' },
+                { name: 'admin.setors', title: 'Setores' },
                 { name: 'admin.tipo_materials', title: 'Tipos de Material' },
                 { name: 'admin.forma_farmaceuticas', title: 'Forma Farmacêutica' }
             ]

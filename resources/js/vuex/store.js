@@ -15,20 +15,22 @@ import Branches from './modules/branches/branches'
 import Fornecedors from './modules/fornecedores/fornecedores'
 import Clientes from './modules/clientes/clientes'
 import Usuarios from './modules/usuarios/usuarios'
+import Setors from './modules/setors/setors'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
     modules: {
         // Incluir e dá um aliais para o modulo.,
-        preloader: Preloader,
-        materials: Materials,
-        tipo_materials: TipoMaterials,
+        preloader:           Preloader,
+        materials:           Materials,
+        tipo_materials:      TipoMaterials,
         forma_farmaceuticas: FormaFarmaceuticas,
-        branches: Branches,
-        fornecedors: Fornecedors,
-        clientes: Clientes,
-        usuarios: Usuarios
+        branches:            Branches,
+        fornecedors:         Fornecedors,
+        clientes:            Clientes,
+        usuarios:            Usuarios,
+        setors:              Setors
     }
 })
 

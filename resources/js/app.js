@@ -24,3 +24,4 @@ const app = new Vue({
 store.dispatch('actionLoadFormaFarmaceuticas')
 store.dispatch('actionLoadTipoMaterials')
 store.dispatch('actionLoadBranches')
+store.dispatch('setorsLoadIndex')
