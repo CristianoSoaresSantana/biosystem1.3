@@ -10,6 +10,13 @@ apache
 systemctl restart apache2
 sudo a2enmod rewrite
 
+vue
+sudo npm install vue-template-compiler@2.5.21
+sudo npm install vue@2.5.21
+sudo npm install ajv
+sudo npm install eslint --save-dev
+sudo npm install imagemin
+
 <VirtualHost *:80>
     ServerName biosystem.local
     ServerAlias www.biosystem.local

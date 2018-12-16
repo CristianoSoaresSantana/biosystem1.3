@@ -24,3 +24,15 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.form-inline {
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-flow: row wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    float: right;
+}
+</style>

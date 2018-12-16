@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div class="menu">
             <div class="logo">
                 <img src="./images/farmaforma.jpeg" alt="Biosystem" class="logo-painel">
@@ -12,7 +12,7 @@
                 </ul>
             </div>
         </div>
-        <div class="container">
+        <div class="conteudo">
             <div class="top-dasboard">
                 <div class="dropdown">
                     <div class="dropdown-toggle" type="div" id="dropdownMenudiv" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,6 +54,10 @@ export default {
 <style scoped>
 
 *{margin: 0px; padding: 0px; font-family: "Open Sans";}
+.container {
+    max-width: 1920px;
+    max-height: 1080px;
+}
 .menu{
     background: #2e9133;
     float: left;
@@ -88,11 +92,11 @@ ul.ul-menu li a {
     width: 167px;
     color: #ffffff;
 }
-.container {
+.conteudo {
     float: left;
     background: #ffffff;
     min-height: 100vh;
-    width: calc(100% - 90px);
+    width: calc(100% - 183px);
 }
 .top-dasboard{
     width: 100%;

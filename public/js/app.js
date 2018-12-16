@@ -2129,7 +2129,7 @@ module.exports = g;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.5.20
+ * Vue.js v2.5.21
  * (c) 2014-2018 Evan You
  * Released under the MIT License.
  */
@@ -5031,7 +5031,7 @@ function mountComponent (
   // component's mounted hook), which relies on vm._watcher being already defined
   new Watcher(vm, updateComponent, noop, {
     before: function before () {
-      if (vm._isMounted) {
+      if (vm._isMounted && !vm._isDestroyed) {
         callHook(vm, 'beforeUpdate');
       }
     }
@@ -5972,9 +5972,10 @@ function renderList (
       ret[i] = render(val[key], key, i);
     }
   }
-  if (isDef(ret)) {
-    (ret)._isVList = true;
+  if (!isDef(ret)) {
+    ret = [];
   }
+  (ret)._isVList = true;
   return ret
 }
 
@@ -7316,7 +7317,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.5.20';
+Vue.version = '2.5.21';
 
 /*  */
 
@@ -8974,7 +8975,7 @@ function genComponentModel (
 
   el.model = {
     value: ("(" + value + ")"),
-    expression: ("\"" + value + "\""),
+    expression: JSON.stringify(value),
     callback: ("function (" + baseValueExpression + ") {" + assignment + "}")
   };
 }
@@ -11595,7 +11596,7 @@ function processKey (el) {
         var parent = el.parent;
         if (iterator && iterator === exp && parent && parent.tag === 'transition-group') {
           warn$2(
-            "Do not use v-for index as key on <transtion-group> children, " +
+            "Do not use v-for index as key on <transition-group> children, " +
             "this is the same as not using keys."
           );
         }
@@ -12712,7 +12713,9 @@ function genChildren (
       el$1.tag !== 'template' &&
       el$1.tag !== 'slot'
     ) {
-      var normalizationType = checkSkip && state.maybeComponent(el$1) ? ",1" : "";
+      var normalizationType = checkSkip
+        ? state.maybeComponent(el$1) ? ",1" : ",0"
+        : "";
       return ("" + ((altGenElement || genElement)(el$1, state)) + normalizationType)
     }
     var normalizationType$1 = checkSkip
@@ -13567,17 +13570,21 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(213)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(92)
 /* template */
-var __vue_template__ = __webpack_require__(93)
+var __vue_template__ = __webpack_require__(215)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-2cc6fb9b"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -36211,7 +36218,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n*[data-v-2073db19]{margin: 0px; padding: 0px; font-family: \"Open Sans\";\n}\n.menu[data-v-2073db19]{\n    background: #2e9133;\n    float: left;\n    padding: 0px;\n    width: 180px;;\n    text-align: center;\n    min-height: 100vh;\n}\n.logo[data-v-2073db19]{\n    float: center;\n}\nimg.logo-painel[data-v-2073db19]{\n    max-width: 179px;\n    max-height: 179px;\n    margin-top: 39px;\n}\n.list-menu[data-v-2073db19]{\n    float: left;\n    width: 100%;\n    margin-top: 10px;\n}\nul.ul-menu[data-v-2073db19]{\n    list-style: none;\n}\nul.ul-menu li[data-v-2073db19]{\n    float: left;\n}\nul.ul-menu li a[data-v-2073db19] {\n    font-size: 1.4em;\n    margin: 3px 7px;\n    float: left;\n    width: 167px;\n    color: #ffffff;\n}\n.container[data-v-2073db19] {\n    float: left;\n    background: #ffffff;\n    min-height: 100vh;\n    width: calc(100% - 90px);\n}\n.top-dasboard[data-v-2073db19]{\n    width: 100%;\n    float: left;\n    background: #2e9133;\n    padding: 8px;\n}\n.dropdown[data-v-2073db19] {\n    float: right;\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-2073db19]{margin: 0px; padding: 0px; font-family: \"Open Sans\";\n}\n.container[data-v-2073db19] {\n    max-width: 1920px;\n    max-height: 1080px;\n}\n.menu[data-v-2073db19]{\n    background: #2e9133;\n    float: left;\n    padding: 0px;\n    width: 180px;;\n    text-align: center;\n    min-height: 100vh;\n}\n.logo[data-v-2073db19]{\n    float: center;\n}\nimg.logo-painel[data-v-2073db19]{\n    max-width: 179px;\n    max-height: 179px;\n    margin-top: 39px;\n}\n.list-menu[data-v-2073db19]{\n    float: left;\n    width: 100%;\n    margin-top: 10px;\n}\nul.ul-menu[data-v-2073db19]{\n    list-style: none;\n}\nul.ul-menu li[data-v-2073db19]{\n    float: left;\n}\nul.ul-menu li a[data-v-2073db19] {\n    font-size: 1.4em;\n    margin: 3px 7px;\n    float: left;\n    width: 167px;\n    color: #ffffff;\n}\n.conteudo[data-v-2073db19] {\n    float: left;\n    background: #ffffff;\n    min-height: 100vh;\n    width: calc(100% - 183px);\n}\n.top-dasboard[data-v-2073db19]{\n    width: 100%;\n    float: left;\n    background: #2e9133;\n    padding: 8px;\n}\n.dropdown[data-v-2073db19] {\n    float: right;\n}\n", ""]);
 
 // exports
 
@@ -36304,7 +36311,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "menu" }, [
       _vm._m(0),
       _vm._v(" "),
@@ -36328,14 +36335,15 @@ var render = function() {
               ],
               1
             )
-          })
+          }),
+          0
         )
       ])
     ]),
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "container" },
+      { staticClass: "conteudo" },
       [_vm._m(1), _vm._v(" "), _c("router-view")],
       1
     )
@@ -37268,7 +37276,8 @@ var render = function() {
                 1
               )
             ])
-          })
+          }),
+          0
         )
       ])
     ])
@@ -37963,7 +37972,8 @@ var render = function() {
                 1
               )
             ])
-          })
+          }),
+          0
         )
       ])
     ])
@@ -38082,7 +38092,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38220,6 +38230,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         criar: function criar() {
             this.titulo = "Cadastrar Material", this.showVodal = true, this.propriedadeupdate = false;
+            this.propriedadeMaterial = {
+                sku: '',
+                cod_barra: '',
+                descricao: '',
+                forma_farmaceutica_id: '',
+                tipo_material_id: '',
+                status: 'ativo',
+                valor_compra: '',
+                valor_revenda: ''
+                // image: '',
+            };
         },
 
 
@@ -38523,68 +38544,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "form",
-      {
-        staticClass: "form form-inline",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.layoutBuscar($event)
-          }
-        }
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.inputBuscar,
-              expression: "inputBuscar"
-            }
-          ],
-          staticClass: "form-control mr-sm-2",
-          attrs: { type: "text", placeholder: "Buscar" },
-          domProps: { value: _vm.inputBuscar },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.inputBuscar = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-outline-success", attrs: { type: "submit" } },
-          [_vm._v("Buscar")]
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2cc6fb9b", module.exports)
-  }
-}
-
-/***/ }),
+/* 93 */,
 /* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -39480,7 +39440,8 @@ var render = function() {
                   1
                 )
               ])
-            })
+            }),
+            0
           )
         ]),
         _vm._v(" "),
@@ -40144,7 +40105,8 @@ var render = function() {
                 1
               )
             ])
-          })
+          }),
+          0
         )
       ])
     ])
@@ -40794,7 +40756,8 @@ var render = function() {
                 1
               )
             ])
-          })
+          }),
+          0
         )
       ])
     ])
@@ -41735,7 +41698,8 @@ var render = function() {
                   1
                 )
               ])
-            })
+            }),
+            0
           )
         ]),
         _vm._v(" "),
@@ -43163,7 +43127,8 @@ var render = function() {
                   1
                 )
               ])
-            })
+            }),
+            0
           )
         ]),
         _vm._v(" "),
@@ -43817,7 +43782,8 @@ var render = function() {
                 1
               )
             ])
-          })
+          }),
+          0
         )
       ])
     ])
@@ -47579,6 +47545,113 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(214);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("2f462bd8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2cc6fb9b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./geralBuscarComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2cc6fb9b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./geralBuscarComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.form-inline[data-v-2cc6fb9b] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    -ms-flex-flow: row wrap;\n        flex-flow: row wrap;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n        align-items: center;\n    float: right;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "form",
+      {
+        staticClass: "form form-inline",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.layoutBuscar($event)
+          }
+        }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.inputBuscar,
+              expression: "inputBuscar"
+            }
+          ],
+          staticClass: "form-control mr-sm-2",
+          attrs: { type: "text", placeholder: "Buscar" },
+          domProps: { value: _vm.inputBuscar },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.inputBuscar = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-outline-success", attrs: { type: "submit" } },
+          [_vm._v("Buscar")]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2cc6fb9b", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

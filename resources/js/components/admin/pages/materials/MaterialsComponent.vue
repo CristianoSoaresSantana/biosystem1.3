@@ -118,6 +118,17 @@ export default {
             this.titulo = "Cadastrar Material",
             this.showVodal = true,
             this.propriedadeupdate = false
+            this.propriedadeMaterial = {
+                sku: '',
+                cod_barra: '',
+                descricao: '',
+                forma_farmaceutica_id: '',
+                tipo_material_id: '',
+                status: 'ativo',
+                valor_compra: '',
+                valor_revenda: '',
+                // image: '',
+            }
         },
 
         // pegar um registro e preencher o formulario!
