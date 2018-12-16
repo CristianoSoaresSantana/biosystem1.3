@@ -45,6 +45,7 @@ export default {
                 { name: 'admin.materials', title: 'Materiais' },
 
                 { name: 'admin.setors', title: 'Setores' },
+                { name: 'admin.tipo_movimentos', title: 'Tipo Movimento' },
                 { name: 'admin.forma_pagtos', title: 'Forma Pagamento' },
                 { name: 'admin.tipo_materials', title: 'Tipos de Material' },
                 { name: 'admin.forma_farmaceuticas', title: 'Forma Farmacêutica' }
@@ -59,8 +60,8 @@ export default {
 
 *{margin: 0px; padding: 0px; font-family: "Open Sans";}
 .container {
-    max-width: 1920px;
-    max-height: 1080px;
+    max-width: 1680px;
+    max-height: 1050px;
 }
 .menu{
     background: #2e9133;
