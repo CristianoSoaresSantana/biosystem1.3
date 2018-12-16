@@ -117,12 +117,14 @@
                 <div class="form-group col-md-6">
                   <div :class="['col-auto', {'has-error': errors.setor_id}]">
                     <div v-if="errors.setor_id">{{ errors.setor_id[0] }}</div>
-                    <input
-                      type="text"
-                      v-model="usuario.setor_id"
-                      class="form-control mb-2 mr-sm-2"
-                      placeholder="setor"
-                    >
+                    <select class="form-control mb-2 mr-sm-2" v-model="usuario.setor_id">
+                      <option value>Setor</option>
+                      <option
+                        v-for="setor in setors"
+                        :key="setor.id"
+                        :value="setor.id"
+                      >{{ setor.setor }}</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -204,6 +206,9 @@ export default {
   computed: {
     filials() {
       return this.$store.state.branches.itens;
+    },
+    setors() {
+        return this.$store.state.setors.itens;
     }
   },
 
