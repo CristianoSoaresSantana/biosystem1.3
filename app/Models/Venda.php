@@ -18,11 +18,11 @@ class Venda extends Model
     use Notifiable;
 
     public $timestamps = true;
-    
+
     protected $dates = ['deleted_at'];
     protected $table = 'vendas';
     protected $fillable = ['cliente_id', 'filial_id', 'tipo_mov_id', 'user_id', 'valor_total', 'status'];
-    
+
 
 
     /**
@@ -38,7 +38,7 @@ class Venda extends Model
         else
         {
             return $this->where(function ($query) use ($data){
-                        if(isset($data['filter'])) 
+                        if(isset($data['filter']))
                         {
                             $filter = $data['filter'];
                             $query->where('id', 'LIKE', "%{$filter}%");
@@ -58,7 +58,7 @@ class Venda extends Model
                         }
                     })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
-        
+
     }
 
     /**
@@ -82,7 +82,7 @@ class Venda extends Model
 
     public function tipoMovimento()
     {
-        return $this->belongsTo(Tipo_movimento::class);
+        return $this->belongsTo(Tipo_movimento::class, 'tipo_mov_id');
     }
 
     /**

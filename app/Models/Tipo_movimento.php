@@ -10,7 +10,7 @@ use App\Models\Compra;
 class Tipo_movimento extends Model
 {
     use Notifiable;
-    
+
     public $timestamps = true;
 
     protected $table = 'tipo_movimentos';
@@ -39,7 +39,7 @@ class Tipo_movimento extends Model
      */
     public function vendas()
     {
-        return $this->hasMany(Venda::class, 'tipo_mov_id');
+        return $this->hasMany(Venda::class);
     }
 
     /**
@@ -48,6 +48,6 @@ class Tipo_movimento extends Model
      */
     public function compras()
     {
-        return $this->hasMany(Compra::class, 'tipo_mov_id');
+        return $this->hasMany(Compra::class);
     }
 }

@@ -17,13 +17,13 @@ class Compra extends Model
 
     public $timestamps = true;
     public $incrementing = false;
-    
+
     protected $keyType = 'string';
     protected $dates = ['deleted_at'];
     protected $table = 'compras';
     protected $primaryKey = 'num_doc';
     protected $fillable = ['num_doc', 'filial_id', 'tipo_mov_id', 'fornecedor_id', 'valor_nota',];
-    
+
 
 
     /**
@@ -39,7 +39,7 @@ class Compra extends Model
         else
         {
             return $this->where(function ($query) use ($data){
-                        if(isset($data['filter'])) 
+                        if(isset($data['filter']))
                         {
                             $filter = $data['filter'];
                             $query->where('num_doc', 'LIKE', "%{$filter}%");
@@ -59,7 +59,7 @@ class Compra extends Model
                         }
                     })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
-        
+
     }
 
     /**
@@ -78,7 +78,7 @@ class Compra extends Model
 
     public function tipoMovimento()
     {
-        return $this->belongsTo(Tipo_movimento::class);
+        return $this->belongsTo(Tipo_movimento::class, 'tipo_mov_id');
     }
 
     /**
