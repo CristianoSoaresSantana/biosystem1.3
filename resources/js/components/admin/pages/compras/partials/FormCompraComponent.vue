@@ -92,7 +92,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     update: {
@@ -157,7 +156,6 @@ export default {
     }
   }
 };
-
 </script>
 
 <style scoped>

@@ -8,7 +8,7 @@
           <formFormaPagto
             :title="titulo"
             :forma_pagtos="propriedadeFormaPagto"
-            :errors="propriedade_errors"
+            :filho_errors="propriedade_errors"
             :update="propriedadeupdate"
             @success="cadastroRealizado"
           ></formFormaPagto>

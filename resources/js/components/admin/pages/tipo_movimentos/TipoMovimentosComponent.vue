@@ -7,8 +7,8 @@
         <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
           <formTipoMovimento
             :title="titulo"
-            :tipo_movimentos ="propriedadeTipoMovimentos"
-            :errors="propriedade_errors"
+            :tipo_movimentos="propriedadeTipoMovimentos"
+            :filho_errors="propriedade_errors"
             :update="propriedadeupdate"
             @success="cadastroRealizado"
           ></formTipoMovimento>
@@ -29,7 +29,11 @@
             <td v-text="tipo_movimento.id"></td>
             <td v-text="tipo_movimento.tipo_movimentacao"></td>
             <td>
-              <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(tipo_movimento.id)">Editar</a>
+              <a
+                href="#"
+                class="btn btn-info btn-sm"
+                @click.prevent="editar(tipo_movimento.id)"
+              >Editar</a>
               <confirmDelete :resgistro="tipo_movimento.id" @destroy="destroy"/>
             </td>
           </tr>

@@ -188,7 +188,7 @@ export default {
       default: false
     },
 
-    errors: {},
+    filho_errors: {},
 
     statusInput: "",
 
@@ -203,12 +203,24 @@ export default {
     }
   },
 
+  data() {
+      return {
+          errors: {}
+      }
+  },
+
+  watch: {
+      filho_errors() {
+          this.errors = this.filho_errors;
+      }
+  },
+
   computed: {
     filials() {
       return this.$store.state.branches.itens;
     },
     setors() {
-        return this.$store.state.setors.itens;
+      return this.$store.state.setors.itens;
     }
   },
 
@@ -229,7 +241,6 @@ export default {
         .catch(errors => {
           // notificação para usuario.
           this.$snotify.error("Você Errou!", "Atenção");
-          console.log(errors.response.data.errors);
           this.errors = errors.response.data.errors;
         });
     }

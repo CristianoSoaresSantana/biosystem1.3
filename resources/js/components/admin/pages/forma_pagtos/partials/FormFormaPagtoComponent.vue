@@ -56,12 +56,26 @@ export default {
       type: String
     },
 
-    errors: {}
+    filho_errors: {}
+  },
+
+  data() {
+      return {
+          errors: {}
+      }
+  },
+
+  watch: {
+      filho_errors() {
+          this.errors = this.filho_errors;
+      }
   },
 
   methods: {
     onSubmit() {
-      let createOrUpdate = this.update ? "forma_pagtosUpdate" : "forma_pagtosStore";
+      let createOrUpdate = this.update
+        ? "forma_pagtosUpdate"
+        : "forma_pagtosStore";
 
       this.$store
         .dispatch(createOrUpdate, this.forma_pagtos)

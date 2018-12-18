@@ -8,7 +8,7 @@
           <formUsuario
             :title="titulo"
             :usuario="propriedadeUsuario"
-            :errors="propriedade_errors"
+            :filho_errors="propriedade_errors"
             :statusInput="propriedade_statusInput"
             :update="propriedadeupdate"
             @success="cadastroRealizado"
@@ -116,21 +116,21 @@ export default {
         (this.showVodal = true),
         (this.propriedadeupdate = false),
         (this.propriedadeUsuario = {
-            id: "",
-            name: "",
-            cpf: "",
-            data_nascimento: "",
-            celular: "",
-            celular_recado: "",
-            email: "",
-            endereco: "",
-            setor_id: "",
-            filial_id: "",
-            permissao: "app.user",
-            status: "ativo",
-            filial: Object,
-            setor: Object
-        })
+          id: "",
+          name: "",
+          cpf: "",
+          data_nascimento: "",
+          celular: "",
+          celular_recado: "",
+          email: "",
+          endereco: "",
+          setor_id: "",
+          filial_id: "",
+          permissao: "app.user",
+          status: "ativo",
+          filial: Object,
+          setor: Object
+        });
     },
 
     // pegar um registro e preencher o formulario!

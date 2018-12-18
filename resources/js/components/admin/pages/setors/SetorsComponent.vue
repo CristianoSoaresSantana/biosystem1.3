@@ -8,7 +8,7 @@
           <formSetor
             :title="titulo"
             :setor="propriedadeSetor"
-            :errors="propriedade_errors"
+            :filho_errors="propriedade_errors"
             :update="propriedadeupdate"
             @success="cadastroRealizado"
           ></formSetor>

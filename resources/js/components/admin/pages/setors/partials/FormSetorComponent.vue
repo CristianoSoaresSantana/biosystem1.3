@@ -56,7 +56,19 @@ export default {
       type: String
     },
 
-    errors: {}
+    filho_errors: {}
+  },
+
+  data() {
+      return {
+          errors: {}
+      }
+  },
+
+  watch: {
+      filho_errors() {
+          this.errors = this.filho_errors;
+      }
   },
 
   methods: {

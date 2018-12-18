@@ -52751,7 +52751,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n*[data-v-2073db19]{margin: 0px; padding: 0px; font-family: \"Open Sans\";\n}\n.container[data-v-2073db19] {\n    max-width: 1680px;\n    max-height: 1050px;\n}\n.menu[data-v-2073db19]{\n    background: #2e9133;\n    float: left;\n    padding: 0px;\n    width: 180px;;\n    text-align: center;\n    min-height: 100vh;\n}\n.logo[data-v-2073db19]{\n    float: center;\n}\nimg.logo-painel[data-v-2073db19]{\n    max-width: 179px;\n    max-height: 179px;\n    margin-top: 39px;\n}\n.list-menu[data-v-2073db19]{\n    float: left;\n    width: 100%;\n    margin-top: 10px;\n}\nul.ul-menu[data-v-2073db19]{\n    list-style: none;\n}\nul.ul-menu li[data-v-2073db19]{\n    float: left;\n}\nul.ul-menu li a[data-v-2073db19] {\n    font-size: 1.4em;\n    margin: 3px 7px;\n    float: left;\n    width: 167px;\n    color: #ffffff;\n}\n.conteudo[data-v-2073db19] {\n    float: left;\n    background: #ffffff;\n    min-height: 100vh;\n    width: calc(100% - 183px);\n}\n.top-dasboard[data-v-2073db19]{\n    width: 100%;\n    float: left;\n    background: #2e9133;\n    padding: 8px;\n}\n.dropdown[data-v-2073db19] {\n    float: right;\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-2073db19] {\n  margin: 0px;\n  padding: 0px;\n  font-family: \"Open Sans\";\n}\n.container[data-v-2073db19] {\n  max-width: 1680px;\n  max-height: 1050px;\n}\n.menu[data-v-2073db19] {\n  background: #2e9133;\n  float: left;\n  padding: 0px;\n  width: 180px;\n  text-align: center;\n  min-height: 100vh;\n}\n.logo[data-v-2073db19] {\n  float: center;\n}\nimg.logo-painel[data-v-2073db19] {\n  max-width: 179px;\n  max-height: 179px;\n  margin-top: 39px;\n}\n.list-menu[data-v-2073db19] {\n  float: left;\n  width: 100%;\n  margin-top: 10px;\n}\nul.ul-menu[data-v-2073db19] {\n  list-style: none;\n}\nul.ul-menu li[data-v-2073db19] {\n  float: left;\n}\nul.ul-menu li a[data-v-2073db19] {\n  font-size: 1.4em;\n  margin: 3px 7px;\n  float: left;\n  width: 167px;\n  color: #ffffff;\n}\n.conteudo[data-v-2073db19] {\n  float: left;\n  background: #ffffff;\n  min-height: 100vh;\n  width: calc(100% - 183px);\n}\n.top-dasboard[data-v-2073db19] {\n  width: 100%;\n  float: left;\n  background: #2e9133;\n  padding: 8px;\n}\n.dropdown[data-v-2073db19] {\n  float: right;\n}\n", ""]);
 
 // exports
 
@@ -52827,13 +52827,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            links: [{ name: 'admin.dashboard', title: 'Dashboard' }, { name: 'admin.entrada_nfe', title: 'Entrada de Nfe' }, { name: 'admin.usuarios', title: 'Usuários' }, { name: 'admin.clientes', title: 'Clientes' }, { name: 'admin.branches', title: 'Filiais' }, { name: 'admin.fornecedors', title: 'Fornecedores' }, { name: 'admin.materials', title: 'Materiais' }, { name: 'admin.setors', title: 'Setores' }, { name: 'admin.tipo_movimentos', title: 'Tipo Movimento' }, { name: 'admin.forma_pagtos', title: 'Forma Pagamento' }, { name: 'admin.tipo_materials', title: 'Tipos de Material' }, { name: 'admin.forma_farmaceuticas', title: 'Forma Farmacêutica' }]
-        };
-    }
+  data: function data() {
+    return {
+      links: [{ name: "admin.dashboard", title: "Dashboard" }, { name: "admin.entrada_nfe", title: "Entrada de Nfe" }, { name: "admin.usuarios", title: "Usuários" }, { name: "admin.clientes", title: "Clientes" }, { name: "admin.branches", title: "Filiais" }, { name: "admin.fornecedors", title: "Fornecedores" }, { name: "admin.materials", title: "Materiais" }, { name: "admin.setors", title: "Setores" }, { name: "admin.tipo_movimentos", title: "Tipo Movimento" }, { name: "admin.forma_pagtos", title: "Forma Pagamento" }, { name: "admin.tipo_materials", title: "Tipos de Material" }, { name: "admin.forma_farmaceuticas", title: "Forma Farmacêutica" }]
+    };
+  }
 });
 
 /***/ }),
@@ -53036,7 +53043,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53047,6 +53054,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -53167,7 +53176,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53233,85 +53242,84 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    created: function created() {
-        this.loadbranches();
-    },
-    data: function data() {
-        return {
-            titulo: '',
-            showVodal: false,
-            propriedadeupdate: false,
-            propriedade_errors: {},
-            propriedadeBranche: {
-                id: '',
-                razao_social: '',
-                cnpj: ''
-            }
-        };
-    },
+  created: function created() {
+    this.loadbranches();
+  },
+  data: function data() {
+    return {
+      titulo: "",
+      showVodal: false,
+      propriedadeupdate: false,
+      propriedade_errors: {},
+      propriedadeBranche: {
+        id: "",
+        razao_social: "",
+        cnpj: ""
+      }
+    };
+  },
 
 
-    computed: {
-        branches: function branches() {
-            return this.$store.state.branches.itens;
-        }
-    },
-
-    methods: {
-        loadbranches: function loadbranches() {
-            this.$store.dispatch('actionLoadBranches');
-        },
-        criar: function criar() {
-            this.titulo = "Cadastrar Filial";
-            this.showVodal = true;
-            this.propriedadeupdate = false;
-        },
-
-
-        // pegar um registro e preencher o formulario!
-        editar: function editar(id) {
-            var _this = this;
-
-            this.titulo = "Alterar Filial";
-            this.$store.dispatch('actionLoadBranche', id).then(function (response) {
-                _this.propriedadeBranche = response;
-                _this.showVodal = true;
-                _this.propriedadeupdate = true;
-            }).catch(function (errors) {
-                _this.$snotify.errors('Registro não pode ser carregado!', 'Informativo');
-            });
-        },
-        hideVodal: function hideVodal() {
-            this.showVodal = false, this.propriedade_errors = {}, this.propriedadeBranche = {
-                id: '',
-                razao_social: '',
-                cnpj: ''
-            };
-        },
-        cadastroRealizado: function cadastroRealizado() {
-            this.hideVodal(), this.loadbranches();
-        },
-
-
-        //method que aciona uma action de filials.js
-        destroy: function destroy(id) {
-            var _this2 = this;
-
-            this.$store.dispatch('destroyBranche', id).then(function () {
-                _this2.$snotify.success('Registro Deletado!', 'Sucesso');
-                _this2.loadbranches();
-            }).catch(function (errors) {
-                _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
-            });
-        }
-    },
-
-    components: {
-        vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
-        formBranche: __WEBPACK_IMPORTED_MODULE_1__partials_FormBrancheComponent___default.a,
-        confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+  computed: {
+    branches: function branches() {
+      return this.$store.state.branches.itens;
     }
+  },
 
+  methods: {
+    loadbranches: function loadbranches() {
+      this.$store.dispatch("actionLoadBranches");
+    },
+    criar: function criar() {
+      this.titulo = "Cadastrar Filial";
+      this.showVodal = true;
+      this.propriedadeupdate = false;
+    },
+
+
+    // pegar um registro e preencher o formulario!
+    editar: function editar(id) {
+      var _this = this;
+
+      this.titulo = "Alterar Filial";
+      this.$store.dispatch("actionLoadBranche", id).then(function (response) {
+        _this.propriedadeBranche = response;
+        _this.showVodal = true;
+        _this.propriedadeupdate = true;
+      }).catch(function (errors) {
+        _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
+    hideVodal: function hideVodal() {
+      this.showVodal = false, this.propriedade_errors = {}, this.propriedadeBranche = {
+        id: "",
+        razao_social: "",
+        cnpj: ""
+      };
+    },
+    cadastroRealizado: function cadastroRealizado() {
+      this.hideVodal(), this.loadbranches();
+    },
+
+
+    //method que aciona uma action de filials.js
+    destroy: function destroy(id) {
+      var _this2 = this;
+
+      this.$store.dispatch("destroyBranche", id).then(function () {
+        _this2.$snotify.success("Registro Deletado!", "Sucesso");
+        _this2.loadbranches();
+      }).catch(function (errors) {
+        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+      });
+    }
+  },
+
+  components: {
+    vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
+    formBranche: __WEBPACK_IMPORTED_MODULE_1__partials_FormBrancheComponent___default.a,
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+  }
 });
 
 /***/ }),
@@ -53400,7 +53408,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.has-error[data-v-6198ae92]{ color: red\n}\n.has-error input[data-v-6198ae92]{ border: 1px solid red\n}\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-6198ae92] {\n  color: red;\n}\n.has-error input[data-v-6198ae92] {\n  border: 1px solid red;\n}\n", ""]);
 
 // exports
 
@@ -53448,45 +53456,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        update: {
-            require: false,
-            type: Boolean,
-            default: false
-        },
-
-        branche: {
-            require: false,
-            type: Object
-        },
-
-        errors: {},
-
-        title: {
-            require: true,
-            type: String
-        }
+  props: {
+    update: {
+      require: false,
+      type: Boolean,
+      default: false
     },
 
-    methods: {
-        onSubmit: function onSubmit() {
-            var _this = this;
+    branche: {
+      require: false,
+      type: Object
+    },
 
-            var createOrUpdate = this.update ? 'updateBranche' : 'storeBranche';
+    filho_errors: {},
 
-            this.$store.dispatch(createOrUpdate, this.branche).then(function () {
-                // notificação para usuario.
-                _this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...');
-                _this.$emit('success');
-            }).catch(function (errors) {
-                // notificação para usuario.
-                _this.$snotify.error('Você Errou!', 'Atenção');
-                _this.errors = errors.response.data.errors;
-            });
-        }
+    title: {
+      require: true,
+      type: String
     }
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
+    }
+  },
+
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      var createOrUpdate = this.update ? "updateBranche" : "storeBranche";
+
+      this.$store.dispatch(createOrUpdate, this.branche).then(function () {
+        // notificação para usuario.
+        _this.$snotify.success("Ação realizada com sucesso!", "Parabéns...");
+        _this.$emit("success");
+      }).catch(function (errors) {
+        // notificação para usuario.
+        _this.$snotify.error("Você Errou!", "Atenção");
+        _this.errors = errors.response.data.errors;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -53754,7 +53788,7 @@ var render = function() {
                 attrs: {
                   title: _vm.titulo,
                   branche: _vm.propriedadeBranche,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   update: _vm.propriedadeupdate
                 },
                 on: { success: _vm.cadastroRealizado }
@@ -53929,7 +53963,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53995,85 +54029,84 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    created: function created() {
-        this.loadIndex();
-    },
-    data: function data() {
-        return {
-            titulo: '',
-            showVodal: false,
-            propriedadeupdate: false,
-            propriedade_errors: {},
-            propriedadeFornecedor: {
-                id: '',
-                razao_social: '',
-                cnpj: ''
-            }
-        };
-    },
+  created: function created() {
+    this.loadIndex();
+  },
+  data: function data() {
+    return {
+      titulo: "",
+      showVodal: false,
+      propriedadeupdate: false,
+      propriedade_errors: {},
+      propriedadeFornecedor: {
+        id: "",
+        razao_social: "",
+        cnpj: ""
+      }
+    };
+  },
 
 
-    computed: {
-        fornecedors: function fornecedors() {
-            return this.$store.state.fornecedors.itens;
-        }
-    },
-
-    methods: {
-        loadIndex: function loadIndex() {
-            this.$store.dispatch('fornecedorLoadIndex');
-        },
-        criar: function criar() {
-            this.titulo = "Cadastrar Fornecedor";
-            this.showVodal = true;
-            this.propriedadeupdate = false;
-        },
-
-
-        // pegar um registro e preencher o formulario!
-        editar: function editar(id) {
-            var _this = this;
-
-            this.titulo = "Alterar Fornecedor";
-            this.$store.dispatch('fornecedorLoadShow', id).then(function (response) {
-                _this.propriedadeFornecedor = response;
-                _this.showVodal = true;
-                _this.propriedadeupdate = true;
-            }).catch(function (errors) {
-                _this.$snotify.errors('Registro não pode ser carregado!', 'Informativo');
-            });
-        },
-        hideVodal: function hideVodal() {
-            this.showVodal = false, this.propriedade_errors = {}, this.propriedadeFornecedor = {
-                id: '',
-                razao_social: '',
-                cnpj: ''
-            };
-        },
-        cadastroRealizado: function cadastroRealizado() {
-            this.hideVodal(), this.loadIndex();
-        },
-
-
-        //method que aciona uma fornecedor de filials.js
-        destroy: function destroy(id) {
-            var _this2 = this;
-
-            this.$store.dispatch('fornecedorDestroy', id).then(function () {
-                _this2.$snotify.success('Registro Deletado!', 'Sucesso');
-                _this2.loadIndex();
-            }).catch(function (errors) {
-                _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
-            });
-        }
-    },
-
-    components: {
-        vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
-        formFornecedor: __WEBPACK_IMPORTED_MODULE_1__partials_FormFornecedorComponent___default.a,
-        confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+  computed: {
+    fornecedors: function fornecedors() {
+      return this.$store.state.fornecedors.itens;
     }
+  },
 
+  methods: {
+    loadIndex: function loadIndex() {
+      this.$store.dispatch("fornecedorLoadIndex");
+    },
+    criar: function criar() {
+      this.titulo = "Cadastrar Fornecedor";
+      this.showVodal = true;
+      this.propriedadeupdate = false;
+    },
+
+
+    // pegar um registro e preencher o formulario!
+    editar: function editar(id) {
+      var _this = this;
+
+      this.titulo = "Alterar Fornecedor";
+      this.$store.dispatch("fornecedorLoadShow", id).then(function (response) {
+        _this.propriedadeFornecedor = response;
+        _this.showVodal = true;
+        _this.propriedadeupdate = true;
+      }).catch(function (errors) {
+        _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
+    hideVodal: function hideVodal() {
+      this.showVodal = false, this.propriedade_errors = {}, this.propriedadeFornecedor = {
+        id: "",
+        razao_social: "",
+        cnpj: ""
+      };
+    },
+    cadastroRealizado: function cadastroRealizado() {
+      this.hideVodal(), this.loadIndex();
+    },
+
+
+    //method que aciona uma fornecedor de filials.js
+    destroy: function destroy(id) {
+      var _this2 = this;
+
+      this.$store.dispatch("fornecedorDestroy", id).then(function () {
+        _this2.$snotify.success("Registro Deletado!", "Sucesso");
+        _this2.loadIndex();
+      }).catch(function (errors) {
+        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+      });
+    }
+  },
+
+  components: {
+    vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
+    formFornecedor: __WEBPACK_IMPORTED_MODULE_1__partials_FormFornecedorComponent___default.a,
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+  }
 });
 
 /***/ }),
@@ -54162,7 +54195,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.has-error[data-v-059844ce]{ color: red\n}\n.has-error input[data-v-059844ce]{ border: 1px solid red\n}\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-059844ce] {\n  color: red;\n}\n.has-error input[data-v-059844ce] {\n  border: 1px solid red;\n}\n", ""]);
 
 // exports
 
@@ -54210,45 +54243,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        update: {
-            require: false,
-            type: Boolean,
-            default: false
-        },
-
-        fornecedor: {
-            require: false,
-            type: Object
-        },
-
-        title: {
-            require: true,
-            type: String
-        },
-
-        errors: {}
+  props: {
+    update: {
+      require: false,
+      type: Boolean,
+      default: false
     },
 
-    methods: {
-        onSubmit: function onSubmit() {
-            var _this = this;
+    fornecedor: {
+      require: false,
+      type: Object
+    },
 
-            var createOrUpdate = this.update ? 'fornecedorUpdate' : 'fornecedorStore';
+    title: {
+      require: true,
+      type: String
+    },
 
-            this.$store.dispatch(createOrUpdate, this.fornecedor).then(function () {
-                // notificação para usuario.
-                _this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...');
-                _this.$emit('success');
-            }).catch(function (errors) {
-                // notificação para usuario.
-                _this.$snotify.error('Você Errou!', 'Atenção');
-                _this.errors = errors.response.data.errors;
-            });
-        }
+    filho_errors: {}
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
     }
+  },
+
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      var createOrUpdate = this.update ? "fornecedorUpdate" : "fornecedorStore";
+
+      this.$store.dispatch(createOrUpdate, this.fornecedor).then(function () {
+        // notificação para usuario.
+        _this.$snotify.success("Ação realizada com sucesso!", "Parabéns...");
+        _this.$emit("success");
+      }).catch(function (errors) {
+        // notificação para usuario.
+        _this.$snotify.error("Você Errou!", "Atenção");
+        _this.errors = errors.response.data.errors;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -54625,7 +54684,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54709,7 +54768,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -54719,120 +54777,120 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    created: function created() {
-        this.loadMaterials(1);
+  created: function created() {
+    this.loadMaterials(1);
+  },
+  data: function data() {
+    return {
+      input: "",
+      titulo: "",
+      showVodal: false,
+      propriedade_errors: {},
+      propriedadeupdate: false,
+      propriedade_statusInput: false,
+      propriedadeMaterial: {
+        sku: "",
+        cod_barra: "",
+        descricao: "",
+        forma_farmaceutica_id: "",
+        tipo_material_id: "",
+        status: "",
+        valor_compra: "",
+        valor_revenda: ""
+        // image: '',
+      }
+    };
+  },
+
+
+  computed: {
+    materials: function materials() {
+      return this.$store.state.materials.itens;
     },
-    data: function data() {
-        return {
-            input: '',
-            titulo: '',
-            showVodal: false,
-            propriedade_errors: {},
-            propriedadeupdate: false,
-            propriedade_statusInput: false,
-            propriedadeMaterial: {
-                sku: '',
-                cod_barra: '',
-                descricao: '',
-                forma_farmaceutica_id: '',
-                tipo_material_id: '',
-                status: '',
-                valor_compra: '',
-                valor_revenda: ''
-                // image: '',
-            }
-        };
-    },
-
-
-    computed: {
-        materials: function materials() {
-            return this.$store.state.materials.itens;
-        },
-        params: function params() {
-            return {
-                page: this.materials.current_page,
-                filter: this.input
-            };
-        }
-    },
-
-    methods: {
-        loadMaterials: function loadMaterials(page) {
-            this.$store.dispatch('actionLoadMaterials', _extends({}, this.params, { page: page }));
-        },
-        criar: function criar() {
-            this.titulo = "Cadastrar Material", this.showVodal = true, this.propriedadeupdate = false;
-            this.propriedadeMaterial = {
-                sku: '',
-                cod_barra: '',
-                descricao: '',
-                forma_farmaceutica_id: '',
-                tipo_material_id: '',
-                status: 'ativo',
-                valor_compra: '',
-                valor_revenda: ''
-                // image: '',
-            };
-        },
-
-
-        // pegar um registro e preencher o formulario!
-        editar: function editar(sku) {
-            var _this = this;
-
-            this.titulo = "Alterar Material", this.propriedade_statusInput = true, this.$store.dispatch('actionLoadMaterial', sku).then(function (response) {
-                _this.propriedadeMaterial = response;
-                _this.showVodal = true;
-                _this.propriedadeupdate = true;
-            }).catch(function (errors) {
-                _this.$snotify.errors('Registro não pode ser carregado!', 'Informativo');
-            });
-        },
-
-
-        // nome desta var representa o path do component! ex page.materialsComponent
-        pageMaterialsBuscar: function pageMaterialsBuscar(inputBuscar) {
-            this.input = inputBuscar, this.loadMaterials(1);
-        },
-        hideVodal: function hideVodal() {
-            this.showVodal = false, this.propriedade_errors = {}, this.propriedadeMaterial = {
-                sku: '',
-                cod_barra: '',
-                descricao: '',
-                forma_farmaceutica_id: '',
-                tipo_material_id: '',
-                status: '',
-                valor_compra: '',
-                valor_revenda: ''
-                // image: '',
-            };
-        },
-        cadastroRealizado: function cadastroRealizado() {
-            this.hideVodal(), this.loadMaterials(1);
-        },
-
-
-        //method que aciona uma action de filials.js
-        destroy: function destroy(sku) {
-            var _this2 = this;
-
-            this.$store.dispatch('destroyMaterial', sku).then(function () {
-                _this2.$snotify.success('Registro Deletado!', 'Sucesso');
-                _this2.loadMaterials();
-            }).catch(function (errors) {
-                _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
-            });
-        }
-    },
-
-    components: {
-        pagination: __WEBPACK_IMPORTED_MODULE_1__layouts_PaginationComponent_vue___default.a,
-        buscar: __WEBPACK_IMPORTED_MODULE_2__layouts_geralBuscarComponent___default.a,
-        vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
-        formMaterial: __WEBPACK_IMPORTED_MODULE_3__partials_FormMaterialComponent___default.a,
-        confirmDelete: __WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent___default.a
+    params: function params() {
+      return {
+        page: this.materials.current_page,
+        filter: this.input
+      };
     }
+  },
+
+  methods: {
+    loadMaterials: function loadMaterials(page) {
+      this.$store.dispatch("actionLoadMaterials", _extends({}, this.params, { page: page }));
+    },
+    criar: function criar() {
+      this.titulo = "Cadastrar Material", this.showVodal = true, this.propriedadeupdate = false;
+      this.propriedadeMaterial = {
+        sku: "",
+        cod_barra: "",
+        descricao: "",
+        forma_farmaceutica_id: "",
+        tipo_material_id: "",
+        status: "ativo",
+        valor_compra: "",
+        valor_revenda: ""
+        // image: '',
+      };
+    },
+
+
+    // pegar um registro e preencher o formulario!
+    editar: function editar(sku) {
+      var _this = this;
+
+      this.titulo = "Alterar Material", this.propriedade_statusInput = true, this.$store.dispatch("actionLoadMaterial", sku).then(function (response) {
+        _this.propriedadeMaterial = response;
+        _this.showVodal = true;
+        _this.propriedadeupdate = true;
+      }).catch(function (errors) {
+        _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
+
+
+    // nome desta var representa o path do component! ex page.materialsComponent
+    pageMaterialsBuscar: function pageMaterialsBuscar(inputBuscar) {
+      this.input = inputBuscar, this.loadMaterials(1);
+    },
+    hideVodal: function hideVodal() {
+      this.showVodal = false, this.propriedade_errors = {}, this.propriedadeMaterial = {
+        sku: "",
+        cod_barra: "",
+        descricao: "",
+        forma_farmaceutica_id: "",
+        tipo_material_id: "",
+        status: "",
+        valor_compra: "",
+        valor_revenda: ""
+        // image: '',
+      };
+    },
+    cadastroRealizado: function cadastroRealizado() {
+      this.hideVodal(), this.loadMaterials(1);
+    },
+
+
+    //method que aciona uma action de filials.js
+    destroy: function destroy(sku) {
+      var _this2 = this;
+
+      this.$store.dispatch("destroyMaterial", sku).then(function () {
+        _this2.$snotify.success("Registro Deletado!", "Sucesso");
+        _this2.loadMaterials();
+      }).catch(function (errors) {
+        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+      });
+    }
+  },
+
+  components: {
+    pagination: __WEBPACK_IMPORTED_MODULE_1__layouts_PaginationComponent_vue___default.a,
+    buscar: __WEBPACK_IMPORTED_MODULE_2__layouts_geralBuscarComponent___default.a,
+    vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
+    formMaterial: __WEBPACK_IMPORTED_MODULE_3__partials_FormMaterialComponent___default.a,
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent___default.a
+  }
 });
 
 /***/ }),
@@ -55420,7 +55478,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       default: false
     },
 
-    errors: {},
+    filho_errors: {},
 
     statusInput: "",
 
@@ -55432,6 +55490,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     title: {
       require: true,
       type: String
+    }
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
     }
   },
 
@@ -55457,7 +55528,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).catch(function (errors) {
         // notificação para usuario.
         _this.$snotify.error("Você Errou!", "Atenção");
-        console.log(errors.response.data.errors);
         _this.errors = errors.response.data.errors;
       });
     }
@@ -55983,7 +56053,7 @@ var render = function() {
                 attrs: {
                   title: _vm.titulo,
                   material: _vm.propriedadeMaterial,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   statusInput: _vm.propriedade_statusInput,
                   update: _vm.propriedadeupdate
                 },
@@ -56213,7 +56283,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56271,89 +56341,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    created: function created() {
-        this.loadTipoMaterials();
-    },
-    data: function data() {
-        return {
-            showVodal: false,
-            propriedade_errors: {},
-            propriedadeupdate: false,
-            propriedadeTipoMaterial: {
-                id: '',
-                tipo_material: ''
-            },
-            titulo: ''
-        };
-    },
+  created: function created() {
+    this.loadTipoMaterials();
+  },
+  data: function data() {
+    return {
+      showVodal: false,
+      propriedade_errors: {},
+      propriedadeupdate: false,
+      propriedadeTipoMaterial: {
+        id: "",
+        tipo_material: ""
+      },
+      titulo: ""
+    };
+  },
 
 
-    computed: {
-        tipo_materials: function tipo_materials() {
-            return this.$store.state.tipo_materials.itens;
-        }
-    },
-
-    methods: {
-        loadTipoMaterials: function loadTipoMaterials() {
-            this.$store.dispatch('actionLoadTipoMaterials');
-        },
-        criar: function criar() {
-            this.titulo = "Cadastrar Tipo de Material";
-            this.showVodal = true;
-            this.propriedadeupdate = false;
-        },
-
-
-        // pegar um registro e preencher o formulario!
-        editar: function editar(id) {
-            var _this = this;
-
-            this.titulo = "Alterar Tipo de Material";
-            this.$store.dispatch('actionLoadTipoMaterial', id).then(function (response) {
-                _this.propriedadeTipoMaterial = response;
-                _this.showVodal = true;
-                _this.propriedadeupdate = true;
-            }).catch(function (errors) {
-                _this.$snotify.errors('Registro não pode ser carregado!', 'Informativo');
-            });
-        },
-        hideVodal: function hideVodal() {
-            this.showVodal = false, this.propriedade_errors = {}, this.propriedadeTipoMaterial = {
-                id: '',
-                tipo_material: ''
-            };
-        },
-        cadastroRealizado: function cadastroRealizado() {
-            this.hideVodal(), this.loadTipoMaterials();
-        },
-
-
-        //method que aciona uma action de filials.js
-        destroy: function destroy(id) {
-            var _this2 = this;
-
-            this.$store.dispatch('destroyTipoMaterial', id).then(function () {
-                _this2.$snotify.success('Registro Deletado!', 'Sucesso');
-                _this2.loadTipoMaterials();
-            }).catch(function (errors) {
-                _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
-            });
-        }
-    },
-
-    components: {
-        vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
-        formTipo: __WEBPACK_IMPORTED_MODULE_1__partials_FormTipoMaterialComponent___default.a,
-        confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+  computed: {
+    tipo_materials: function tipo_materials() {
+      return this.$store.state.tipo_materials.itens;
     }
+  },
 
+  methods: {
+    loadTipoMaterials: function loadTipoMaterials() {
+      this.$store.dispatch("actionLoadTipoMaterials");
+    },
+    criar: function criar() {
+      this.titulo = "Cadastrar Tipo de Material";
+      this.showVodal = true;
+      this.propriedadeupdate = false;
+    },
+
+
+    // pegar um registro e preencher o formulario!
+    editar: function editar(id) {
+      var _this = this;
+
+      this.titulo = "Alterar Tipo de Material";
+      this.$store.dispatch("actionLoadTipoMaterial", id).then(function (response) {
+        _this.propriedadeTipoMaterial = response;
+        _this.showVodal = true;
+        _this.propriedadeupdate = true;
+      }).catch(function (errors) {
+        _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
+    hideVodal: function hideVodal() {
+      this.showVodal = false, this.propriedade_errors = {}, this.propriedadeTipoMaterial = {
+        id: "",
+        tipo_material: ""
+      };
+    },
+    cadastroRealizado: function cadastroRealizado() {
+      this.hideVodal(), this.loadTipoMaterials();
+    },
+
+
+    //method que aciona uma action de filials.js
+    destroy: function destroy(id) {
+      var _this2 = this;
+
+      this.$store.dispatch("destroyTipoMaterial", id).then(function () {
+        _this2.$snotify.success("Registro Deletado!", "Sucesso");
+        _this2.loadTipoMaterials();
+      }).catch(function (errors) {
+        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+      });
+    }
+  },
+
+  components: {
+    vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
+    formTipo: __WEBPACK_IMPORTED_MODULE_1__partials_FormTipoMaterialComponent___default.a,
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+  }
 });
 
 /***/ }),
@@ -56442,7 +56515,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.has-error[data-v-3c9162e9]{ color: red\n}\n.has-error input[data-v-3c9162e9]{ border: 1px solid red\n}\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-3c9162e9] {\n  color: red;\n}\n.has-error input[data-v-3c9162e9] {\n  border: 1px solid red;\n}\n", ""]);
 
 // exports
 
@@ -56483,45 +56556,66 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        update: {
-            require: false,
-            type: Boolean,
-            default: false
-        },
-
-        tipo_material: {
-            require: false,
-            type: Object
-        },
-
-        title: {
-            require: true,
-            type: String
-        },
-
-        errors: {}
+  props: {
+    update: {
+      require: false,
+      type: Boolean,
+      default: false
     },
 
-    methods: {
-        onSubmit: function onSubmit() {
-            var _this = this;
+    tipo_material: {
+      require: false,
+      type: Object
+    },
 
-            var createOrUpdate = this.update ? 'updateTipoMaterial' : 'storeTipoMaterial';
+    title: {
+      require: true,
+      type: String
+    },
 
-            this.$store.dispatch(createOrUpdate, this.tipo_material).then(function () {
-                // notificação para usuario.
-                _this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...');
-                _this.$emit('success');
-            }).catch(function (errors) {
-                // notificação para usuario.
-                _this.$snotify.error('Você Errou!', 'Atenção');
-                _this.errors = errors.response.data.errors;
-            });
-        }
+    filho_errors: {}
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
     }
+  },
+
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      var createOrUpdate = this.update ? "updateTipoMaterial" : "storeTipoMaterial";
+
+      this.$store.dispatch(createOrUpdate, this.tipo_material).then(function () {
+        // notificação para usuario.
+        _this.$snotify.success("Ação realizada com sucesso!", "Parabéns...");
+        _this.$emit("success");
+      }).catch(function (errors) {
+        // notificação para usuario.
+        _this.$snotify.error("Você Errou!", "Atenção");
+        _this.errors = errors.response.data.errors;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -56685,7 +56779,7 @@ var render = function() {
               _c("formTipo", {
                 attrs: {
                   title: _vm.titulo,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   tipo_material: _vm.propriedadeTipoMaterial,
                   update: _vm.propriedadeupdate
                 },
@@ -56857,7 +56951,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56915,88 +57009,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    created: function created() {
-        this.loadFormaFarmaceuticas();
-    },
-    data: function data() {
-        return {
-            titulo: '',
-            propriedade_errors: {},
-            showVodal: false,
-            propriedadeupdate: false,
-            propriedadeFormaFarmaceutica: {
-                id: '',
-                forma_farmaceutica: ''
-            }
-        };
-    },
+  created: function created() {
+    this.loadFormaFarmaceuticas();
+  },
+  data: function data() {
+    return {
+      titulo: "",
+      propriedade_errors: {},
+      showVodal: false,
+      propriedadeupdate: false,
+      propriedadeFormaFarmaceutica: {
+        id: "",
+        forma_farmaceutica: ""
+      }
+    };
+  },
 
 
-    computed: {
-        forma_farmaceuticas: function forma_farmaceuticas() {
-            return this.$store.state.forma_farmaceuticas.itens;
-        }
-    },
-
-    methods: {
-        loadFormaFarmaceuticas: function loadFormaFarmaceuticas() {
-            this.$store.dispatch('actionLoadFormaFarmaceuticas');
-        },
-        criar: function criar() {
-            this.titulo = "Cadastrar Forma Farmacêutica";
-            this.showVodal = true;
-            this.propriedadeupdate = false;
-        },
-
-
-        // pegar um registro e preencher o formulario!
-        editar: function editar(id) {
-            var _this = this;
-
-            this.titulo = "Alterar Forma Farmacêutica";
-            this.$store.dispatch('actionLoadFormaFarmaceutica', id).then(function (response) {
-                _this.propriedadeFormaFarmaceutica = response;
-                _this.showVodal = true;
-                _this.propriedadeupdate = true;
-            }).catch(function (errors) {
-                _this.$snotify.errors('Registro não pode ser carregado!', 'Informativo');
-            });
-        },
-        hideVodal: function hideVodal() {
-            this.showVodal = false, this.propriedade_errors = {}, this.propriedadeFormaFarmaceutica = {
-                id: '',
-                forma_farmaceutica: ''
-            };
-        },
-        cadastroRealizado: function cadastroRealizado() {
-            this.hideVodal(), this.loadFormaFarmaceuticas();
-        },
-
-
-        //method que aciona uma action de filials.js
-        destroy: function destroy(id) {
-            var _this2 = this;
-
-            this.$store.dispatch('destroyFormaFarmaceutica', id).then(function () {
-                _this2.$snotify.success('Registro Deletado!', 'Sucesso');
-                _this2.loadFormaFarmaceuticas();
-            }).catch(function (errors) {
-                _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
-            });
-        }
-    },
-
-    components: {
-        vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
-        formTipo: __WEBPACK_IMPORTED_MODULE_1__partials_FormFormaFarmaceuticaComponent___default.a,
-        confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+  computed: {
+    forma_farmaceuticas: function forma_farmaceuticas() {
+      return this.$store.state.forma_farmaceuticas.itens;
     }
+  },
+
+  methods: {
+    loadFormaFarmaceuticas: function loadFormaFarmaceuticas() {
+      this.$store.dispatch("actionLoadFormaFarmaceuticas");
+    },
+    criar: function criar() {
+      this.titulo = "Cadastrar Forma Farmacêutica";
+      this.showVodal = true;
+      this.propriedadeupdate = false;
+    },
+
+
+    // pegar um registro e preencher o formulario!
+    editar: function editar(id) {
+      var _this = this;
+
+      this.titulo = "Alterar Forma Farmacêutica";
+      this.$store.dispatch("actionLoadFormaFarmaceutica", id).then(function (response) {
+        _this.propriedadeFormaFarmaceutica = response;
+        _this.showVodal = true;
+        _this.propriedadeupdate = true;
+      }).catch(function (errors) {
+        _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
+    hideVodal: function hideVodal() {
+      this.showVodal = false, this.propriedade_errors = {}, this.propriedadeFormaFarmaceutica = {
+        id: "",
+        forma_farmaceutica: ""
+      };
+    },
+    cadastroRealizado: function cadastroRealizado() {
+      this.hideVodal(), this.loadFormaFarmaceuticas();
+    },
+
+
+    //method que aciona uma action de filials.js
+    destroy: function destroy(id) {
+      var _this2 = this;
+
+      this.$store.dispatch("destroyFormaFarmaceutica", id).then(function () {
+        _this2.$snotify.success("Registro Deletado!", "Sucesso");
+        _this2.loadFormaFarmaceuticas();
+      }).catch(function (errors) {
+        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+      });
+    }
+  },
+
+  components: {
+    vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
+    formTipo: __WEBPACK_IMPORTED_MODULE_1__partials_FormFormaFarmaceuticaComponent___default.a,
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+  }
 });
 
 /***/ }),
@@ -57085,7 +57183,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.has-error[data-v-e81ed0b2]{ color: red\n}\n.has-error input[data-v-e81ed0b2]{ border: 1px solid red\n}\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-e81ed0b2] {\n  color: red;\n}\n.has-error input[data-v-e81ed0b2] {\n  border: 1px solid red;\n}\n", ""]);
 
 // exports
 
@@ -57126,46 +57224,66 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        update: {
-            require: false,
-            type: Boolean,
-            default: false
-        },
-
-        forma_farmaceutica: {
-            require: false,
-            type: Object
-        },
-
-        errors: {},
-
-        title: {
-            require: true,
-            type: String
-        }
-
+  props: {
+    update: {
+      require: false,
+      type: Boolean,
+      default: false
     },
 
-    methods: {
-        onSubmit: function onSubmit() {
-            var _this = this;
+    forma_farmaceutica: {
+      require: false,
+      type: Object
+    },
 
-            var createOrUpdate = this.update ? 'updateFormaFarmaceutica' : 'storeFormaFarmaceutica';
+    filho_errors: {},
 
-            this.$store.dispatch(createOrUpdate, this.forma_farmaceutica).then(function () {
-                // notificação para usuario.
-                _this.$snotify.success('Ação realizada com sucesso!', 'Parabéns...');
-                _this.$emit('success');
-            }).catch(function (errors) {
-                // notificação para usuario.
-                _this.$snotify.error('Você Errou!', 'Atenção');
-                _this.errors = errors.response.data.errors;
-            });
-        }
+    title: {
+      require: true,
+      type: String
     }
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
+    }
+  },
+
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      var createOrUpdate = this.update ? "updateFormaFarmaceutica" : "storeFormaFarmaceutica";
+
+      this.$store.dispatch(createOrUpdate, this.forma_farmaceutica).then(function () {
+        // notificação para usuario.
+        _this.$snotify.success("Ação realizada com sucesso!", "Parabéns...");
+        _this.$emit("success");
+      }).catch(function (errors) {
+        // notificação para usuario.
+        _this.$snotify.error("Você Errou!", "Atenção");
+        _this.errors = errors.response.data.errors;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -57332,7 +57450,7 @@ var render = function() {
               _c("formTipo", {
                 attrs: {
                   title: _vm.titulo,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   forma_farmaceutica: _vm.propriedadeFormaFarmaceutica,
                   update: _vm.propriedadeupdate
                 },
@@ -57508,7 +57626,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57586,7 +57704,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -57596,105 +57713,105 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    created: function created() {
-        this.loadIndex(1);
+  created: function created() {
+    this.loadIndex(1);
+  },
+  data: function data() {
+    return {
+      input: "",
+      titulo: "",
+      showVodal: false,
+      propriedade_errors: {},
+      propriedadeupdate: false,
+      propriedade_statusInput: false,
+      propriedadeCliente: {
+        id: "",
+        nome: "",
+        cpf: "",
+        celular: "",
+        celular_recado: "",
+        email: "",
+        endereco: ""
+      }
+    };
+  },
+
+
+  computed: {
+    clientes: function clientes() {
+      return this.$store.state.clientes.itens;
     },
-    data: function data() {
-        return {
-            input: '',
-            titulo: '',
-            showVodal: false,
-            propriedade_errors: {},
-            propriedadeupdate: false,
-            propriedade_statusInput: false,
-            propriedadeCliente: {
-                id: '',
-                nome: '',
-                cpf: '',
-                celular: '',
-                celular_recado: '',
-                email: '',
-                endereco: ''
-            }
-        };
-    },
-
-
-    computed: {
-        clientes: function clientes() {
-            return this.$store.state.clientes.itens;
-        },
-        params: function params() {
-            return {
-                page: this.clientes.current_page,
-                filter: this.input
-            };
-        }
-    },
-
-    methods: {
-        loadIndex: function loadIndex(page) {
-            this.$store.dispatch('clienteLoadIndex', _extends({}, this.params, { page: page }));
-        },
-        criar: function criar() {
-            this.titulo = "Cadastrar Cliente", this.showVodal = true, this.propriedadeupdate = false;
-        },
-
-
-        // pegar um registro e preencher o formulario!
-        editar: function editar(id) {
-            var _this = this;
-
-            this.titulo = "Alterar Cliente", this.propriedade_statusInput = true, this.$store.dispatch('clienteLoadShow', id).then(function (response) {
-                _this.propriedadeCliente = response;
-                _this.showVodal = true;
-                _this.propriedadeupdate = true;
-            }).catch(function (errors) {
-                _this.$snotify.errors('Registro não pode ser carregado!', 'Informativo');
-            });
-        },
-
-
-        // nome desta var representa o path do component! ex page.materialsComponent
-        pageBuscar: function pageBuscar(inputBuscar) {
-            this.input = inputBuscar, this.loadIndex(1);
-        },
-        hideVodal: function hideVodal() {
-            this.showVodal = false, this.propriedade_errors = {}, this.propriedadeCliente = {
-                id: '',
-                nome: '',
-                cpf: '',
-                celular: '',
-                recado: '',
-                email: '',
-                endereco: ''
-            };
-        },
-        cadastroRealizado: function cadastroRealizado() {
-            this.hideVodal(), this.loadIndex(1);
-        },
-
-
-        //method que aciona uma cliente de filials.js
-        destroy: function destroy(id) {
-            var _this2 = this;
-
-            this.$store.dispatch('clienteDestroy', id).then(function () {
-                _this2.$snotify.success('Registro Deletado!', 'Sucesso');
-                _this2.loadIndex();
-            }).catch(function (errors) {
-                _this2.$snotify.errors('Registro não pode ser Deletado!', 'Fracasso');
-            });
-        }
-    },
-
-    components: {
-        pagination: __WEBPACK_IMPORTED_MODULE_1__layouts_PaginationComponent_vue___default.a,
-        buscar: __WEBPACK_IMPORTED_MODULE_2__layouts_geralBuscarComponent___default.a,
-        vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
-        formCliente: __WEBPACK_IMPORTED_MODULE_3__partials_FormClienteComponent___default.a,
-        confirmDelete: __WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent___default.a
+    params: function params() {
+      return {
+        page: this.clientes.current_page,
+        filter: this.input
+      };
     }
+  },
+
+  methods: {
+    loadIndex: function loadIndex(page) {
+      this.$store.dispatch("clienteLoadIndex", _extends({}, this.params, { page: page }));
+    },
+    criar: function criar() {
+      this.titulo = "Cadastrar Cliente", this.showVodal = true, this.propriedadeupdate = false;
+    },
+
+
+    // pegar um registro e preencher o formulario!
+    editar: function editar(id) {
+      var _this = this;
+
+      this.titulo = "Alterar Cliente", this.propriedade_statusInput = true, this.$store.dispatch("clienteLoadShow", id).then(function (response) {
+        _this.propriedadeCliente = response;
+        _this.showVodal = true;
+        _this.propriedadeupdate = true;
+      }).catch(function (errors) {
+        _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
+
+
+    // nome desta var representa o path do component! ex page.materialsComponent
+    pageBuscar: function pageBuscar(inputBuscar) {
+      this.input = inputBuscar, this.loadIndex(1);
+    },
+    hideVodal: function hideVodal() {
+      this.showVodal = false, this.propriedade_errors = {}, this.propriedadeCliente = {
+        id: "",
+        nome: "",
+        cpf: "",
+        celular: "",
+        recado: "",
+        email: "",
+        endereco: ""
+      };
+    },
+    cadastroRealizado: function cadastroRealizado() {
+      this.hideVodal(), this.loadIndex(1);
+    },
+
+
+    //method que aciona uma cliente de filials.js
+    destroy: function destroy(id) {
+      var _this2 = this;
+
+      this.$store.dispatch("clienteDestroy", id).then(function () {
+        _this2.$snotify.success("Registro Deletado!", "Sucesso");
+        _this2.loadIndex();
+      }).catch(function (errors) {
+        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+      });
+    }
+  },
+
+  components: {
+    pagination: __WEBPACK_IMPORTED_MODULE_1__layouts_PaginationComponent_vue___default.a,
+    buscar: __WEBPACK_IMPORTED_MODULE_2__layouts_geralBuscarComponent___default.a,
+    vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
+    formCliente: __WEBPACK_IMPORTED_MODULE_3__partials_FormClienteComponent___default.a,
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent___default.a
+  }
 });
 
 /***/ }),
@@ -57783,7 +57900,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.has-error[data-v-2b55aea4]{ color: red\n}\n.has-error input[data-v-2b55aea4]{ border: 1px solid red\n}\n", ""]);
+exports.push([module.i, "\n.has-error[data-v-2b55aea4] {\n  color: red;\n}\n.has-error input[data-v-2b55aea4] {\n  border: 1px solid red;\n}\n", ""]);
 
 // exports
 
@@ -57859,45 +57976,90 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        update: {
-            require: false,
-            type: Boolean,
-            default: false
-        },
-
-        errors: {},
-
-        cliente: {
-            require: false,
-            type: Object | Array
-        },
-
-        title: {
-            require: true,
-            type: String
-        }
+  props: {
+    update: {
+      require: false,
+      type: Boolean,
+      default: false
     },
 
-    methods: {
-        onSubmit: function onSubmit() {
-            var _this = this;
+    filho_errors: {},
 
-            var createOrUpdate = this.update ? 'clienteUpdate' : 'clienteStore';
+    cliente: {
+      require: false,
+      type: Object | Array
+    },
 
-            this.$store.dispatch(createOrUpdate, this.cliente).then(function () {
-                // notificação para usuario.
-                _this.$snotify.success('Cadastro realizado com sucesso!', 'Parabéns...');
-                _this.$emit('success');
-            }).catch(function (errors) {
-                // notificação para usuario.
-                _this.$snotify.error('Você Errou!', 'Atenção');
-                _this.errors = errors.response.data.errors;
-            });
-        }
+    title: {
+      require: true,
+      type: String
     }
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
+    }
+  },
+
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      var createOrUpdate = this.update ? "clienteUpdate" : "clienteStore";
+
+      this.$store.dispatch(createOrUpdate, this.cliente).then(function () {
+        // notificação para usuario.
+        _this.$snotify.success("Cadastro realizado com sucesso!", "Parabéns...");
+        _this.$emit("success");
+      }).catch(function (errors) {
+        // notificação para usuario.
+        _this.$snotify.error("Você Errou!", "Atenção");
+        _this.errors = errors.response.data.errors;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -58259,7 +58421,7 @@ var render = function() {
                 attrs: {
                   title: _vm.titulo,
                   cliente: _vm.propriedadeCliente,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   statusInput: _vm.propriedade_statusInput,
                   update: _vm.propriedadeupdate
                 },
@@ -58969,7 +59131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       default: false
     },
 
-    errors: {},
+    filho_errors: {},
 
     statusInput: "",
 
@@ -58981,6 +59143,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     title: {
       require: true,
       type: String
+    }
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
     }
   },
 
@@ -59006,7 +59181,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).catch(function (errors) {
         // notificação para usuario.
         _this.$snotify.error("Você Errou!", "Atenção");
-        console.log(errors.response.data.errors);
         _this.errors = errors.response.data.errors;
       });
     }
@@ -59688,7 +59862,7 @@ var render = function() {
                 attrs: {
                   title: _vm.titulo,
                   usuario: _vm.propriedadeUsuario,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   statusInput: _vm.propriedade_statusInput,
                   update: _vm.propriedadeupdate
                 },
@@ -60191,7 +60365,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       type: String
     },
 
-    errors: {}
+    filho_errors: {}
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
+    }
   },
 
   methods: {
@@ -60365,7 +60552,7 @@ var render = function() {
                 attrs: {
                   title: _vm.titulo,
                   setor: _vm.propriedadeSetor,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   update: _vm.propriedadeupdate
                 },
                 on: { success: _vm.cadastroRealizado }
@@ -60831,7 +61018,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       type: String
     },
 
-    errors: {}
+    filho_errors: {}
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
+    }
   },
 
   methods: {
@@ -61017,7 +61217,7 @@ var render = function() {
                 attrs: {
                   title: _vm.titulo,
                   forma_pagtos: _vm.propriedadeFormaPagto,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   update: _vm.propriedadeupdate
                 },
                 on: { success: _vm.cadastroRealizado }
@@ -61188,7 +61388,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61205,6 +61405,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_FormTipoMovimentoComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_FormTipoMovimentoComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent__);
+//
+//
+//
+//
 //
 //
 //
@@ -61485,7 +61689,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       type: String
     },
 
-    errors: {}
+    filho_errors: {}
+  },
+
+  data: function data() {
+    return {
+      errors: {}
+    };
+  },
+
+
+  watch: {
+    filho_errors: function filho_errors() {
+      this.errors = this.filho_errors;
+    }
   },
 
   methods: {
@@ -61673,7 +61890,7 @@ var render = function() {
                 attrs: {
                   title: _vm.titulo,
                   tipo_movimentos: _vm.propriedadeTipoMovimentos,
-                  errors: _vm.propriedade_errors,
+                  filho_errors: _vm.propriedade_errors,
                   update: _vm.propriedadeupdate
                 },
                 on: { success: _vm.cadastroRealizado }
@@ -61932,13 +62149,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeCompra: {
-        num_doc: '',
-        filial_id: '',
-        fornecedor_id: '',
-        tipo_mov_id: '',
-        valor_nota: '',
-        created_at: '',
-        updated_at: ''
+        num_doc: "",
+        filial_id: "",
+        fornecedor_id: "",
+        tipo_mov_id: "",
+        valor_nota: "",
+        created_at: "",
+        updated_at: ""
       }
     };
   },
@@ -61976,13 +62193,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     hideVodal: function hideVodal() {
       this.showVodal = false, this.propriedade_errors = {}, this.propriedadeCompra = {
-        num_doc: '',
-        filial_id: '',
-        fornecedor_id: '',
-        tipo_mov_id: '',
-        valor_nota: '',
-        created_at: '',
-        updated_at: ''
+        num_doc: "",
+        filial_id: "",
+        fornecedor_id: "",
+        tipo_mov_id: "",
+        valor_nota: "",
+        created_at: "",
+        updated_at: ""
       };
     },
     cadastroRealizado: function cadastroRealizado() {
@@ -62200,7 +62417,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {

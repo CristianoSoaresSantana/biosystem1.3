@@ -143,7 +143,7 @@ export default {
       default: false
     },
 
-    errors: {},
+    filho_errors: {},
 
     statusInput: "",
 
@@ -156,6 +156,18 @@ export default {
       require: true,
       type: String
     }
+  },
+
+  data() {
+      return {
+          errors: {}
+      }
+  },
+
+  watch: {
+      filho_errors() {
+          this.errors = this.filho_errors;
+      }
   },
 
   computed: {
@@ -184,7 +196,6 @@ export default {
         .catch(errors => {
           // notificação para usuario.
           this.$snotify.error("Você Errou!", "Atenção");
-          console.log(errors.response.data.errors);
           this.errors = errors.response.data.errors;
         });
     }

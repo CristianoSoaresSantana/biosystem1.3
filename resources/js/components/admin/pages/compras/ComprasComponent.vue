@@ -66,13 +66,13 @@ export default {
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeCompra: {
-            num_doc: '',
-            filial_id: '',
-            fornecedor_id: '',
-            tipo_mov_id: '',
-            valor_nota: '',
-            created_at: '',
-            updated_at: ''
+        num_doc: "",
+        filial_id: "",
+        fornecedor_id: "",
+        tipo_mov_id: "",
+        valor_nota: "",
+        created_at: "",
+        updated_at: ""
       }
     };
   },
@@ -116,13 +116,13 @@ export default {
       (this.showVodal = false),
         (this.propriedade_errors = {}),
         (this.propriedadeCompra = {
-            num_doc: '',
-            filial_id: '',
-            fornecedor_id: '',
-            tipo_mov_id: '',
-            valor_nota: '',
-            created_at: '',
-            updated_at: ''
+          num_doc: "",
+          filial_id: "",
+          fornecedor_id: "",
+          tipo_mov_id: "",
+          valor_nota: "",
+          created_at: "",
+          updated_at: ""
         });
     },
 
