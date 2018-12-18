@@ -18,6 +18,7 @@ import Usuarios from './modules/usuarios/usuarios'
 import Setors from './modules/setors/setors'
 import FormaPagtos from './modules/forma_pagtos/forma_pagtos'
 import TipoMovimentos from './modules/tipo_movimentos/tipo_movimentos'
+import Compras from './modules/compras/compras'
 
 Vue.use(Vuex)
 
@@ -34,7 +35,8 @@ const store = new Vuex.Store({
         usuarios:            Usuarios,
         setors:              Setors,
         forma_pagtos:        FormaPagtos,
-        tipo_movimentos:     TipoMovimentos
+        tipo_movimentos:     TipoMovimentos,
+        compras:             Compras
     }
 })
 

@@ -19,9 +19,9 @@ class Compra extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
+    protected $primaryKey = 'num_doc';
     protected $dates = ['deleted_at'];
     protected $table = 'compras';
-    protected $primaryKey = 'num_doc';
     protected $fillable = ['num_doc', 'filial_id', 'tipo_mov_id', 'fornecedor_id', 'valor_nota',];
 
 
