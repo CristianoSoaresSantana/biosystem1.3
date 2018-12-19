@@ -84,6 +84,11 @@ class FilialController extends Controller
         }
         else
         {
+            $existsRelations = $this->filial->with(['users', 'compras', 'vendas', 'materials'])->find($id)->exists();
+            // verifica se cliente esta relacionado a uma venda
+            if ($existsRelations) {
+                return response()->json(['error' => 'Existem relacionamentos para esta filial!'], 404);
+            }
             $filial-> delete();
             // retorno o registro editado.
             return response()->json(['sucess' => true], 204);

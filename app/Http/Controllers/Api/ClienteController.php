@@ -93,7 +93,7 @@ class ClienteController extends Controller
         $cliente = $this->cliente->with(['vendas'])->find($id);
         // verifica se cliente existe!
         if(!$cliente) {
-            return response()->json(['error' => 'Cliente nao existe'], 404);
+            return response()->json(['error' => 'Not Found'], 404);
         }
         else {
             $existsVenda = $this->cliente->find($id)->vendas()->exists();
