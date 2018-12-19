@@ -57,7 +57,7 @@ export default {
       default: false
     },
 
-    branche: {
+    filho_branche: {
       require: false,
       type: Object
     },
@@ -72,6 +72,12 @@ export default {
 
   data() {
     return {
+      branche: {
+        id: "",
+        razao_social: "",
+        cnpj: ""
+      },
+
       errors: {}
     };
   },
@@ -79,6 +85,10 @@ export default {
   watch: {
     filho_errors() {
       this.errors = this.filho_errors;
+    },
+
+    filho_branche() {
+      this.branche = this.filho_branche;
     }
   },
 

@@ -7,7 +7,7 @@
         <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
           <formBranche
             :title="titulo"
-            :branche="propriedadeBranche"
+            :filho_branche="propriedadeBranche"
             :filho_errors="propriedade_errors"
             :update="propriedadeupdate"
             @success="cadastroRealizado"
@@ -22,7 +22,7 @@
             <th>ID</th>
             <th>Razão Social</th>
             <th>CNPJ</th>
-            <th width="150px">Ações</th>
+            <th width="300px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -31,12 +31,20 @@
             <td v-text="branche.razao_social"></td>
             <td v-text="branche.cnpj"></td>
             <td>
+              <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(branche.id)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(branche.id)">Editar</a>
               <confirmDelete :resgistro="branche.id" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="800">
+          <detalhe
+          :filho_branche="propriedadeBranche"
+          >
+
+          </detalhe>
+      </vodal>
     </div>
   </div>
 </template>
@@ -45,6 +53,7 @@
 import Vodal from "vodal";
 import FormBrancheComponent from "./partials/FormBrancheComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
+import detalheComponent from './partials/detalheComponent'
 
 export default {
   created() {
@@ -55,12 +64,16 @@ export default {
     return {
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeBranche: {
         id: "",
         razao_social: "",
-        cnpj: ""
+        cnpj: "",
+        users: Object,
+        vendas: Object,
+        compras: Object
       }
     };
   },
@@ -100,6 +113,21 @@ export default {
         });
     },
 
+    detalhes (id) {
+      this.$store
+        .dispatch("actionLoadBranche", id)
+        .then(response => {
+          this.propriedadeBranche = response;
+          this.detalhesVodal = true;
+        })
+        .catch(errors => {
+          this.$snotify.errors(
+            "Registro não pode ser carregado!",
+            "Informativo"
+          );
+        });
+    },
+
     hideVodal() {
       (this.showVodal = false),
         (this.propriedade_errors = {}),
@@ -108,6 +136,10 @@ export default {
           razao_social: "",
           cnpj: ""
         });
+    },
+
+    hideDetalhesVodal () {
+        this.detalhesVodal = false
     },
 
     cadastroRealizado() {
@@ -131,7 +163,8 @@ export default {
   components: {
     vodal: Vodal,
     formBranche: FormBrancheComponent,
-    confirmDelete
+    confirmDelete,
+    detalhe: detalheComponent
   }
 };
 </script>
