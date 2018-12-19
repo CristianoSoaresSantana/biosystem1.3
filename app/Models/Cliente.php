@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Venda;
 
 class Cliente extends Model
 {
@@ -42,7 +43,7 @@ class Cliente extends Model
         else
         {
             return $this->where(function ($query) use ($data){
-                        if(isset($data['filter'])) 
+                        if(isset($data['filter']))
                         {
                             $filter = $data['filter'];
                             $query->where('nome', 'LIKE', "%{$filter}%");
@@ -55,6 +56,11 @@ class Cliente extends Model
                         }
                     })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
-        
+
+    }
+
+    public function vendas()
+    {
+        return $this->hasMany(Venda::class);
     }
 }

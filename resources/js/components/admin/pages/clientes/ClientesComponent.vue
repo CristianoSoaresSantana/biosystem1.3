@@ -110,7 +110,6 @@ export default {
         (this.propriedadeupdate = false);
     },
 
-    // pegar um registro e preencher o formulario!
     editar(id) {
       (this.titulo = "Alterar Cliente"),
         (this.propriedade_statusInput = true),
@@ -129,7 +128,6 @@ export default {
           });
     },
 
-    // nome desta var representa o path do component! ex page.materialsComponent
     pageBuscar(inputBuscar) {
       (this.input = inputBuscar), this.loadIndex(1);
     },
@@ -152,7 +150,6 @@ export default {
       this.hideVodal(), this.loadIndex(1);
     },
 
-    //method que aciona uma cliente de filials.js
     destroy(id) {
       this.$store
         .dispatch("clienteDestroy", id)
@@ -161,7 +158,33 @@ export default {
           this.loadIndex();
         })
         .catch(errors => {
-          this.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+          this.propriedade_errors = errors.response.data.error;
+          this.$snotify.html(
+            `<h4 class="snotifyToast__title"> <b>Fracasso!</b> </h4>
+                         <div class="snotifyToast__body">
+                            <b>Registro não pode ser apagado!<br></b>
+                            <b>${this.propriedade_errors}</b>
+                         </div>
+                         <style scoped>
+                            .snotifyToast {
+                                background-color: rgba(52, 144, 220, 0.25);
+                                margin: 11px -100px;
+                                opacity: 0;
+                                width: 400px;
+                            }
+                            .snotifyToast__inner {
+                                color: #e3342f;
+                                max-width: 500;
+                            }
+                            </style>`,
+            {
+              timeout: 5000,
+              showProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              position: "centerTop"
+            }
+          );
         });
     }
   },
@@ -177,5 +200,4 @@ export default {
 </script>
 
 
-<style scoped>
-</style>
+

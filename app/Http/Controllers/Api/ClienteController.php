@@ -51,7 +51,7 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        $cliente = $this->cliente->find($id);
+        $cliente = $this->cliente->with(['vendas'])->find($id);
 
         if(!$cliente)
         {
@@ -90,15 +90,21 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = $this->cliente->find($id);
-
-        if(!$cliente)
-        {
-            return response()->json(['error' => 'Not Found'], 404);
+        $cliente = $this->cliente->with(['vendas'])->find($id);
+        // verifica se cliente existe!
+        if(!$cliente) {
+            return response()->json(['error' => 'Cliente nao existe'], 404);
         }
-
-        $cliente->delete();
-
-        return response()->json(['success'], 204);
+        else {
+            $existsVenda = $this->cliente->find($id)->vendas()->exists();
+            // verifica se cliente esta relacionado a uma venda
+            if ($existsVenda) {
+                return response()->json(['error' => 'Cliente esta relacionado a uma venda'], 404);
+            }
+            // deleta o cliente
+            $cliente->delete();
+            // retorna mensagem com sucesso
+            return response()->json(['success'], 204);
+        }
     }
 }
