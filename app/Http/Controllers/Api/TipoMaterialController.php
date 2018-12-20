@@ -36,7 +36,7 @@ class TipoMaterialController extends Controller
     public function show($id)
     {
         // recupero o registro
-        $tipoMaterial =  $this->tipoMaterial->find($id);
+        $tipoMaterial =  $this->tipoMaterial->with('materials')->find($id);
 
         if(!$tipoMaterial)
         {
@@ -81,6 +81,11 @@ class TipoMaterialController extends Controller
         }
         else
         {
+            $existsRelations = $this->tipoMaterial->find($id)->materials()->exists();
+            // verifica se existe relacionamento
+            if ($existsRelations) {
+                return response()->json(['error' => 'Tipo de material esta relacionado a um material'], 404);
+            }
             $tipoMaterial->delete();
             // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
@@ -94,7 +99,7 @@ class TipoMaterialController extends Controller
          * atribuo a propriedade $tipoMaterial->materials á variavel $materials.
          */
         $tipoMaterial =  $this->tipoMaterial->find($id);
-        
+
         if(!$tipoMaterial)
         {
             return response()->json(['error' => 'Not Found'], 404);
