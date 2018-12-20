@@ -157,14 +157,14 @@ class MaterialController extends Controller
             // deletar a imagem e fazer upload outra vez, assim a imagem sempre vai ter o nome do materail.
             if($material->image)
             {
-                // if(Storage::exists("{$this->pathUpload}/{$material->image}"))
-                // {
-                //     Storage::delete("{$this->pathUpload}/{$material->image}");
-                // }
+                if(Storage::exists("{$this->pathUpload}/{$material->image}"))
+                {
+                    Storage::delete("{$this->pathUpload}/{$material->image}");
+                }
             }
 
-            // $material->delete();
-            // return response()->json(['success'], 204);
+            $material->delete();
+            return response()->json(['success'], 204);
         }
     }
 

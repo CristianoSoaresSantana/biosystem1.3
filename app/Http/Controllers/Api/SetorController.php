@@ -38,7 +38,7 @@ class SetorController extends Controller
     public function show($id)
     {
         // recupero o registro
-        $setor =  $this->setor->find($id);
+        $setor =  $this->setor->with('users')->find($id);
 
         if(!$setor)
         {
@@ -51,7 +51,7 @@ class SetorController extends Controller
             return response()->json($setor, 200);
         }
     }
-    
+
     // editar informação na tabela.
     public function update(StoreUpdateSetorFormRequest $request, $id)
     {
@@ -84,8 +84,12 @@ class SetorController extends Controller
         }
         else
         {
+            $existsRelations = $this->setor->find($id)->users()->exists();
+            // verifica se existe relacionamento
+            if ($existsRelations) {
+                return response()->json(['error' => 'Setor esta relacionado a usuario'], 404);
+            }
             $setor->delete();
-            // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
         }
     }
@@ -97,7 +101,7 @@ class SetorController extends Controller
          * atribuo a propriedade $setor->users á variavel $users.
          */
         $setor =  $this->setor->find($id);
-        
+
         if(!$setor)
         {
             return response()->json(['error' => 'Not Found'], 404);

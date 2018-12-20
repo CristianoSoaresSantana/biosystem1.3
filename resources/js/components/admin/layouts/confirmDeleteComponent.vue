@@ -16,7 +16,7 @@ export default {
         //method que pergunta ao usuario se ele quer mesmo deletar o registro
         confirmDestroy(id){
             this.$snotify.error('Deseja realmente deletar este registro?', 'Deletar', {
-                timout: 10000,
+                timout: 5000,
                 showProgressBar: true,
                 closeOnClick: true,
                 buttons: [
