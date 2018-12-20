@@ -53,10 +53,10 @@ export default {
         { name: "admin.materials", title: "Materiais" },
 
         { name: "admin.setors", title: "Setores" },
-        { name: "admin.tipo_movimentos", title: "Tipo Movimento" },
-        { name: "admin.forma_pagtos", title: "Forma Pagamento" },
+        { name: "admin.tipo_movimentos", title: "Tipos Movimentos" },
+        { name: "admin.forma_pagtos", title: "Formas Pagamentos" },
         { name: "admin.tipo_materials", title: "Tipos de Material" },
-        { name: "admin.forma_farmaceuticas", title: "Forma Farmacêutica" }
+        { name: "admin.forma_farmaceuticas", title: "Formas Farmacêuticas" }
       ]
     };
   }
@@ -77,7 +77,7 @@ export default {
   background: #2e9133;
   float: left;
   padding: 0px;
-  width: 180px;
+  width: 199px;
   text-align: center;
   min-height: 100vh;
 }
@@ -85,8 +85,8 @@ export default {
   float: center;
 }
 img.logo-painel {
-  max-width: 179px;
-  max-height: 179px;
+  max-width: 194px;
+  max-height: 194px;
   margin-top: 39px;
 }
 .list-menu {
@@ -104,14 +104,14 @@ ul.ul-menu li a {
   font-size: 1.4em;
   margin: 3px 7px;
   float: left;
-  width: 167px;
+  width: 182px;
   color: #ffffff;
 }
 .conteudo {
   float: left;
   background: #ffffff;
   min-height: 100vh;
-  width: calc(100% - 183px);
+  width: calc(100% - 199px);
 }
 .top-dasboard {
   width: 100%;

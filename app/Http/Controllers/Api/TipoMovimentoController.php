@@ -41,7 +41,7 @@ class TipoMovimentoController extends Controller
     public function show($id)
     {
         // recupero o registro
-        $tipoMovimento =  $this->tipoMovimento->find($id);
+        $tipoMovimento =  $this->tipoMovimento->with('compras', 'vendas')->find($id);
 
         if(!$tipoMovimento)
         {
@@ -86,8 +86,12 @@ class TipoMovimentoController extends Controller
         }
         else
         {
+            $existsRelations = $this->tipoMovimento->find($id)->compras()->exists();
+            // verifica se existe relacionamento
+            if ($existsRelations) {
+                return response()->json(['error' => 'Tipo de material esta relacionado a um material'], 404);
+            }
             $tipoMovimento->delete();
-            // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
         }
     }
@@ -121,7 +125,7 @@ class TipoMovimentoController extends Controller
          * atribuo a propriedade $tipoMovimento->materials á variavel $materials.
          */
         $tipoMovimento =  $this->tipoMovimento->find($id);
-        
+
         if(!$tipoMovimento)
         {
             return response()->json(['error' => 'Not Found'], 404);
@@ -129,12 +133,12 @@ class TipoMovimentoController extends Controller
         else
         {
             $vendas = $tipoMovimento->vendas()->paginate();
-            
+
             return response()->json([
                 'tipo_movimentos' => $tipoMovimento,
                 'vendas'          => $vendas,
             ]);
         }
     }
-    
+
 }

@@ -52751,7 +52751,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n*[data-v-2073db19] {\n  margin: 0px;\n  padding: 0px;\n  font-family: \"Open Sans\";\n}\n.container[data-v-2073db19] {\n  max-width: 1680px;\n  max-height: 1050px;\n}\n.menu[data-v-2073db19] {\n  background: #2e9133;\n  float: left;\n  padding: 0px;\n  width: 180px;\n  text-align: center;\n  min-height: 100vh;\n}\n.logo[data-v-2073db19] {\n  float: center;\n}\nimg.logo-painel[data-v-2073db19] {\n  max-width: 179px;\n  max-height: 179px;\n  margin-top: 39px;\n}\n.list-menu[data-v-2073db19] {\n  float: left;\n  width: 100%;\n  margin-top: 10px;\n}\nul.ul-menu[data-v-2073db19] {\n  list-style: none;\n}\nul.ul-menu li[data-v-2073db19] {\n  float: left;\n}\nul.ul-menu li a[data-v-2073db19] {\n  font-size: 1.4em;\n  margin: 3px 7px;\n  float: left;\n  width: 167px;\n  color: #ffffff;\n}\n.conteudo[data-v-2073db19] {\n  float: left;\n  background: #ffffff;\n  min-height: 100vh;\n  width: calc(100% - 183px);\n}\n.top-dasboard[data-v-2073db19] {\n  width: 100%;\n  float: left;\n  background: #2e9133;\n  padding: 8px;\n}\n.dropdown[data-v-2073db19] {\n  float: right;\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-2073db19] {\n  margin: 0px;\n  padding: 0px;\n  font-family: \"Open Sans\";\n}\n.container[data-v-2073db19] {\n  max-width: 1680px;\n  max-height: 1050px;\n}\n.menu[data-v-2073db19] {\n  background: #2e9133;\n  float: left;\n  padding: 0px;\n  width: 199px;\n  text-align: center;\n  min-height: 100vh;\n}\n.logo[data-v-2073db19] {\n  float: center;\n}\nimg.logo-painel[data-v-2073db19] {\n  max-width: 194px;\n  max-height: 194px;\n  margin-top: 39px;\n}\n.list-menu[data-v-2073db19] {\n  float: left;\n  width: 100%;\n  margin-top: 10px;\n}\nul.ul-menu[data-v-2073db19] {\n  list-style: none;\n}\nul.ul-menu li[data-v-2073db19] {\n  float: left;\n}\nul.ul-menu li a[data-v-2073db19] {\n  font-size: 1.4em;\n  margin: 3px 7px;\n  float: left;\n  width: 182px;\n  color: #ffffff;\n}\n.conteudo[data-v-2073db19] {\n  float: left;\n  background: #ffffff;\n  min-height: 100vh;\n  width: calc(100% - 199px);\n}\n.top-dasboard[data-v-2073db19] {\n  width: 100%;\n  float: left;\n  background: #2e9133;\n  padding: 8px;\n}\n.dropdown[data-v-2073db19] {\n  float: right;\n}\n", ""]);
 
 // exports
 
@@ -52838,7 +52838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      links: [{ name: "admin.dashboard", title: "Dashboard" }, { name: "admin.entrada_nfe", title: "Entrada de Nfe" }, { name: "admin.usuarios", title: "Usuários" }, { name: "admin.clientes", title: "Clientes" }, { name: "admin.branches", title: "Filiais" }, { name: "admin.fornecedors", title: "Fornecedores" }, { name: "admin.materials", title: "Materiais" }, { name: "admin.setors", title: "Setores" }, { name: "admin.tipo_movimentos", title: "Tipo Movimento" }, { name: "admin.forma_pagtos", title: "Forma Pagamento" }, { name: "admin.tipo_materials", title: "Tipos de Material" }, { name: "admin.forma_farmaceuticas", title: "Forma Farmacêutica" }]
+      links: [{ name: "admin.dashboard", title: "Dashboard" }, { name: "admin.entrada_nfe", title: "Entrada de Nfe" }, { name: "admin.usuarios", title: "Usuários" }, { name: "admin.clientes", title: "Clientes" }, { name: "admin.branches", title: "Filiais" }, { name: "admin.fornecedors", title: "Fornecedores" }, { name: "admin.materials", title: "Materiais" }, { name: "admin.setors", title: "Setores" }, { name: "admin.tipo_movimentos", title: "Tipos Movimentos" }, { name: "admin.forma_pagtos", title: "Formas Pagamentos" }, { name: "admin.tipo_materials", title: "Tipos de Material" }, { name: "admin.forma_farmaceuticas", title: "Formas Farmacêuticas" }]
     };
   }
 });
@@ -61757,7 +61757,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61891,7 +61891,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this2.$snotify.success("Registro Deletado!", "Sucesso");
         _this2.tipo_movimentosIndex();
       }).catch(function (errors) {
-        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+        _this2.propriedade_errors = errors.response.data.error;
+        _this2.$snotify.html("<h4 class=\"snotifyToast__title\"> <b>Fracasso!</b> </h4>\n                         <div class=\"snotifyToast__body\">\n                            <b>Registro n\xE3o pode ser apagado!<br></b>\n                            <b>" + _this2.propriedade_errors + "</b>\n                         </div>\n                         <style scoped>\n                            .snotifyToast {\n                                background-color: #f99e94;\n                                margin: 11px -100px;\n                                opacity: 0;\n                                width: 400px;\n                            }\n                            .snotifyToast__inner {\n                                color: #e3342f;\n                                max-width: 500;\n                            }\n                            </style>", {
+          timeout: 5000,
+          showProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          position: "centerTop"
+        });
       });
     }
   },

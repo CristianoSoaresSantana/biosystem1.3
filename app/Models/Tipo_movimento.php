@@ -39,7 +39,7 @@ class Tipo_movimento extends Model
      */
     public function vendas()
     {
-        return $this->hasMany(Venda::class);
+        return $this->hasMany(Venda::class, 'tipo_mov_id');
     }
 
     /**
@@ -48,6 +48,6 @@ class Tipo_movimento extends Model
      */
     public function compras()
     {
-        return $this->hasMany(Compra::class);
+        return $this->hasMany(Compra::class, 'tipo_mov_id');
     }
 }
