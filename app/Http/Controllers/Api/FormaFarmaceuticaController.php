@@ -82,12 +82,11 @@ class FormaFarmaceuticaController extends Controller
         else
         {
             $existsRelations = $this->formaFarmaceutica->find($id)->materials()->exists();
-            // verifica se cliente esta relacionado a uma venda
+            // verifica se existe relacionamento
             if ($existsRelations) {
                 return response()->json(['error' => 'Forma Farmaceutica esta relacionado a um material'], 404);
             }
             $formaFarmaceutica->delete();
-            // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
         }
     }

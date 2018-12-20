@@ -34,7 +34,7 @@ class CreateVendasTable extends Migration
             $table->unsignedInteger('forma_pagto_id');
             $table->float('valor', 10,2);
             $table->timestamps();
-            
+
             $table->foreign('venda_id')->references('id')->on('vendas')->onDelete('cascade');
             $table->foreign('forma_pagto_id')->references('id')->on('forma_pagtos')->onDelete('cascade');
         });
@@ -50,7 +50,7 @@ class CreateVendasTable extends Migration
             $table->string('justificativa_desconto')->default('não houve descontos!');
             $table->timestamps();
             $table->softDeletes();
-            
+
             $table->foreign('venda_id')->references('id')->on('vendas')->onDelete('cascade');
             $table->foreign('material_sku')->references('sku')->on('materials')->onDelete('cascade');
         });
@@ -67,5 +67,7 @@ class CreateVendasTable extends Migration
             // Esse metodo serve para remover relacionamentos entre tabelas!
 		});
         Schema::dropIfExists('vendas');
+        Schema::dropIfExists('forma_pagto_vendas');
+        Schema::dropIfExists('material_vendas');
     }
 }

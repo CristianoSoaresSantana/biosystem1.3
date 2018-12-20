@@ -86,6 +86,11 @@ class FormaPagtoController extends Controller
         }
         else
         {
+            $existsRelations = $this->formaPagto->find($id)->vendas()->exists();
+            // verifica se existe relacionamento
+            if ($existsRelations) {
+                return response()->json(['error' => 'Forma Pagamento esta relacionado a uma venda'], 404);
+            }
             $formaPagto->delete();
             // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
@@ -99,7 +104,7 @@ class FormaPagtoController extends Controller
          * atribuo a propriedade $formaPagto->materials á variavel $materials.
          */
         $formaPagto =  $this->formaPagto->find($id);
-        
+
         if(!$formaPagto)
         {
             return response()->json(['error' => 'Not Found'], 404);
