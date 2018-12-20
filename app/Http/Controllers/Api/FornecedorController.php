@@ -37,7 +37,7 @@ class FornecedorController extends Controller
     public function show($id)
     {
         // recupero o registro
-        $fornecedor =  $this->fornecedor->find($id);
+        $fornecedor =  $this->fornecedor->with('materials')->find($id);
 
         if(!$fornecedor)
         {
@@ -50,7 +50,7 @@ class FornecedorController extends Controller
             return response()->json($fornecedor, 200);
         }
     }
-    
+
     // editar informação na tabela.
     public function update(StoreUpdateFornecedorFormRequest $request, $id)
     {
@@ -83,9 +83,13 @@ class FornecedorController extends Controller
         }
         else
         {
+            $existsRelations = $this->fornecedor->find($id)->materials()->exists();
+            // verifica se existe relacionamento
+            if ($existsRelations) {
+                return response()->json(['error' => 'Fornecedor esta relacionado a um material'], 404);
+            }
             $fornecedor->delete();
-            // retorno o registro editado.
-            return response()->json(['sucess' => true], 204);
+            return response()->json(['success' => true], 204);
         }
     }
 
@@ -103,7 +107,7 @@ class FornecedorController extends Controller
         else
         {
             $compras = $fornecedor->compras()->paginate();
-            
+
             return response()->json([
                 'fornecedor' => $fornecedor,
                 'compras'     => $compras,
@@ -123,7 +127,7 @@ class FornecedorController extends Controller
         else
         {
             $materials = $fornecedor->materials()->paginate();
-            
+
             return response()->json([
                 'fornecedor'   => $fornecedor,
                 'materials'  => $materials,

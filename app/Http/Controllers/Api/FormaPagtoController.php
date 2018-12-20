@@ -41,7 +41,7 @@ class FormaPagtoController extends Controller
     public function show($id)
     {
         // recupero o registro
-        $formaPagto =  $this->formaPagto->find($id);
+        $formaPagto =  $this->formaPagto->with('vendas')->find($id);
 
         if(!$formaPagto)
         {
@@ -92,8 +92,7 @@ class FormaPagtoController extends Controller
                 return response()->json(['error' => 'Forma Pagamento esta relacionado a uma venda'], 404);
             }
             $formaPagto->delete();
-            // retorno o registro editado.
-            return response()->json(['sucess' => true], 204);
+            return response()->json(['success' => true], 204);
         }
     }
 
