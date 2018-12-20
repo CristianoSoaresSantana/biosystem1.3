@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function store(StoreUpdateUserFormRequest $request)
     {
-        
+
         $users = $this->user->create($request->all());
 
         return response()->json($users, 201);
@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->user->with(['setor', 'filial'])->find($id);
+        $user = $this->user->with(['setor', 'filial', 'vendas'])->find($id);
 
         if(!$user)
         {
@@ -60,7 +60,7 @@ class UserController extends Controller
         }
         return response()->json($user, 200);
     }
-    
+
     /**
      * Update the specified resource in storage.
      * primeiro verifica se existe o user a ser editado!
@@ -77,9 +77,9 @@ class UserController extends Controller
         {
             return response()->json(['error' => 'Not Found'], 404);
         }
-        
+
         $user->update($request->all());
-        
+
         return response()->json($user, 200);
     }
 
@@ -97,9 +97,16 @@ class UserController extends Controller
         {
             return response()->json(['error' => 'Not Found'], 404);
         }
+        else
+        {
+            $existsRelations = $this->user->find($id)->vendas()->exists();
+            // verifica se existe relacionamento
+            if ($existsRelations) {
+                return response()->json(['error' => 'Usuario esta relacionado a uma venda'], 404);
+            }
+            $user->delete();
+            return response()->json(['success'], 204);
+        }
 
-        $user->delete();
-
-        return response()->json(['success'], 204);
     }
 }

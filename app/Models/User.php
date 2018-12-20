@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Models\Setor;
 use App\Models\Filial;
+use App\Models\Venda;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -46,6 +47,15 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Filial::class);
     }
 
+
+    /**
+     * relacionamentos n:m
+     */
+
+    public function vendas() {
+        return $this->hasMany(Venda::class);
+    }
+
     /**
      * Neste metodo, eu busco os dados paginando, por parametro ou sem parametro!
      * Se for informado um filter, este metodo faz uma busca hibrida,  senão ele
@@ -59,7 +69,7 @@ class User extends Authenticatable implements JWTSubject
         else
         {
             return $this->where(function ($query) use ($data){
-                        if(isset($data['filter'])) 
+                        if(isset($data['filter']))
                         {
                             $filter = $data['filter'];
                             $query->where('name', 'LIKE', "%{$filter}%");
@@ -72,7 +82,7 @@ class User extends Authenticatable implements JWTSubject
                         }
                     })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
-        
+
     }
 
     /**

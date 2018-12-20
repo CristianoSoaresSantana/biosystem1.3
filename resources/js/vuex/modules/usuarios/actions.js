@@ -61,7 +61,7 @@ export default {
                 .then(response => resolve(response))
                 .catch(errors => reject(errors))
                 // recurso comentado para o preloader ser chamado ao recarregar table.
-                // .finally(() => context.commit('PRELOADER', false))
+                .finally(() => context.commit('PRELOADER', false))
         })
     },
 }

@@ -96,9 +96,9 @@ class ClienteController extends Controller
             return response()->json(['error' => 'Not Found'], 404);
         }
         else {
-            $existsVenda = $this->cliente->find($id)->vendas()->exists();
+            $existsRelations = $this->cliente->find($id)->vendas()->exists();
             // verifica se cliente esta relacionado a uma venda
-            if ($existsVenda) {
+            if ($existsRelations) {
                 return response()->json(['error' => 'Cliente esta relacionado a uma venda'], 404);
             }
             // deleta o cliente
