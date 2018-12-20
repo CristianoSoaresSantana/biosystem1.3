@@ -55064,7 +55064,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55259,7 +55259,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         _this2.$snotify.success("Registro Deletado!", "Sucesso");
         _this2.loadMaterials();
       }).catch(function (errors) {
-        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+        _this2.propriedade_errors = errors.response.data.error;
+        _this2.$snotify.html("<h4 class=\"snotifyToast__title\"> <b>Fracasso!</b> </h4>\n                         <div class=\"snotifyToast__body\">\n                            <b>Registro n\xE3o pode ser apagado!<br></b>\n                            <b>" + _this2.propriedade_errors + "</b>\n                         </div>\n                         <style scoped>\n                            .snotifyToast {\n                                background-color: #f99e94;\n                                margin: 11px -100px;\n                                opacity: 0;\n                                width: 400px;\n                            }\n                            .snotifyToast__inner {\n                                color: #e3342f;\n                                max-width: 500;\n                            }\n                            </style>", {
+          timeout: 5000,
+          showProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          position: "centerTop"
+        });
       });
     }
   },
@@ -64508,9 +64515,11 @@ var RESOURCE = 'materials';
                 return resolve(response);
             }).catch(function (errors) {
                 return reject(errors);
-            });
+            })
             // recurso comentado para o preloader ser chamado ao recarregar table.
-            // .finally(() => context.commit('PRELOADER', false))
+            .finally(function () {
+                return context.commit('PRELOADER', false);
+            });
         });
     }
 });

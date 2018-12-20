@@ -27,7 +27,7 @@ class MaterialController extends Controller
     public function index(Request $request)
     {
         $materials = $this->material->getResults($request->all(), $this->itensPage);
-        
+
         return response()->json($materials, 200);
     }
 
@@ -51,9 +51,9 @@ class MaterialController extends Controller
             $nameFile = "{$nomeImage}.{$extensionImage}";
             // aqui eu atribuo o nome da imgem ao $data array de dados informados pelo usuario.
             $data['image'] = $nameFile;
-            
+
             $upload = $request->file('image')->storeAs($this->pathUpload, $nameFile);
-            
+
             if(!$upload)
             {
                 return response()->json(['error' => 'Fail UpLoad'], 500);
@@ -74,7 +74,7 @@ class MaterialController extends Controller
      */
     public function show($id)
     {
-        $material = $this->material->with(['tipo_material', 'forma_farmaceutica'])->find($id);
+        $material = $this->material->with(['tipo_material', 'forma_farmaceutica', 'filial'])->find($id);
 
         if(!$material)
         {
@@ -98,7 +98,7 @@ class MaterialController extends Controller
         {
             return response()->json(['error' => 'Not Found'], 404);
         }
-        
+
         // inicio upload da imagens
         $data = $request->all();
 
@@ -120,9 +120,9 @@ class MaterialController extends Controller
             $nameFile = "{$nomeImage}.{$extensionImage}";
             // aqui eu atribuo o nome da imgem ao $data array de dados informados pelo usuario.
             $data['image'] = $nameFile;
-            
+
             $upload = $request->file('image')->storeAs($this->pathUpload, $nameFile);
-            
+
             if(!$upload)
             {
                 return response()->json(['error' => 'Fail UpLoad'], 500);
@@ -130,7 +130,7 @@ class MaterialController extends Controller
         }
         // fim
         $material->update($data);
-        
+
         return response()->json($material, 200);
     }
 
@@ -148,19 +148,24 @@ class MaterialController extends Controller
         {
             return response()->json(['error' => 'Not Found'], 404);
         }
-
-        // deletar a imagem e fazer upload outra vez, assim a imagem sempre vai ter o nome do materail.
-        if($material->image)
-        {
-            if(Storage::exists("{$this->pathUpload}/{$material->image}"))
-            {
-                Storage::delete("{$this->pathUpload}/{$material->image}");
+        else{
+            $existsRelations = $this->material->find($id)->filial()->exists();
+            // verifica se existe relacionamento
+            if ($existsRelations) {
+                return response()->json(['error' => 'Material esta relacionado ao estoque'], 404);
             }
+            // deletar a imagem e fazer upload outra vez, assim a imagem sempre vai ter o nome do materail.
+            if($material->image)
+            {
+                // if(Storage::exists("{$this->pathUpload}/{$material->image}"))
+                // {
+                //     Storage::delete("{$this->pathUpload}/{$material->image}");
+                // }
+            }
+
+            // $material->delete();
+            // return response()->json(['success'], 204);
         }
-
-        $material->delete();
-
-        return response()->json(['success'], 204);
     }
 
     // Com este metodo eu vejo informações do estoque por filial.
@@ -174,14 +179,14 @@ class MaterialController extends Controller
         else
         {
             $filial = $material->filial()->paginate($this->itensPage);
-            
+
             return response()->json([
                 'material'  => $material,
                 'filial'   => $filial,
             ]);
         }
     }
-    
+
     // Com este metodo eu encontro o fornecedor de um material.
     public function fornecedor($sku)
     {
@@ -193,7 +198,7 @@ class MaterialController extends Controller
         else
         {
             $fornecedor = $material->fornecedor()->paginate($this->itensPage);
-            
+
             return response()->json([
                 'material'  => $material,
                 'fornecedor'   => $fornecedor,
@@ -212,7 +217,7 @@ class MaterialController extends Controller
         else
         {
             $vendas = $material->vendas()->paginate($this->itensPage);
-            
+
             return response()->json([
                 'material'     => $material,
                 'vendas'       => $vendas,
@@ -231,7 +236,7 @@ class MaterialController extends Controller
         else
         {
             $compras = $material->compras()->paginate($this->itensPage);
-            
+
             return response()->json([
                 'material'     => $material,
                 'compras'       => $compras,
