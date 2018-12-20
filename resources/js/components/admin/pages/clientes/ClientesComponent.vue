@@ -167,7 +167,7 @@ export default {
                          </div>
                          <style scoped>
                             .snotifyToast {
-                                background-color: rgba(52, 144, 220, 0.25);
+                                background-color: #f99e94;
                                 margin: 11px -100px;
                                 opacity: 0;
                                 width: 400px;
