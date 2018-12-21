@@ -57,7 +57,9 @@ import detalheComponent from './partials/detalheComponent'
 
 export default {
   created() {
-    this.loadbranches();
+    if(this.branches.length == 0){
+        this.loadbranches();
+    }
   },
 
   data() {

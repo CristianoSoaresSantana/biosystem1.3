@@ -50,7 +50,9 @@ import confirmDelete from "../../layouts/confirmDeleteComponent";
 
 export default {
   created() {
-    this.loadFormaFarmaceuticas();
+    if(this.forma_farmaceuticas.length == 0){
+        this.loadFormaFarmaceuticas();
+    }
   },
 
   data() {

@@ -63,7 +63,9 @@ import confirmDelete from "../../layouts/confirmDeleteComponent";
 
 export default {
   created() {
-    this.loadIndex(1);
+    if(this.clientes.data.length == 0){
+        this.loadIndex(1);
+    }
   },
 
   data() {

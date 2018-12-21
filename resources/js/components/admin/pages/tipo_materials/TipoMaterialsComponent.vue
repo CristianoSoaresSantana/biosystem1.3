@@ -50,7 +50,9 @@ import confirmDelete from "../../layouts/confirmDeleteComponent";
 
 export default {
   created() {
-    this.loadTipoMaterials();
+    if(this.tipo_materials.length == 0){
+        this.loadTipoMaterials();
+    }
   },
 
   data() {

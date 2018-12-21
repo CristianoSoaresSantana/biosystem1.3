@@ -69,7 +69,9 @@ import confirmDelete from "../../layouts/confirmDeleteComponent";
 
 export default {
   created() {
-    this.loadMaterials(1);
+    if(this.materials.data.length == 0){
+        this.loadMaterials(1);
+    }
   },
 
   data() {

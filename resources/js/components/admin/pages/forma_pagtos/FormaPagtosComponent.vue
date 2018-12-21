@@ -46,7 +46,9 @@ import confirmDelete from "../../layouts/confirmDeleteComponent";
 
 export default {
   created() {
-    this.forma_pagtosIndex();
+    if(this.forma_pagtos.length == 0){
+        this.forma_pagtosIndex();
+    }
   },
 
   data() {

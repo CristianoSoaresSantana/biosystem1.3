@@ -50,7 +50,9 @@ import confirmDelete from "../../layouts/confirmDeleteComponent";
 
 export default {
   created() {
-    this.tipo_movimentosIndex();
+    if(this.tipo_movimentos.length == 0){
+        this.tipo_movimentosIndex();
+    }
   },
 
   data() {
