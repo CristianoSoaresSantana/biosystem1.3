@@ -28,7 +28,7 @@ class StoreUpdateVendaFormRequest extends FormRequest
             'filial_id'   => 'required|exists:filials,id',
             'cliente_id'  => 'required|exists:clientes,id',
             'tipo_mov_id' => 'required|exists:tipo_movimentos,id',
-            'valor_total' => 'required',
+            // 'valor_total' => 'required',
         ];
     }
 }

@@ -23,6 +23,7 @@ import SetorsComponent from '../components/admin/pages/setors/SetorsComponent'
 import FormaPagtosComponent from '../components/admin/pages/forma_pagtos/FormaPagtosComponent'
 import TipoMovimentosComponent from '../components/admin/pages/tipo_movimentos/TipoMovimentosComponent'
 import ComprasComponent from '../components/admin/pages/compras/ComprasComponent'
+import VendasComponent from '../components/admin/pages/vendas/VendasComponent'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,7 @@ const routes = [
         children: [
             {path: 'admin', component: DashboardComponent, name: 'admin.dashboard'},
             {path: 'entrada_nfe', component: ComprasComponent, name: 'admin.entrada_nfe'},
+            {path: 'vendas', component: VendasComponent, name: 'admin.vendas'},
 
             {path: 'clientes', component: ClientesComponent, name: 'admin.clientes'},
             {path: 'usuarios', component: UsuariosComponent, name: 'admin.usuarios'},
