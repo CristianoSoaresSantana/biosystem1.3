@@ -29,7 +29,7 @@
             <th>Celular</th>
             <th>Recados</th>
             <th>E-mail</th>
-            <th width="150px">Ações</th>
+            <th width="200px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -41,12 +41,18 @@
             <td v-text="cliente.celular_recado"></td>
             <td v-text="cliente.email"></td>
             <td>
+              <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(cliente.id)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(cliente.id)">Editar</a>
               <confirmDelete :resgistro="cliente.id" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="600">
+          <detalhe
+          :filho_cliente="propriedadeCliente"
+          ></detalhe>
+      </vodal>
       <!-- paginação -->
       <pagination :pagination="clientes" :offset="6" @paginate="loadIndex"></pagination>
     </div>
@@ -60,6 +66,7 @@ import PaginationComponent from "../../../layouts/PaginationComponent.vue";
 import BuscarComponent from "../../layouts/geralBuscarComponent";
 import FormClienteComponent from "./partials/FormClienteComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
+import detalheComponent from './partials/detalheComponent';
 
 export default {
   created() {
@@ -73,6 +80,7 @@ export default {
       input: "",
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedade_errors: {},
       propriedadeupdate: false,
       propriedade_statusInput: false,
@@ -83,7 +91,8 @@ export default {
         celular: "",
         celular_recado: "",
         email: "",
-        endereco: ""
+        endereco: "",
+        vendas: Object
       }
     };
   },
@@ -110,6 +119,21 @@ export default {
       (this.titulo = "Cadastrar Cliente"),
         (this.showVodal = true),
         (this.propriedadeupdate = false);
+    },
+
+    detalhes (id) {
+      this.$store
+        .dispatch("clienteLoadShow", id)
+        .then(response => {
+          this.propriedadeCliente = response;
+          this.detalhesVodal = true;
+        })
+        .catch(errors => {
+          this.$snotify.errors(
+            "Registro não pode ser carregado!",
+            "Informativo"
+          );
+        });
     },
 
     editar(id) {
@@ -144,8 +168,13 @@ export default {
           celular: "",
           recado: "",
           email: "",
-          endereco: ""
+          endereco: "",
+          vendas: Object
         });
+    },
+
+    hideDetalhesVodal () {
+        this.detalhesVodal = false
     },
 
     cadastroRealizado() {
@@ -196,7 +225,8 @@ export default {
     buscar: BuscarComponent,
     vodal: Vodal,
     formCliente: FormClienteComponent,
-    confirmDelete
+    confirmDelete,
+    detalhe: detalheComponent
   }
 };
 </script>

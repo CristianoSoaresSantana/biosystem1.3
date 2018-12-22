@@ -58018,6 +58018,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_FormClienteComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__partials_FormClienteComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__partials_detalheComponent__ = __webpack_require__(408);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__partials_detalheComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__partials_detalheComponent__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -58075,6 +58077,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -58094,6 +58103,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       input: "",
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedade_errors: {},
       propriedadeupdate: false,
       propriedade_statusInput: false,
@@ -58104,7 +58114,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         celular: "",
         celular_recado: "",
         email: "",
-        endereco: ""
+        endereco: "",
+        vendas: Object
       }
     };
   },
@@ -58129,15 +58140,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     criar: function criar() {
       this.titulo = "Cadastrar Cliente", this.showVodal = true, this.propriedadeupdate = false;
     },
-    editar: function editar(id) {
+    detalhes: function detalhes(id) {
       var _this = this;
 
-      this.titulo = "Alterar Cliente", this.propriedade_statusInput = true, this.$store.dispatch("clienteLoadShow", id).then(function (response) {
+      this.$store.dispatch("clienteLoadShow", id).then(function (response) {
         _this.propriedadeCliente = response;
-        _this.showVodal = true;
-        _this.propriedadeupdate = true;
+        _this.detalhesVodal = true;
       }).catch(function (errors) {
         _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
+    editar: function editar(id) {
+      var _this2 = this;
+
+      this.titulo = "Alterar Cliente", this.propriedade_statusInput = true, this.$store.dispatch("clienteLoadShow", id).then(function (response) {
+        _this2.propriedadeCliente = response;
+        _this2.showVodal = true;
+        _this2.propriedadeupdate = true;
+      }).catch(function (errors) {
+        _this2.$snotify.errors("Registro não pode ser carregado!", "Informativo");
       });
     },
     pageBuscar: function pageBuscar(inputBuscar) {
@@ -58151,21 +58172,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         celular: "",
         recado: "",
         email: "",
-        endereco: ""
+        endereco: "",
+        vendas: Object
       };
+    },
+    hideDetalhesVodal: function hideDetalhesVodal() {
+      this.detalhesVodal = false;
     },
     cadastroRealizado: function cadastroRealizado() {
       this.hideVodal(), this.loadIndex(1);
     },
     destroy: function destroy(id) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$store.dispatch("clienteDestroy", id).then(function () {
-        _this2.$snotify.success("Registro Deletado!", "Sucesso");
-        _this2.loadIndex();
+        _this3.$snotify.success("Registro Deletado!", "Sucesso");
+        _this3.loadIndex();
       }).catch(function (errors) {
-        _this2.propriedade_errors = errors.response.data.error;
-        _this2.$snotify.html("<h4 class=\"snotifyToast__title\"> <b>Fracasso!</b> </h4>\n                         <div class=\"snotifyToast__body\">\n                            <b>Registro n\xE3o pode ser apagado!<br></b>\n                            <b>" + _this2.propriedade_errors + "</b>\n                         </div>\n                         <style scoped>\n                            .snotifyToast {\n                                background-color: #f99e94;\n                                margin: 11px -100px;\n                                opacity: 0;\n                                width: 400px;\n                            }\n                            .snotifyToast__inner {\n                                color: #e3342f;\n                                max-width: 500;\n                            }\n                            </style>", {
+        _this3.propriedade_errors = errors.response.data.error;
+        _this3.$snotify.html("<h4 class=\"snotifyToast__title\"> <b>Fracasso!</b> </h4>\n                         <div class=\"snotifyToast__body\">\n                            <b>Registro n\xE3o pode ser apagado!<br></b>\n                            <b>" + _this3.propriedade_errors + "</b>\n                         </div>\n                         <style scoped>\n                            .snotifyToast {\n                                background-color: #f99e94;\n                                margin: 11px -100px;\n                                opacity: 0;\n                                width: 400px;\n                            }\n                            .snotifyToast__inner {\n                                color: #e3342f;\n                                max-width: 500;\n                            }\n                            </style>", {
           timeout: 5000,
           showProgressBar: true,
           closeOnClick: true,
@@ -58181,7 +58206,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     buscar: __WEBPACK_IMPORTED_MODULE_2__layouts_geralBuscarComponent___default.a,
     vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
     formCliente: __WEBPACK_IMPORTED_MODULE_3__partials_FormClienteComponent___default.a,
-    confirmDelete: __WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent___default.a
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_4__layouts_confirmDeleteComponent___default.a,
+    detalhe: __WEBPACK_IMPORTED_MODULE_5__partials_detalheComponent___default.a
   }
 });
 
@@ -58845,6 +58871,21 @@ var render = function() {
                     _c(
                       "a",
                       {
+                        staticClass: "btn btn-primary btn-sm",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.detalhes(cliente.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Detalhes")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
                         staticClass: "btn btn-info btn-sm",
                         attrs: { href: "#" },
                         on: {
@@ -58869,6 +58910,21 @@ var render = function() {
             0
           )
         ]),
+        _vm._v(" "),
+        _c(
+          "vodal",
+          {
+            attrs: {
+              show: _vm.detalhesVodal,
+              animation: "zoon",
+              width: 920,
+              height: 600
+            },
+            on: { hide: _vm.hideDetalhesVodal }
+          },
+          [_c("detalhe", { attrs: { filho_cliente: _vm.propriedadeCliente } })],
+          1
+        ),
         _vm._v(" "),
         _c("pagination", {
           attrs: { pagination: _vm.clientes, offset: 6 },
@@ -58898,7 +58954,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("E-mail")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "150px" } }, [_vm._v("Ações")])
+        _c("th", { attrs: { width: "200px" } }, [_vm._v("Ações")])
       ])
     ])
   }
@@ -74456,6 +74512,287 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(409)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(411)
+/* template */
+var __vue_template__ = __webpack_require__(412)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-546d00bf"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/pages/clientes/partials/detalheComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-546d00bf", Component.options)
+  } else {
+    hotAPI.reload("data-v-546d00bf", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 409 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(410);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("571a3f88", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-546d00bf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./detalheComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-546d00bf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./detalheComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 410 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n*[data-v-546d00bf] {font-family: \"Times New Roman\", Times, serif;\n}\nh1[data-v-546d00bf] {\n    text-align: center;\n}\nh4[data-v-546d00bf] {\n    margin-top: 6px;\n}\nul[data-v-546d00bf] {\n    background-color: rgb(177, 235, 152);\n    margin-bottom: 2px;\n    border-radius: 5px;\n}\nli[data-v-546d00bf] {\n    font-size: 15px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 411 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    filho_cliente: {
+      require: false,
+      type: Object
+    }
+  },
+
+  data: function data() {
+    return {
+      cliente: {
+        id: "",
+        nome: "",
+        cpf: "",
+        celular: "",
+        celular_recado: "",
+        email: "",
+        endereco: "",
+        vendas: Object
+      }
+    };
+  },
+
+
+  watch: {
+    filho_cliente: function filho_cliente() {
+      this.cliente = this.filho_cliente;
+    }
+  }
+});
+
+/***/ }),
+/* 412 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v("Detalhes do " + _vm._s(_vm.cliente.nome))]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c(
+          "ul",
+          {
+            staticStyle: { width: "858px", height: "150px", overflow: "auto" }
+          },
+          [
+            _c(
+              "li",
+              {
+                directives: [
+                  {
+                    name: "modal",
+                    rawName: "v-modal",
+                    value: _vm.cliente in _vm.cliente,
+                    expression: "cliente in cliente"
+                  }
+                ],
+                key: _vm.cliente.id
+              },
+              [
+                _c("strong", [_vm._v("Nome:")]),
+                _vm._v(" " + _vm._s(_vm.cliente.nome) + " "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Celular:")]),
+                _vm._v(" " + _vm._s(_vm.cliente.celular) + " "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Celular para recados:")]),
+                _vm._v(" " + _vm._s(_vm.cliente.celular_recado) + " "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("E-Mail:")]),
+                _vm._v(" " + _vm._s(_vm.cliente.email) + " "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Endereço:")]),
+                _vm._v(" " + _vm._s(_vm.cliente.endereco) + "\n              ")
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "ul",
+          {
+            staticStyle: { width: "858px", height: "300px", overflow: "auto" }
+          },
+          [
+            _c("h4", [_vm._v("Ultimas Compras")]),
+            _vm._v(" "),
+            _vm._l(_vm.cliente.vendas, function(venda) {
+              return _c("li", { key: venda.id }, [
+                _c("strong", [_vm._v("ID:")]),
+                _vm._v(" " + _vm._s(venda.id) + " "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Valor total:")]),
+                _vm._v(" " + _vm._s(venda.valor_total) + " "),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Data da compra:")]),
+                _vm._v(
+                  " " +
+                    _vm._s(
+                      _vm
+                        .$moment(venda.created_at)
+                        .format("DD/MM/YYYY HH:mm", "L")
+                    ) +
+                    " "
+                ),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Data de Alteração:")]),
+                _vm._v(
+                  " " +
+                    _vm._s(
+                      _vm
+                        .$moment(venda.updated_at)
+                        .format("DD/MM/YYYY HH:mm", "L")
+                    ) +
+                    " "
+                ),
+                _c("br")
+              ])
+            })
+          ],
+          2
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-546d00bf", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
