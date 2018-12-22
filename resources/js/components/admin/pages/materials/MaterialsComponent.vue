@@ -32,7 +32,7 @@
             <th>Status</th>
             <th>Valor Compra</th>
             <th>Valor Revenda</th>
-            <th width="150px">Ações</th>
+            <th width="200px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -47,12 +47,16 @@
             <td v-text="material.valor_compra"></td>
             <td v-text="material.valor_revenda"></td>
             <td>
+              <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(material.sku)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(material.sku)">Editar</a>
               <confirmDelete :resgistro="material.sku" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="600" :height="350">
+          <detalhe :filho_materials="propriedadeMaterial"></detalhe>
+      </vodal>
       <!-- paginação -->
       <pagination :pagination="materials" :offset="6" @paginate="loadMaterials"></pagination>
     </div>
@@ -66,6 +70,7 @@ import PaginationComponent from "../../../layouts/PaginationComponent.vue";
 import BuscarComponent from "../../layouts/geralBuscarComponent";
 import FormMaterialComponent from "./partials/FormMaterialComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
+import detalheComponent from './partials/detalheComponent';
 
 export default {
   created() {
@@ -79,6 +84,7 @@ export default {
       input: "",
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedade_errors: {},
       propriedadeupdate: false,
       propriedade_statusInput: false,
@@ -90,8 +96,11 @@ export default {
         tipo_material_id: "",
         status: "",
         valor_compra: "",
-        valor_revenda: ""
+        valor_revenda: "",
+        tipo_material: Object,
+        forma_farmaceutica: Object
         // image: '',
+
       }
     };
   },
@@ -114,11 +123,26 @@ export default {
       this.$store.dispatch("actionLoadMaterials", { ...this.params, page });
     },
 
+    detalhes (sku) {
+      this.$store
+        .dispatch("actionLoadMaterial", sku)
+        .then(response => {
+          this.propriedadeMaterial = response;
+          this.detalhesVodal = true;
+        })
+        .catch(errors => {
+          this.$snotify.errors(
+            "Registro não pode ser carregado!",
+            "Informativo"
+          );
+        });
+    },
+
     criar() {
       (this.titulo = "Cadastrar Material"),
         (this.showVodal = true),
         (this.propriedadeupdate = false);
-      this.propriedadeMaterial = {
+      (this.propriedadeMaterial = {
         sku: "",
         cod_barra: "",
         descricao: "",
@@ -126,9 +150,11 @@ export default {
         tipo_material_id: "",
         status: "ativo",
         valor_compra: "",
-        valor_revenda: ""
+        valor_revenda: "",
+        tipo_material: Object,
+        forma_farmaceutica: Object
         // image: '',
-      };
+      });
     },
 
     // pegar um registro e preencher o formulario!
@@ -159,16 +185,35 @@ export default {
       (this.showVodal = false),
         (this.propriedade_errors = {}),
         (this.propriedadeMaterial = {
-          sku: "",
-          cod_barra: "",
-          descricao: "",
-          forma_farmaceutica_id: "",
-          tipo_material_id: "",
-          status: "",
-          valor_compra: "",
-          valor_revenda: ""
-          // image: '',
-        });
+        sku: "",
+        cod_barra: "",
+        descricao: "",
+        forma_farmaceutica_id: "",
+        tipo_material_id: "",
+        status: "ativo",
+        valor_compra: "",
+        valor_revenda: "",
+        tipo_material: Object,
+        forma_farmaceutica: Object
+        // image: '',
+      });
+    },
+
+    hideDetalhesVodal () {
+        this.detalhesVodal = false,
+        (this.propriedadeMaterial = {
+            sku: "",
+            cod_barra: "",
+            descricao: "",
+            forma_farmaceutica_id: "",
+            tipo_material_id: "",
+            status: "ativo",
+            valor_compra: "",
+            valor_revenda: "",
+            tipo_material: Object,
+            forma_farmaceutica: Object
+            // image: '',
+      });
     },
 
     cadastroRealizado() {
@@ -220,7 +265,8 @@ export default {
     buscar: BuscarComponent,
     vodal: Vodal,
     formMaterial: FormMaterialComponent,
-    confirmDelete
+    confirmDelete,
+    detalhe: detalheComponent
   }
 };
 </script>
