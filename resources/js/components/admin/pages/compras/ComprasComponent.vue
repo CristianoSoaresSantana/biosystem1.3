@@ -26,7 +26,7 @@
             <th>Valor da Nota</th>
             <th>Data de Entrada</th>
             <th>Data de Alteração</th>
-            <th width="150px">Ações</th>
+            <th width="200px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -39,12 +39,16 @@
             <td>{{ $moment(compra.created_at).format('DD/MM/YYYY HH:mm', 'L') }}</td>
             <td>{{ $moment(compra.updated_at).format('DD/MM/YYYY HH:mm', 'L') }}</td>
             <td>
+              <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(compra.num_doc)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(compra.num_doc)">Editar</a>
               <confirmDelete :resgistro="compra.num_doc" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="400">
+          <detalhe :filho_compra="propriedadeCompra"></detalhe>
+      </vodal>
     </div>
   </div>
 </template>
@@ -53,6 +57,7 @@
 import Vodal from "vodal";
 import formCompraComponent from "./partials/FormCompraComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
+import detalheComponent from './partials/detalheComponent';
 
 export default {
   created() {
@@ -63,6 +68,7 @@ export default {
     return {
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeCompra: {
@@ -72,7 +78,10 @@ export default {
         tipo_mov_id: "",
         valor_nota: "",
         created_at: "",
-        updated_at: ""
+        updated_at: "",
+        filial: Object,
+        fornecedor: Object,
+        tipo_movimento: Object
       }
     };
   },
@@ -92,6 +101,21 @@ export default {
       this.titulo = "Entrada de NFe";
       this.showVodal = true;
       this.propriedadeupdate = false;
+    },
+
+    detalhes (num_doc) {
+      this.$store
+        .dispatch("comprasShow", num_doc)
+        .then(response => {
+          this.propriedadeCompra = response;
+          this.detalhesVodal = true;
+        })
+        .catch(errors => {
+          this.$snotify.errors(
+            "Registro não pode ser carregado!",
+            "Informativo"
+          );
+        });
     },
 
     // pegar um registro e preencher o formulario!
@@ -122,7 +146,26 @@ export default {
           tipo_mov_id: "",
           valor_nota: "",
           created_at: "",
-          updated_at: ""
+          updated_at: "",
+          filial: Object,
+          fornecedor: Object,
+          tipo_movimento: Object
+        });
+    },
+
+    hideDetalhesVodal () {
+        this.detalhesVodal = false,
+        (this.propriedadeCompra = {
+          num_doc: "",
+          filial_id: "",
+          fornecedor_id: "",
+          tipo_mov_id: "",
+          valor_nota: "",
+          created_at: "",
+          updated_at: "",
+          filial: Object,
+          fornecedor: Object,
+          tipo_movimento: Object
         });
     },
 
@@ -147,7 +190,8 @@ export default {
   components: {
     vodal: Vodal,
     formCompra: formCompraComponent,
-    confirmDelete
+    confirmDelete,
+    detalhe: detalheComponent
   }
 };
 </script>

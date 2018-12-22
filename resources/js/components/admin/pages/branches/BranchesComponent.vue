@@ -141,7 +141,12 @@ export default {
     },
 
     hideDetalhesVodal () {
-        this.detalhesVodal = false
+        this.detalhesVodal = false,
+        (this.propriedadeBranche = {
+          id: "",
+          razao_social: "",
+          cnpj: ""
+        });
     },
 
     cadastroRealizado() {

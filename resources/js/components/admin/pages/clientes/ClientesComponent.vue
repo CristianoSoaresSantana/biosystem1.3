@@ -49,9 +49,7 @@
         </tbody>
       </table>
       <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="600">
-          <detalhe
-          :filho_cliente="propriedadeCliente"
-          ></detalhe>
+          <detalhe :filho_cliente="propriedadeCliente"></detalhe>
       </vodal>
       <!-- paginação -->
       <pagination :pagination="clientes" :offset="6" @paginate="loadIndex"></pagination>
@@ -174,7 +172,17 @@ export default {
     },
 
     hideDetalhesVodal () {
-        this.detalhesVodal = false
+        this.detalhesVodal = false,
+        (this.propriedadeCliente = {
+          id: "",
+          nome: "",
+          cpf: "",
+          celular: "",
+          recado: "",
+          email: "",
+          endereco: "",
+          vendas: Object
+        });
     },
 
     cadastroRealizado() {

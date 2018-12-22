@@ -5,7 +5,8 @@
     <div class="form-group row">
       <div class="col-sm-12">
             <ul style="width: 858px; height: 150px; overflow: auto">
-                <li v-modal="cliente in cliente" :key="cliente.id">
+                <li>
+                    <strong>ID:</strong> {{ cliente.id }} <br>
                     <strong>Nome:</strong> {{ cliente.nome }} <br>
                     <strong>Celular:</strong> {{ cliente.celular }} <br>
                     <strong>Celular para recados:</strong> {{ cliente.celular_recado }} <br>
