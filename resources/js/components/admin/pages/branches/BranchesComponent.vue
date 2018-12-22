@@ -39,11 +39,7 @@
         </tbody>
       </table>
       <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="800">
-          <detalhe
-          :filho_branche="propriedadeBranche"
-          >
-
-          </detalhe>
+          <detalhe :filho_branche="propriedadeBranche"></detalhe>
       </vodal>
     </div>
   </div>

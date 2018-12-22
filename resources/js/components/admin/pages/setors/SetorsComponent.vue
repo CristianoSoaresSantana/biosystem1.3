@@ -21,7 +21,7 @@
           <tr>
             <th>ID</th>
             <th>Setor</th>
-            <th width="150px">Ações</th>
+            <th width="200px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -29,12 +29,16 @@
             <td v-text="setor.id"></td>
             <td v-text="setor.setor"></td>
             <td>
+              <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(setor.id)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(setor.id)">Editar</a>
               <confirmDelete :resgistro="setor.id" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="620" :height="500">
+          <detalhe :filho_setor="propriedadeSetor"></detalhe>
+      </vodal>
     </div>
   </div>
 </template>
@@ -43,6 +47,7 @@
 import Vodal from "vodal";
 import formSetorComponent from "./partials/FormSetorComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
+import detalheComponent from './partials/detalheComponent'
 
 export default {
   created() {
@@ -55,11 +60,13 @@ export default {
     return {
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeSetor: {
         id: "",
-        setor: ""
+        setor: "",
+        users: Object
       }
     };
   },
@@ -99,12 +106,37 @@ export default {
         });
     },
 
+    detalhes (id) {
+      this.$store
+        .dispatch("setorsLoadShow", id)
+        .then(response => {
+          this.propriedadeSetor = response;
+          this.detalhesVodal = true;
+        })
+        .catch(errors => {
+          this.$snotify.errors(
+            "Registro não pode ser carregado!",
+            "Informativo"
+          );
+        });
+    },
+
     hideVodal() {
       (this.showVodal = false),
         (this.propriedade_errors = {}),
         (this.propriedadeSetor = {
           id: "",
-          setor: ""
+          setor: "",
+          users: Object
+        });
+    },
+
+    hideDetalhesVodal () {
+        this.detalhesVodal = false,
+        (this.propriedadeSetor = {
+          id: "",
+          setor: "",
+          users: Object
         });
     },
 
@@ -155,7 +187,8 @@ export default {
   components: {
     vodal: Vodal,
     formSetor: formSetorComponent,
-    confirmDelete
+    confirmDelete,
+    detalhe: detalheComponent
   }
 };
 </script>
