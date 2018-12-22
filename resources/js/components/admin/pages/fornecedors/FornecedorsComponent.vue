@@ -22,7 +22,7 @@
             <th>ID</th>
             <th>Razão Social</th>
             <th>CNPJ</th>
-            <th width="150px">Ações</th>
+            <th width="200px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -31,12 +31,16 @@
             <td v-text="fornecedor.razao_social"></td>
             <td v-text="fornecedor.cnpj"></td>
             <td>
+                <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(fornecedor.id)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(fornecedor.id)">Editar</a>
               <confirmDelete :resgistro="fornecedor.id" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="400">
+          <detalhe :filho_fornecedor="propriedadeFornecedor"></detalhe>
+      </vodal>
     </div>
   </div>
 </template>
@@ -45,6 +49,7 @@
 import Vodal from "vodal";
 import FormFornecedorComponent from "./partials/FormFornecedorComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
+import detalheComponent from './partials/detalheComponent';
 
 export default {
   created() {
@@ -57,12 +62,14 @@ export default {
     return {
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeFornecedor: {
         id: "",
         razao_social: "",
-        cnpj: ""
+        cnpj: "",
+        materials: Object
       }
     };
   },
@@ -82,6 +89,21 @@ export default {
       this.titulo = "Cadastrar Fornecedor";
       this.showVodal = true;
       this.propriedadeupdate = false;
+    },
+
+    detalhes (id) {
+      this.$store
+        .dispatch("fornecedorLoadShow", id)
+        .then(response => {
+          this.propriedadeFornecedor = response;
+          this.detalhesVodal = true;
+        })
+        .catch(errors => {
+          this.$snotify.errors(
+            "Registro não pode ser carregado!",
+            "Informativo"
+          );
+        });
     },
 
     // pegar um registro e preencher o formulario!
@@ -108,7 +130,18 @@ export default {
         (this.propriedadeFornecedor = {
           id: "",
           razao_social: "",
-          cnpj: ""
+          cnpj: "",
+          materials: Object
+        });
+    },
+
+    hideDetalhesVodal () {
+        this.detalhesVodal = false,
+        (this.propriedadeFornecedor = {
+           id: "",
+           razao_social: "",
+           cnpj: "",
+           materials: Object
         });
     },
 
@@ -159,7 +192,8 @@ export default {
   components: {
     vodal: Vodal,
     formFornecedor: FormFornecedorComponent,
-    confirmDelete
+    confirmDelete,
+    detalhe: detalheComponent
   }
 };
 </script>
