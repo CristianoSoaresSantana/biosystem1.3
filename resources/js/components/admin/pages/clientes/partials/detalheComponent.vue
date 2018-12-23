@@ -1,14 +1,15 @@
 <template>
   <div class="container">
-    <h1>Detalhes do {{ cliente.nome }}</h1>
+    <h1>Detalhes do cliente {{ cliente.nome }}</h1>
     <!-- informações gerais -->
     <div class="form-group row">
       <div class="col-sm-12">
             <ul style="width: 858px; height: 150px; overflow: auto">
                 <li>
                     <strong>ID:</strong> {{ cliente.id }} <br>
-                    <strong>Nome:</strong> {{ cliente.nome }} <br>
-                    <strong>Celular:</strong> {{ cliente.celular }} <br>
+                    <strong>Nome:</strong> {{ cliente.nome }},
+                    <strong>CPF:</strong> {{cliente.cpf}} <br>
+                    <strong>Celular:</strong> {{ cliente.celular }},
                     <strong>Celular para recados:</strong> {{ cliente.celular_recado }} <br>
                     <strong>E-Mail:</strong> {{ cliente.email }} <br>
                     <strong>Endereço:</strong> {{ cliente.endereco }}
@@ -18,10 +19,10 @@
             <ul style="width: 858px; height: 300px; overflow: auto">
                 <h4>Ultimas Compras</h4>
                 <li v-for="venda in cliente.vendas" :key="venda.id">
-                    <strong>ID:</strong> {{ venda.id }} <br>
-                    <strong>Valor total:</strong> {{venda.valor_total}} <br>
-                    <strong>Data da compra:</strong> {{ $moment(venda.created_at).format('DD/MM/YYYY HH:mm', 'L') }} <br>
-                    <strong>Data de Alteração:</strong> {{ $moment(venda.updated_at).format('DD/MM/YYYY HH:mm', 'L') }} <br>
+                    <strong>ID:</strong> {{ venda.id }},
+                    <strong>Valor total:</strong> {{venda.valor_total}},
+                    <strong>Data da compra:</strong> {{ $moment(venda.created_at).format('DD/MM/YYYY HH:mm', 'L') }},
+                    <strong>Data de Alteração:</strong> {{ $moment(venda.updated_at).format('DD/MM/YYYY HH:mm', 'L') }}
                 </li>
             </ul>
       </div>

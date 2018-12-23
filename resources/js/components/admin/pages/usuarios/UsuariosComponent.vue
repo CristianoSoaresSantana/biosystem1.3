@@ -29,7 +29,7 @@
             <th>Celular</th>
             <th>Recados</th>
             <th>E-mail</th>
-            <th width="150px">Ações</th>
+            <th width="200px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -41,12 +41,16 @@
             <td v-text="usuario.celular_recado"></td>
             <td v-text="usuario.email"></td>
             <td>
+              <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(usuario.id)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(usuario.id)">Editar</a>
               <confirmDelete :resgistro="usuario.id" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="600">
+          <detalhe :filho_usuario="propriedadeUsuario"></detalhe>
+      </vodal>
       <!-- paginação -->
       <pagination :pagination="usuarios" :offset="6" @paginate="loadIndex"></pagination>
     </div>
@@ -60,6 +64,7 @@ import PaginationComponent from "../../../layouts/PaginationComponent.vue";
 import BuscarComponent from "../../layouts/geralBuscarComponent";
 import formUsuarioComponent from "./partials/FormUsuarioComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
+import detalheComponent from './partials/detalheComponent';
 
 export default {
   created() {
@@ -73,6 +78,7 @@ export default {
       input: "",
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedade_errors: {},
       propriedadeupdate: false,
       propriedade_statusInput: false,
@@ -90,7 +96,8 @@ export default {
         permissao: "",
         status: "",
         filial: Object,
-        setor: Object
+        setor: Object,
+        vendas: Object,
       }
     };
   },
@@ -131,7 +138,23 @@ export default {
           permissao: "app.user",
           status: "ativo",
           filial: Object,
-          setor: Object
+          setor: Object,
+          vendas: Object
+        });
+    },
+
+    detalhes (id) {
+      this.$store
+        .dispatch("usuarioLoadShow", id)
+        .then(response => {
+          this.propriedadeUsuario = response;
+          this.detalhesVodal = true;
+        })
+        .catch(errors => {
+          this.$snotify.errors(
+            "Registro não pode ser carregado!",
+            "Informativo"
+          );
         });
     },
 
@@ -176,7 +199,29 @@ export default {
           permissao: "",
           status: "",
           filial: Object,
-          setor: Object
+          setor: Object,
+          vendas: Object
+        });
+    },
+
+    hideDetalhesVodal () {
+        this.detalhesVodal = false,
+        (this.propriedadeUsuario = {
+          id: "",
+          name: "",
+          cpf: "",
+          data_nascimento: "",
+          celular: "",
+          celular_recado: "",
+          email: "",
+          endereco: "",
+          setor_id: "",
+          filial_id: "",
+          permissao: "",
+          status: "",
+          filial: Object,
+          setor: Object,
+          vendas: Object
         });
     },
 
@@ -229,7 +274,8 @@ export default {
     buscar: BuscarComponent,
     vodal: Vodal,
     formUsuario: formUsuarioComponent,
-    confirmDelete
+    confirmDelete,
+    detalhe: detalheComponent
   }
 };
 </script>
