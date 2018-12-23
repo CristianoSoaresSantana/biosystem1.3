@@ -33,13 +33,13 @@ export default {
   data() {
     return {
       compra: {
-        id: "",
-        nome: "",
-        cpf: "",
-        celular: "",
-        celular_recado: "",
-        email: "",
-        endereco: "",
+        num_doc: "",
+        filial_id: "",
+        fornecedor_id: "",
+        tipo_mov_id: "",
+        valor_nota: "",
+        created_at: "",
+        updated_at: "",
         filial: Object,
         fornecedor: Object,
         tipo_movimento: Object

@@ -28,7 +28,7 @@
             <th>Data da Venda</th>
             <th>Data de Alteração</th>
             <th>status</th>
-            <th width="150px">Ações</th>
+            <th width="200px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -43,12 +43,16 @@
             <td>{{ $moment(venda.updated_at).format('DD/MM/YYYY HH:mm', 'L') }}</td>
             <td v-text="venda.status"></td>
             <td>
+              <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(venda.id)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(venda.id)">Editar</a>
               <confirmDelete :resgistro="venda.id" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="400">
+          <detalhe :filho_venda="propriedadeVenda"></detalhe>
+      </vodal>
     </div>
   </div>
 </template>
@@ -57,6 +61,7 @@
 import Vodal from "vodal";
 import formVendaComponent from "./partials/FormVendaComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
+import detalheComponent from './partials/detalheComponent';
 
 export default {
   created() {
@@ -67,9 +72,11 @@ export default {
     return {
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeVenda: {
+        id          : "",
         cliente_id  : "",
         filial_id   : "",
         tipo_mov_id : "",
@@ -77,7 +84,11 @@ export default {
         valor_total : "",
         status      : "",
         created_at  : "",
-        updated_at  : ""
+        updated_at  : "",
+        filial      : Object,
+        user        : Object,
+        cliente     : Object,
+        tipo_movimento: Object
       }
     };
   },
@@ -93,19 +104,39 @@ export default {
       this.$store.dispatch("vendasIndex");
     },
 
+    detalhes (id) {
+      this.$store
+        .dispatch("vendasShow", id)
+        .then(response => {
+          this.propriedadeVenda = response;
+          this.detalhesVodal = true;
+        })
+        .catch(errors => {
+          this.$snotify.errors(
+            "Registro não pode ser carregado!",
+            "Informativo"
+          );
+        });
+    },
+
     criar() {
       this.titulo = "Nova Venda";
       this.showVodal = true;
       this.propriedadeupdate = false;
       this.propriedadeVenda = {
+        id          : "",
         cliente_id  : "",
         filial_id   : "",
         tipo_mov_id : "",
         user_id     : "",
         valor_total : "",
-        status      : "aberto",
+        status      : "",
         created_at  : "",
-        updated_at  : ""
+        updated_at  : "",
+        filial      : Object,
+        user        : Object,
+        cliente     : Object,
+        tipo_movimento: Object
       }
     },
 
@@ -131,6 +162,7 @@ export default {
       (this.showVodal = false),
         (this.propriedade_errors = {}),
         (this.propriedadeVenda = {
+            id          : "",
             cliente_id  : "",
             filial_id   : "",
             tipo_mov_id : "",
@@ -138,7 +170,30 @@ export default {
             valor_total : "",
             status      : "",
             created_at  : "",
-            updated_at  : ""
+            updated_at  : "",
+            filial      : Object,
+            user        : Object,
+            cliente     : Object,
+            tipo_movimento: Object
+        });
+    },
+
+    hideDetalhesVodal () {
+        this.detalhesVodal = false,
+        (this.propriedadeVenda = {
+          id          : "",
+            cliente_id  : "",
+            filial_id   : "",
+            tipo_mov_id : "",
+            user_id     : "",
+            valor_total : "",
+            status      : "",
+            created_at  : "",
+            updated_at  : "",
+            filial      : Object,
+            user        : Object,
+            cliente     : Object,
+            tipo_movimento: Object
         });
     },
 
@@ -163,7 +218,8 @@ export default {
   components: {
     vodal: Vodal,
     formVenda: formVendaComponent,
-    confirmDelete
+    confirmDelete,
+    detalhe: detalheComponent
   }
 };
 </script>

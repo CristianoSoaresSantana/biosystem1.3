@@ -65083,13 +65083,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       compra: {
-        id: "",
-        nome: "",
-        cpf: "",
-        celular: "",
-        celular_recado: "",
-        email: "",
-        endereco: "",
+        num_doc: "",
+        filial_id: "",
+        fornecedor_id: "",
+        tipo_mov_id: "",
+        valor_nota: "",
+        created_at: "",
+        updated_at: "",
         filial: Object,
         fornecedor: Object,
         tipo_movimento: Object
@@ -65481,7 +65481,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -65498,6 +65498,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_FormVendaComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_FormVendaComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_detalheComponent__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_detalheComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__partials_detalheComponent__);
 //
 //
 //
@@ -65553,6 +65555,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -65566,9 +65573,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       titulo: "",
       showVodal: false,
+      detalhesVodal: false,
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeVenda: {
+        id: "",
         cliente_id: "",
         filial_id: "",
         tipo_mov_id: "",
@@ -65576,7 +65585,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         valor_total: "",
         status: "",
         created_at: "",
-        updated_at: ""
+        updated_at: "",
+        filial: Object,
+        user: Object,
+        cliente: Object,
+        tipo_movimento: Object
       }
     };
   },
@@ -65592,38 +65605,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     loadIndex: function loadIndex() {
       this.$store.dispatch("vendasIndex");
     },
+    detalhes: function detalhes(id) {
+      var _this = this;
+
+      this.$store.dispatch("vendasShow", id).then(function (response) {
+        _this.propriedadeVenda = response;
+        _this.detalhesVodal = true;
+      }).catch(function (errors) {
+        _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
     criar: function criar() {
       this.titulo = "Nova Venda";
       this.showVodal = true;
       this.propriedadeupdate = false;
       this.propriedadeVenda = {
-        cliente_id: "",
-        filial_id: "",
-        tipo_mov_id: "",
-        user_id: "",
-        valor_total: "",
-        status: "aberto",
-        created_at: "",
-        updated_at: ""
-      };
-    },
-
-
-    // pegar um registro e preencher o formulario!
-    editar: function editar(id) {
-      var _this = this;
-
-      this.titulo = "Alterar Registro";
-      this.$store.dispatch("vendasShow", id).then(function (response) {
-        _this.propriedadeVenda = response;
-        _this.showVodal = true;
-        _this.propriedadeupdate = true;
-      }).catch(function (errors) {
-        _this.$snotify.errors("Registro não pode ser carregado!", "Informativo");
-      });
-    },
-    hideVodal: function hideVodal() {
-      this.showVodal = false, this.propriedade_errors = {}, this.propriedadeVenda = {
+        id: "",
         cliente_id: "",
         filial_id: "",
         tipo_mov_id: "",
@@ -65631,7 +65628,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         valor_total: "",
         status: "",
         created_at: "",
-        updated_at: ""
+        updated_at: "",
+        filial: Object,
+        user: Object,
+        cliente: Object,
+        tipo_movimento: Object
+      };
+    },
+
+
+    // pegar um registro e preencher o formulario!
+    editar: function editar(id) {
+      var _this2 = this;
+
+      this.titulo = "Alterar Registro";
+      this.$store.dispatch("vendasShow", id).then(function (response) {
+        _this2.propriedadeVenda = response;
+        _this2.showVodal = true;
+        _this2.propriedadeupdate = true;
+      }).catch(function (errors) {
+        _this2.$snotify.errors("Registro não pode ser carregado!", "Informativo");
+      });
+    },
+    hideVodal: function hideVodal() {
+      this.showVodal = false, this.propriedade_errors = {}, this.propriedadeVenda = {
+        id: "",
+        cliente_id: "",
+        filial_id: "",
+        tipo_mov_id: "",
+        user_id: "",
+        valor_total: "",
+        status: "",
+        created_at: "",
+        updated_at: "",
+        filial: Object,
+        user: Object,
+        cliente: Object,
+        tipo_movimento: Object
+      };
+    },
+    hideDetalhesVodal: function hideDetalhesVodal() {
+      this.detalhesVodal = false, this.propriedadeVenda = {
+        id: "",
+        cliente_id: "",
+        filial_id: "",
+        tipo_mov_id: "",
+        user_id: "",
+        valor_total: "",
+        status: "",
+        created_at: "",
+        updated_at: "",
+        filial: Object,
+        user: Object,
+        cliente: Object,
+        tipo_movimento: Object
       };
     },
     cadastroRealizado: function cadastroRealizado() {
@@ -65641,13 +65691,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     //method que aciona uma fornecedor de filials.js
     destroy: function destroy(id) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$store.dispatch("vendasDestroy", id).then(function () {
-        _this2.$snotify.success("Registro Deletado!", "Sucesso");
-        _this2.loadIndex();
+        _this3.$snotify.success("Registro Deletado!", "Sucesso");
+        _this3.loadIndex();
       }).catch(function (errors) {
-        _this2.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+        _this3.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
       });
     }
   },
@@ -65655,7 +65705,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   components: {
     vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
     formVenda: __WEBPACK_IMPORTED_MODULE_1__partials_FormVendaComponent___default.a,
-    confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a,
+    detalhe: __WEBPACK_IMPORTED_MODULE_3__partials_detalheComponent___default.a
   }
 });
 
@@ -66391,83 +66442,121 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", [
-      _c("table", { staticClass: "table table-dark" }, [
-        _vm._m(0),
+    _c(
+      "div",
+      [
+        _c("table", { staticClass: "table table-dark" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.vendas, function(venda) {
+              return _c("tr", { key: venda.id }, [
+                _c("td", { domProps: { textContent: _vm._s(venda.id) } }),
+                _vm._v(" "),
+                _c("td", {
+                  domProps: { textContent: _vm._s(venda.cliente_id) }
+                }),
+                _vm._v(" "),
+                _c("td", { domProps: { textContent: _vm._s(venda.user_id) } }),
+                _vm._v(" "),
+                _c("td", {
+                  domProps: { textContent: _vm._s(venda.tipo_mov_id) }
+                }),
+                _vm._v(" "),
+                _c("td", {
+                  domProps: { textContent: _vm._s(venda.filial_id) }
+                }),
+                _vm._v(" "),
+                _c("td", {
+                  domProps: { textContent: _vm._s(venda.valor_total) }
+                }),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(
+                      _vm
+                        .$moment(venda.created_at)
+                        .format("DD/MM/YYYY HH:mm", "L")
+                    )
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(
+                      _vm
+                        .$moment(venda.updated_at)
+                        .format("DD/MM/YYYY HH:mm", "L")
+                    )
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { domProps: { textContent: _vm._s(venda.status) } }),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary btn-sm",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.detalhes(venda.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Detalhes")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-info btn-sm",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.editar(venda.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Editar")]
+                    ),
+                    _vm._v(" "),
+                    _c("confirmDelete", {
+                      attrs: { resgistro: venda.id },
+                      on: { destroy: _vm.destroy }
+                    })
+                  ],
+                  1
+                )
+              ])
+            }),
+            0
+          )
+        ]),
         _vm._v(" "),
         _c(
-          "tbody",
-          _vm._l(_vm.vendas, function(venda) {
-            return _c("tr", { key: venda.id }, [
-              _c("td", { domProps: { textContent: _vm._s(venda.id) } }),
-              _vm._v(" "),
-              _c("td", { domProps: { textContent: _vm._s(venda.cliente_id) } }),
-              _vm._v(" "),
-              _c("td", { domProps: { textContent: _vm._s(venda.user_id) } }),
-              _vm._v(" "),
-              _c("td", {
-                domProps: { textContent: _vm._s(venda.tipo_mov_id) }
-              }),
-              _vm._v(" "),
-              _c("td", { domProps: { textContent: _vm._s(venda.filial_id) } }),
-              _vm._v(" "),
-              _c("td", {
-                domProps: { textContent: _vm._s(venda.valor_total) }
-              }),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  _vm._s(
-                    _vm
-                      .$moment(venda.created_at)
-                      .format("DD/MM/YYYY HH:mm", "L")
-                  )
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  _vm._s(
-                    _vm
-                      .$moment(venda.updated_at)
-                      .format("DD/MM/YYYY HH:mm", "L")
-                  )
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { domProps: { textContent: _vm._s(venda.status) } }),
-              _vm._v(" "),
-              _c(
-                "td",
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-info btn-sm",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          _vm.editar(venda.id)
-                        }
-                      }
-                    },
-                    [_vm._v("Editar")]
-                  ),
-                  _vm._v(" "),
-                  _c("confirmDelete", {
-                    attrs: { resgistro: venda.id },
-                    on: { destroy: _vm.destroy }
-                  })
-                ],
-                1
-              )
-            ])
-          }),
-          0
+          "vodal",
+          {
+            attrs: {
+              show: _vm.detalhesVodal,
+              animation: "zoon",
+              width: 920,
+              height: 400
+            },
+            on: { hide: _vm.hideDetalhesVodal }
+          },
+          [_c("detalhe", { attrs: { filho_venda: _vm.propriedadeVenda } })],
+          1
         )
-      ])
-    ])
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -66495,7 +66584,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("status")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "150px" } }, [_vm._v("Ações")])
+        _c("th", { attrs: { width: "200px" } }, [_vm._v("Ações")])
       ])
     ])
   }
@@ -76419,6 +76508,252 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(439)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(441)
+/* template */
+var __vue_template__ = __webpack_require__(442)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-c2629cc6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/pages/vendas/partials/detalheComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c2629cc6", Component.options)
+  } else {
+    hotAPI.reload("data-v-c2629cc6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 439 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(440);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("0690e83a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c2629cc6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./detalheComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c2629cc6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./detalheComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 440 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n*[data-v-c2629cc6] {font-family: \"Times New Roman\", Times, serif;\n}\nh1[data-v-c2629cc6] {\n    text-align: center;\n}\nh4[data-v-c2629cc6] {\n    margin-top: 6px;\n}\nul[data-v-c2629cc6] {\n    background-color: rgb(177, 235, 152);\n    margin-bottom: 2px;\n    border-radius: 5px;\n}\nli[data-v-c2629cc6] {\n    font-size: 15px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 441 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    filho_venda: {
+      require: false,
+      type: Object
+    }
+  },
+
+  data: function data() {
+    return {
+      venda: {
+        id: "",
+        filial_id: "",
+        cliente_id: "",
+        user_id: "",
+        tipo_mov_id: "",
+        status: "",
+        user: Object,
+        filial: Object,
+        cliente: Object,
+        tipo_movimento: Object
+      }
+    };
+  },
+
+
+  watch: {
+    filho_venda: function filho_venda() {
+      this.venda = this.filho_venda;
+    }
+  }
+});
+
+/***/ }),
+/* 442 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v("Detalhes do registro de vendas")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c(
+          "ul",
+          {
+            staticStyle: { width: "858px", height: "200px", overflow: "auto" }
+          },
+          [
+            _c("li", [
+              _c("strong", [_vm._v("ID:")]),
+              _vm._v(" " + _vm._s(_vm.venda.id) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Filial:")]),
+              _vm._v(" " + _vm._s(_vm.venda.filial.razao_social) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Usuario:")]),
+              _vm._v(" " + _vm._s(_vm.venda.user.name) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Cliente:")]),
+              _vm._v(" " + _vm._s(_vm.venda.cliente.nome) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Tipo de Movimento:")]),
+              _vm._v(
+                " " + _vm._s(_vm.venda.tipo_movimento.tipo_movimentacao) + " "
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Valor Total:")]),
+              _vm._v(" " + _vm._s(_vm.venda.valor_total) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Data da venda:")]),
+              _vm._v(
+                " " +
+                  _vm._s(
+                    _vm
+                      .$moment(_vm.venda.created_at)
+                      .format("DD/MM/YYYY HH:mm", "L")
+                  ) +
+                  " "
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c("strong", [_vm._v("Data de Alteração:")]),
+              _vm._v(
+                " " +
+                  _vm._s(
+                    _vm
+                      .$moment(_vm.venda.updated_at)
+                      .format("DD/MM/YYYY HH:mm", "L")
+                  ) +
+                  " "
+              ),
+              _c("br")
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c2629cc6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
