@@ -17,6 +17,7 @@ class CreateMaterialsTable extends Migration
             $table->string('sku', 20)->primary();
             $table->unsignedInteger('tipo_material_id');
             $table->unsignedInteger('forma_farmaceutica_id');
+            $table->unsignedInteger('fornecedor_id');
             $table->string('cod_barra', 40)->unique();
             $table->text('descricao');
             $table->string('image')->nullable();
@@ -26,8 +27,9 @@ class CreateMaterialsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('fornecedor_id')->references('id')->on('fornecedors')->onDelete('cascade');
             $table->foreign('tipo_material_id')->references('id')->on('tipo_materials')->onDelete('cascade');
-            $table->foreign('forma_farmaceutica_id')->references('id')->on('forma_farmaceuticas')->onDelete('cascade');      
+            $table->foreign('forma_farmaceutica_id')->references('id')->on('forma_farmaceuticas')->onDelete('cascade');
         });
 
         Schema::create('filial_materials', function (Blueprint $table) {
@@ -47,17 +49,6 @@ class CreateMaterialsTable extends Migration
             $table->foreign('filial_id')->references('id')->on('filials')->onDelete('cascade');
             $table->foreign('material_sku')->references('sku')->on('materials')->onDelete('cascade');
         });
-
-        Schema::create('fornecedor_materials', function (Blueprint $table) {
-            // relacionamentos
-            $table->unsignedInteger('fornecedor_id');
-            $table->string('material_sku', 20);
-            $table->timestamps();
-            $table->softDeletes();
-            
-            $table->foreign('fornecedor_id')->references('id')->on('fornecedors')->onDelete('cascade');
-            $table->foreign('material_sku')->references('sku')->on('materials')->onDelete('cascade');
-        });
     }
 
     /**
@@ -72,7 +63,6 @@ class CreateMaterialsTable extends Migration
 
 		});
         Schema::dropIfExists('materials');
-        Schema::dropIfExists('fornecedors_materials');
         Schema::dropIfExists('filial_materials');
     }
 }

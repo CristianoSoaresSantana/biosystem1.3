@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Material;
 
 class Fornecedor extends Model
 {
@@ -41,11 +42,11 @@ class Fornecedor extends Model
     }
 
     /**
-     * relacionamento N:M, pois uma filial vende muitos
-     * materiais e um material é vendo por varias filias.
+     * relacionamento 1:M, pois uma forma é caracteristica de muitos
+     * materiais e um material só pode ter uma forma.
      */
     public function materials()
     {
-        return $this->belongsToMany(Material::class, 'fornecedor_materials');
+        return $this->hasMany(Material::class);
     }
 }

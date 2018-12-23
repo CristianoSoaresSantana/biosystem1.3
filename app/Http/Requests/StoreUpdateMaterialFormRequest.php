@@ -30,6 +30,7 @@ class StoreUpdateMaterialFormRequest extends FormRequest
             'descricao'             => 'required',
             'tipo_material_id'      => 'required|exists:tipo_materials,id',
             'forma_farmaceutica_id' => 'required|exists:forma_farmaceuticas,id',
+            'fornecedor_id'         => 'required|exists:fornecedors,id',
             'valor_compra'          => 'required',
             'valor_revenda'         => 'required',
             'status'                => 'string',

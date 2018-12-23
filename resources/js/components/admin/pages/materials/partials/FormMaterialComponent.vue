@@ -84,6 +84,19 @@
 
               <div class="form-row">
                 <div class="form-group col-md-6">
+                  <div :class="['col-auto', {'has-error': errors.fornecedor_id}]">
+                    <div v-if="errors.fornecedor_id">{{ errors.fornecedor_id[0] }}</div>
+                    <select class="form-control mb-2 mr-sm-2" v-model="material.fornecedor_id">
+                      <option value>Fornecedor</option>
+                      <option
+                        v-for="fornecedor in fornecedors"
+                        :key="fornecedor.id"
+                        :value="fornecedor.id"
+                      >{{fornecedor.razao_social}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
                   <div :class="['col-auto', {'has-error': errors.status}]">
                     <div v-if="errors.status">{{ errors.status[0] }}</div>
                     <input
@@ -94,6 +107,9 @@
                     >
                   </div>
                 </div>
+              </div>
+
+              <div class="form-row">
                 <div class="form-group col-md-6">
                   <div :class="['col-auto', {'has-error': errors.valor_compra}]">
                     <div v-if="errors.valor_compra">{{ errors.valor_compra[0] }}</div>
@@ -105,9 +121,6 @@
                     >
                   </div>
                 </div>
-              </div>
-
-              <div class="form-row">
                 <div class="form-group col-md-6">
                   <div :class="['col-auto', {'has-error': errors.valor_revenda}]">
                     <div v-if="errors.valor_revenda">{{ errors.valor_revenda[0] }}</div>
@@ -176,6 +189,9 @@ export default {
     },
     tipo_materials() {
       return this.$store.state.tipo_materials.itens;
+    },
+    fornecedors() {
+      return this.$store.state.fornecedors.itens;
     }
   },
 

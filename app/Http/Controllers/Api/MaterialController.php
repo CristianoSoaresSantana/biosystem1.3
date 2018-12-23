@@ -69,12 +69,12 @@ class MaterialController extends Controller
     /**
      * Aqui eu trago um material com seus relacionamentos 1:N
      *
-     * @param  int  $id
+     * @param  int  $sku
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($sku)
     {
-        $material = $this->material->with(['tipo_material', 'forma_farmaceutica', 'filial'])->find($id);
+        $material = $this->material->with(['tipo_material', 'forma_farmaceutica', 'filial', 'fornecedor'])->find($sku);
 
         if(!$material)
         {

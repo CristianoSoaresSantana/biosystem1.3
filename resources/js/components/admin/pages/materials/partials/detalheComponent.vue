@@ -11,6 +11,7 @@
                             <strong>Descrição: </strong>{{materials.descricao}}<br>
                             <strong>Tipo: </strong>{{materials.tipo_material.tipo_material}}<br>
                             <strong>Forma: </strong>{{materials.forma_farmaceutica.forma_farmaceutica}}<br>
+                            <strong>Fornecedor: </strong>{{materials.fornecedor.razao_social}}<br>
                             <strong>Status: </strong>{{materials.status}}<br>
                             <strong>Valor Compra: </strong>{{materials.valor_compra}}<br>
                             <strong>Valor Revenda: </strong>{{materials.valor_revenda}}
@@ -39,11 +40,13 @@ export default {
                 descricao: "",
                 forma_farmaceutica_id: "",
                 tipo_material_id: "",
+                fornecedor_id: "",
                 status: "ativo",
                 valor_compra: "",
                 valor_revenda: "",
                 tipo_material: Object,
-                forma_farmaceutica: Object
+                forma_farmaceutica: Object,
+                fornecedor: Object
                 // image: '',
             }
         }

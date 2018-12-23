@@ -55379,7 +55379,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55404,6 +55404,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__partials_detalheComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__partials_detalheComponent__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
 //
 //
 //
@@ -55499,11 +55501,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         descricao: "",
         forma_farmaceutica_id: "",
         tipo_material_id: "",
+        fornecedor_id: "",
         status: "",
         valor_compra: "",
         valor_revenda: "",
         tipo_material: Object,
-        forma_farmaceutica: Object
+        forma_farmaceutica: Object,
+        fornecedor: Object
         // image: '',
 
       }
@@ -55538,18 +55542,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       });
     },
     criar: function criar() {
-      this.titulo = "Cadastrar Material", this.showVodal = true, this.propriedadeupdate = false;
-      this.propriedadeMaterial = {
+      this.titulo = "Cadastrar Material", this.showVodal = true, this.propriedadeupdate = false, this.propriedade_statusInput = false, this.propriedadeMaterial = {
         sku: "",
         cod_barra: "",
         descricao: "",
         forma_farmaceutica_id: "",
         tipo_material_id: "",
+        fornecedor_id: "",
         status: "ativo",
         valor_compra: "",
         valor_revenda: "",
         tipo_material: Object,
-        forma_farmaceutica: Object
+        forma_farmaceutica: Object,
+        fornecedor: Object
         // image: '',
       };
     },
@@ -55580,11 +55585,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         descricao: "",
         forma_farmaceutica_id: "",
         tipo_material_id: "",
-        status: "ativo",
+        fornecedor_id: "",
+        status: "",
         valor_compra: "",
         valor_revenda: "",
         tipo_material: Object,
-        forma_farmaceutica: Object
+        forma_farmaceutica: Object,
+        fornecedor: Object
         // image: '',
       };
     },
@@ -55595,11 +55602,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         descricao: "",
         forma_farmaceutica_id: "",
         tipo_material_id: "",
-        status: "ativo",
+        fornecedor_id: "",
+        status: "",
         valor_compra: "",
         valor_revenda: "",
         tipo_material: Object,
-        forma_farmaceutica: Object
+        forma_farmaceutica: Object,
+        fornecedor: Object
         // image: '',
       };
     },
@@ -56214,6 +56223,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -56257,6 +56279,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     tipo_materials: function tipo_materials() {
       return this.$store.state.tipo_materials.itens;
+    },
+    fornecedors: function fornecedors() {
+      return this.$store.state.fornecedors.itens;
     }
   },
 
@@ -56588,6 +56613,76 @@ var render = function() {
                     _c(
                       "div",
                       {
+                        class: [
+                          "col-auto",
+                          { "has-error": _vm.errors.fornecedor_id }
+                        ]
+                      },
+                      [
+                        _vm.errors.fornecedor_id
+                          ? _c("div", [
+                              _vm._v(_vm._s(_vm.errors.fornecedor_id[0]))
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.material.fornecedor_id,
+                                expression: "material.fornecedor_id"
+                              }
+                            ],
+                            staticClass: "form-control mb-2 mr-sm-2",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.material,
+                                  "fornecedor_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "" } }, [
+                              _vm._v("Fornecedor")
+                            ]),
+                            _vm._v(" "),
+                            _vm._l(_vm.fornecedors, function(fornecedor) {
+                              return _c(
+                                "option",
+                                {
+                                  key: fornecedor.id,
+                                  domProps: { value: fornecedor.id }
+                                },
+                                [_vm._v(_vm._s(fornecedor.razao_social))]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "div",
+                      {
                         class: ["col-auto", { "has-error": _vm.errors.status }]
                       },
                       [
@@ -56622,8 +56717,10 @@ var render = function() {
                         })
                       ]
                     )
-                  ]),
-                  _vm._v(" "),
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
                   _c("div", { staticClass: "form-group col-md-6" }, [
                     _c(
                       "div",
@@ -56667,10 +56764,8 @@ var render = function() {
                         })
                       ]
                     )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-6" }, [
                     _c(
                       "div",
@@ -56872,6 +56967,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -56889,11 +56985,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 descricao: "",
                 forma_farmaceutica_id: "",
                 tipo_material_id: "",
+                fornecedor_id: "",
                 status: "ativo",
                 valor_compra: "",
                 valor_revenda: "",
                 tipo_material: Object,
-                forma_farmaceutica: Object
+                forma_farmaceutica: Object,
+                fornecedor: Object
                 // image: '',
             }
         };
@@ -56951,6 +57049,10 @@ var render = function() {
                 _vm._v(
                   _vm._s(_vm.materials.forma_farmaceutica.forma_farmaceutica)
                 ),
+                _c("br"),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Fornecedor: ")]),
+                _vm._v(_vm._s(_vm.materials.fornecedor.razao_social)),
                 _c("br"),
                 _vm._v(" "),
                 _c("strong", [_vm._v("Status: ")]),
@@ -57084,6 +57186,10 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("td", {
+                  domProps: { textContent: _vm._s(material.fornecedor_id) }
+                }),
+                _vm._v(" "),
+                _c("td", {
                   domProps: { textContent: _vm._s(material.status) }
                 }),
                 _vm._v(" "),
@@ -57187,6 +57293,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Forma")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tipo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fornecedor")]),
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),

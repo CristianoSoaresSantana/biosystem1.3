@@ -29,6 +29,7 @@
             <th>Descrição</th>
             <th>Forma</th>
             <th>Tipo</th>
+            <th>Fornecedor</th>
             <th>Status</th>
             <th>Valor Compra</th>
             <th>Valor Revenda</th>
@@ -43,6 +44,7 @@
             <td v-text="material.descricao"></td>
             <td v-text="material.forma_farmaceutica_id"></td>
             <td v-text="material.tipo_material_id"></td>
+            <td v-text="material.fornecedor_id"></td>
             <td v-text="material.status"></td>
             <td v-text="material.valor_compra"></td>
             <td v-text="material.valor_revenda"></td>
@@ -94,11 +96,13 @@ export default {
         descricao: "",
         forma_farmaceutica_id: "",
         tipo_material_id: "",
+        fornecedor_id: "",
         status: "",
         valor_compra: "",
         valor_revenda: "",
         tipo_material: Object,
-        forma_farmaceutica: Object
+        forma_farmaceutica: Object,
+        fornecedor: Object
         // image: '',
 
       }
@@ -141,18 +145,21 @@ export default {
     criar() {
       (this.titulo = "Cadastrar Material"),
         (this.showVodal = true),
-        (this.propriedadeupdate = false);
+        (this.propriedadeupdate = false),
+        (this.propriedade_statusInput = false),
       (this.propriedadeMaterial = {
         sku: "",
         cod_barra: "",
         descricao: "",
         forma_farmaceutica_id: "",
         tipo_material_id: "",
+        fornecedor_id: "",
         status: "ativo",
         valor_compra: "",
         valor_revenda: "",
         tipo_material: Object,
-        forma_farmaceutica: Object
+        forma_farmaceutica: Object,
+        fornecedor: Object
         // image: '',
       });
     },
@@ -190,11 +197,13 @@ export default {
         descricao: "",
         forma_farmaceutica_id: "",
         tipo_material_id: "",
-        status: "ativo",
+        fornecedor_id: "",
+        status: "",
         valor_compra: "",
         valor_revenda: "",
         tipo_material: Object,
-        forma_farmaceutica: Object
+        forma_farmaceutica: Object,
+        fornecedor: Object
         // image: '',
       });
     },
@@ -207,11 +216,13 @@ export default {
             descricao: "",
             forma_farmaceutica_id: "",
             tipo_material_id: "",
-            status: "ativo",
+            fornecedor_id: "",
+            status: "",
             valor_compra: "",
             valor_revenda: "",
             tipo_material: Object,
-            forma_farmaceutica: Object
+            forma_farmaceutica: Object,
+            fornecedor: Object
             // image: '',
       });
     },

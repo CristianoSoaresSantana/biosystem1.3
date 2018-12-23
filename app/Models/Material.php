@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Filial;
 use App\Models\Venda;
+use App\Models\Fornecedor;
 
 class Material extends Model
 {
@@ -21,6 +22,7 @@ class Material extends Model
         'sku',
         'tipo_material_id',
         'forma_farmaceutica_id',
+        'fornecedor_id',
         'cod_barra',
         'descricao',
         'valor_compra',
@@ -44,7 +46,7 @@ class Material extends Model
         else
         {
             return $this->where(function ($query) use ($data){
-                        if(isset($data['filter'])) 
+                        if(isset($data['filter']))
                         {
                             $filter = $data['filter'];
                             $query->where('sku', 'LIKE', "%{$filter}%");
@@ -71,7 +73,7 @@ class Material extends Model
                         }
                     })->orderby('updated_at', 'DESC')->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
-        
+
     }
 
     /**
@@ -88,6 +90,11 @@ class Material extends Model
         return $this->belongsTo(Forma_farmaceutica::class);
     }
 
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class);
+    }
+
 
     /**
      ************************** relacionamento N:M, pois uma filial vende muitos  *************************
@@ -97,11 +104,6 @@ class Material extends Model
     {
         return $this->belongsToMany(Filial::class, 'filial_materials')
                     ->withPivot('quantidade', 'min', 'max', 'curvaABC', 'comissao', 'valor_venda', 'status');
-    }
-
-    public function fornecedor()
-    {
-        return $this->belongsToMany(Fornecedor::class, 'fornecedor_materials')->withPivot('created_at', 'updated_at');
     }
 
     public function vendas()
