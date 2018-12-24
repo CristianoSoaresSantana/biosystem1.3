@@ -42,7 +42,8 @@ class CreateVendasTable extends Migration
         Schema::create('material_vendas', function (Blueprint $table) {
             $table->unsignedInteger('venda_id');
             $table->string('material_sku', 20);
-            $table->integer('quantidade');
+            $table->integer('quantidade')->default(0);
+            $table->integer('quantidade_anterior')->default(0);
             $table->string('lote', 20)->unique();
             $table->float('valor_unitario', 10,2);
             $table->float('valor_com_desconto', 10,1);
@@ -66,8 +67,8 @@ class CreateVendasTable extends Migration
 		Schema::table('vendas', function(Blueprint $table){
             // Esse metodo serve para remover relacionamentos entre tabelas!
 		});
+        Schema::dropIfExists('material_vendas');
         Schema::dropIfExists('vendas');
         Schema::dropIfExists('forma_pagto_vendas');
-        Schema::dropIfExists('material_vendas');
     }
 }

@@ -44,7 +44,7 @@ export default {
       links: [
         { name: "admin.dashboard", title: "Dashboard" },
         { name: "admin.entrada_nfe", title: "Entrada de Nfe" },
-        { name: "admin.vendas", title: "Vendas"},
+        { name: "admin.vendas", title: "Vendas" },
 
         { name: "admin.usuarios", title: "Usuários" },
         { name: "admin.clientes", title: "Clientes" },
@@ -86,9 +86,9 @@ export default {
   float: center;
 }
 img.logo-painel {
-  max-width: 198px;
-  max-height: 198px;
-  margin-top: 39px;
+  width: 198px;
+  height: 100px;
+  margin-top: 0px;
 }
 .list-menu {
   float: left;
@@ -124,6 +124,7 @@ ul.ul-menu li a {
 }
 .dropdown {
   float: right;
+  padding: 0px 91px 0px;
 }
 </style>
 

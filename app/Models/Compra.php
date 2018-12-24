@@ -88,6 +88,6 @@ class Compra extends Model
     public function materials()
     {
         return $this->belongsToMany(Material::class, 'compra_materials')
-                    ->withPivot('quantidade', 'lote', 'valor_unitario', 'data_fabricacao', 'data_vencimento', 'created_at', 'updated_at');
+                    ->withPivot('quantidade', 'quantidade_anterior', 'lote', 'valor_unitario', 'data_fabricacao', 'data_vencimento', 'created_at', 'updated_at');
     }
 }

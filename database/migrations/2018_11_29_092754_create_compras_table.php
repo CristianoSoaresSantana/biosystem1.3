@@ -21,7 +21,7 @@ class CreateComprasTable extends Migration
             $table->float('valor_nota', 10,2);
             $table->timestamps();
             $table->softDeletes();
-            
+
             $table->foreign('fornecedor_id')->references('id')->on('fornecedors')->onDelete('cascade');
             $table->foreign('filial_id')->references('id')->on('filials')->onDelete('cascade');
             $table->foreign('tipo_mov_id')->references('id')->on('tipo_movimentos')->onDelete('cascade');
@@ -31,10 +31,11 @@ class CreateComprasTable extends Migration
             $table->string('lote', 20)->unique();
             $table->string('compra_num_doc', 20);
             $table->string('material_sku', 20);
-            $table->integer('quantidade');
+            $table->integer('quantidade')->default(0);
+            $table->integer('quantidade_anterior')->default(0);
             $table->float('valor_unitario', 10,2);
             $table->date('data_fabricacao');
-            $table->date('data_vencimento');            
+            $table->date('data_vencimento');
             $table->timestamps();
             $table->softDeletes();
 
