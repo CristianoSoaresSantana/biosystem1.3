@@ -91,7 +91,7 @@ class FilialController extends Controller
             }
             $filial-> delete();
             // retorno o registro editado.
-            return response()->json(['sucess' => true], 204);
+            return response()->json(['success' => true], 204);
         }
     }
     // relacão 1:N

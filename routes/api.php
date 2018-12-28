@@ -23,6 +23,8 @@ $this->group([
     $this->apiResource('compras', 'CompraController'); // CRUD
     $this->get('compras/{id}/materials', 'CompraController@materials'); // RELACIONAMENTO N:M, CONSULTA.
 
+    $this->apiResource('compra_materials', 'CompraMaterialController'); // CRUD Representa a entrada de material.
+
     $this->apiResource('forma_pagtos', 'FormaPagtoController'); // CRUD
     $this->get('formaPagtos/{id}/vendas', 'FormaPagtoController@vendas'); // RELACIONAMENTO N:M, CONSULTA.
 

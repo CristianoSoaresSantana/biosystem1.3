@@ -1,0 +1,2 @@
+INSERT INTO `db_biosystem1.3`.`filial_materials` (`filial_id`,`material_sku`,`quantidade`,`min`,`max`,`curvaABC`,`comissao`,`valor_venda`,`status`)
+VALUES(1,"aa123",0,10,200,"a",2.0,25.55,"ativo");

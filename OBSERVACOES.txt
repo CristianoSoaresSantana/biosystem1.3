@@ -16,6 +16,8 @@ sudo npm install vue@2.5.21
 sudo npm install ajv
 sudo npm install eslint --save-dev
 sudo npm install imagemin
+sudo npm install vue-moment
+sudo npm install moment-timezone
 
 <VirtualHost *:80>
     ServerName biosystem.local
@@ -40,6 +42,3 @@ composer global require laravel/installer
 sudo apt install npm
 
 OBSERVAÇÕES IMPORTANTES:
-
-O modulo materials está parado, para desenvolver as tipo e forma de material!
-Porque preciso desses modulos para implementar o ediatr de materials!

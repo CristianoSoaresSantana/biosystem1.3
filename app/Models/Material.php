@@ -109,12 +109,12 @@ class Material extends Model
     public function vendas()
     {
         return $this->belongsToMany(Venda::class, 'material_vendas')
-                    ->withPivot('quantidade', 'lote', 'valor_unitario', 'valor_com_desconto', 'desconto', 'justificativa_desconto', 'created_at', 'updated_at');
+                    ->withPivot('quantidade', 'quantidade_anterior', 'lote', 'valor_unitario', 'valor_com_desconto', 'desconto', 'justificativa_desconto', 'created_at', 'updated_at');
     }
 
     public function compras()
     {
         return $this->belongsToMany(Compra::class, 'compra_materials')
-                    ->withPivot('quantidade', 'lote', 'valor_unitario', 'data_fabricacao', 'data_vencimento', 'created_at', 'updated_at');
+                    ->withPivot('quantidade', 'lote', 'valor_unitario', 'quantidade_anterior', 'data_fabricacao', 'data_vencimento', 'created_at', 'updated_at');
     }
 }

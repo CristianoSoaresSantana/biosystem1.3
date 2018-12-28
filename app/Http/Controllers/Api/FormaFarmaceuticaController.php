@@ -87,7 +87,7 @@ class FormaFarmaceuticaController extends Controller
                 return response()->json(['error' => 'Forma Farmaceutica esta relacionado a um material'], 404);
             }
             $formaFarmaceutica->delete();
-            return response()->json(['sucess' => true], 204);
+            return response()->json(['success' => true], 204);
         }
     }
 
