@@ -43,7 +43,7 @@ export default {
     return {
       links: [
         { name: "admin.dashboard", title: "Dashboard" },
-        { name: "admin.entrada_nfe", title: "Entrada de Nfe" },
+        { name: "admin.entrada_nfe", title: "Movimentação" },
         { name: "admin.vendas", title: "Vendas" },
 
         { name: "admin.usuarios", title: "Usuários" },

@@ -14,12 +14,11 @@ class TipoMovimentosTableSeeder extends Seeder
     {
         $tipo_movimentos = [
             ['tipo_movimentacao' => 'entrada'],
-            ['tipo_movimentacao' => 'saida'],
             ['tipo_movimentacao' => 'transferencia']
         ];
 
         foreach($tipo_movimentos as $tipo_movimento){
-            tipo_movimento::create($tipo_movimento);        
+            tipo_movimento::create($tipo_movimento);
         }
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Compra;
 use App\Models\Filial;
+use App\Models\Material;
 use Illuminate\Support\Facades\DB;
 
 class CompraMaterialController extends Controller
@@ -39,30 +40,39 @@ class CompraMaterialController extends Controller
      */
     public function store(Request $request)
     {
+        $arrayRequest = $request->request->all();
         try
         {
             DB::beginTransaction(); //marcador para iniciar transações
 
-            $compra_material = $this->compra->find($request->num_doc); // Objeto da tabela pivot compra_materials
+            $compra_material = $this->compra->find($arrayRequest[0]["compra_num_doc"]); // Objeto da tabela pivot compra_materials
             $filial = Filial::find($compra_material->filial_id); // Objeto da tabela filial
 
             // Aqui acontece o attach na pivot compra_materials e o update na pivot filial_materials.
-            for ($i=0; $i < count($request->material_sku); $i++)
+            for ($i=0; $i < $request->request->count(); $i++)
             {
-                $filial_material = $filial->materials()->where('material_sku', $request->material_sku[$i])->first(); // Objeto da tabela pivot filial_materials
+                // Aqui eu retorno o registro do produto por filial.
+                $filial_material = $filial->materials()->where('material_sku', $arrayRequest[$i]["material_sku"])->first();
 
-                $compra_material->materials()->attach($request->material_sku[$i],
+                // Aqui eu crio o registro na tabela compra_material.
+                $compra_material->materials()->attach($arrayRequest[$i]["material_sku"],
                     [
-                        'quantidade'            => $request->quantidade[$i],
+                        'quantidade'            => $arrayRequest[$i]["quantidade"],
                         'quantidade_anterior'   => $filial_material->pivot->quantidade,
-                        'lote'                  => $request->lote[$i],
-                        'valor_unitario'        => $request->valor_unitario[$i],
-                        'data_fabricacao'       => $request->data_fabricacao[$i],
-                        'data_vencimento'       => $request->data_vencimento[$i]
+                        'lote'                  => $arrayRequest[$i]["lote"],
+                        'valor_unitario'        => $arrayRequest[$i]["valor_unitario"],
+                        'data_fabricacao'       => $arrayRequest[$i]["data_fabricacao"],
+                        'data_vencimento'       => $arrayRequest[$i]["data_vencimento"]
                     ]);
-                $quantidadeNova = $filial_material->pivot->quantidade + $request->quantidade[$i];
+
+                // Aqui eu atualizo a quantidade do produto no estoque.
+                $quantidadeNova = $filial_material->pivot->quantidade + $arrayRequest[$i]["quantidade"];
                 $filial_material->pivot->quantidade = $quantidadeNova;
                 $filial_material->pivot->save();
+
+                // Aqui eu atualizo o valor no produto na tabela material.
+                $material = Material::find($arrayRequest[$i]["material_sku"]);
+                $material->update(['valor_compra' => $arrayRequest[$i]["valor_unitario"]]);
             }
 
             DB::commit(); //validar as transações

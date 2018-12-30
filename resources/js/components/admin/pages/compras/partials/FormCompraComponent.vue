@@ -146,7 +146,7 @@ export default {
         .then(() => {
           // notificação para usuario.
           this.$snotify.success("Ação realizada com sucesso!", "Parabéns...");
-          this.$emit("success");
+          this.$emit("success", {num_doc: this.compra.num_doc});
         })
         .catch(errors => {
           // notificação para usuario.

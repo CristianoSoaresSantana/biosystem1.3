@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Registros de Entrada</h1>
+    <h1>Registros de Entrada - Transferencia - Saida</h1>
     <div class="row">
       <div class="col">
         <button type="submit" class="btn btn-success" @click.prevent="criar()">Novo</button>
@@ -46,8 +46,11 @@
           </tr>
         </tbody>
       </table>
-      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="400">
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="1224" :height="700">
           <detalhe :filho_compra="propriedadeCompra"></detalhe>
+      </vodal>
+      <vodal :show="itensCompraVodal" @hide="hideItensCompra" :width="920" :height="400">
+          <itensCompra :num_docUltimoCreate="num_docUltimoCreate"></itensCompra>
       </vodal>
     </div>
   </div>
@@ -56,6 +59,7 @@
 <script>
 import Vodal from "vodal";
 import formCompraComponent from "./partials/FormCompraComponent";
+import formItensCompra from "./partials/FormItensCompraComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
 import detalheComponent from './partials/detalheComponent';
 
@@ -67,8 +71,10 @@ export default {
   data() {
     return {
       titulo: "",
+      num_docUltimoCreate: "",
       showVodal: false,
       detalhesVodal: false,
+      itensCompraVodal: false,
       propriedadeupdate: false,
       propriedade_errors: {},
       propriedadeCompra: {
@@ -81,7 +87,8 @@ export default {
         updated_at: "",
         filial: Object,
         fornecedor: Object,
-        tipo_movimento: Object
+        tipo_movimento: Object,
+        materials: Array
       }
     };
   },
@@ -149,7 +156,8 @@ export default {
           updated_at: "",
           filial: Object,
           fornecedor: Object,
-          tipo_movimento: Object
+          tipo_movimento: Object,
+          materials: Array
         });
     },
 
@@ -165,12 +173,21 @@ export default {
           updated_at: "",
           filial: Object,
           fornecedor: Object,
-          tipo_movimento: Object
+          tipo_movimento: Object,
+          materials: Array
         });
     },
 
-    cadastroRealizado() {
-      this.hideVodal(), this.loadIndex();
+    hideItensCompra () {
+        this.itensCompraVodal = false,
+        this.num_docUltimoCreate ="";
+    },
+
+    cadastroRealizado(payload) {
+      this.hideVodal(),
+      this.loadIndex(),
+      this.num_docUltimoCreate = payload.num_doc,
+      this.propriedadeupdate ? "" : this.itensCompraVodal = true;
     },
 
     //method que aciona uma fornecedor de filials.js
@@ -182,7 +199,33 @@ export default {
           this.loadIndex();
         })
         .catch(errors => {
-          this.$snotify.errors("Registro não pode ser Deletado!", "Fracasso");
+          this.propriedade_errors = errors.response.data.error;
+          this.$snotify.html(
+            `<h4 class="snotifyToast__title"> <b>Fracasso!</b> </h4>
+                         <div class="snotifyToast__body">
+                            <b>Registro não pode ser apagado!<br></b>
+                            <b>${this.propriedade_errors}</b>
+                         </div>
+                         <style scoped>
+                            .snotifyToast {
+                                background-color: #f99e94;
+                                margin: 11px -100px;
+                                opacity: 0;
+                                width: 400px;
+                            }
+                            .snotifyToast__inner {
+                                color: #e3342f;
+                                max-width: 500;
+                            }
+                            </style>`,
+            {
+              timeout: 5000,
+              showProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              position: "centerTop"
+            }
+          );
         });
     }
   },
@@ -191,7 +234,8 @@ export default {
     vodal: Vodal,
     formCompra: formCompraComponent,
     confirmDelete,
-    detalhe: detalheComponent
+    detalhe: detalheComponent,
+    itensCompra: formItensCompra
   }
 };
 </script>

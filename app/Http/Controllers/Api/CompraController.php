@@ -67,7 +67,7 @@ class CompraController extends Controller
         else
         {
             // seto os valores que o usuario forneceu.
-            $compra-> update($request->all());
+            $compra->update($request->all());
             // retorno o registro editado.
             return response()->json($compra, 200);
         }
@@ -85,6 +85,11 @@ class CompraController extends Controller
         }
         else
         {
+            $existsRelations = $this->compra->find($id)->materials()->exists();
+            // verifica se cliente esta relacionado a uma venda
+            if ($existsRelations) {
+                return response()->json(['error' => 'Registro esta relacionado a itensCompras'], 404);
+            }
             $compra-> delete();
             // retorno o registro editado.
             return response()->json(['sucess' => true], 204);
