@@ -64772,7 +64772,7 @@ var render = function() {
                           },
                           [
                             _c("option", { attrs: { value: "" } }, [
-                              _vm._v("Fornecedor")
+                              _vm._v("Origem")
                             ]),
                             _vm._v(" "),
                             _vm._l(_vm.fornecedors, function(fornecedor) {
@@ -64840,7 +64840,7 @@ var render = function() {
                           },
                           [
                             _c("option", { attrs: { value: "" } }, [
-                              _vm._v("Filial")
+                              _vm._v("Destino")
                             ]),
                             _vm._v(" "),
                             _vm._l(_vm.filials, function(filial) {
@@ -65536,16 +65536,16 @@ var render = function() {
           },
           [
             _c("li", [
-              _c("strong", [_vm._v("Filial:")]),
-              _vm._v(
-                " " +
-                  _vm._s(_vm.compra.filial.razao_social) +
-                  ",\n                  "
-              ),
-              _c("strong", [_vm._v("Fornecedor:")]),
+              _c("strong", [_vm._v("Origem:")]),
               _vm._v(
                 " " +
                   _vm._s(_vm.compra.fornecedor.razao_social) +
+                  ",\n                  "
+              ),
+              _c("strong", [_vm._v("Destino:")]),
+              _vm._v(
+                " " +
+                  _vm._s(_vm.compra.filial.razao_social) +
                   ",\n                  "
               ),
               _c("strong", [_vm._v("Tipo de Movimento:")]),
@@ -65750,11 +65750,11 @@ var render = function() {
                 _c("td", { domProps: { textContent: _vm._s(compra.num_doc) } }),
                 _vm._v(" "),
                 _c("td", {
-                  domProps: { textContent: _vm._s(compra.filial_id) }
+                  domProps: { textContent: _vm._s(compra.fornecedor_id) }
                 }),
                 _vm._v(" "),
                 _c("td", {
-                  domProps: { textContent: _vm._s(compra.fornecedor_id) }
+                  domProps: { textContent: _vm._s(compra.filial_id) }
                 }),
                 _vm._v(" "),
                 _c("td", {
@@ -65873,9 +65873,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Num_doc")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Filial")]),
+        _c("th", [_vm._v("Origem")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Fornecedor")]),
+        _c("th", [_vm._v("Destino")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tipo Movimento")]),
         _vm._v(" "),

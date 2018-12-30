@@ -39,7 +39,7 @@
                   <div :class="['col-auto', {'has-error': errors.fornecedor_id}]">
                     <div v-if="errors.fornecedor_id">{{ errors.fornecedor_id[0] }}</div>
                     <select class="form-control mb-2 mr-sm-2" v-model="compra.fornecedor_id">
-                      <option value>Fornecedor</option>
+                      <option value>Origem</option>
                       <option
                         v-for="fornecedor in fornecedors"
                         :key="fornecedor.id"
@@ -52,7 +52,7 @@
                   <div :class="['col-auto', {'has-error': errors.filial_id}]">
                     <div v-if="errors.filial_id">{{ errors.filial_id[0] }}</div>
                     <select class="form-control mb-2 mr-sm-2" v-model="compra.filial_id">
-                      <option value>Filial</option>
+                      <option value>Destino</option>
                       <option
                         v-for="filial in filials"
                         :key="filial.id"

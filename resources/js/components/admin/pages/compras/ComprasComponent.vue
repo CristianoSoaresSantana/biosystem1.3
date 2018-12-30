@@ -20,8 +20,8 @@
         <thead>
           <tr>
             <th>Num_doc</th>
-            <th>Filial</th>
-            <th>Fornecedor</th>
+            <th>Origem</th>
+            <th>Destino</th>
             <th>Tipo Movimento</th>
             <th>Valor da Nota</th>
             <th>Data de Entrada</th>
@@ -32,8 +32,8 @@
         <tbody>
           <tr v-for="compra in compras" :key="compra.num_doc">
             <td v-text="compra.num_doc"></td>
-            <td v-text="compra.filial_id"></td>
             <td v-text="compra.fornecedor_id"></td>
+            <td v-text="compra.filial_id"></td>
             <td v-text="compra.tipo_mov_id"></td>
             <td v-text="compra.valor_nota"></td>
             <td>{{ $moment(compra.created_at).format('DD/MM/YYYY HH:mm', 'L') }}</td>

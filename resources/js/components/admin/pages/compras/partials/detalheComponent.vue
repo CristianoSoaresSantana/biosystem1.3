@@ -6,8 +6,8 @@
       <div class="col-sm-12">
             <ul style="width: 1150px; height: 70px; overflow: auto">
                 <li>
-                    <strong>Filial:</strong> {{ compra.filial.razao_social }},
-                    <strong>Fornecedor:</strong> {{ compra.fornecedor.razao_social }},
+                    <strong>Origem:</strong> {{ compra.fornecedor.razao_social }},
+                    <strong>Destino:</strong> {{ compra.filial.razao_social }},
                     <strong>Tipo de Movimento:</strong> {{ compra.tipo_movimento.tipo_movimentacao }},
                     <strong>Valor do doc:</strong> {{ compra.valor_nota }},
                     <strong>Data da compra:</strong> {{ $moment(compra.created_at).format('DD/MM/YYYY HH:mm', 'L') }},

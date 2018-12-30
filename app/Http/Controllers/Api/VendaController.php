@@ -30,17 +30,14 @@ class VendaController extends Controller
     // inseri informação na tabela.
     public function store(StoreUpdateVendaFormRequest $request)
     {
-        
         $vendas =  $this->venda->create($request->all());
-
         return response()->json($vendas, 201);
     }
 
     public function show($id)
     {
         // recupero o registro
-        $venda =  $this->venda->with(['filial', 'cliente', 'user', 'tipoMovimento'])->find($id);
-
+        $venda =  $this->venda->with(['filial', 'cliente', 'user', 'tipoMovimento', 'formaPagtos'])->find($id);
         if(!$venda)
         {
             // retornar uma mensagem se não encontrar o arquivo.
@@ -52,7 +49,7 @@ class VendaController extends Controller
             return response()->json($venda, 200);
         }
     }
-    
+
     // editar informação na tabela.
     public function update(StoreUpdateVendaFormRequest $request, $id)
     {
@@ -104,7 +101,7 @@ class VendaController extends Controller
         else
         {
             $formaPagtos = $venda->formaPagtos()->paginate($this->itensPage);
-            
+
             return response()->json([
                 'venda'  => $venda,
                 'formaPagtos'   => $formaPagtos,
