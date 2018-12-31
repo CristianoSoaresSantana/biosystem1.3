@@ -50054,6 +50054,8 @@ if (typeof window !== 'undefined' && window.hasOwnProperty('Vue')) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_admin_pages_compras_ComprasComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_admin_pages_compras_ComprasComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_admin_pages_vendas_VendasComponent__ = __webpack_require__(344);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_admin_pages_vendas_VendasComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_admin_pages_vendas_VendasComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_admin_pages_vendas_partials_carrinhoComponent_vue__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_admin_pages_vendas_partials_carrinhoComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__components_admin_pages_vendas_partials_carrinhoComponent_vue__);
 /**
  * Configuração de rotas do app,
  * Vue.use(VueRouter), essa linha serve para vue reconhecer nossas rotas.
@@ -50081,12 +50083,13 @@ if (typeof window !== 'undefined' && window.hasOwnProperty('Vue')) {
 
 
 
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var routes = [{
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_2__components_admin_AdminComponent___default.a,
-    children: [{ path: 'admin', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_pages_dashboard_DashboardComponent___default.a, name: 'admin.dashboard' }, { path: 'entrada_nfe', component: __WEBPACK_IMPORTED_MODULE_14__components_admin_pages_compras_ComprasComponent___default.a, name: 'admin.entrada_nfe' }, { path: 'vendas', component: __WEBPACK_IMPORTED_MODULE_15__components_admin_pages_vendas_VendasComponent___default.a, name: 'admin.vendas' }, { path: 'clientes', component: __WEBPACK_IMPORTED_MODULE_9__components_admin_pages_clientes_ClientesComponent___default.a, name: 'admin.clientes' }, { path: 'usuarios', component: __WEBPACK_IMPORTED_MODULE_10__components_admin_pages_usuarios_UsuariosComponent___default.a, name: 'admin.usuarios' }, { path: 'branches', component: __WEBPACK_IMPORTED_MODULE_4__components_admin_pages_branches_BranchesComponent___default.a, name: 'admin.branches' }, { path: 'fornecedors', component: __WEBPACK_IMPORTED_MODULE_5__components_admin_pages_fornecedors_FornecedorsComponent___default.a, name: 'admin.fornecedors' }, { path: 'materials', component: __WEBPACK_IMPORTED_MODULE_6__components_admin_pages_materials_MaterialsComponent___default.a, name: 'admin.materials' }, { path: 'setors', component: __WEBPACK_IMPORTED_MODULE_11__components_admin_pages_setors_SetorsComponent___default.a, name: 'admin.setors' }, { path: 'tipo_movimentos', component: __WEBPACK_IMPORTED_MODULE_13__components_admin_pages_tipo_movimentos_TipoMovimentosComponent___default.a, name: 'admin.tipo_movimentos' }, { path: 'tipo_materials', component: __WEBPACK_IMPORTED_MODULE_7__components_admin_pages_tipo_materials_TipoMaterialsComponent___default.a, name: 'admin.tipo_materials' }, { path: 'forma_pagtos', component: __WEBPACK_IMPORTED_MODULE_12__components_admin_pages_forma_pagtos_FormaPagtosComponent___default.a, name: 'admin.forma_pagtos' }, { path: 'forma_farmaceutica', component: __WEBPACK_IMPORTED_MODULE_8__components_admin_pages_forma_farmaceuticas_FormaFarmaceuticasComponent___default.a, name: 'admin.forma_farmaceuticas' }]
+    children: [{ path: 'admin', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_pages_dashboard_DashboardComponent___default.a, name: 'admin.dashboard' }, { path: 'carrinho', component: __WEBPACK_IMPORTED_MODULE_16__components_admin_pages_vendas_partials_carrinhoComponent_vue___default.a, name: 'admin.carrinho' }, { path: 'entrada_nfe', component: __WEBPACK_IMPORTED_MODULE_14__components_admin_pages_compras_ComprasComponent___default.a, name: 'admin.entrada_nfe' }, { path: 'vendas', component: __WEBPACK_IMPORTED_MODULE_15__components_admin_pages_vendas_VendasComponent___default.a, name: 'admin.vendas' }, { path: 'clientes', component: __WEBPACK_IMPORTED_MODULE_9__components_admin_pages_clientes_ClientesComponent___default.a, name: 'admin.clientes' }, { path: 'usuarios', component: __WEBPACK_IMPORTED_MODULE_10__components_admin_pages_usuarios_UsuariosComponent___default.a, name: 'admin.usuarios' }, { path: 'branches', component: __WEBPACK_IMPORTED_MODULE_4__components_admin_pages_branches_BranchesComponent___default.a, name: 'admin.branches' }, { path: 'fornecedors', component: __WEBPACK_IMPORTED_MODULE_5__components_admin_pages_fornecedors_FornecedorsComponent___default.a, name: 'admin.fornecedors' }, { path: 'materials', component: __WEBPACK_IMPORTED_MODULE_6__components_admin_pages_materials_MaterialsComponent___default.a, name: 'admin.materials' }, { path: 'setors', component: __WEBPACK_IMPORTED_MODULE_11__components_admin_pages_setors_SetorsComponent___default.a, name: 'admin.setors' }, { path: 'tipo_movimentos', component: __WEBPACK_IMPORTED_MODULE_13__components_admin_pages_tipo_movimentos_TipoMovimentosComponent___default.a, name: 'admin.tipo_movimentos' }, { path: 'tipo_materials', component: __WEBPACK_IMPORTED_MODULE_7__components_admin_pages_tipo_materials_TipoMaterialsComponent___default.a, name: 'admin.tipo_materials' }, { path: 'forma_pagtos', component: __WEBPACK_IMPORTED_MODULE_12__components_admin_pages_forma_pagtos_FormaPagtosComponent___default.a, name: 'admin.forma_pagtos' }, { path: 'forma_farmaceutica', component: __WEBPACK_IMPORTED_MODULE_8__components_admin_pages_forma_farmaceuticas_FormaFarmaceuticasComponent___default.a, name: 'admin.forma_farmaceuticas' }]
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
@@ -52838,8 +52841,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    carrinho: function carrinho() {
+      return this.$store.state.carrinho.products;
+    }
+  },
+
   data: function data() {
     return {
       links: [{ name: "admin.dashboard", title: "Dashboard" }, { name: "admin.entrada_nfe", title: "Movimentação" }, { name: "admin.vendas", title: "Vendas" }, { name: "admin.usuarios", title: "Usuários" }, { name: "admin.clientes", title: "Clientes" }, { name: "admin.branches", title: "Filiais" }, { name: "admin.fornecedors", title: "Fornecedores" }, { name: "admin.materials", title: "Materiais" }, { name: "admin.setors", title: "Setores" }, { name: "admin.tipo_movimentos", title: "Tipos Movimentos" }, { name: "admin.forma_pagtos", title: "Formas Pagamentos" }, { name: "admin.tipo_materials", title: "Tipos de Material" }, { name: "admin.forma_farmaceuticas", title: "Formas Farmacêuticas" }]
@@ -52863,24 +52873,41 @@ var render = function() {
         _c(
           "ul",
           { staticClass: "ul-menu" },
-          _vm._l(_vm.links, function(link) {
-            return _c(
+          [
+            _c(
               "li",
-              { key: link.name },
               [
                 _c(
                   "router-link",
                   {
                     staticClass: "nav-link",
-                    attrs: { to: { name: link.name } }
+                    attrs: { to: { name: "admin.carrinho" } }
                   },
-                  [_vm._v(_vm._s(link.title))]
+                  [_vm._v("Carrinho (" + _vm._s(_vm.carrinho.length) + ")")]
                 )
               ],
               1
-            )
-          }),
-          0
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.links, function(link) {
+              return _c(
+                "li",
+                { key: link.name },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: { name: link.name } }
+                    },
+                    [_vm._v(_vm._s(link.title))]
+                  )
+                ],
+                1
+              )
+            })
+          ],
+          2
         )
       ])
     ]),
@@ -67365,6 +67392,7 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modules_compras_compras__ = __webpack_require__(420);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modules_vendas_vendas__ = __webpack_require__(425);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__modules_compras_materials_compra_materials__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modules_carrinho_carrinho__ = __webpack_require__(453);
 
 
 /**
@@ -67373,6 +67401,7 @@ if (false) {
  */
 
 //importar arquivos proprios deve ser uma linha depois das demais!
+
 
 
 
@@ -67406,7 +67435,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
         tipo_movimentos: __WEBPACK_IMPORTED_MODULE_12__modules_tipo_movimentos_tipo_movimentos__["a" /* default */],
         compras: __WEBPACK_IMPORTED_MODULE_13__modules_compras_compras__["a" /* default */],
         compra_itens: __WEBPACK_IMPORTED_MODULE_15__modules_compras_materials_compra_materials__["a" /* default */],
-        vendas: __WEBPACK_IMPORTED_MODULE_14__modules_vendas_vendas__["a" /* default */]
+        vendas: __WEBPACK_IMPORTED_MODULE_14__modules_vendas_vendas__["a" /* default */],
+        carrinho: __WEBPACK_IMPORTED_MODULE_16__modules_carrinho_carrinho__["a" /* default */]
     }
 });
 
@@ -71607,9 +71637,7 @@ var RESOURCE = 'compra_materials';
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    itens: {
-        data: []
-    }
+    itens: []
 });
 
 /***/ }),
@@ -77384,6 +77412,199 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(452)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/pages/vendas/partials/carrinhoComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4f23ea70", Component.options)
+  } else {
+    hotAPI.reload("data-v-4f23ea70", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 452 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("\n    carrinho compras\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4f23ea70", module.exports)
+  }
+}
+
+/***/ }),
+/* 453 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions__ = __webpack_require__(454);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mutations__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__getters__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__states__ = __webpack_require__(457);
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    state: __WEBPACK_IMPORTED_MODULE_3__states__["a" /* default */],
+    actions: __WEBPACK_IMPORTED_MODULE_0__actions__["a" /* default */],
+    mutations: __WEBPACK_IMPORTED_MODULE_1__mutations__["a" /* default */],
+    getters: __WEBPACK_IMPORTED_MODULE_2__getters__["a" /* default */]
+});
+
+/***/ }),
+/* 454 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// import axios from 'axios'
+// // importar url_base da group da api
+// import { URL_BASE } from '../../../config/config'
+// import { resolve } from "url";
+// import { rejects } from "assert";
+
+// // resource do crud
+// const RESOURCE = 'compras'
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    // comprasIndex (context) {
+    //     context.commit('PRELOADER', true)
+
+    //     axios.get(`${URL_BASE}${RESOURCE}`)
+    //         .then(response => context.commit('MUTATION_LOAD_COMPRAS', response.data))
+    //         .catch(errors => console.log(errors))
+    //         .finally(() => context.commit('PRELOADER', false))
+    // },
+
+    // comprasShow (context, num_doc) {
+    //     context.commit('PRELOADER', true)
+
+    //     return new Promise((resolve, reject) => {
+    //         axios.get(`${URL_BASE}${RESOURCE}/${num_doc}`)
+    //             .then(response => resolve(response.data))
+    //             .catch(errors => reject(errors))
+    //             .finally(context.commit('PRELOADER', false))
+    //     })
+    // },
+
+    // comprasStore (context, params) {
+    //     context.commit('PRELOADER', true)
+
+    //     return new Promise((resolve, reject) =>{
+    //         axios.post(`${URL_BASE}${RESOURCE}`, params)
+    //             // retorna resposta caso request teve success ou error!
+    //             .then(response => resolve(response))
+    //             .catch(errors => reject(errors))
+    //             .finally(() => context.commit('PRELOADER', false))
+    //     })
+    // },
+
+    // comprasUpdate (context, params) {
+    //     context.commit('PRELOADER', true)
+
+    //     return new Promise((resolve, reject) => {
+    //         axios.put(`${URL_BASE}${RESOURCE}/${params.num_doc}`, params)
+    //             // retorna resposta caso request teve success ou error!
+    //             .then(response => resolve(response))
+    //             .catch(errors => reject(errors))
+    //             .finally(() => context.commit('PRELOADER', false))
+    //     })
+    // },
+
+    // comprasDestroy (context, num_doc) {
+    //     context.commit('PRELOADER', true)
+
+    //     return new Promise((resolve, reject) => {
+    //         axios.delete(`${URL_BASE}${RESOURCE}/${num_doc}`)
+    //             // retorna resposta caso request teve success ou error!
+    //             .then(response => resolve(response))
+    //             .catch(errors => reject(errors))
+    //             // recurso comentado para o preloader ser chamado ao recarregar table.
+    //             .finally(() => context.commit('PRELOADER', false))
+    //     })
+    // },
+});
+
+/***/ }),
+/* 455 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    MUTATION_LOAD_CARRINHO: function MUTATION_LOAD_CARRINHO(state, carrinho) {
+        state.itens = carrinho;
+    }
+});
+
+/***/ }),
+/* 456 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({});
+
+/***/ }),
+/* 457 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    products: []
+});
 
 /***/ })
 /******/ ]);

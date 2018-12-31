@@ -24,6 +24,7 @@ import FormaPagtosComponent from '../components/admin/pages/forma_pagtos/FormaPa
 import TipoMovimentosComponent from '../components/admin/pages/tipo_movimentos/TipoMovimentosComponent'
 import ComprasComponent from '../components/admin/pages/compras/ComprasComponent'
 import VendasComponent from '../components/admin/pages/vendas/VendasComponent'
+import CarrinhoComponent from '../components/admin/pages/vendas/partials/carrinhoComponent.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,7 @@ const routes = [
         component: AdminComponent,
         children: [
             {path: 'admin', component: DashboardComponent, name: 'admin.dashboard'},
+            {path: 'carrinho', component: CarrinhoComponent, name: 'admin.carrinho'},
             {path: 'entrada_nfe', component: ComprasComponent, name: 'admin.entrada_nfe'},
             {path: 'vendas', component: VendasComponent, name: 'admin.vendas'},
 

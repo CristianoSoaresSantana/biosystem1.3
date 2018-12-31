@@ -6,8 +6,9 @@
       </div>
       <div class="list-menu">
         <ul class="ul-menu">
+          <li><router-link :to="{name: 'admin.carrinho'}" class="nav-link">Carrinho ({{carrinho.length}})</router-link></li>
           <li v-for="link in links" :key="link.name">
-            <router-link :to="{name: link.name}" class="nav-link">{{link.title}}</router-link>
+            <router-link :to="{name: link.name}" class="nav-link">{{ link.title }}</router-link>
           </li>
         </ul>
       </div>
@@ -39,6 +40,12 @@
 
 <script>
 export default {
+  computed: {
+      carrinho () {
+          return this.$store.state.carrinho.products;
+      }
+  },
+
   data() {
     return {
       links: [
