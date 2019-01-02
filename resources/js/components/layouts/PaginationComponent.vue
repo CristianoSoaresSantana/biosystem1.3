@@ -68,4 +68,17 @@
 </script>
 
 <style scoped>
+.pagination {
+    display: inline-block;
+    width: -webkit-fill-available;
+    padding: 0% 40% 0% 40%;
+}
+
+.pagination a {
+  color: black;
+  border: 1px solid #ddd;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
 </style>
