@@ -18,10 +18,11 @@ class DatabaseSeeder extends Seeder
         // $this->call(FormaFarmaceuticasTableSeeder::class);
         // $this->call(UsersTableSeeder::class);
         // $this->call(ClientesTableSeeder::class);
-        $this->call(MaterialsTableSeeder::class);
-        $this->call(TipoMovimentosTableSeeder::class);
-        $this->call(FormaPagtosTableSeeder::class);
+        // $this->call(MaterialsTableSeeder::class);
+        // $this->call(TipoMovimentosTableSeeder::class);
+        // $this->call(FormaPagtosTableSeeder::class);
         // $this->call(ComprasTableSeeder::class);
         // $this->call(VendasTableSeeder::class);
+        $this->call(FilialMaterialsSeeder::class);
     }
 }

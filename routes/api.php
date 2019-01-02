@@ -61,4 +61,8 @@ $this->group([
     $this->get('fornecedors/{id}/compras', 'FornecedorController@compras'); // RELACIONAMENTO 1:M, CONSULTA
     $this->get('fornecedors/{id}/materials', 'FornecedorController@materials'); // RELACIONAMENTO 1:N, CONSULTA.
 
+    $this->apiResource('filial_materials', 'FilialMaterialController'); // CRUD
+    $this->delete('filial_materials/{filial_id}/{material_sku}', 'FilialMaterialController@destroyUm'); // APAGA UM REGISTRO DO ESTOQUE!
+    $this->get('filial_materials/{filial_id}/{material_sku}', 'FilialMaterialController@showUm'); // RETORNA UM REGISTRO DO ESTOQUE!
+
 });

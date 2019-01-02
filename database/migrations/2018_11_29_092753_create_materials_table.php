@@ -36,7 +36,7 @@ class CreateMaterialsTable extends Migration
 
             $table->unsignedInteger('filial_id');
             $table->string('material_sku', 20);
-            $table->integer('quantidade');
+            $table->integer('quantidade')->default(0);
             $table->integer('min');
             $table->integer('max');
             $table->char('curvaABC');
