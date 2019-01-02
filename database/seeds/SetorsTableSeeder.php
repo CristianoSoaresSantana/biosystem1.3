@@ -18,7 +18,7 @@ class SetorsTableSeeder extends Seeder
         ];
 
         foreach($setors as $setor){
-            Setor::create($setor);        
+            Setor::create($setor);
         }
     }
 }

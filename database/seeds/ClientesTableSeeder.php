@@ -14,7 +14,7 @@ class ClientesTableSeeder extends Seeder
     {
         $clientes = [
             [
-                'nome' => 'João Luis', 
+                'nome' => 'Roberto Araujo',
                 'email' => 'jj@ll.com',
                 'cpf' => '00000000000',
                 'celular' => '31988887777',
@@ -22,7 +22,7 @@ class ClientesTableSeeder extends Seeder
                 'endereco' => 'rua fulano, numero 95, bairro: chacara'
             ],
             [
-                'nome' => 'Luis Sergio', 
+                'nome' => 'Maria João',
                 'email' => 'll@ss.com',
                 'cpf' => '11111111111',
                 'celular' => '31944447777',
@@ -32,7 +32,7 @@ class ClientesTableSeeder extends Seeder
         ];
 
         foreach($clientes as $cliente){
-            Cliente::create($cliente);        
+            Cliente::create($cliente);
         }
     }
 }

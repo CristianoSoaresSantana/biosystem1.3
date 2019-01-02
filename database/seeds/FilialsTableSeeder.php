@@ -13,12 +13,12 @@ class FilialsTableSeeder extends Seeder
     public function run()
     {
         $filials = [
-            ['razao_social' => 'Loja Cento', 'cnpj' => '22222222222222'],
-            ['razao_social' => 'Americanas', 'cnpj' => '33333333333333']
+            ['razao_social' => 'Loja', 'cnpj' => '22222222222222'],
+            ['razao_social' => 'Site', 'cnpj' => '33333333333333']
         ];
 
         foreach($filials as $filial){
-            Filial::create($filial);        
+            Filial::create($filial);
         }
     }
 }

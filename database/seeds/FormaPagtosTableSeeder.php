@@ -20,7 +20,7 @@ class FormaPagtosTableSeeder extends Seeder
         ];
 
         foreach($forma_pagamentos as $forma_pagamento){
-            Forma_pagto::create($forma_pagamento);        
+            Forma_pagto::create($forma_pagamento);
         }
     }
 }
