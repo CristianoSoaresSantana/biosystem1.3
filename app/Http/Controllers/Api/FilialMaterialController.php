@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Filial_material;
+use App\Models\Filial;
 use App\Http\Requests\StoreUpdateFilialMaterialFormRequest;
 
 class FilialMaterialController extends Controller

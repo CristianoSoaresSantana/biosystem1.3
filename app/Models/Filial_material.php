@@ -22,19 +22,19 @@ class Filial_material extends Model
     public function getResults($data, $itensPage)
     {
         if (!isset($data['cod_barra']) && !isset($data['material_sku']) && !isset($data['descricao'])) {
-            return Filial::find($data['filial_id'])->materials()->paginate($itensPage);
+            return Filial::find($data['filial_id'])->materials()->paginate($itensPage)->toArray();
         }
         elseif(isset($data['cod_barra'])){
             $filial = Filial::find($data['filial_id']);
-            return $filial->materials()->where('cod_barra', $data['cod_barra'])->get();
+            return $filial->materials()->where('cod_barra', $data['cod_barra'])->paginate($itensPage)->toArray();
         }
         elseif(isset($data['material_sku'])){
             $filial = Filial::find($data['filial_id']);
-            return $filial->materials()->where('sku', $data['material_sku'])->get();
+            return $filial->materials()->where('sku', $data['material_sku'])->paginate($itensPage)->toArray();
         }
         elseif(isset($data['descricao'])){
             $filial = Filial::find($data['filial_id']);
-            return $filial->materials()->where('descricao', 'LIKE', "%{$data['descricao']}%")->get();
+            return $filial->materials()->where('descricao', 'LIKE', "%{$data['descricao']}%")->paginate($itensPage)->toArray();
         }
     }
 }
