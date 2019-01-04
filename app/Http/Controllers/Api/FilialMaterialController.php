@@ -5,18 +5,24 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Models\Filial;
+use App\Models\Filial_material;
 use App\Http\Requests\StoreUpdateFilialMaterialFormRequest;
 
 class FilialMaterialController extends Controller
 {
-    private $itensPage;
+    private $filial_material;
+    private $itensPage = 10;
 
-    // Retorna todos os registros da tabela.
-    public function index()
+    public function __construct(Filial_material $filial_material)
     {
-        $estoque = DB::select('select * from filial_materials');
-        return response()->json($estoque, 200);
+        $this->filial_material = $filial_material;
+    }
+
+    // Retorna todos os registros da tabela por filial! Se houver input, retorna um ou mais registros!
+    public function index(Request $request)
+    {
+        $materials = $this->filial_material->getResults($request->all(), $this->itensPage);
+        return response()->json(['materials' => $materials], 200);
     }
 
     public function store(StoreUpdateFilialMaterialFormRequest $request)
