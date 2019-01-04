@@ -21,6 +21,7 @@ import TipoMovimentos from './modules/tipo_movimentos/tipo_movimentos'
 import Compras from './modules/compras/compras'
 import Vendas from './modules/vendas/vendas'
 import itensCompra from "./modules/compras_materials/compra_materials"
+import FilialMaterials from "./modules/filial_materials/filial_materials"
 import Carrinho from "./modules/carrinho/carrinho"
 
 Vue.use(Vuex)
@@ -42,7 +43,8 @@ const store = new Vuex.Store({
         compras:             Compras,
         compra_itens:        itensCompra,
         vendas:              Vendas,
-        carrinho:            Carrinho
+        carrinho:            Carrinho,
+        estoque:             FilialMaterials
     }
 })
 

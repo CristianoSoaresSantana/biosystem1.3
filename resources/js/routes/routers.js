@@ -11,6 +11,7 @@ import VueRouter from 'vue-router'
 
 import AdminComponent from '../components/admin/AdminComponent'
 import DashboardComponent from '../components/admin/pages/dashboard/DashboardComponent'
+import HomePageComponent from '../components/admin/pages/estoque/HomePageComponent.vue'
 
 import BranchesComponent from '../components/admin/pages/branches/BranchesComponent'
 import FornecedorsComponent from '../components/admin/pages/fornecedors/FornecedorsComponent'
@@ -33,6 +34,7 @@ const routes = [
         path: '/',
         component: AdminComponent,
         children: [
+            {path: '', component: HomePageComponent, name: 'admin.home_page'},
             {path: 'admin', component: DashboardComponent, name: 'admin.dashboard'},
             {path: 'carrinho', component: CarrinhoComponent, name: 'admin.carrinho'},
             {path: 'entrada_nfe', component: ComprasComponent, name: 'admin.entrada_nfe'},
