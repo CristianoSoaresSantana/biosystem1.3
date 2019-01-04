@@ -6,7 +6,6 @@
       </div>
       <div class="list-menu">
         <ul class="ul-menu">
-          <li><router-link :to="{name: 'admin.carrinho'}" class="nav-link">Carrinho ({{carrinho.length}})</router-link></li>
           <li v-for="link in links" :key="link.name">
             <router-link :to="{name: link.name}" class="nav-link">{{ link.title }}</router-link>
           </li>
@@ -16,14 +15,10 @@
     <div class="conteudo">
       <div class="top-dasboard">
         <div class="dropdown">
-          <div
-            class="dropdown-toggle"
-            type="div"
-            id="dropdownMenudiv"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+        <div class="dropdown-cart" type="div">
+            <router-link :to="{name: 'admin.carrinho'}" class="nav-link">Carrinho ({{carrinho.length}})</router-link>
+        </div>
+          <div class="dropdown-toggle" type="div" id="dropdownMenudiv" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <strong>Usuário</strong>
           </div>
           <div class="dropdown-menu" aria-labelledby="dropdownMenudiv">
@@ -49,6 +44,7 @@ export default {
   data() {
     return {
       links: [
+        { name: "admin.home_page", title: "Home Page" },
         { name: "admin.dashboard", title: "Dashboard" },
         { name: "admin.entrada_nfe", title: "Movimentação" },
         { name: "admin.vendas", title: "Vendas" },
@@ -130,8 +126,24 @@ ul.ul-menu li a {
   padding: 8px;
 }
 .dropdown {
+  width: 100%;
   float: right;
   padding: 0px 91px 0px;
 }
+.dropdown-toggle {
+    float: left;
+}
+.dropdown-toggle strong {
+    font-size: 1.3em;
+}
+.dropdown-cart {
+    width: 90%;
+    float: left;
+}
+.dropdown-cart a {
+    color:#ffffff;
+    font-size: 1.3em;
+}
+
 </style>
 
