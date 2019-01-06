@@ -28,22 +28,21 @@ class FilialMaterialController extends Controller
 
     public function store(StoreUpdateFilialMaterialFormRequest $request)
     {
-        $arrayRequest = $request;
-
+        $arrayRequest = $request->request->all();
         try
         {
             DB::beginTransaction(); //marcador para iniciar transações
-            $filial = Filial::find($arrayRequest["filial_id"][0]);
+            $filial = Filial::find($arrayRequest[0]["filial_id"]);
 
-            for ($i=0; $i < count($arrayRequest["filial_id"]); $i++){
-                $filial->materials()->attach($arrayRequest["material_sku"][$i],
+            for ($i=0; $i < count($arrayRequest); $i++){
+                $filial->materials()->attach($arrayRequest[$i]["material_sku"],
                     [
-                        'min' => $arrayRequest["min"][$i],
-                        'max' => $arrayRequest["max"][$i],
-                        'curvaABC' => $arrayRequest["curvaABC"][$i],
-                        'comissao' => $arrayRequest["comissao"][$i],
-                        'valor_venda' => $arrayRequest["valor_venda"][$i],
-                        'status' => $arrayRequest["status"][$i]
+                        'min' => $arrayRequest[$i]["min"],
+                        'max' => $arrayRequest[$i]["max"],
+                        'curvaABC' => $arrayRequest[$i]["curvaABC"],
+                        'comissao' => $arrayRequest[$i]["comissao"],
+                        'valor_venda' => $arrayRequest[$i]["valor_venda"],
+                        'status' => $arrayRequest[$i]["status"]
                     ]
                 );
             }
@@ -89,12 +88,11 @@ class FilialMaterialController extends Controller
                                 ['material_sku', '=', $material_sku]
                             ])
                         ->get();
-        // dd($material[0]->curvaABC);
         return response()->json([ 'materials'  => $material ]);
     }
 
     // Atualiza um produto do estoque
-    public function update(StoreUpdateFilialMaterialFormRequest $request, $filial_id)
+    public function update(Request $request, $filial_id)
     {
         $filial = Filial::find($filial_id);
 

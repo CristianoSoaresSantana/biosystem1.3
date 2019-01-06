@@ -24,13 +24,13 @@ class StoreUpdateFilialMaterialFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'material_sku' => "required",
-            'min' => "required",
-            'max' => "required",
-            'curvaABC' => "required",
-            'comissao' => "required",
-            'valor_venda' => "required",
-            'status' => "required",
+            '*.material_sku' => "required",
+            '*.min' => "required",
+            '*.max' => "required",
+            '*.curvaABC' => "required",
+            '*.comissao' => "required",
+            '*.valor_venda' => "required",
+            '*.status' => "required",
         ];
     }
 }

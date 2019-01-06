@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Home Page do dashboard</h1>
+    <h1>Graficos para acompanhar vendas</h1>
   </div>
 </template>
 

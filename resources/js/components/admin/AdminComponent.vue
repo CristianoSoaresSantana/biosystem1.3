@@ -52,6 +52,7 @@ export default {
         { name: "admin.usuarios", title: "Usuários" },
         { name: "admin.clientes", title: "Clientes" },
         { name: "admin.branches", title: "Filiais" },
+        { name: "admin.estoques", title: "Estoque" },
         { name: "admin.fornecedors", title: "Fornecedores" },
 
         { name: "admin.materials", title: "Materiais" },

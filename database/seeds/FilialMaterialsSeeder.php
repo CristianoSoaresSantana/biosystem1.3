@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Filial_materials;
+use App\Models\Filial_material;
 
 class FilialMaterialsSeeder extends Seeder
 {
@@ -64,7 +64,7 @@ class FilialMaterialsSeeder extends Seeder
             ['filial_id' => '2', 'material_sku' => 'ab123', 'min' => '10', 'max' => '200', 'curvaABC' => 'a', 'comissao' => '1.5', 'valor_venda' => '152.65', 'status' => 'ativo']
         ];
         foreach($estoques as $estoque){
-            Filial_materials::create($estoque);
+            Filial_material::create($estoque);
         }
     }
 }

@@ -14,6 +14,7 @@ import DashboardComponent from '../components/admin/pages/dashboard/DashboardCom
 import HomePageComponent from '../components/admin/pages/estoque/HomePageComponent.vue'
 
 import BranchesComponent from '../components/admin/pages/branches/BranchesComponent'
+import EstoquesComponent from '../components/admin/pages/estoque/EstoquesComponent'
 import FornecedorsComponent from '../components/admin/pages/fornecedors/FornecedorsComponent'
 import MaterialsComponent from '../components/admin/pages/materials/MaterialsComponent'
 import TipoMaterialsComponent from '../components/admin/pages/tipo_materials/TipoMaterialsComponent'
@@ -44,6 +45,7 @@ const routes = [
             {path: 'usuarios', component: UsuariosComponent, name: 'admin.usuarios'},
 
             {path: 'branches', component: BranchesComponent, name: 'admin.branches'},
+            {path: 'estoques', component: EstoquesComponent, name: 'admin.estoques'},
             {path: 'fornecedors', component: FornecedorsComponent, name: 'admin.fornecedors'},
 
             {path: 'materials', component: MaterialsComponent, name: 'admin.materials'},

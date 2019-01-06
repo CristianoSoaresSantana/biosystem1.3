@@ -17,11 +17,11 @@ export default {
             .finally(() => context.commit('PRELOADER', false))
     },
 
-    actionLoadBrancheMaterial (context, id) {
+    actionLoadBrancheMaterial (context, params) {
         context.commit('PRELOADER', true)
 
         return new Promise((resolve, reject) => {
-            axios.get(`${URL_BASE}${RESOURCE}/${id}`)
+            axios.get(`${URL_BASE}${RESOURCE}/${params.filial_id}/${params.material_sku}`)
                 .then(response => resolve(response.data))
                 .catch(errors => reject(errors))
                 .finally(context.commit('PRELOADER', false))
@@ -44,7 +44,7 @@ export default {
         context.commit('PRELOADER', true)
 
         return new Promise((resolve, reject) => {
-            axios.put(`${URL_BASE}${RESOURCE}/${params.id}`, params)
+            axios.put(`${URL_BASE}${RESOURCE}/${params.filial_id}`, params)
                 // retorna resposta caso request teve success ou error!
                 .then(response => resolve(response))
                 .catch(errors => reject(errors))
@@ -52,11 +52,10 @@ export default {
         })
     },
 
-    destroyBrancheMaterial (context, id) {
-        context.commit('PRELOADER', true)
-
+    destroyBrancheMaterial (context, params) {
+        context.commit('PRELOADER', true);
         return new Promise((resolve, reject) => {
-            axios.delete(`${URL_BASE}${RESOURCE}/${id}`)
+            axios.delete(`${URL_BASE}${RESOURCE}/${params.filial_id}/${params.material_sku}`)
                 // retorna resposta caso request teve success ou error!
                 .then(response => resolve(response))
                 .catch(errors => reject(errors))
