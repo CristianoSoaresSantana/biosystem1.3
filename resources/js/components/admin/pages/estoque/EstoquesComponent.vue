@@ -7,7 +7,8 @@
         <div class="input-group col-md-3" >
             <label class="input-group-text" for="inputGroupSelect01"><b>Selecione a filial</b></label>
             <select class="custom-select" v-model="filial_id" >
-                <option v-for="branche in branches" :key="branche.id" :value="branche.id" >{{branche.razao_social}}</option>
+                <option value>Selecione a filial</option>
+                <option v-for="branche in branches" :key="branche.id" :value="branche.id" >{{ branche.razao_social }}</option>
             </select>
         </div>
         <h3 class="input-group col-md-12">Pesquise um produto por Sku ou Código de Barra ou Descrição</h3>
@@ -92,12 +93,12 @@ import detalheComponent from './partials/detalheComponent';
 
 export default {
     created() {
-        this.loadEstoque();
+        this.loadEstoque;
     },
 
     data() {
         return {
-            filial_id: '1',
+            filial_id: '',
             titulo: "",
             showVodal: false,
             showEditVodal: false,

@@ -4,7 +4,7 @@
     <!-- informações gerais -->
     <div class="form-group row">
       <div class="col-sm-12">
-            <ul style="width: 858px; height: 200px; overflow: auto">
+            <ul style="width: 858px; height: 400px; overflow: auto">
                 <li>
                     <strong>ID:</strong> {{ venda.id }} <br>
                     <strong>Filial:</strong> {{ venda.filial.razao_social }} <br>
@@ -14,6 +14,13 @@
                     <strong>Valor Total:</strong> {{ venda.valor_total }} <br>
                     <strong>Data da venda:</strong> {{ $moment(venda.created_at).format('DD/MM/YYYY HH:mm', 'L') }} <br>
                     <strong>Data de Alteração:</strong> {{ $moment(venda.updated_at).format('DD/MM/YYYY HH:mm', 'L') }} <br>
+                </li>
+
+                <h4>Itens do Registro</h4>
+                <li v-for="(itens, index) in venda.materials" :key="index">
+                    <strong>Sku:</strong> {{itens.pivot["material_sku"]}},
+                    <strong>Quantidade:</strong> {{itens.pivot["quantidade"]}},
+                    <strong>Valor unitario:</strong> {{itens.pivot["valor_unitario"]}},
                 </li>
             </ul>
       </div>
@@ -43,7 +50,8 @@ export default {
         user: Object,
         filial: Object,
         cliente: Object,
-        tipo_movimento: Object
+        tipo_movimento: Object,
+        materials: Object
       }
     };
   },

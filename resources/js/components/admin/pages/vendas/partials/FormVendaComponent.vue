@@ -1,178 +1,97 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form_main">
-          <h4 class="heading">
-            <strong>{{ title }}</strong>
-            <span></span>
-          </h4>
-          <form class="form" @submit.prevent="onSubmit">
-            <div class="form-group col-md-12">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <div :class="['col-auto', {'has-error': errors.user_id}]">
-                    <div v-if="errors.user_id">{{ errors.user_id[0] }}</div>
-                    <select class="form-control mb-2 mr-sm-2" v-model="venda.user_id">
-                      <option value>Usuario</option>
-                      <option
-                        v-for="user in users"
-                        :key="user.id"
-                        :value="user.id"
-                      >{{ user.name }}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group col-md-6">
-                  <div :class="['col-auto', {'has-error': errors.filial_id}]">
-                    <div v-if="errors.filial_id">{{ errors.filial_id[0] }}</div>
-                    <select class="form-control mb-2 mr-sm-2" v-model="venda.filial_id">
-                      <option value>Filial</option>
-                      <option
-                        v-for="filial in filials"
-                        :key="filial.id"
-                        :value="filial.id"
-                      >{{ filial.razao_social }}</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <div :class="['col-auto', {'has-error': errors.tipo_mov_id}]">
-                    <div v-if="errors.tipo_mov_id">{{ errors.tipo_mov_id[0] }}</div>
-                    <select class="form-control mb-2 mr-sm-2" v-model="venda.tipo_mov_id">
-                      <option value>Tipo Movimento</option>
-                      <option
-                        v-for="tipo_movimento in tipo_movimentacao"
-                        :key="tipo_movimento.id"
-                        :value="tipo_movimento.id"
-                      >{{ tipo_movimento.tipo_movimentacao }}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group col-md-6">
-                  <div :class="['col-auto', {'has-error': errors.status}]">
-                    <div v-if="errors.status">{{ errors.status[0] }}</div>
-                    <input
-                      type="text"
-                      v-model="venda.status"
-                      class="form-control mb-2 mr-sm-2"
-                      placeholder="Status"
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <div :class="['col-auto', {'has-error': errors.cliente_id}]">
-                    <div v-if="errors.cliente_id">{{ errors.cliente_id[0] }}</div>
-                    <input
-                      type="text"
-                      v-model="venda.cliente_id"
-                      class="form-control mb-2 mr-sm-2"
-                      placeholder="Numero Cliente"
-                    >
-                  </div>
-                </div>
-                <div class="form-group col-md-6">
-                  <div :class="['col-auto', {'has-error': errors.valor_total}]">
-                    <div v-if="errors.valor_total">{{ errors.valor_total[0] }}</div>
-                    <input
-                      type="text"
-                      v-model="venda.valor_total"
-                      class="form-control mb-2 mr-sm-2"
-                      placeholder="Valor Total"
-                    >
-                  </div>
-                </div>
-                <div class="form-group col-md-6">
-                  <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Confirmar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+      <h1>{{ title }}</h1>
+        <form class="form" @submit.prevent="onSubmit">
+            <ul class="col-md-12 list-group">
+                <li v-for="(item, index) in dados_venda.itens_venda" :key="index" class="list-group-item list-group-item-primary">
+                    Item: {{index}} Filial {{ item.filial_id }} SKU: {{ item.material_sku }} Preço {{ item.valor_venda }}
+                </li>
+                <br>
+                <li class="list-group-item list-group-item-primary"> <h4> Total = {{ dados_venda.valor_total }} </h4> </li>
+                <li class="list-group-item list-group-item-primary"> <h4> Desconto = <input type="text" v-model="desconto" size="4" placeholder="102.99"> </h4> </li>
+                <li class="list-group-item list-group-item-primary"> <h3> Novo Total = {{ parseFloat(dados_venda.valor_total - desconto).toFixed(2) }} </h3> </li>
+                <li class="list-group-item list-group-item-primary">
+                    <h5>
+                        Status =
+                        <select name="" id="" v-model="status">
+                            <option value="Aberto">Aberto</option>
+                            <option value="Aguardando pagamento">Aguardando pagamento</option>
+                            <option value="Fechado">Fechado</option>
+                        </select>
+                    </h5>
+                    <h5>
+                        Tipo movimento =
+                        <select name="" id="" v-model="tipo_mov_id">
+                            <option value="3">Saida</option>
+                            <option value="2">Transferência</option>
+                            <option value="1">Entrada</option>
+                        </select>
+                    </h5>
+                    <h5>
+                        Justifique o desconto =
+                        <select name="" id="" v-model="justificativa">
+                            <option value="Não houve descontos">Não houve descontos</option>
+                            <option value="Voltou a comprar conosco">Voltou a comprar conosco</option>
+                            <option value="Alegou um preço menor no concorrente">Alegou um preço menor no concorrente</option>
+                            <option value="Faltou uma fração do valor Total">Faltou uma fração do valor Total</option>
+                        </select>
+                    </h5>
+                </li>
+                <button type="submit" class="btn btn-primary">Finalizar</button>
+            </ul>
+        </form>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    update: {
-      require: false,
-      type: Boolean,
-      default: false
+    props: {
+        venda: {
+            require: true,
+            type: Object
+        },
+
+        title: {
+            require: true,
+            type: String
+        }
     },
 
-    venda: {
-      require: false,
-      type: Object
+    data() {
+        return {
+            dados_venda: [],
+            desconto: '',
+            justificativa: '',
+            status: '',
+            tipo_mov_id: ''
+        }
     },
 
-    title: {
-      require: true,
-      type: String
+    watch: {
+        venda() {
+            this.dados_venda = this.venda;
+        }
     },
 
-    filho_errors: {}
-  },
+    methods: {
+        onSubmit() {
+            this.dados_venda['desconto'] = this.desconto;
+            this.dados_venda['justificativa'] = this.justificativa;
+            this.dados_venda['status'] = this.status;
+            this.dados_venda['tipo_mov_id'] = this.tipo_mov_id;
 
-  data() {
-    return {
-      errors: {}
-    };
-  },
-
-  computed: {
-    filials() {
-      return this.$store.state.branches.itens;
-    },
-    users() {
-      return this.$store.state.usuarios.itens.data;
-    },
-    tipo_movimentacao() {
-      return this.$store.state.tipo_movimentos.itens;
+            this.$store.dispatch("vendasStore", this.dados_venda)
+            .then(() => {
+                // notificação para usuario.
+                this.$snotify.success("Ação realizada com sucesso!", "Parabéns...");
+                this.$emit("success")
+            }).catch(errors => {
+                // notificação para usuario.
+                this.$snotify.error("Você Errou!", "Atenção");
+                this.errors = errors.response.data.errors;
+            });
+            window.location.reload();
+        }
     }
-  },
-
-  watch: {
-    errorsParent() {
-      this.errors = this.filho_errors;
-    }
-  },
-
-  methods: {
-    onSubmit() {
-      let createOrUpdate = this.update ? "vendasUpdate" : "vendasStore";
-
-      this.$store
-        .dispatch(createOrUpdate, this.venda)
-        .then(() => {
-          // notificação para usuario.
-          this.$snotify.success("Ação realizada com sucesso!", "Parabéns...");
-          this.$emit("success");
-        })
-        .catch(errors => {
-          // notificação para usuario.
-          this.$snotify.error("Você Errou!", "Atenção");
-          this.errors = errors.response.data.errors;
-        });
-    }
-  }
-};
+}
 </script>
-
-<style scoped>
-.has-error {
-  color: red;
-}
-.has-error input {
-  border: 1px solid red;
-}
-</style>

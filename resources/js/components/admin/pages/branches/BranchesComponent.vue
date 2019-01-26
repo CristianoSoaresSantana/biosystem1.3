@@ -22,7 +22,7 @@
             <th>ID</th>
             <th>Razão Social</th>
             <th>CNPJ</th>
-            <th width="200px">Ações</th>
+            <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>

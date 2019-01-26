@@ -26,7 +26,7 @@
             <th>Valor da Nota</th>
             <th>Data de Entrada</th>
             <th>Data de Alteração</th>
-            <th width="200px">Ações</th>
+            <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>

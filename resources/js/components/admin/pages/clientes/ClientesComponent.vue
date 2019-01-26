@@ -23,13 +23,13 @@
       <table class="table table-dark">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Celular</th>
-            <th>Recados</th>
-            <th>E-mail</th>
-            <th width="200px">Ações</th>
+            <th width="50px">ID</th>
+            <th width="200px">Nome</th>
+            <th width="50px">CPF</th>
+            <th width="50px">Celular</th>
+            <th width="50px">Recados</th>
+            <th width="150px">E-mail</th>
+            <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +41,8 @@
             <td v-text="cliente.celular_recado"></td>
             <td v-text="cliente.email"></td>
             <td>
+              <a v-if="temCliente" href="#" class="btn btn-primary btn-sm" @click.prevent="adicionaCliente(cliente.id)">adicionar</a>
+              <a v-else href="#" class="btn btn-danger btn-sm" @click.prevent="removeCliente(cliente)">remover</a>
               <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(cliente.id)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(cliente.id)">Editar</a>
               <confirmDelete :resgistro="cliente.id" @destroy="destroy"/>
@@ -96,6 +98,11 @@ export default {
   },
 
   computed: {
+
+    temCliente(){
+        return this.$store.state.vendas.cliente === null
+    },
+
     clientes() {
       return this.$store.state.clientes.itens;
     },
@@ -109,6 +116,14 @@ export default {
   },
 
   methods: {
+    adicionaCliente(cliente) {
+        this.$store.commit('MUTATION_ADD_CLIENTE', cliente);
+    },
+
+    removeCliente() {
+        this.$store.commit('MUTATION_REMOVE_CLIENTE');
+    },
+
     loadIndex(page) {
       this.$store.dispatch("clienteLoadIndex", { ...this.params, page });
     },

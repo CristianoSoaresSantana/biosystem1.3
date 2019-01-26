@@ -27,17 +27,20 @@ class VendaController extends Controller
         return response()->json($vendas, 200);
     }
 
+    // var_dump($request->all());die;
     // inseri informação na tabela.
-    public function store(StoreUpdateVendaFormRequest $request)
+    public function store(Request $request)
     {
-        $vendas =  $this->venda->create($request->all());
+        $desconto = floatval($request['desconto']);
+        $vendas =  $this->venda->queryCreate($request['user_id'], $request['cliente_id'],$request['justificativa'], $request['valor_total'], $desconto, $request['status'], $request['tipo_mov_id'], $request->itens_venda);
+
         return response()->json($vendas, 201);
     }
 
     public function show($id)
     {
         // recupero o registro
-        $venda =  $this->venda->with(['filial', 'cliente', 'user', 'tipoMovimento', 'formaPagtos'])->find($id);
+        $venda =  $this->venda->with(['filial', 'cliente', 'user', 'tipoMovimento', 'formaPagtos', 'materials'])->find($id);
         if(!$venda)
         {
             // retornar uma mensagem se não encontrar o arquivo.
@@ -64,7 +67,7 @@ class VendaController extends Controller
         else
         {
             // seto os valores que o usuario forneceu.
-            $venda-> update($request->all());
+            $venda->update($request->all());
             // retorno o registro editado.
             return response()->json($venda, 200);
         }

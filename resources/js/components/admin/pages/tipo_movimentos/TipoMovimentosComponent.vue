@@ -21,7 +21,7 @@
           <tr>
             <th>ID</th>
             <th>Tipo de Movimento</th>
-            <th width="150px">Ações</th>
+            <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>

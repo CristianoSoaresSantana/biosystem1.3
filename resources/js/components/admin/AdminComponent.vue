@@ -6,8 +6,20 @@
       </div>
       <div class="list-menu">
         <ul class="ul-menu">
-          <li v-for="link in links" :key="link.name">
-            <router-link :to="{name: link.name}" class="nav-link">{{ link.title }}</router-link>
+          <li>
+              <ul>
+                <li v-for="link in links" :key="link.name">
+                    <router-link :to="{name: link.name}" class="nav-link">{{ link.title }}</router-link>
+                </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-search"></i> CADASTROS <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+              <ul id="submenu-2" class="collapse">
+                <li v-for="linksCadastro in linksCadastros" :key="linksCadastro.name">
+                    <router-link :to="{name: linksCadastro.name}" class="nav-link">{{ linksCadastro.title }}</router-link>
+                </li>
+              </ul>
           </li>
         </ul>
       </div>
@@ -15,9 +27,6 @@
     <div class="conteudo">
       <div class="top-dasboard">
         <div class="dropdown">
-        <div class="dropdown-cart" type="div">
-            <router-link :to="{name: 'admin.carrinho'}" class="nav-link">Carrinho ({{carrinho.length}})</router-link>
-        </div>
           <div class="dropdown-toggle" type="div" id="dropdownMenudiv" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <strong>Usuário</strong>
           </div>
@@ -45,23 +54,23 @@ export default {
     return {
       links: [
         { name: "admin.home_page", title: "Home Page" },
-        { name: "admin.dashboard", title: "Dashboard" },
+        { name: "admin.clientes", title: "Clientes" },
         { name: "admin.entrada_nfe", title: "Movimentação" },
         { name: "admin.vendas", title: "Vendas" },
+        { name: "admin.estoques", title: "Estoque" }
+      ],
 
+      linksCadastros: [
         { name: "admin.usuarios", title: "Usuários" },
-        { name: "admin.clientes", title: "Clientes" },
         { name: "admin.branches", title: "Filiais" },
-        { name: "admin.estoques", title: "Estoque" },
         { name: "admin.fornecedors", title: "Fornecedores" },
-
         { name: "admin.materials", title: "Materiais" },
-
         { name: "admin.setors", title: "Setores" },
         { name: "admin.tipo_movimentos", title: "Tipos Movimentos" },
         { name: "admin.forma_pagtos", title: "Formas Pagamentos" },
         { name: "admin.tipo_materials", title: "Tipos de Material" },
-        { name: "admin.forma_farmaceuticas", title: "Formas Farmacêuticas" }
+        { name: "admin.forma_farmaceuticas", title: "Formas Farmacêuticas" },
+        { name: "admin.dashboard", title: "Dashboard" }
       ]
     };
   }
@@ -83,7 +92,7 @@ export default {
   float: left;
   padding: 0px;
   width: 199px;
-  text-align: center;
+  text-align: left;
   min-height: 100vh;
 }
 .logo {
@@ -106,13 +115,12 @@ ul.ul-menu li {
   float: left;
 }
 ul.ul-menu li a {
-  font-size: 1.4em;
+  font-size: 1.3em;
   margin: 3px 7px;
   float: left;
   width: 186px;
   color: #ffffff;
   border-bottom: 1px solid #365070;
-  border-left: 1px solid #365070;
 }
 .conteudo {
   float: left;
@@ -127,9 +135,9 @@ ul.ul-menu li a {
   padding: 8px;
 }
 .dropdown {
-  width: 100%;
+  width: 11%;
   float: right;
-  padding: 0px 91px 0px;
+  padding: 0px 0px 0px;
 }
 .dropdown-toggle {
     float: left;
@@ -137,14 +145,7 @@ ul.ul-menu li a {
 .dropdown-toggle strong {
     font-size: 1.3em;
 }
-.dropdown-cart {
-    width: 90%;
-    float: left;
-}
-.dropdown-cart a {
-    color:#ffffff;
-    font-size: 1.3em;
-}
+
 
 </style>
 

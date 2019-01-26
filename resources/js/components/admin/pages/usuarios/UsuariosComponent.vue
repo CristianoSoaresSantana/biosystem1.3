@@ -29,7 +29,7 @@
             <th>Celular</th>
             <th>Recados</th>
             <th>E-mail</th>
-            <th width="200px">Ações</th>
+            <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>

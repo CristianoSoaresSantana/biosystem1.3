@@ -33,7 +33,7 @@
             <th>Status</th>
             <th>Valor Compra</th>
             <th>Valor Revenda</th>
-            <th width="200px">Ações</th>
+            <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>

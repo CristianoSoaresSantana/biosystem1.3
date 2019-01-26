@@ -21,7 +21,7 @@
           <tr>
             <th>ID</th>
             <th>Setor</th>
-            <th width="200px">Ações</th>
+            <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>

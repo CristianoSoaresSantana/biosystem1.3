@@ -20,6 +20,8 @@ class CreateVendasTable extends Migration
             $table->unsignedInteger('tipo_mov_id');
             $table->float('valor_total', 10,2)->nullable();
             $table->string('status')->default('aberto');
+            $table->float('desconto', 10,2);
+            $table->string('justificativa_desconto');
             $table->timestamps();
             $table->softDeletes();
 

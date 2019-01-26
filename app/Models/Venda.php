@@ -21,7 +21,7 @@ class Venda extends Model
 
     protected $dates = ['deleted_at'];
     protected $table = 'vendas';
-    protected $fillable = ['cliente_id', 'filial_id', 'tipo_mov_id', 'user_id', 'valor_total', 'status'];
+    protected $fillable = ['id', 'cliente_id', 'filial_id', 'tipo_mov_id', 'user_id', 'valor_total', 'status', 'desconto', 'justificativa_desconto'];
 
 
 
@@ -59,6 +59,44 @@ class Venda extends Model
                     })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
 
+    }
+
+    public function queryCreate($user_id, $cliente_id, $justificativa, $valor_total, $desconto, $status, $tipo_mov_id, $itensVenda){
+        /* criando registro de venda na tabela vendas */
+        $this->user_id                  = $user_id;
+        $this->cliente_id               = $cliente_id;
+        $this->justificativa_desconto   = $justificativa;
+        $this->valor_total              = $valor_total;
+        $this->desconto                 = $desconto;
+        $this->tipo_mov_id              = $tipo_mov_id;
+        $this->status                   = $status;
+        $this->filial_id                = $itensVenda[0]['filial_id'];
+
+        $this->save();
+
+        // var_dump(); die;
+        /* pega o ultimo registro de venda */
+        $venda_id = $this->latest()->value('id');
+        /* cria um objeto com esse registro */
+        $venda = $this->find($venda_id);
+
+        /* criando registro dos itens desta venda */
+        foreach ($itensVenda as $item) {
+            $venda->materials()->attach($item['material_sku'], ['valor_unitario' => $item['valor_venda'], 'quantidade' => '1']);
+            $this->baixaNoEstoque($item['filial_id'], $item['material_sku']);
+        }
+    }
+
+    public function baixaNoEstoque($filial, $sku) {
+
+        $filial = Filial::find($filial);
+        // Aqui eu retorno o registro do produto por filial.
+        $filial_material = $filial->materials()->where('material_sku', $sku)->first();
+
+        // Aqui eu atualizo a quantidade do produto no estoque.
+        $quantidadeNova = $filial_material->pivot->quantidade - 1;
+        $filial_material->pivot->quantidade = $quantidadeNova;
+        $filial_material->pivot->save();
     }
 
     /**

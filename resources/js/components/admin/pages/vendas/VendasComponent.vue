@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col">
         <button type="submit" class="btn btn-success" @click.prevent="criar()">Novo</button>
-        <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="620" :height="500">
+        <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="1024" :height="500">
           <formVenda
             :title="titulo"
             :venda="propriedadeVenda"
@@ -28,7 +28,7 @@
             <th>Data da Venda</th>
             <th>Data de Alteração</th>
             <th>status</th>
-            <th width="200px">Ações</th>
+            <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -50,7 +50,7 @@
           </tr>
         </tbody>
       </table>
-      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="400">
+      <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="500">
           <detalhe :filho_venda="propriedadeVenda"></detalhe>
       </vodal>
     </div>
@@ -59,7 +59,7 @@
 
 <script>
 import Vodal from "vodal";
-import formVendaComponent from "./partials/FormVendaComponent";
+import formVendaComponent from "./partials/FormVendaComponentV0";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
 import detalheComponent from './partials/detalheComponent';
 

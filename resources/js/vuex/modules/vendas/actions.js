@@ -32,6 +32,7 @@ export default {
         context.commit('PRELOADER', true)
 
         return new Promise((resolve, reject) =>{
+            console.log(params);
             axios.post(`${URL_BASE}${RESOURCE}`, params)
                 // retorna resposta caso request teve success ou error!
                 .then(response => resolve(response))
