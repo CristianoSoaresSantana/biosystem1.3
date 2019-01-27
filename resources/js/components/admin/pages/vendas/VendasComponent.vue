@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Registros de Vendas</h1>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col">
         <button type="submit" class="btn btn-success" @click.prevent="criar()">Novo</button>
         <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="1024" :height="500">
@@ -14,7 +14,7 @@
           ></formVenda>
         </vodal>
       </div>
-    </div>
+    </div> -->
     <div>
       <table class="table table-dark">
         <thead>
@@ -25,31 +25,35 @@
             <th>Tipo movimento</th>
             <th>Filial</th>
             <th>Valor total</th>
+            <th>Desconto</th>
+            <th>Valor com Desconto</th>
             <th>Data da Venda</th>
-            <th>Data de Alteração</th>
             <th>status</th>
             <th width="250px">Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="venda in vendas" :key="venda.id">
+          <tr v-for="venda in vendas.data" :key="venda.id">
             <td v-text="venda.id"></td>
             <td v-text="venda.cliente_id"></td>
             <td v-text="venda.user_id"></td>
             <td v-text="venda.tipo_mov_id"></td>
             <td v-text="venda.filial_id"></td>
-            <td v-text="venda.valor_total"></td>
-            <td>{{ $moment(venda.created_at).format('DD/MM/YYYY HH:mm', 'L') }}</td>
-            <td>{{ $moment(venda.updated_at).format('DD/MM/YYYY HH:mm', 'L') }}</td>
+            <td> {{ parseFloat(venda.valor_total).toFixed(2)}}</td>
+            <td> {{ parseFloat(venda.desconto).toFixed(2) }}</td>
+            <td> {{ parseFloat(venda.total_com_desconto).toFixed(2) }}</td>
+            <td> {{ $moment(venda.created_at).format('DD/MM/YYYY HH:mm', 'L') }}</td>
             <td v-text="venda.status"></td>
             <td>
               <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(venda.id)">Detalhes</a>
-              <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(venda.id)">Editar</a>
+              <!-- <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(venda.id)">Editar</a> -->
               <confirmDelete :resgistro="venda.id" @destroy="destroy"/>
             </td>
           </tr>
         </tbody>
       </table>
+        <!-- paginação -->
+        <pagination :pagination="vendas" :offset="6" @paginate="loadIndex"></pagination>
       <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="920" :height="500">
           <detalhe :filho_venda="propriedadeVenda"></detalhe>
       </vodal>
@@ -59,17 +63,19 @@
 
 <script>
 import Vodal from "vodal";
+import PaginationComponent from "../../../layouts/PaginationComponent";
 import formVendaComponent from "./partials/FormVendaComponentV0";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
 import detalheComponent from './partials/detalheComponent';
 
 export default {
   created() {
-    this.loadIndex();
+    this.loadIndex(1);
   },
 
   data() {
     return {
+      input: "",
       titulo: "",
       showVodal: false,
       detalhesVodal: false,
@@ -95,13 +101,20 @@ export default {
 
   computed: {
     vendas() {
-      return this.$store.state.vendas.itens.data;
+      return this.$store.state.vendas.itens;
+    },
+
+    params() {
+      return {
+        page: this.vendas.current_page,
+        filter: this.input
+      };
     }
   },
 
   methods: {
-    loadIndex() {
-      this.$store.dispatch("vendasIndex");
+    loadIndex(page) {
+      this.$store.dispatch("vendasIndex", { ...this.params, page });
     },
 
     detalhes (id) {
@@ -219,7 +232,8 @@ export default {
     vodal: Vodal,
     formVenda: formVendaComponent,
     confirmDelete,
-    detalhe: detalheComponent
+    detalhe: detalheComponent,
+    pagination: PaginationComponent
   }
 };
 </script>

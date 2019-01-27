@@ -8,10 +8,10 @@ import { rejects } from "assert";
 const RESOURCE = 'vendas'
 
 export default {
-    vendasIndex (context) {
+    vendasIndex (context, params) {
         context.commit('PRELOADER', true)
 
-        axios.get(`${URL_BASE}${RESOURCE}`)
+        axios.get(`${URL_BASE}${RESOURCE}`, {params})
             .then(response => context.commit('MUTATION_LOAD_VENDAS', response.data))
             .catch(errors => console.log(errors))
             .finally(() => context.commit('PRELOADER', false))

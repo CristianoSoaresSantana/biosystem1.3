@@ -9,7 +9,7 @@
                 <br>
                 <li class="list-group-item list-group-item-primary"> <h4> Total = {{ dados_venda.valor_total }} </h4> </li>
                 <li class="list-group-item list-group-item-primary"> <h4> Desconto = <input type="text" v-model="desconto" size="4" placeholder="102.99"> </h4> </li>
-                <li class="list-group-item list-group-item-primary"> <h3> Novo Total = {{ parseFloat(dados_venda.valor_total - desconto).toFixed(2) }} </h3> </li>
+                <li class="list-group-item list-group-item-primary"> <h3> Novo Total = {{ this.total_com_desconto = parseFloat(dados_venda.valor_total - desconto).toFixed(2) }} </h3> </li>
                 <li class="list-group-item list-group-item-primary">
                     <h5>
                         Status =
@@ -61,6 +61,7 @@ export default {
         return {
             dados_venda: [],
             desconto: '',
+            total_com_desconto: '',
             justificativa: '',
             status: '',
             tipo_mov_id: ''
@@ -79,18 +80,18 @@ export default {
             this.dados_venda['justificativa'] = this.justificativa;
             this.dados_venda['status'] = this.status;
             this.dados_venda['tipo_mov_id'] = this.tipo_mov_id;
+            this.dados_venda['total_com_desconto'] = this.total_com_desconto;
 
             this.$store.dispatch("vendasStore", this.dados_venda)
             .then(() => {
                 // notificação para usuario.
                 this.$snotify.success("Ação realizada com sucesso!", "Parabéns...");
-                this.$emit("success")
+                this.$emit("success");
             }).catch(errors => {
                 // notificação para usuario.
                 this.$snotify.error("Você Errou!", "Atenção");
                 this.errors = errors.response.data.errors;
             });
-            window.location.reload();
         }
     }
 }

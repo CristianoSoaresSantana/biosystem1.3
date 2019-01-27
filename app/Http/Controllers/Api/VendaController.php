@@ -32,7 +32,8 @@ class VendaController extends Controller
     public function store(Request $request)
     {
         $desconto = floatval($request['desconto']);
-        $vendas =  $this->venda->queryCreate($request['user_id'], $request['cliente_id'],$request['justificativa'], $request['valor_total'], $desconto, $request['status'], $request['tipo_mov_id'], $request->itens_venda);
+        $total_com_desconto = floatval($request['total_com_desconto']);
+        $vendas =  $this->venda->queryCreate($request['user_id'], $request['cliente_id'],$request['justificativa'], $request['valor_total'], $desconto, $total_com_desconto, $request['status'], $request['tipo_mov_id'], $request->itens_venda);
 
         return response()->json($vendas, 201);
     }

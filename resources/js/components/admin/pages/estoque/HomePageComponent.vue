@@ -183,7 +183,9 @@ export default {
         },
 
         cadastroRealizado() {
-            this.hideVodal()
+            this.hideVodal(),
+            this.loadEstoque,
+            window.location.reload(true);
         },
 
     },

@@ -53250,7 +53250,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53445,7 +53445,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.showVodal = false, this.propriedade_errors = {}, this.propriedadeVenda = {};
         },
         cadastroRealizado: function cadastroRealizado() {
-            this.hideVodal();
+            this.hideVodal(), this.loadEstoque, window.location.reload(true);
         }
     },
 
@@ -53781,6 +53781,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             dados_venda: [],
             desconto: '',
+            total_com_desconto: '',
             justificativa: '',
             status: '',
             tipo_mov_id: ''
@@ -53802,6 +53803,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dados_venda['justificativa'] = this.justificativa;
             this.dados_venda['status'] = this.status;
             this.dados_venda['tipo_mov_id'] = this.tipo_mov_id;
+            this.dados_venda['total_com_desconto'] = this.total_com_desconto;
 
             this.$store.dispatch("vendasStore", this.dados_venda).then(function () {
                 // notificação para usuario.
@@ -53812,7 +53814,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$snotify.error("Você Errou!", "Atenção");
                 _this.errors = errors.response.data.errors;
             });
-            window.location.reload();
         }
     }
 });
@@ -53919,9 +53920,9 @@ var render = function() {
                   _vm._v(
                     " Novo Total = " +
                       _vm._s(
-                        parseFloat(
+                        (this.total_com_desconto = parseFloat(
                           _vm.dados_venda.valor_total - _vm.desconto
-                        ).toFixed(2)
+                        ).toFixed(2))
                       ) +
                       " "
                   )
@@ -69267,7 +69268,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -69280,12 +69281,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vodal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vodal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vodal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_FormVendaComponentV0__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__partials_FormVendaComponentV0___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__partials_FormVendaComponentV0__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_detalheComponent__ = __webpack_require__(381);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__partials_detalheComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__partials_detalheComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layouts_PaginationComponent__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layouts_PaginationComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__layouts_PaginationComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_FormVendaComponentV0__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__partials_FormVendaComponentV0___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__partials_FormVendaComponentV0__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layouts_confirmDeleteComponent__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layouts_confirmDeleteComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__layouts_confirmDeleteComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__partials_detalheComponent__ = __webpack_require__(381);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__partials_detalheComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__partials_detalheComponent__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -69345,6 +69350,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -69353,10 +69363,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
-    this.loadIndex();
+    this.loadIndex(1);
   },
   data: function data() {
     return {
+      input: "",
       titulo: "",
       showVodal: false,
       detalhesVodal: false,
@@ -69383,13 +69394,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   computed: {
     vendas: function vendas() {
-      return this.$store.state.vendas.itens.data;
+      return this.$store.state.vendas.itens;
+    },
+    params: function params() {
+      return {
+        page: this.vendas.current_page,
+        filter: this.input
+      };
     }
   },
 
   methods: {
-    loadIndex: function loadIndex() {
-      this.$store.dispatch("vendasIndex");
+    loadIndex: function loadIndex(page) {
+      this.$store.dispatch("vendasIndex", _extends({}, this.params, { page: page }));
     },
     detalhes: function detalhes(id) {
       var _this = this;
@@ -69490,9 +69507,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   components: {
     vodal: __WEBPACK_IMPORTED_MODULE_0_vodal___default.a,
-    formVenda: __WEBPACK_IMPORTED_MODULE_1__partials_FormVendaComponentV0___default.a,
-    confirmDelete: __WEBPACK_IMPORTED_MODULE_2__layouts_confirmDeleteComponent___default.a,
-    detalhe: __WEBPACK_IMPORTED_MODULE_3__partials_detalheComponent___default.a
+    formVenda: __WEBPACK_IMPORTED_MODULE_2__partials_FormVendaComponentV0___default.a,
+    confirmDelete: __WEBPACK_IMPORTED_MODULE_3__layouts_confirmDeleteComponent___default.a,
+    detalhe: __WEBPACK_IMPORTED_MODULE_4__partials_detalheComponent___default.a,
+    pagination: __WEBPACK_IMPORTED_MODULE_1__layouts_PaginationComponent___default.a
   }
 });
 
@@ -70237,55 +70255,6 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("Registros de Vendas")]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col" },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.criar()
-                }
-              }
-            },
-            [_vm._v("Novo")]
-          ),
-          _vm._v(" "),
-          _c(
-            "vodal",
-            {
-              attrs: {
-                show: _vm.showVodal,
-                animation: "zoon",
-                width: 1024,
-                height: 500
-              },
-              on: { hide: _vm.hideVodal }
-            },
-            [
-              _c("formVenda", {
-                attrs: {
-                  title: _vm.titulo,
-                  venda: _vm.propriedadeVenda,
-                  filho_errors: _vm.propriedade_errors,
-                  update: _vm.propriedadeupdate
-                },
-                on: { success: _vm.cadastroRealizado }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
     _c(
       "div",
       [
@@ -70294,7 +70263,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.vendas, function(venda) {
+            _vm._l(_vm.vendas.data, function(venda) {
               return _c("tr", { key: venda.id }, [
                 _c("td", { domProps: { textContent: _vm._s(venda.id) } }),
                 _vm._v(" "),
@@ -70312,27 +70281,29 @@ var render = function() {
                   domProps: { textContent: _vm._s(venda.filial_id) }
                 }),
                 _vm._v(" "),
-                _c("td", {
-                  domProps: { textContent: _vm._s(venda.valor_total) }
-                }),
+                _c("td", [
+                  _vm._v(" " + _vm._s(parseFloat(venda.valor_total).toFixed(2)))
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(" " + _vm._s(parseFloat(venda.desconto).toFixed(2)))
+                ]),
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    _vm._s(
-                      _vm
-                        .$moment(venda.created_at)
-                        .format("DD/MM/YYYY HH:mm", "L")
-                    )
+                    " " +
+                      _vm._s(parseFloat(venda.total_com_desconto).toFixed(2))
                   )
                 ]),
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    _vm._s(
-                      _vm
-                        .$moment(venda.updated_at)
-                        .format("DD/MM/YYYY HH:mm", "L")
-                    )
+                    " " +
+                      _vm._s(
+                        _vm
+                          .$moment(venda.created_at)
+                          .format("DD/MM/YYYY HH:mm", "L")
+                      )
                   )
                 ]),
                 _vm._v(" "),
@@ -70356,21 +70327,6 @@ var render = function() {
                       [_vm._v("Detalhes")]
                     ),
                     _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-info btn-sm",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            _vm.editar(venda.id)
-                          }
-                        }
-                      },
-                      [_vm._v("Editar")]
-                    ),
-                    _vm._v(" "),
                     _c("confirmDelete", {
                       attrs: { resgistro: venda.id },
                       on: { destroy: _vm.destroy }
@@ -70383,6 +70339,11 @@ var render = function() {
             0
           )
         ]),
+        _vm._v(" "),
+        _c("pagination", {
+          attrs: { pagination: _vm.vendas, offset: 6 },
+          on: { paginate: _vm.loadIndex }
+        }),
         _vm._v(" "),
         _c(
           "vodal",
@@ -70422,9 +70383,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Valor total")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Data da Venda")]),
+        _c("th", [_vm._v("Desconto")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Data de Alteração")]),
+        _c("th", [_vm._v("Valor com Desconto")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Data da Venda")]),
         _vm._v(" "),
         _c("th", [_vm._v("status")]),
         _vm._v(" "),
@@ -74486,10 +74449,10 @@ var RESOURCE = 'compras';
 var RESOURCE = 'vendas';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    vendasIndex: function vendasIndex(context) {
+    vendasIndex: function vendasIndex(context, params) {
         context.commit('PRELOADER', true);
 
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('' + __WEBPACK_IMPORTED_MODULE_1__config_config__["a" /* URL_BASE */] + RESOURCE).then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('' + __WEBPACK_IMPORTED_MODULE_1__config_config__["a" /* URL_BASE */] + RESOURCE, { params: params }).then(function (response) {
             return context.commit('MUTATION_LOAD_VENDAS', response.data);
         }).catch(function (errors) {
             return console.log(errors);

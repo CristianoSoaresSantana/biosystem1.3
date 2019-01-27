@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(FormaPagtosTableSeeder::class);
         // $this->call(ComprasTableSeeder::class);
         // $this->call(VendasTableSeeder::class);
-        $this->call(FilialMaterialsSeeder::class);
+        // $this->call(FilialMaterialsSeeder::class);
     }
 }

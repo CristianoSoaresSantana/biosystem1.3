@@ -21,6 +21,7 @@ class CreateVendasTable extends Migration
             $table->float('valor_total', 10,2)->nullable();
             $table->string('status')->default('aberto');
             $table->float('desconto', 10,2);
+            $table->float('total_com_desconto', 10,2);
             $table->string('justificativa_desconto');
             $table->timestamps();
             $table->softDeletes();

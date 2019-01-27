@@ -21,7 +21,7 @@ class Venda extends Model
 
     protected $dates = ['deleted_at'];
     protected $table = 'vendas';
-    protected $fillable = ['id', 'cliente_id', 'filial_id', 'tipo_mov_id', 'user_id', 'valor_total', 'status', 'desconto', 'justificativa_desconto'];
+    protected $fillable = ['id', 'cliente_id', 'filial_id', 'tipo_mov_id', 'user_id', 'valor_total', 'status', 'desconto', 'justificativa_desconto', 'total_com_desconto'];
 
 
 
@@ -61,13 +61,14 @@ class Venda extends Model
 
     }
 
-    public function queryCreate($user_id, $cliente_id, $justificativa, $valor_total, $desconto, $status, $tipo_mov_id, $itensVenda){
+    public function queryCreate($user_id, $cliente_id, $justificativa, $valor_total, $desconto, $total_com_desconto, $status, $tipo_mov_id, $itensVenda){
         /* criando registro de venda na tabela vendas */
         $this->user_id                  = $user_id;
         $this->cliente_id               = $cliente_id;
         $this->justificativa_desconto   = $justificativa;
         $this->valor_total              = $valor_total;
         $this->desconto                 = $desconto;
+        $this->total_com_desconto       = $total_com_desconto;
         $this->tipo_mov_id              = $tipo_mov_id;
         $this->status                   = $status;
         $this->filial_id                = $itensVenda[0]['filial_id'];
@@ -82,9 +83,15 @@ class Venda extends Model
 
         /* criando registro dos itens desta venda */
         foreach ($itensVenda as $item) {
-            $venda->materials()->attach($item['material_sku'], ['valor_unitario' => $item['valor_venda'], 'quantidade' => '1']);
+            $quantidade_anterior = $this->buscarQuantidadeAnterior($item['filial_id'], $item['material_sku']);
+            $this->materials()->attach($item['material_sku'], ['valor_unitario' => $item['valor_venda'], 'quantidade' => '1', 'quantidade_anterior' => $quantidade_anterior]);
             $this->baixaNoEstoque($item['filial_id'], $item['material_sku']);
         }
+    }
+
+    public function buscarQuantidadeAnterior($filial, $sku) {
+        $filial = Filial::find($filial);
+        return $filial->materials()->where('material_sku', $sku)->value('quantidade');
     }
 
     public function baixaNoEstoque($filial, $sku) {
