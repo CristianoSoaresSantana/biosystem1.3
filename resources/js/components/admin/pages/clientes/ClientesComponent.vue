@@ -41,8 +41,8 @@
             <td v-text="cliente.celular_recado"></td>
             <td v-text="cliente.email"></td>
             <td>
-              <a v-if="temCliente" href="#" class="btn btn-primary btn-sm" @click.prevent="adicionaCliente(cliente.id)">adicionar</a>
-              <a v-else href="#" class="btn btn-danger btn-sm" @click.prevent="removeCliente(cliente)">remover</a>
+              <a v-if="cliente_selecionado" href="#" class="btn btn-danger btn-sm" @click.prevent="removeCliente(cliente)">remover</a>
+              <a v-else href="#" class="btn btn-primary btn-sm" @click.prevent="adicionaCliente(cliente.id)">adicionar</a>
               <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(cliente.id)">Detalhes</a>
               <a href="#" class="btn btn-info btn-sm" @click.prevent="editar(cliente.id)">Editar</a>
               <confirmDelete :resgistro="cliente.id" @destroy="destroy"/>
@@ -99,8 +99,8 @@ export default {
 
   computed: {
 
-    temCliente(){
-        return this.$store.state.vendas.cliente === null
+    cliente_selecionado() {
+       return this.$store.state.vendas.cliente != null
     },
 
     clientes() {
@@ -116,6 +116,7 @@ export default {
   },
 
   methods: {
+
     adicionaCliente(cliente) {
         this.$store.commit('MUTATION_ADD_CLIENTE', cliente);
     },

@@ -18,11 +18,11 @@ class CreateVendasTable extends Migration
             $table->unsignedInteger('cliente_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('tipo_mov_id');
-            $table->float('valor_total', 10,2)->nullable();
+            $table->float('valor_total', 10,2);
             $table->string('status')->default('aberto');
-            $table->float('desconto', 10,2);
-            $table->float('total_com_desconto', 10,2);
-            $table->string('justificativa_desconto');
+            $table->float('desconto', 10,2)->nullable();
+            $table->float('total_com_desconto', 10,2)->nullable();
+            $table->string('justificativa_desconto')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
@@ -45,13 +45,12 @@ class CreateVendasTable extends Migration
         Schema::create('material_vendas', function (Blueprint $table) {
             $table->unsignedInteger('venda_id');
             $table->string('material_sku', 20);
-            $table->integer('quantidade')->default(0);
-            $table->integer('quantidade_anterior')->default(0);
+            $table->integer('quantidade')->nullable();
+            $table->integer('quantidade_anterior')->nullable();
             $table->string('lote', 20)->unique();
             $table->float('valor_unitario', 10,2);
-            $table->float('valor_com_desconto', 10,1);
-            $table->float('desconto')->default('0.0');;
-            $table->string('justificativa_desconto')->default('não houve descontos!');
+            $table->float('desconto')->nullable();
+            $table->float('sub_total')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

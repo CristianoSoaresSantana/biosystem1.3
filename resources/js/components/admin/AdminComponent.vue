@@ -45,9 +45,9 @@
 <script>
 export default {
   computed: {
-      carrinho () {
-          return this.$store.state.carrinho.products;
-      }
+    //   carrinho () {
+    //       return this.$store.state.carrinho.products;
+    //   }
   },
 
   data() {

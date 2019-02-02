@@ -11,6 +11,7 @@ use App\Models\Tipo_movimento;
 use App\Models\Cliente;
 use App\Models\Forma_pagto;
 use App\Models\Material;
+use Illuminate\Support\Facades\DB;
 
 class Venda extends Model
 {
@@ -33,7 +34,7 @@ class Venda extends Model
     public function getResults($data, $itensPage)
     {
         if (!isset($data['filter']) && !isset($data['id']) && !isset($data['created_at'])) {
-            return $this->paginate($itensPage);
+            return $this->orderBy('id', 'DESC')->paginate($itensPage);
         }
         else
         {
@@ -56,37 +57,45 @@ class Venda extends Model
                             $filter = $data['created_at'];
                             $query->where('created_at', 'LIKE', "%{$filter}%");
                         }
-                    })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
+                    })->orderBy('id', 'DESC')->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
 
     }
 
     public function queryCreate($user_id, $cliente_id, $justificativa, $valor_total, $desconto, $total_com_desconto, $status, $tipo_mov_id, $itensVenda){
-        /* criando registro de venda na tabela vendas */
-        $this->user_id                  = $user_id;
-        $this->cliente_id               = $cliente_id;
-        $this->justificativa_desconto   = $justificativa;
-        $this->valor_total              = $valor_total;
-        $this->desconto                 = $desconto;
-        $this->total_com_desconto       = $total_com_desconto;
-        $this->tipo_mov_id              = $tipo_mov_id;
-        $this->status                   = $status;
-        $this->filial_id                = $itensVenda[0]['filial_id'];
+        try
+        {
+            DB::beginTransaction(); //marcador para iniciar transações
 
-        $this->save();
+            /* criando registro de venda na tabela vendas */
+            $this->user_id                  = $user_id;
+            $this->cliente_id               = $cliente_id;
+            $this->justificativa_desconto   = $justificativa;
+            $this->valor_total              = $valor_total;
+            $this->desconto                 = $desconto;
+            $this->total_com_desconto       = $total_com_desconto;
+            $this->tipo_mov_id              = $tipo_mov_id;
+            $this->status                   = $status;
+            $this->filial_id                = $itensVenda[0]['filial_id'];
 
-        // var_dump(); die;
-        /* pega o ultimo registro de venda */
-        $venda_id = $this->latest()->value('id');
-        /* cria um objeto com esse registro */
-        $venda = $this->find($venda_id);
+            $this->save();
 
-        /* criando registro dos itens desta venda */
-        foreach ($itensVenda as $item) {
-            $quantidade_anterior = $this->buscarQuantidadeAnterior($item['filial_id'], $item['material_sku']);
-            $this->materials()->attach($item['material_sku'], ['valor_unitario' => $item['valor_venda'], 'quantidade' => '1', 'quantidade_anterior' => $quantidade_anterior]);
-            $this->baixaNoEstoque($item['filial_id'], $item['material_sku']);
+            /* pega o ultimo registro de venda */
+            $venda_id = $this->latest()->value('id');
+            /* cria um objeto com esse registro */
+            $venda = $this->find($venda_id);
+
+            /* criando registro dos itens desta venda */
+            foreach ($itensVenda as $item) {
+                $quantidade_anterior = $this->buscarQuantidadeAnterior($item['filial_id'], $item['sku']);
+                $this->materials()->attach($item['sku'], ['valor_unitario' => $item['valor_unitario'], 'quantidade' => $item['quantidade'], 'quantidade_anterior' => $quantidade_anterior, 'lote' => $item['lote'], 'sub_total' => $item['sub_total']]);
+                $this->baixaNoEstoque($item['filial_id'], $item['sku'], $item['quantidade']);
+            }
+        }catch(Exception $e) {
+            throw new Exception('Error no Model' . $e->getMessage());
         }
+
+        DB::commit(); //validar as transações
     }
 
     public function buscarQuantidadeAnterior($filial, $sku) {
@@ -94,14 +103,14 @@ class Venda extends Model
         return $filial->materials()->where('material_sku', $sku)->value('quantidade');
     }
 
-    public function baixaNoEstoque($filial, $sku) {
+    public function baixaNoEstoque($filial, $sku, $quantidade) {
 
         $filial = Filial::find($filial);
         // Aqui eu retorno o registro do produto por filial.
         $filial_material = $filial->materials()->where('material_sku', $sku)->first();
 
         // Aqui eu atualizo a quantidade do produto no estoque.
-        $quantidadeNova = $filial_material->pivot->quantidade - 1;
+        $quantidadeNova = $filial_material->pivot->quantidade - $quantidade;
         $filial_material->pivot->quantidade = $quantidadeNova;
         $filial_material->pivot->save();
     }
@@ -142,6 +151,6 @@ class Venda extends Model
     public function materials()
     {
         return $this->belongsToMany(Material::class, 'material_vendas')
-                    ->withPivot('quantidade', 'quantidade_anterior', 'lote', 'valor_unitario', 'valor_com_desconto', 'desconto', 'justificativa_desconto', 'created_at', 'updated_at');
+                    ->withPivot('quantidade', 'quantidade_anterior', 'lote', 'valor_unitario', 'desconto', 'sub_total', 'created_at', 'updated_at');
     }
 }

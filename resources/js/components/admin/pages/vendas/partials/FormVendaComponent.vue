@@ -2,43 +2,96 @@
   <div class="container">
       <h1>{{ title }}</h1>
         <form class="form" @submit.prevent="onSubmit">
-            <ul class="col-md-12 list-group">
-                <li v-for="(item, index) in dados_venda.itens_venda" :key="index" class="list-group-item list-group-item-primary">
-                    Item: {{index}} Filial {{ item.filial_id }} SKU: {{ item.material_sku }} Preço {{ item.valor_venda }}
-                </li>
-                <br>
-                <li class="list-group-item list-group-item-primary"> <h4> Total = {{ dados_venda.valor_total }} </h4> </li>
-                <li class="list-group-item list-group-item-primary"> <h4> Desconto = <input type="text" v-model="desconto" size="4" placeholder="102.99"> </h4> </li>
-                <li class="list-group-item list-group-item-primary"> <h3> Novo Total = {{ this.total_com_desconto = parseFloat(dados_venda.valor_total - desconto).toFixed(2) }} </h3> </li>
-                <li class="list-group-item list-group-item-primary">
-                    <h5>
-                        Status =
-                        <select name="" id="" v-model="status">
-                            <option value="Aberto">Aberto</option>
-                            <option value="Aguardando pagamento">Aguardando pagamento</option>
-                            <option value="Fechado">Fechado</option>
-                        </select>
-                    </h5>
-                    <h5>
-                        Tipo movimento =
-                        <select name="" id="" v-model="tipo_mov_id">
-                            <option value="3">Saida</option>
-                            <option value="2">Transferência</option>
-                            <option value="1">Entrada</option>
-                        </select>
-                    </h5>
-                    <h5>
-                        Justifique o desconto =
-                        <select name="" id="" v-model="justificativa">
-                            <option value="Não houve descontos">Não houve descontos</option>
-                            <option value="Voltou a comprar conosco">Voltou a comprar conosco</option>
-                            <option value="Alegou um preço menor no concorrente">Alegou um preço menor no concorrente</option>
-                            <option value="Faltou uma fração do valor Total">Faltou uma fração do valor Total</option>
-                        </select>
-                    </h5>
-                </li>
-                <button type="submit" class="btn btn-primary">Finalizar</button>
-            </ul>
+            <h4><small>Informe o status e o tipo de movimentação</small></h4>
+            <div class="row">
+                <div class="input-group input-group-sm mb-3">
+                    <label for="exampleFormControlSelect1">Status:</label>
+                    <select class="form-control" id="exampleFormControlSelect1" v-model="status">
+                        <option value="Aberto">Aberto</option>
+                        <option value="Aguardando pagamento">Aguardando pagamento</option>
+                        <option value="Fechado">Fechado</option>
+                    </select>
+                    <label for="exampleFormControlSelect1">Tipo de movimentação:</label>
+                    <select class="form-control" id="exampleFormControlSelect1" v-model="tipo_mov_id">
+                        <option value="3">Saida</option>
+                        <option value="2">Transferência</option>
+                        <option value="1">Entrada</option>
+                    </select>
+                </div>
+            </div>
+            <h4>Itens da venda</h4>
+            <div class="form-group" display="flex" justify-content="space-evelyn">
+                <div class="row" v-for="(item, index) in dados_venda.itens_venda" :key="index">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Sku</span>
+                        </div>
+                        <input v-model="item.sku" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" size="8" readonly>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Lote</span>
+                        </div>
+                        <input v-model="item.lote" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" size="8">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">quantidade</span>
+                        </div>
+                        <input v-model="item.quantidade" @blur="item.sub_total = multiplicarItens(item.valor_unitario, item.quantidade)" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  size="8">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Preço</span>
+                        </div>
+                        <input v-model="item.valor_unitario" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  size="8" readonly>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Sub-Total</span>
+                        </div>
+                        <input v-model="item.sub_total" @blur="somarItens(item.sub_total)" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  size="6" readonly>
+                    </div>
+                </div>
+            </div>
+            <h4>Dados da venda</h4>
+            <div class="row">
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Cliente_id</span>
+                    </div>
+                    <input v-model="dados_venda.cliente_id" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" readonly>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Usuário_id</span>
+                    </div>
+                    <input v-model="dados_venda.cliente_id" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" readonly>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Valor Total</span>
+                    </div>
+                    <input v-model="valor_total" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" readonly>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Desconto</span>
+                    </div>
+                    <input v-model="desconto" type="text" @blur="total_com_desconto = aplicarDesconto(valor_total, desconto)" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Total com desconto</span>
+                    </div>
+                    <input v-model="total_com_desconto" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group input-group-md col-12">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Justifique o desconto</span>
+                    </div>
+                    <input v-model="justificativa" type="text" size="20" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-md col-12">
+                     <button type="submit" class="btn btn-primary">Finalizar</button>
+                </div>
+            </div>
         </form>
   </div>
 </template>
@@ -47,8 +100,7 @@
 export default {
     props: {
         venda: {
-            require: true,
-            type: Object
+            require: true
         },
 
         title: {
@@ -63,8 +115,9 @@ export default {
             desconto: '',
             total_com_desconto: '',
             justificativa: '',
-            status: '',
-            tipo_mov_id: ''
+            status: 'Aberto',
+            tipo_mov_id: '3',
+            valor_total: ''
         }
     },
 
@@ -80,6 +133,7 @@ export default {
             this.dados_venda['justificativa'] = this.justificativa;
             this.dados_venda['status'] = this.status;
             this.dados_venda['tipo_mov_id'] = this.tipo_mov_id;
+            this.dados_venda['valor_total'] = this.valor_total;
             this.dados_venda['total_com_desconto'] = this.total_com_desconto;
 
             this.$store.dispatch("vendasStore", this.dados_venda)
@@ -92,7 +146,36 @@ export default {
                 this.$snotify.error("Você Errou!", "Atenção");
                 this.errors = errors.response.data.errors;
             });
+        },
+
+        multiplicarItens(valor, quantidade){
+            return parseFloat(valor * quantidade).toFixed(2);
+        },
+
+        aplicarDesconto(valor, quantidade){
+            return parseFloat(valor - quantidade).toFixed(2);
+        },
+
+        somarItens(valor) {
+            var valorFloat = parseFloat(valor);
+            this.$store.commit('MUTATION_SOMA', valorFloat);
+            this.valor_total = parseFloat(this.$store.state.vendas.valor_total).toFixed(2)
         }
     }
 }
 </script>
+<style scoped>
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.col-12 {
+    -webkit-box-flex: 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: -15px;
+}
+</style>

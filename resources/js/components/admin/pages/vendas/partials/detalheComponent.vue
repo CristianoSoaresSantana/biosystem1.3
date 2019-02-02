@@ -20,7 +20,10 @@
                 <li v-for="(itens, index) in venda.materials" :key="index">
                     <strong>Sku:</strong> {{itens.pivot["material_sku"]}},
                     <strong>Quantidade:</strong> {{itens.pivot["quantidade"]}},
+                    <strong>Lote:</strong> {{itens.pivot["lote"]}},
+                    <strong>Quantidade anterior:</strong> {{itens.pivot["quantidade_anterior"]}},
                     <strong>Valor unitario:</strong> {{itens.pivot["valor_unitario"]}},
+                    <strong>Sub Total:</strong> {{itens.pivot["sub_total"]}},
                 </li>
             </ul>
       </div>

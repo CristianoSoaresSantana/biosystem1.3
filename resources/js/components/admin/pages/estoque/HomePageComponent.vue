@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>Vitrine</h1>
-
         <div class="input-group col-md-6" >
             <label class="input-group-text"><b>Filial</b></label>
             <select class="custom-select" v-model="filial_id">
@@ -56,7 +55,7 @@
                 sku: {{ item.material_sku }} preço: R${{ item.valor_venda }}
             </li>
             <button type="submit" class="btn btn-success" @click.prevent="adicionarItens">Resumo desta venda</button>
-            <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="750" :height="750">
+            <vodal :show="showVodal" animation="zoon" @hide="hideVodal" :width="1024" :height="750">
             <formVenda
                 :title="titulo"
                 :venda="propriedadeVenda"
@@ -98,7 +97,7 @@ export default {
                 cod_barra: '',
                 descricao: ''
             },
-            itens_venda: [],
+            itens_venda: []
 
         }
     },
@@ -151,7 +150,6 @@ export default {
 
         selectItens(item) {
             this.itens_venda.push(item);
-            this.somarItens(item.valor_venda);
         },
 
         deselectItens(item) {
@@ -161,19 +159,27 @@ export default {
         adicionarItens() {
             this.$store.commit('MUTATION_ITENS_VENDA', this.itens_venda);
 
-            this.titulo = "Nova Venda";
+            this.titulo = "Fechamento de Venda";
             this.showVodal = true;
             this.propriedadeupdate = false;
             this.propriedadeVenda = {
                 cliente_id  : this.$store.state.vendas.cliente,
                 user_id     : this.$store.state.vendas.usuario,
-                valor_total : parseFloat(this.$store.state.vendas.valor_total).toFixed(2),
-                itens_venda : this.$store.state.vendas.itens_venda[0]
+                itens_venda : this.newArrayItens(this.$store.state.vendas.itens_venda[0])
             }
         },
-
-        somarItens (valor) {
-            this.valor_total = this.$store.commit('MUTATION_SOMA', valor);
+        /* novo array para o form venda! */
+        newArrayItens(itens){
+            var newArrayItens = itens.map(function(item){
+                return {
+                    'sku': item.material_sku,
+                    'filial_id': item.filial_id,
+                    'valor_unitario': item.valor_venda,
+                    'quantidade':1,
+                    'lote': "",
+                    'sub_total': "" }
+            });
+            return newArrayItens;
         },
 
         hideVodal() {
