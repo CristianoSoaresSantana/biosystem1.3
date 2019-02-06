@@ -14,7 +14,8 @@ class TipoMovimentosTableSeeder extends Seeder
     {
         $tipo_movimentos = [
             ['tipo_movimentacao' => 'entrada'],
-            ['tipo_movimentacao' => 'transferencia']
+            ['tipo_movimentacao' => 'transferencia'],
+            ['tipo_movimentacao' => 'saida']
         ];
 
         foreach($tipo_movimentos as $tipo_movimento){

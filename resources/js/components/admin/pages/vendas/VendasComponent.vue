@@ -64,7 +64,7 @@
 <script>
 import Vodal from "vodal";
 import PaginationComponent from "../../../layouts/PaginationComponent";
-import formVendaComponent from "./partials/FormVendaComponentV0";
+import formVendaComponent from "./partials/FormVendaComponent";
 import confirmDelete from "../../layouts/confirmDeleteComponent";
 import detalheComponent from './partials/detalheComponent';
 

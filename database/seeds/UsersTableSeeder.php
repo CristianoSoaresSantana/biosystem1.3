@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'João Luis', 
+                'name' => 'Camila Andrade',
                 'email' => 'jj@ll.com',
                 'password' => bcrypt('123456'),
                 'filial_id' => 1,
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
                 'endereco' => 'rua fulano, numero 95, bairro: chacara'
             ],
             [
-                'name' => 'Luis Sergio', 
+                'name' => 'Raimunda Souza',
                 'email' => 'll@ss.com',
                 'password' => bcrypt('123456'),
                 'filial_id' => 2,
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
         ];
 
         foreach($users as $user){
-            User::create($user);        
+            User::create($user);
         }
     }
 }

@@ -14,11 +14,11 @@ class FornecedorsTableSeeder extends Seeder
     {
         $fornecedors = [
             ['razao_social' => 'FitWey', 'cnpj' => '1234567891234'],
-            ['razao_social' => 'laboratorio', 'cnpj' => '0000000000000']
+            ['razao_social' => 'Laboratorio', 'cnpj' => '0000000000000']
         ];
 
         foreach($fornecedors as $fornecedor){
-            Fornecedor::create($fornecedor);        
+            Fornecedor::create($fornecedor);
         }
     }
 }

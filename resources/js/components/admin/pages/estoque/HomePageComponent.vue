@@ -33,7 +33,8 @@
                 <th width="150px">Descrição</th>
                 <th width="40px">Quantidade</th>
                 <th width="50px">Preço</th>
-                <th width="250px">Adicionar / Remover</th>
+                <th width="80px">Detalhes</th>
+                <th width="150px">Adicionar / Remover</th>
             </tr>
             </thead>
             <tbody>
@@ -43,6 +44,9 @@
                 <td v-text="material.descricao"></td>
                 <td v-text="material.pivot.quantidade"></td>
                 <td v-text="material.pivot.valor_venda"></td>
+                <td>
+                    <a href="#" class="btn btn-primary btn-sm" @click.prevent="detalhes(material.sku)">Detalhes</a>
+                </td>
                 <td>
                     <button class="btn btn-primary btn-sm" @click="selectItens(material.pivot)">Adicionar</button>
                     <button class="btn btn-danger btn-sm" @click="deselectItens(material.pivot)">Remover</button>
@@ -64,6 +68,9 @@
                 @success="cadastroRealizado"
             ></formVenda>
             </vodal>
+        <vodal :show="detalhesVodal" animation="zoon" @hide="hideDetalhesVodal" :width="600" :height="350">
+            <detalhe :filho_materials="propriedadeMaterial"></detalhe>
+        </vodal>
         </ul>
             <!-- paginação -->
             <pagination :pagination="estoque" :offset="6" @paginate="loadEstoque"></pagination>
@@ -75,6 +82,7 @@
 import PaginationComponent from "../../../layouts/PaginationComponent";
 import Vodal from "vodal";
 import formVendaComponent from "../vendas/partials/FormVendaComponent";
+import detalheComponent from "../materials/partials/detalheComponent";
 
 export default {
     created() {
@@ -89,6 +97,7 @@ export default {
             propriedadeupdate: false,
             propriedade_errors: {},
             propriedadeVenda: {},
+            propriedadeMaterial: {},
             busca: '',
             filial_id: '',
             usuario_id: '',
@@ -194,12 +203,41 @@ export default {
             window.location.reload(true);
         },
 
+        detalhes (sku) {
+            this.$store.dispatch("actionLoadMaterial", sku).then(response => {
+                this.propriedadeMaterial = response;
+                this.detalhesVodal = true;
+            }).catch(errors => {
+                this.$snotify.errors("Registro não pode ser carregado!",  "Informativo");
+            });
+        },
+
+        hideDetalhesVodal () {
+            this.detalhesVodal = false,
+            this.propriedadeMaterial = {
+                sku: "",
+                cod_barra: "",
+                descricao: "",
+                forma_farmaceutica_id: "",
+                tipo_material_id: "",
+                fornecedor_id: "",
+                status: "",
+                valor_compra: "",
+                valor_revenda: "",
+                tipo_material: Object,
+                forma_farmaceutica: Object,
+                fornecedor: Object
+                // image: '',
+            }
+        }
+
     },
 
     components: {
         vodal: Vodal,
         formVenda: formVendaComponent,
-        pagination: PaginationComponent
+        pagination: PaginationComponent,
+        detalhe: detalheComponent
     }
 
 }
