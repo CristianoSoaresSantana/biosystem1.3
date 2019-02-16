@@ -44,12 +44,6 @@
 
 <script>
 export default {
-  computed: {
-    //   carrinho () {
-    //       return this.$store.state.carrinho.products;
-    //   }
-  },
-
   data() {
     return {
       links: [
@@ -84,7 +78,7 @@ export default {
   font-family: "Open Sans";
 }
 .container {
-  max-width: 1680px;
+  max-width: 1480px;
   max-height: 1050px;
 }
 .menu {
