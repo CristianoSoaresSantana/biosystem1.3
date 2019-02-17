@@ -34,7 +34,7 @@ class Compra extends Model
     public function getResults($data, $itensPage)
     {
         if (!isset($data['filter']) && !isset($data['num_doc']) && !isset($data['created_at'])) {
-            return $this->paginate($itensPage);
+            return $this->orderBy('created_at', 'DESC')->paginate($itensPage);
         }
         else
         {
@@ -57,7 +57,7 @@ class Compra extends Model
                             $filter = $data['created_at'];
                             $query->where('created_at', 'LIKE', "%{$filter}%");
                         }
-                    })->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
+                    })->orderBy('created_at', 'DESC')->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
 
     }

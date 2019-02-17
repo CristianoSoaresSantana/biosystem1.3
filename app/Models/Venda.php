@@ -57,7 +57,7 @@ class Venda extends Model
                             $filter = $data['created_at'];
                             $query->where('created_at', 'LIKE', "%{$filter}%");
                         }
-                    })->orderBy('id', 'DESC')->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
+                    })->orderBy('created_at', 'DESC')->paginate($itensPage); //toSQL(); para vê como esta acontecendo por traz de query
         }
 
     }

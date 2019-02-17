@@ -30,7 +30,6 @@ class CompraController extends Controller
     // inseri informação na tabela.
     public function store(StoreUpdateCompraFormRequest $request)
     {
-
         $compra =  $this->compra->create($request->all());
 
         return response()->json($compra, 201);

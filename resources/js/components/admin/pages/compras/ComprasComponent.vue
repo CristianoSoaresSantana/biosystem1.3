@@ -50,7 +50,8 @@
           <detalhe :filho_compra="propriedadeCompra"></detalhe>
       </vodal>
       <vodal :show="itensCompraVodal" @hide="hideItensCompra" :width="920" :height="400">
-          <itensCompra :num_docUltimoCreate="num_docUltimoCreate"></itensCompra>
+          <itensCompra :num_docUltimoCreate="num_docUltimoCreate"
+                        @success="itensCompraFinalizado"></itensCompra>
       </vodal>
     </div>
   </div>
@@ -181,6 +182,11 @@ export default {
     hideItensCompra () {
         this.itensCompraVodal = false,
         this.num_docUltimoCreate ="";
+    },
+
+    itensCompraFinalizado() {
+        this.itensCompraVodal = false,
+        window.location.reload(true);
     },
 
     cadastroRealizado(payload) {

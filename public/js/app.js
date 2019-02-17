@@ -67985,7 +67985,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -68006,6 +68006,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layouts_confirmDeleteComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__layouts_confirmDeleteComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__partials_detalheComponent__ = __webpack_require__(368);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__partials_detalheComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__partials_detalheComponent__);
+//
 //
 //
 //
@@ -68173,6 +68174,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     hideItensCompra: function hideItensCompra() {
       this.itensCompraVodal = false, this.num_docUltimoCreate = "";
+    },
+    itensCompraFinalizado: function itensCompraFinalizado() {
+      this.itensCompraVodal = false, window.location.reload(true);
     },
     cadastroRealizado: function cadastroRealizado(payload) {
       this.hideVodal(), this.loadIndex(), this.num_docUltimoCreate = payload.num_doc, this.propriedadeupdate ? "" : this.itensCompraVodal = true;
@@ -69715,7 +69719,8 @@ var render = function() {
           },
           [
             _c("itensCompra", {
-              attrs: { num_docUltimoCreate: _vm.num_docUltimoCreate }
+              attrs: { num_docUltimoCreate: _vm.num_docUltimoCreate },
+              on: { success: _vm.itensCompraFinalizado }
             })
           ],
           1
